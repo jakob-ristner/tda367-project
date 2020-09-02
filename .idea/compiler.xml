@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="projecttemplate" />
         <module name="tda367-project" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="projecttemplate" target="1.7" />
+      <module name="tda367-project" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
