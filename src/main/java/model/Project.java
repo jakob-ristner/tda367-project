@@ -7,8 +7,6 @@ public class Project {
   private int presses;
 
   public int getPresses() {
-    int bla;
-    bla = 42;
     return presses;
   }
 
