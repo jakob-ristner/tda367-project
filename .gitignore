@@ -4,6 +4,15 @@
 # Log file
 *.log
 
+.idea
+
+out
+
+target
+
+projecttemplate.iml
+tda367-project.iml
+
 # BlueJ files
 *.ctxt
 
