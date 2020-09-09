@@ -1,0 +1,36 @@
+# Meeting Agenda
+
+Group: Gausten
+Date: 2020-09-09
+Chair: 
+Participants: Karl Gunnarsson, Erik Berg, David Andreasson, Jakob Henriksson, Jakob Ristner
+
+
+## Objectives (5 min) 
+
+-Dagens mål är att komma fram till DoD samt skapa User stories. 
+
+
+## Reports (15 min) from previous meeting
+
+-Träffades igår, inte mycket som hänt innan dess. 
+
+## Discussion items (35 min)
+
+- Vi måste komma fram med user stories till den första iterationen
+  av vår applikation.
+  Vi Pratar lite om hur våra user stories ska vara uppbyggda,
+  övergripande som man kan bryta ner i mindre mer konkreta task
+
+  Vi ska ändra en grej i domänmodellen så att player har inventory inte character, står i förra mötesprotokollet
+  
+  skapade user stories
+  
+
+
+## Outcomes and assignments (5 min)
+Vi skapade 11 st user stories, vi fortsätter jobba tillsammans imorgon med att skapa acceptanskritirier som är testbara
+  
+
+
+
