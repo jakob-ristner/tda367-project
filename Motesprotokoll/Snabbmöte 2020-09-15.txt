@@ -1,0 +1,33 @@
+* Floor - class 
+
+Bra för då kan vi ha separata beteenden för floor, roof och basement. Känns bättre rent abstraktionsmässigt än 
+att ha en hel matris som sköter alla tre våningarna. 
+
+Group: Gausten
+Date: 2020-09-09
+Chair: 
+Participants: Karl Gunnarsson, Erik Berg, David Andreasson, Jakob Henriksson, Jakob Ristner
+
+## Objectives (5 min) 
+Fix UML
+Finish Domain Model
+Finish Tasks
+
+## Reports (15 min) from previous meeting
+* Need to fix domain model from seminar. 
+
+
+## Discussion items (35 min)
+* Floor - class 
+
+Bra för då kan vi ha separata beteenden för floor, roof och basement. Känns bättre rent abstraktionsmässigt än 
+att ha en hel matris som sköter alla tre våningarna.
+
+
+
+## Outcomes and assignments (5 min)
+Started UML. Fixed domain model.
+
+
+##### Wrap up ########
+Next meeting 2020-09-17
