@@ -1,0 +1,54 @@
+Meeting 2020-09-17
+
+Group: Gastuen
+Chair: Erik Berg
+Participants: Karl Gunnarsson, Erik Berg, Jakob Henriksson, Jakob Ristner, David Andreasson
+
+#######Objectives##########
+
+* Finish first draft of UML
+* Finish first draft of RAD
+* Look into MVC vs MVP
+* Create TODO-list for start of programming
+
+###### Reports from previous meeting #####
+Started UML. 
+
+####### Discussion Items #########
+
+Discussion about observer pattern between PLayer class and Board class. Decided against using the pattern because 
+of the Gastuen class which already connects the two classes. 
+
+Discussion about event handling: Template method pattern vs Strategy pattern. Strategy patter can be used during
+runtime. Probably going for strategy pattern
+
+Discussion regarding views. How are the views supposed to be set up? Many different views for each task? 
+An abstract class which collects all the views? 
+
+Discussion regarding stats: Have a stats class? The class is then supposed to add stats. The ENUM is wrong and we 
+need to change it. Why do we want an Enum? An enum can only represent one of the stats. Therefore a class would be
+better. Or should we just skip enum and class and have the stats only in the character. 
+Decision: Use the enum only for telling which stat is supposed to be changed. The character class holds the stats 
+and is responsible for the handling of the stats. 
+
+Discussion about strategy and events. At first we had a lot of classes for all the different events we imagined. 
+Then we realised that the functionality is the same and therefore one class is sufficient. How the stats are 
+determined is decided by an XML file or similiar, same with the text that is supposed to be shown. 
+
+Discussion: EventFactory or ItemFactory. 
+
+
+####### Outcomes & Assignments ########
+* UML almost finished
+* RAD still has some work left.
+
+
+*Karl Gunnarsson fixes introduction and domain model in the RAD until next meeting. 
+
+
+############## Wrap up ################
+* Next Meeting will discuss last part of UML and hopefully start coding. 
+* Date: 2020-09-22.
+
+
+
