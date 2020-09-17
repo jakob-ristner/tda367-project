@@ -1,27 +1,17 @@
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-import controller.ProjectController;
-import model.Project ;
-import view.ProjectView ;
-
-import javax.swing.*;
-
-public final class ProjectTemplate {
-	private ProjectTemplate() {
-		/* No instances allowed! */
+public class ProjectTemplate extends Application
+{
+	public static void main(String[] args)
+	{
+		launch(args);
 	}
 
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				final Project project = new Project();
-				final ProjectView projectView = new ProjectView(project);
-
-				ProjectController.create(project, projectView);
-				projectView.setVisible(true);
-			}
-		});
+	public void start(Stage theStage)
+	{
+		theStage.setTitle("Hello, World!");
+		theStage.show();
 	}
 }
