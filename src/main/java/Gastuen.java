@@ -2,7 +2,7 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class ProjectTemplate extends Application
+public class Gastuen extends Application
 {
 	public static void main(String[] args)
 	{
