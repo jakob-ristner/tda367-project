@@ -8,12 +8,18 @@ public class Floor {
     private List<Tile> roomList = new ArrayList<>();
     private Random rand = new Random();
 
-
-    public void createFloor(List<Event> eventList){
-
+    public Floor(List<Event> eventList){
         generateTileList();
-        List<Integer> randomIndexList = new ArrayList<>();
+        List<Integer> randomIndexList;
+        randomIndexList = randomizeIndex(eventList.size());
+        for(int i = 0; i < eventList.size(); i++){
+            roomList.get(randomIndexList.get(i)).setEvent(eventList.get(i));
+        }
     }
+
+    public void generateStairs(){
+    }
+
 
     private List<Integer> randomizeIndex(int numEvent){
         List<Integer> indexList = new ArrayList<>();
