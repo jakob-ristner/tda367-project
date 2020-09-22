@@ -7,8 +7,12 @@ public class Kharacter {
     private int stamina;
     private String name;
 
-    public Kharacter() {
-
+    public Kharacter(int speed, int strength, int sanity, int stamina, String name) {
+        this.speed = speed;
+        this.strength = strength;
+        this.sanity = sanity;
+        this.stamina = stamina;
+        this.name = name;
     }
 
     public int getSpeed() {
