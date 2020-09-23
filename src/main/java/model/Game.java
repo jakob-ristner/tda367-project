@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+
+
     private List<Player> playerList;
     private List<Kharacter> characterList;
 
@@ -17,7 +19,7 @@ public class Game {
     public Game() {
 
     }
-
+    //Must it be private?
     public void createPlayers(int amountPlayers) {
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++)
@@ -52,8 +54,8 @@ public class Game {
     private void runGameOverScreen() {
 
     }
-
-    private void createCharaters() {
+    //Must it be private?
+    public void createCharaters() {
         characterList = new ArrayList<>();
         characterList.add(new Kharacter(3, 2, 6, 2, "Rufus Von Gross"));
         characterList.add(new Kharacter(3, 6, 2, 2, "Medera Caldovas"));
@@ -62,6 +64,9 @@ public class Game {
     }
     public List<Kharacter> getCharacterList() {
         return characterList;
+    }
+    public List<Player> getPlayerList() {
+        return playerList;
     }
 
 
