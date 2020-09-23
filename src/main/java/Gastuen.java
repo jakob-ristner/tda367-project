@@ -35,6 +35,6 @@ public class Gastuen extends Application
 	}
 
 	public void setView() {
-		this.view = new ProjectView(new Game());
+		this.view = new ProjectView(/*new Game()*/);
 	}
 }

@@ -18,8 +18,9 @@ import java.sql.SQLOutput;
 public class ProjectView {
 	private Group root;
 	private Pane pane;
+	private Button testButton;
 
-	public ProjectView(Game game) {
+	public ProjectView(/*Game game*/) {
 		root = new Group();
 		this.pane = new Pane();
 		pane.setPrefSize(200, 200);
@@ -28,7 +29,7 @@ public class ProjectView {
 
 		Rectangle rect = new Rectangle(10, 10, Color.RED);
 		addNode(rect);
-		Button testButton = new Button("Click here");
+		testButton = new Button("Click here");
 		testButton.setLayoutY(300);
 		testButton.setLayoutY(300);
 		testButton.setOnAction(new EventHandler<ActionEvent>() {
