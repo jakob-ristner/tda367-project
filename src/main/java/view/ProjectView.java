@@ -1,35 +1,37 @@
 package view;
 
-import model.Project;
 
-import javax.swing.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.*;
+import javafx.scene.*;
+import model.Game;
+
 import java.awt.*;
 
-public class ProjectView extends JFrame {
-	private final JButton button = new JButton(Project.PROJECT_BUTTON_TEXT);
-	private final JLabel pressesLabel;
+public class ProjectView {
+	private Group root;
 
-	public ProjectView(Project project) {
-		super(Project.PROJECT_WINDOW_TEXT);
+	public ProjectView(Game game) {
+		root = new Group();
+		Pane pane = new Pane();
+		pane.setPrefSize(200, 200);
+		pane.setStyle("-fx-background-color: black");
+		addNode(pane);
 
-		final GridLayout layout = new GridLayout(0,2);
-		setLayout(layout);
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		pressesLabel = new JLabel(String.valueOf(project.getPresses()));
-		pressesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		pressesLabel.setLabelFor(button);
-
-		add(button);
-		add(pressesLabel);
-		pack();
+		Rectangle rect = new Rectangle(10, 10, Color.RED);
+		addNode(rect);
 	}
 
-	public JButton getButton() {
-		return button;
+
+	public void addNode(Node node) {
+		root.getChildren().add(node);
 	}
 
-	public JLabel getPressesLabel() {
-		return pressesLabel;
+	public Group getRoot() {
+		return root;
 	}
+
+
 }
