@@ -5,7 +5,12 @@ public class Item {
     private Stat stat;
     private int statIncrease;
 
-    public Item() {
+    public Item(String name,Stat stat, int statIncrease) {
+        this.name = name;
+        this.stat=stat;
+        this.statIncrease = statIncrease;
+
+
 
     }
 
