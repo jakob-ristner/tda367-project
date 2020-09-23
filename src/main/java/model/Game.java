@@ -6,6 +6,8 @@ import java.util.List;
 public class Game {
     private List<Player> playerList;
     private List<Kharacter> characterList;
+
+
     //private Board board;
     private int playerAmount;
 
@@ -57,6 +59,9 @@ public class Game {
         characterList.add(new Kharacter(3, 6, 2, 2, "Medera Caldovas"));
         characterList.add(new Kharacter(3, 3, 4, 3, "Sven Nordstadt"));
         characterList.add(new Kharacter(6, 2, 3, 2, "Sarah"));
+    }
+    public List<Kharacter> getCharacterList() {
+        return characterList;
     }
 
 
