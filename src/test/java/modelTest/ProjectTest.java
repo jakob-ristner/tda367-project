@@ -1,20 +1,31 @@
 package modelTest;
 
-import model.Project;
+import model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+
+
 public class ProjectTest {
-	private static final int NUM_INCREMENTATIONS = 128;
+
+	/*
+	@Test
+	public void testRollDice(){
+		Player player = new Player();
+
+		player.setCharacter(new Kharacter(8,8,8,8,"Moana"));
+
+		Assert.assertTrue(player.rollDice(Stat.STRENGTH,1));
+			}
+	 */
+
 
 	@Test
-	public void testIncrementResult() {
-		final Project project = new Project();
+	public void testCreateCharacters(){
+		Game game = new Game();
+		int size = 4;
+		game.createPlayers(size);
+		Assert.assertTrue(game.getCharacterList().size()==size);
 
-		for (int i = 0; i < NUM_INCREMENTATIONS; i++) {
-			project.incrementPresses();
-		}
-
-		Assert.assertEquals(NUM_INCREMENTATIONS, project.getPresses());
 	}
 }
