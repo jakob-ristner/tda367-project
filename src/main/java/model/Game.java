@@ -9,6 +9,8 @@ public class Game {
     //private Board board;
     private int playerAmount;
 
+    //Test for push
+
     public Game() {
 
     }
