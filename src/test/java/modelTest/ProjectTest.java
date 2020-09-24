@@ -4,6 +4,7 @@ import model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
 
 
 public class ProjectTest {
@@ -35,6 +36,19 @@ public class ProjectTest {
 		game.createCharaters();
 		Assert.assertTrue(game.getCharacterList().size()==4);
 	}
+
+	@Test
+	public void testStatAdditon(){
+		Player player = new Player();
+		Kharacter character = new Kharacter(1,1,1,1,"Bengt");
+		int startStrength = character.getStrength();
+		player.setCharacter(character);
+		HashMap<Stat,Integer> addToStat = new HashMap<>();
+		addToStat.put(Stat.STRENGTH,1);
+		player.getCharacter().updateStat(addToStat);
+		Assert.assertTrue(player.getCharacter().getStrength() == startStrength+addToStat.get(Stat.STRENGTH) );
+	}
+
 	@Test
 	public void testEquippingItem(){
 		Player player = new Player();

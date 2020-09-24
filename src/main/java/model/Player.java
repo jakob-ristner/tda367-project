@@ -3,6 +3,11 @@ import java.util.Random;
 
 public class Player {
     private Inventory inventory;
+
+    public Kharacter getCharacter() {
+        return character;
+    }
+
     private Kharacter character;
     private Random dice;
 
