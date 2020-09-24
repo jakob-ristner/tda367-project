@@ -13,7 +13,7 @@ public class Player {
 
     public void addToInventory(Item item) {
         inventory.addItem(item);
-        character.updateStat(item.getStat(), item.getStatIncrease());
+        character.updateStat(item.getStats());
     }
 
     public boolean rollDice(Stat stat, int threshhold) {

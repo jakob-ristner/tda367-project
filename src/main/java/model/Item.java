@@ -1,28 +1,23 @@
 package model;
 
+import java.util.HashMap;
+
 public class Item {
     private String name;
-    private Stat stat;
-    private int statIncrease;
+    private HashMap<Stat, Integer> stats;
 
     public Item(String name,Stat stat, int statIncrease) {
+        stats = new HashMap<>();
+        stats.put(stat, statIncrease);
         this.name = name;
-        this.stat=stat;
-        this.statIncrease = statIncrease;
-
-
-
     }
 
-    public Stat getStat() {
-        return stat;
-    }
-
-    public int getStatIncrease() {
-        return statIncrease;
+    public HashMap<Stat, Integer> getStats() {
+        return stats;
     }
 
     public String getName() {
         return name;
     }
+
 }
