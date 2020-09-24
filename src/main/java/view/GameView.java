@@ -1,27 +1,28 @@
 package view;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.*;
 import javafx.scene.*;
+
 import model.Game;
 
 import java.awt.*;
+import java.sql.SQLOutput;
 
-public class ProjectView {
+public class GameView {
 	private Group root;
+	private TestView testView;
 
-	public ProjectView(Game game) {
+	public GameView(Game game) {
 		root = new Group();
-		Pane pane = new Pane();
-		pane.setPrefSize(200, 200);
-		pane.setStyle("-fx-background-color: black");
-		addNode(pane);
+		testView = new TestView(root);
 
-		Rectangle rect = new Rectangle(10, 10, Color.RED);
-		addNode(rect);
 	}
 
 
@@ -33,5 +34,7 @@ public class ProjectView {
 		return root;
 	}
 
-
+	public ViewInterface getTestView() {
+		return testView;
+	}
 }

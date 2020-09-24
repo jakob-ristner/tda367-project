@@ -1,0 +1,41 @@
+# Meeting Agenda
+
+Group: Gastuen
+Date: 2020-09-24
+Chair: Karl
+Participants: Karl Gunnarsson, David Andreasson, Jakob Ristner, Jakob Henriksson, Erik Berg
+
+
+## Objectives (5 min) 
+
+- Discuss pattern design for haunt, create new UML, try to prototype some code
+- Create a view with a controller
+
+
+## Reports (15 min) from previous meeting
+
+- Try to decide what pattern to use for haunts, summarize thoughts and ideas from the statepattern idea.
+- Discuss how to implement MVC for our project.
+
+
+## Discussion items (35 min)
+
+- Decided to make a protype of statePattern anyways. The idea is to combine the state pattern for the haunts with a decorator pattern.
+decided to remove the state prehaunt state, and instead implement the "prehaunt" functionality in the Game class, then delegate the extra functionaly to
+the different state classes. 
+
+-MVC: If you press a button -> actionevent, this should happen in controller not in the view. Problem right now is that buttons can't be in view
+because if you would you would get action events in view. Decided to send buttons through a method that is implemented by all views trhough and interface. 
+
+
+## Outcomes and assignments (5 min)
+
+- Next problem for MVC: Can only have one button/view. Alternative, create hashmap with ID, or create more classe. We have not found a solution that we are
+satisfied with. 
+-Continue working on state pattern, might try to combine it with a decorator pattern inte the future. 
+
+
+## Wrap up
+
+
+- Next meeting, Monday 2020-09-28
