@@ -1,55 +1,56 @@
 package model;
 
+import java.util.HashMap;
+
 public class Kharacter {
-    private int speed;
-    private int strength;
-    private int sanity;
-    private int stamina;
+
     private String name;
+    HashMap<Stat, Integer> stats;
 
     public Kharacter(int speed, int strength, int sanity, int stamina, String name) {
-        this.speed = speed;
-        this.strength = strength;
-        this.sanity = sanity;
-        this.stamina = stamina;
-        this.name = name;
+
+        stats = new HashMap<>();
+        stats.put(Stat.SPEED, speed);
+        stats.put(Stat.STRENGTH, strength);
+        stats.put(Stat.SANITY, sanity);
+        stats.put(Stat.STAMINA, stamina);
+
+
     }
 
+    public HashMap<Stat, Integer> getStats() {
+        return stats;
+    }
+    public int getStat(Stat stat) {
+        return stats.get(stat);
+    }
+
+
+    //Deprecated methods
     public int getSpeed() {
-        return speed;
+        return stats.get(Stat.SPEED);
     }
 
     public int getStrength() {
-        return strength;
+        return stats.get(Stat.STRENGTH);
     }
 
     public int getSanity() {
-        return sanity;
+        return stats.get(Stat.SANITY);
     }
 
     public int getStamina() {
-        return stamina;
+        return stats.get(Stat.STAMINA);
     }
 
-    public void updateStat(Stat stat, int statDelta) {
-        switch (stat) {
-            case SPEED:
-                speed += statDelta;
-                break;
-            case SANITY:
-                sanity += statDelta;
-                break;
-            case STAMINA:
-                stamina += statDelta;
-                break;
-            case STRENGTH:
-                strength += statDelta;
-                break;
-            default:
-                break;
+    public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätte ful metod i know
+        for (Stat playerStat : stats.keySet()) {
+            for (Stat statToAdd : statsToAdd.keySet()) {
+                if (playerStat == statToAdd)
+                    stats.put(playerStat, stats.get(playerStat) + statsToAdd.get(statToAdd));
+            }
         }
     }
-
 
     public String getName() {
         return name;
