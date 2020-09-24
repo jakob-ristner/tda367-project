@@ -98,6 +98,9 @@ public class Game {
     public List<Player> getPlayerList() {
         return playerList;
     }
+    void turn(Player activePlayer, Event event){
+
+    }
 
 
 }
