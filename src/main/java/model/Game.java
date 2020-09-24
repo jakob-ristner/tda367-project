@@ -14,6 +14,8 @@ public class Game {
 
     //private Board board;
     private int playerAmount;
+    private GameState gameState;
+
 
     public Game() {
 
@@ -46,8 +48,19 @@ public class Game {
             turn(player);
     }
 
-    private void turn(Player player) {
-
+    private void turn(Player activePlayer) {
+        int steps = activePlayer.rollStepsDice();
+        while (steps > 0 ){
+            //doorPickMethod
+            //move
+            //if(tile.event.exist)
+                //Do event
+            if (!(gameState == null)){
+                gameState.turn(activePlayer);
+            }
+            //end turn logic
+            steps--;
+        }
     }
 
     private void runGameOverScreen() {

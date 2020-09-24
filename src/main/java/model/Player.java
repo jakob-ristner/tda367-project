@@ -30,6 +30,9 @@ public class Player {
     public void setCharacter(Kharacter character) {
         this.character = character;
     }
+    public int rollStepsDice(){
+        return dice.nextInt(character.getStat(Stat.SPEED));
+    }
 
 
 }

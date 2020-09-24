@@ -9,7 +9,7 @@ public class InsanityHauntState implements GameState {
     }
 
     @Override
-    public void turn(Player activePlayer, Event event) {
+    public void turn(Player activePlayer) {
 
     }
 }
