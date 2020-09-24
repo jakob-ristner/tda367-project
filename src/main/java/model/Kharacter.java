@@ -5,17 +5,11 @@ import java.util.HashMap;
 public class Kharacter {
 
     private String name;
-    HashMap<Stat, Integer> stats;
+    private HashMap<Stat, Integer> stats;
 
-    public Kharacter(int speed, int strength, int sanity, int stamina, String name) {
-
-        stats = new HashMap<>();
-        stats.put(Stat.SPEED, speed);
-        stats.put(Stat.STRENGTH, strength);
-        stats.put(Stat.SANITY, sanity);
-        stats.put(Stat.STAMINA, stamina);
-
-
+    public Kharacter(HashMap<Stat, Integer> stats, String name) {
+        this.stats = stats;
+        this.name = name;
     }
 
     public HashMap<Stat, Integer> getStats() {
@@ -25,23 +19,6 @@ public class Kharacter {
         return stats.get(stat);
     }
 
-
-    //Deprecated methods
-    public int getSpeed() {
-        return stats.get(Stat.SPEED);
-    }
-
-    public int getStrength() {
-        return stats.get(Stat.STRENGTH);
-    }
-
-    public int getSanity() {
-        return stats.get(Stat.SANITY);
-    }
-
-    public int getStamina() {
-        return stats.get(Stat.STAMINA);
-    }
 
     public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätte ful metod i know
         for (Stat playerStat : stats.keySet()) {
