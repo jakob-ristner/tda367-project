@@ -13,11 +13,14 @@ public class ProjectTest {
 	@Test
 	public void testRollDice(){
 		Player player = new Player();
+		HashMap<Stat, Integer> characterStat = new HashMap<>();
+		characterStat.put(Stat.STRENGTH,2);
 
-		player.setCharacter(new Kharacter(8,8,8,8,"Moana"));
-
+		player.setCharacter(new Kharacter(characterStat,"TestCharacter"));
 		Assert.assertTrue(player.rollDice(Stat.STRENGTH,-1));
 			}
+
+
 
 
 
@@ -29,35 +32,22 @@ public class ProjectTest {
 		Assert.assertTrue(game.getPlayerList().size()==size); //Four characters right now
 
 	}
-	@Test
-	public void testCreateCharacters(){
-		Game game  = new Game();
-		int size = 4;
-		game.createCharaters();
-		Assert.assertTrue(game.getCharacterList().size()==4);
-	}
 
-	@Test
-	public void testStatAdditon(){
-		Player player = new Player();
-		Kharacter character = new Kharacter(1,1,1,1,"Bengt");
-		int startStrength = character.getStrength();
-		player.setCharacter(character);
-		HashMap<Stat,Integer> addToStat = new HashMap<>();
-		addToStat.put(Stat.STRENGTH,1);
-		player.getCharacter().updateStat(addToStat);
-		Assert.assertTrue(player.getCharacter().getStrength() == startStrength+addToStat.get(Stat.STRENGTH) );
-	}
-
+	
 	@Test
 	public void testEquippingItem(){
 		Player player = new Player();
-		Kharacter character = new Kharacter(1,1,1,1,"Bengt");
-		int startStrength = character.getStrength();
-		Item sword = new Item("Sword", Stat.STRENGTH,5);
-		player.setCharacter(character);
+		Game game = new Game();
+		game.createCharaters();
+		player.setCharacter(game.getCharacterList().get(0));
+		int characterStat = player.getCharacter().getStat(Stat.STRENGTH);
+
+		HashMap<Stat, Integer> swordStats = new HashMap<>();
+		swordStats.put(Stat.STRENGTH,2);
+		Item sword = new Item("Sword", swordStats);
+
 		player.addToInventory(sword);
-		Assert.assertTrue(character.getStrength() == sword.getStatIncrease() + startStrength);
+		Assert.assertTrue(player.getCharacter().getStat(Stat.STRENGTH)== characterStat+sword.getStat(Stat.STRENGTH));
 
 	}
 }

@@ -16,7 +16,7 @@ public class Item {
         return stats;
     }
 
-    public int getStatIncrease(Stat stat) {
+    public int getStat(Stat stat) {
         return stats.get(stat);
     }
 
