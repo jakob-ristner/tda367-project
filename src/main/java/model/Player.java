@@ -13,27 +13,11 @@ public class Player {
 
     public void addToInventory(Item item) {
         inventory.addItem(item);
-        character.updateStat(item.getStat(), item.getStatIncrease());
+        character.updateStat(item.getStats());
     }
 
     public boolean rollDice(Stat stat, int threshhold) {
-        int statToRoll = 0;
-        switch (stat) {
-            case STRENGTH:
-                statToRoll = character.getStrength();
-                break;
-            case STAMINA:
-                statToRoll = character.getStamina();
-                break;
-            case SANITY:
-                statToRoll = character.getSanity();
-                break;
-            case SPEED:
-                statToRoll = character.getSpeed();
-                break;
-            default:
-                break;
-        }
+        int statToRoll = character.getStat(stat);
         int roll = dice.nextInt(statToRoll + 1);
         return roll > threshhold;
     }
