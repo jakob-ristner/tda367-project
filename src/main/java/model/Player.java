@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Player {
     private Inventory inventory;
+    public boolean isHaunted;
 
     public Kharacter getCharacter() {
         return character;
@@ -29,6 +30,9 @@ public class Player {
 
     public void setCharacter(Kharacter character) {
         this.character = character;
+    }
+    public int rollStepsDice(){
+        return dice.nextInt(character.getStat(Stat.SPEED));
     }
 
 
