@@ -18,6 +18,15 @@ public class Kharacter {
 
     }
 
+    public HashMap<Stat, Integer> getStats() {
+        return stats;
+    }
+    public int getStat(Stat stat) {
+        return stats.get(stat);
+    }
+
+
+    //Deprecated methods
     public int getSpeed() {
         return stats.get(Stat.SPEED);
     }
