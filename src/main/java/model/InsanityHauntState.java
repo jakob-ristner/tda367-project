@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-public class insanityHauntState implements GameState {
+public class InsanityHauntState implements GameState {
     @Override
     public void init(Game game, List<Player> playerList, Player activePlayer) {
 
