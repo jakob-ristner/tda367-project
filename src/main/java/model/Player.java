@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Player {
     private Inventory inventory;
+    public boolean isHaunted;
 
     public Kharacter getCharacter() {
         return character;

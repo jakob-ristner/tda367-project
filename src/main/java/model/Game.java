@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.event.KeyAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,14 +52,18 @@ public class Game {
         while (steps > 0 ){
             //doorPickMethod
             //move
-            //if(tile.event.exist)
+            //if(tile.event.exist && !playersIsHaunted)
                 //Do event
             if (!(gameState == null)){
-                gameState.turn(activePlayer);
+                gameState.turn(activePlayer,this);
             }
             //end turn logic
             steps--;
         }
+    }
+
+    public boolean roomContainsInsanePlayer(){
+        return roomContainsInsanePlayer();
     }
 
     private void runGameOverScreen() {
