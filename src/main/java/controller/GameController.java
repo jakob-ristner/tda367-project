@@ -13,7 +13,6 @@ public class GameController implements GameObserver{
     private Game game;
     private ViewInterface characterSelectView;
     private CharacterSelectController characterSelectController;
-
     private ViewInterface startScreenView;
     private StartScreenController startScreenController;
 

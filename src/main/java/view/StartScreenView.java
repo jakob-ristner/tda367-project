@@ -14,7 +14,6 @@ public class StartScreenView implements ViewInterface{
         pane = new Pane();
         pane.setPrefSize(width, height);
         pane.setStyle("-fx-background-color: white");
-
         root.getChildren().add(pane);
     }
 

@@ -5,8 +5,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import model.Game;
 import view.ViewInterface;
@@ -27,8 +25,9 @@ public class StartScreenController {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (istextFilled())
+                if (istextFilled()) {
                     setGamePlayerAmount(Integer.parseInt(intInput.getText()));
+                }
             }
         });
 
@@ -54,6 +53,6 @@ public class StartScreenController {
     }
 
     public boolean istextFilled() {
-        return confirmButton.getText().equals("");
+        return !(intInput.getText().equals(""));
     }
 }
