@@ -5,8 +5,25 @@ public class Player {
     private Inventory inventory;
     public boolean isHaunted;
     public int floor;
-    public int x;
-    public int y;
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    private int x;
+    private int y;
 
     public Kharacter getCharacter() {
         return character;
@@ -18,6 +35,11 @@ public class Player {
     public Player() {
         inventory = new Inventory();
         dice = new Random();
+    }
+
+    public void playerMove(int [] xyChange){
+        x += xyChange[0];
+        y += xyChange[1];
     }
 
     public void addToInventory(Item item) {

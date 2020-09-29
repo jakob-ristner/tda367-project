@@ -11,12 +11,14 @@ public class Game {
     private List<Kharacter> characterList;
 
 
-    //private Board board;
+    private Board board;
     private int playerAmount;
     private GameState gameState;
+    private int activePlayer;
 
 
     public Game() {
+        board = new Board();
 
     }
     //Must it be private?
@@ -51,15 +53,29 @@ public class Game {
         int steps = activePlayer.rollStepsDice();
         while (steps > 0 ){
             //doorPickMethod
-            //move
-            //if(tile.event.exist && !playersIsHaunted)
-                //Do event
+            //activePlayer.playerMove(doorPickMethod);
+            if(getPlayerTile(activePlayer).hasEvent() && !activePlayer.isHaunted){
+                getPlayerTile(activePlayer).activate();
+            }
             if (gameState != null){
                 gameState.turn(activePlayer,this);
             }
-            //end turn logic
             steps--;
         }
+        setNextPlayer();
+
+    }
+    private void setNextPlayer(){
+        activePlayer++;
+        if (activePlayer > playerAmount-1) activePlayer = 0;
+        
+    }
+    private Player activePlayer(){
+        return playerList.get(activePlayer);
+    }
+
+    private Tile getPlayerTile(Player player){
+       return board.getFloor(player.getFloor()).getTile(player.getX(),player.getY());
     }
 
     public boolean roomContainsInsanePlayer(){

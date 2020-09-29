@@ -21,6 +21,10 @@ public class Floor {
          */
     }
 
+    public Tile getTile(int x, int y){
+        return tiles[x][y];
+    }
+
     public void generateStairs(){
     }
 
