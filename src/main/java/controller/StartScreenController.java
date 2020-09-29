@@ -14,7 +14,7 @@ import view.ViewInterface;
 public class StartScreenController {
     private Game game;
     private Button confirmButton;
-    private Spinner intInput;
+    private Spinner<Integer> intInput;
     private ViewInterface startScreenView;
 
     public StartScreenController(Game game, ViewInterface startScreenView) {
@@ -28,29 +28,14 @@ public class StartScreenController {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //if (istextFilled()) {
-                    System.out.println("Funkar");
-                    setGamePlayerAmount(Integer.parseInt(intInput.getEditor().getText()));
-
+                    setGamePlayerAmount(intInput.getValue());
                     nextView();
-                //}
             }
         });
 
-        intInput = new Spinner(1,4,1,1);
+        intInput = new Spinner<>(1,4,1,1);
         intInput.setLayoutY(150);
         intInput.setLayoutX(150);
-        /*intInput.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    intInput.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-            }
-        });*/
-
-
 
         this.startScreenView.addNode(confirmButton);
         this.startScreenView.addNode(intInput);
@@ -65,10 +50,6 @@ public class StartScreenController {
 
     private void nextView() {
         startScreenView.nextView();
-    }
-
-    public boolean istextFilled() {
-        return !(intInput.getPromptText().equals(""));
     }
 
 }
