@@ -11,12 +11,15 @@ public class Game {
     private List<Kharacter> characterList;
 
 
+
     //private Board board;
     private int playerAmount;
     private GameState gameState;
 
 
     public Game() {
+        createCharaters();
+        createPlayers(4);
 
     }
     //Must it be private?
@@ -107,6 +110,13 @@ public class Game {
 
 
 
+    }
+    public List<String> getCharacterNames(){
+        List<String> characterNames = new ArrayList<>();
+        for(Kharacter a : characterList){
+            characterNames.add(a.getName());
+        }
+        return characterNames;
     }
     public List<Kharacter> getCharacterList() {
         return characterList;

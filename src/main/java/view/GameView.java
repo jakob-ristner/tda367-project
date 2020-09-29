@@ -16,12 +16,18 @@ import java.awt.*;
 import java.sql.SQLOutput;
 
 public class GameView {
+	public static final int WINDOW_H = 500;
+	public static final int WINDOW_W = 500;
 	private Group root;
 	private TestView testView;
+	private CharacterSelectView characterSelectView;
 
 	public GameView(Game game) {
 		root = new Group();
 		testView = new TestView(root);
+		characterSelectView = new CharacterSelectView(game, root, WINDOW_W, WINDOW_H);
+		characterSelectView.viewToFront();
+
 
 	}
 
@@ -37,4 +43,6 @@ public class GameView {
 	public ViewInterface getTestView() {
 		return testView;
 	}
+
+
 }
