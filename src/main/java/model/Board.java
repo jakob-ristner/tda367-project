@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Random;
 
 public class Board {
-    private Floor floor;
-    private Floor basement;
-    private Floor roof;
+    private Floor groundFloor;
+    private Floor basementFloor;
+    private Floor upperFloor;
     private List<Event> eventList = new ArrayList<>();
     private int eventPerFloor = 5;
     private List<Integer> indexList = new ArrayList<>();
     Random rand = new Random();
 
     public void createBoard(){
-        floor = new Floor(generateEventList());
-        basement = new Floor(generateEventList());
-        roof = new Floor(generateEventList());
+        groundFloor = new Floor(generateEventList());
+        basementFloor = new Floor(generateEventList());
+        upperFloor = new Floor(generateEventList());
 
     }
 

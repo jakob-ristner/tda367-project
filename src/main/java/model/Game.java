@@ -54,7 +54,7 @@ public class Game {
             //move
             //if(tile.event.exist && !playersIsHaunted)
                 //Do event
-            if (!(gameState == null)){
+            if (gameState != null){
                 gameState.turn(activePlayer,this);
             }
             //end turn logic

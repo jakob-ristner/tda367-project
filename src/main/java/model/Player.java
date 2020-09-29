@@ -4,6 +4,9 @@ import java.util.Random;
 public class Player {
     private Inventory inventory;
     public boolean isHaunted;
+    public int floor;
+    public int x;
+    public int y;
 
     public Kharacter getCharacter() {
         return character;
