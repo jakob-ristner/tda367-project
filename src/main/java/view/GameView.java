@@ -55,8 +55,9 @@ public class GameView {
 	}
 
 	public void updateCurrentPlayerIndex(int index) {
-		characterSelectView.setCurrentPlayerText("Player " + (index + 1));
+		characterSelectView.setCurrentPlayerText(index);
 	}
+
 
 
 }

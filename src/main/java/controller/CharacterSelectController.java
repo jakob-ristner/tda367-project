@@ -7,6 +7,7 @@ import model.Game;
 import model.Kharacter;
 import model.Player;
 import view.CharacterSelectView;
+import view.GameView;
 import view.ViewInterface;
 
 import javax.swing.text.View;
@@ -20,10 +21,12 @@ public class CharacterSelectController {
     private Button character3Button;
     private Button character4Button;
     private List<Button> buttonList;
+    private ViewInterface characterSelectView;
     private int currentIndex;
 
-    public CharacterSelectController(Game game, ViewInterface characterSelectView){
+    public CharacterSelectController(Game game,  ViewInterface characterSelectView){
         this.game = game;
+        this.characterSelectView = characterSelectView;
         initButton();
         for(Button b: buttonList){
             characterSelectView.addNode(b);
@@ -96,7 +99,7 @@ public class CharacterSelectController {
 
 
     private void deActivateButton(Button button){
-
+        button.setDisable(true);
     }
 
 
