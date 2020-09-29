@@ -77,6 +77,7 @@ public class CharacterSelectView implements ViewInterface{
 
     @Override
     public void nextView() {
-        nextView.viewToFront();
+        //nextView.viewToFront();
+        System.out.println("Next View");
     }
 }
