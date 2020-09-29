@@ -23,10 +23,8 @@ public class Game implements ControllerObservable{
 
 
     public Game() {
-        playerAmount = 4;
         observers = new ArrayList<>();
         createCharaters();
-
     }
 
     public void setPlayerAmount(int playerAmount) {
