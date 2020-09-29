@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ControllerObservable {
     public void registerObserver(GameObserver observer);
-    public void notifyObservers();
+    public void notifyNewTurn();
 }
