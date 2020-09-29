@@ -22,7 +22,6 @@ public class CharacterSelectController {
     private Button character4Button;
     private List<Button> buttonList;
     private ViewInterface characterSelectView;
-    private int currentIndex;
 
     public CharacterSelectController(Game game,  ViewInterface characterSelectView){
         this.game = game;
@@ -41,8 +40,6 @@ public class CharacterSelectController {
         character4Button = new Button();
         buttonList = new ArrayList<>();
         List<String> characterNameList = game.getCharacterNames();
-        final List<Kharacter> characterList = game.getCharacterList();
-        final List<Player> playerList = game.getPlayerList();
 
         buttonList.add(character1Button);
         buttonList.add(character2Button);
@@ -51,7 +48,6 @@ public class CharacterSelectController {
 
 
         for(int i = 0; i < buttonList.size(); i++){
-            currentIndex = i;
             buttonList.get(i).setLayoutX(200);
             buttonList.get(i).setLayoutY(200 + 50*i);
             buttonList.get(i).setPrefSize(100, 30);
@@ -61,7 +57,7 @@ public class CharacterSelectController {
         character1Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(0,character1Button,characterList);
+                buttonHandler(0,character1Button);
             }
 
         });
@@ -69,28 +65,28 @@ public class CharacterSelectController {
         character2Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(1,character2Button,characterList);
+                buttonHandler(1,character2Button);
             }
         });
 
         character3Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(2,character3Button,characterList);
+                buttonHandler(2,character3Button);
             }
         });
 
         character4Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(3,character4Button,characterList);
+                buttonHandler(3,character4Button);
             }
         });
 
     }
 
-    private void buttonHandler(int index, Button button, List<Kharacter> characterList){
-        game.getCurrentPlayer().setCharacter(characterList.get(index));
+    private void buttonHandler(int index, Button button){
+        game.getCurrentPlayer().setCharacter(getCharacter(index));
         game.updateCurrentPlayer();
         deActivateButton(button);
         if (game.checkAllPlayersHaveChars())
@@ -104,6 +100,10 @@ public class CharacterSelectController {
 
     private void nextView() {
         characterSelectView.nextView();
+    }
+
+    private Kharacter getCharacter(int index) {
+        return game.getCharacterList().get(index);
     }
 
 
