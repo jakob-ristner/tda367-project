@@ -16,9 +16,9 @@ public class StartScreenController {
     private TextField intInput;
     private ViewInterface startScreenView;
 
-    public StartScreenController(Game game, ViewInterface startSreenView) {
+    public StartScreenController(Game game, ViewInterface startScreenView) {
         this.game = game;
-        this.startScreenView = startSreenView;
+        this.startScreenView = startScreenView;
 
         confirmButton = new Button();
         confirmButton.setText("Confirm");
@@ -35,6 +35,8 @@ public class StartScreenController {
         });
 
         intInput = new TextField();
+        intInput.setLayoutY(150);
+        intInput.setLayoutX(150);
         intInput.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -44,8 +46,8 @@ public class StartScreenController {
                 }
             }
         });
-        startSreenView.addNode(confirmButton);
-        startSreenView.addNode(intInput);
+        this.startScreenView.addNode(confirmButton);
+        this.startScreenView.addNode(intInput);
     }
 
 
