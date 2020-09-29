@@ -16,6 +16,8 @@ public class Game {
     private int playerAmount;
     private GameState gameState;
 
+    private int currentPlayerIndex;
+
 
     public Game() {
         createCharaters();
@@ -52,6 +54,7 @@ public class Game {
 
     private void turn(Player activePlayer) {
         int steps = activePlayer.rollStepsDice();
+
         while (steps > 0 ){
             //doorPickMethod
             //move
@@ -124,6 +127,15 @@ public class Game {
     public List<Player> getPlayerList() {
         return playerList;
     }
+
+    public Player getCurrentPlayer(){
+        return playerList.get(currentPlayerIndex);
+    }
+
+    public void updateCurrentPlayer(){
+        currentPlayerIndex++;
+    }
+
 
 
 }

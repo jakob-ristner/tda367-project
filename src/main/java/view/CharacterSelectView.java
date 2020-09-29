@@ -34,7 +34,7 @@ public class CharacterSelectView implements ViewInterface{
 
     @Override
     public void addNode(Node node) {
-
+        pane.getChildren().add(node);
     }
 
 }

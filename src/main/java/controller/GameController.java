@@ -10,26 +10,24 @@ import view.ViewInterface;
 
 public class GameController {
     private GameView view;
-    private Button testButton;
+    private ViewInterface characterSelectView;
+    private CharacterSelectController characterSelectController;
+
 
     public GameController(GameView view, Game game){
         this.view = view;
-        testButton = new Button();
-        testButton.setLayoutX(300);
-        testButton.setLayoutY(300);
-        testButton.setText("Click me");
-        testButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                getView().getTestView().viewToFront();
-            }
-        });
-        view.getTestView().addNode(testButton);
+        characterSelectView = view.getCharacterSelectView();
+        characterSelectController = new CharacterSelectController(game,characterSelectView);
+
     }
 
     private GameView getView(){
         return view;
     }
 
+    public void openCharacterSelectView(){
+        characterSelectView.viewToFront();
+    }
 
+    
 }

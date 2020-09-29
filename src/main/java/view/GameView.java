@@ -12,6 +12,7 @@ import javafx.scene.*;
 
 import model.Game;
 
+import javax.swing.text.View;
 import java.awt.*;
 import java.sql.SQLOutput;
 
@@ -42,6 +43,10 @@ public class GameView {
 
 	public ViewInterface getTestView() {
 		return testView;
+	}
+
+	public ViewInterface getCharacterSelectView(){
+		return characterSelectView;
 	}
 
 
