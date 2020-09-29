@@ -42,5 +42,6 @@ public class GameController implements GameObserver{
     @Override
     public void updateCurrentPlayer() {
         view.updateCurrentPlayerIndex(game.getCurrentPlayerIndex());
+
     }
 }

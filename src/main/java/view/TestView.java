@@ -33,10 +33,9 @@ public class TestView implements ViewInterface{
 
     @Override
     public void addNode(Node node) {
-
         pane.getChildren().add(node);
-
     }
+
 
 
 

@@ -7,4 +7,5 @@ import javafx.scene.layout.AnchorPane;
 public interface ViewInterface {
     void viewToFront();
     void addNode(Node node);
+
 }
