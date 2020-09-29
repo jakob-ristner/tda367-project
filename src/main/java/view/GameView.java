@@ -22,12 +22,15 @@ public class GameView {
 	private Group root;
 	private TestView testView;
 	private CharacterSelectView characterSelectView;
+	private StartScreenView startScreenView;
 
 	public GameView(Game game) {
 		root = new Group();
 		testView = new TestView(root);
 		characterSelectView = new CharacterSelectView(game, root, WINDOW_W, WINDOW_H);
-		characterSelectView.viewToFront();
+		startScreenView = new StartScreenView(game, root, WINDOW_W, WINDOW_H);
+		startScreenView.viewToFront();
+
 	}
 
 
@@ -45,6 +48,10 @@ public class GameView {
 
 	public ViewInterface getCharacterSelectView(){
 		return characterSelectView;
+	}
+
+	public ViewInterface getStartScreenView() {
+		return startScreenView;
 	}
 
 	public void updateCurrentPlayerIndex(int index) {

@@ -23,10 +23,19 @@ public class Game implements ControllerObservable{
 
 
     public Game() {
+        playerAmount = 4;
         observers = new ArrayList<>();
         createCharaters();
         createPlayers(4);
 
+    }
+
+    public void setPlayerAmount(int playerAmount) {
+        this.playerAmount = playerAmount;
+    }
+
+    public int getPlayerAmount() {
+        return playerAmount;
     }
     //Must it be private?
     public void createPlayers(int amountPlayers) {
@@ -40,11 +49,6 @@ public class Game implements ControllerObservable{
         for (int i = 0; i < playerAmount; i++) {
             playerList.get(i).setCharacter(characterList.get(i));
         }
-    }
-
-    private void runStartScreen() {
-        playerAmount = 4;
-        createPlayers(playerAmount);
     }
 
     private void runGame() {
@@ -134,10 +138,11 @@ public class Game implements ControllerObservable{
 
     public void updateCurrentPlayer(){
         currentPlayerIndex++;
+        currentPlayerIndex = currentPlayerIndex % playerAmount;
         for (GameObserver observer : observers)
             observer.updateCurrentPlayer();
-        if (currentPlayerIndex == playerList.size())
-            notifyObservers();
+        if (currentPlayerIndex == 0)
+            notifyNewTurn();
     }
 
 
@@ -147,7 +152,7 @@ public class Game implements ControllerObservable{
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyNewTurn() {
         for (GameObserver observer: observers) {
             observer.update();
         }

@@ -13,6 +13,8 @@ public class GameController implements GameObserver{
     private Game game;
     private ViewInterface characterSelectView;
     private CharacterSelectController characterSelectController;
+    private ViewInterface startScreenView;
+    private StartScreenController startScreenController;
 
 
     public GameController(GameView view, Game game){
@@ -20,7 +22,10 @@ public class GameController implements GameObserver{
         this.game = game;
         game.registerObserver(this);
         characterSelectView = view.getCharacterSelectView();
-        characterSelectController = new CharacterSelectController(game,characterSelectView);
+        characterSelectController = new CharacterSelectController(game, characterSelectView);
+
+        startScreenView = view.getStartScreenView();
+        startScreenController = new StartScreenController(game, startScreenView);
 
     }
 
