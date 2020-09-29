@@ -28,8 +28,6 @@ public class GameView {
 		testView = new TestView(root);
 		characterSelectView = new CharacterSelectView(game, root, WINDOW_W, WINDOW_H);
 		characterSelectView.viewToFront();
-
-
 	}
 
 
@@ -47,6 +45,10 @@ public class GameView {
 
 	public ViewInterface getCharacterSelectView(){
 		return characterSelectView;
+	}
+
+	public void updateCurrentPlayerIndex(int index) {
+		characterSelectView.setCurrentPlayerText("Player " + (index + 1));
 	}
 
 

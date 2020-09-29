@@ -39,7 +39,7 @@ public class CharacterSelectController {
         buttonList = new ArrayList<>();
         List<String> characterNameList = game.getCharacterNames();
         final List<Kharacter> characterList = game.getCharacterList();
-        List<Player> playerList = game.getPlayerList();
+        final List<Player> playerList = game.getPlayerList();
 
         buttonList.add(character1Button);
         buttonList.add(character2Button);
@@ -53,15 +53,43 @@ public class CharacterSelectController {
             buttonList.get(i).setLayoutY(200 + 50*i);
             buttonList.get(i).setPrefSize(100, 30);
             buttonList.get(i).setText(characterNameList.get(i));
-            buttonList.get(i).setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    game.getCurrentPlayer().setCharacter(characterList.get(currentIndex));
-                    game.updateCurrentPlayer();
-                    deActivateButton(buttonList.get(currentIndex));
-                }
-            });
         }
+
+        character1Button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                game.getCurrentPlayer().setCharacter(characterList.get(0));
+                game.updateCurrentPlayer();
+                deActivateButton(character1Button);
+            }
+        });
+
+        character2Button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                game.getCurrentPlayer().setCharacter(characterList.get(1));
+                game.updateCurrentPlayer();
+                deActivateButton(character2Button);
+            }
+        });
+
+        character3Button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                game.getCurrentPlayer().setCharacter(characterList.get(2));
+                game.updateCurrentPlayer();
+                deActivateButton(character3Button);
+            }
+        });
+
+        character4Button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                game.getCurrentPlayer().setCharacter(characterList.get(3));
+                game.updateCurrentPlayer();
+                deActivateButton(character4Button);
+            }
+        });
 
 
     }

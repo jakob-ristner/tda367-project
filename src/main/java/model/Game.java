@@ -1,12 +1,15 @@
 package model;
 
+import controller.GameObserver;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 
-public class Game {
+public class Game implements ControllerObservable{
 
-
+    private List<GameObserver> observers;
     private List<Player> playerList;
     private List<Kharacter> characterList;
 
@@ -20,6 +23,7 @@ public class Game {
 
 
     public Game() {
+        observers = new ArrayList<>();
         createCharaters();
         createPlayers(4);
 
@@ -29,10 +33,6 @@ public class Game {
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++)
             playerList.add(new Player());
-    }
-
-    public void run() {
-
     }
 
     private void runCharacterSelectScreen() {
@@ -134,8 +134,26 @@ public class Game {
 
     public void updateCurrentPlayer(){
         currentPlayerIndex++;
+        for (GameObserver observer : observers)
+            observer.updateCurrentPlayer();
+        if (currentPlayerIndex == playerList.size())
+            notifyObservers();
     }
 
 
+    @Override
+    public void registerObserver(GameObserver observer) {
+        observers.add(observer);
+    }
 
+    @Override
+    public void notifyObservers() {
+        for (GameObserver observer: observers) {
+            observer.update();
+        }
+    }
+
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
+    }
 }

@@ -1,0 +1,17 @@
+# Meeting agenad
+
+Group: Gastuen
+Date: 2020-09-29
+Chair: Jakob Ristner
+Participants: Jakob Ristner, Jakob Heneriksson, David Andreasson, Karl Gunnarson
+                Erik Berg
+
+##Objectives
+
+- Todays goal is a functional character select screen by one group. Another
+  group is refactoring the floors to matrices instead of one dimensional lists.
+
+## Reports
+- Have not done anything since last meeting
+
+

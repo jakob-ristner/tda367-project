@@ -8,14 +8,17 @@ import model.Game;
 import view.GameView;
 import view.ViewInterface;
 
-public class GameController {
+public class GameController implements GameObserver{
     private GameView view;
+    private Game game;
     private ViewInterface characterSelectView;
     private CharacterSelectController characterSelectController;
 
 
     public GameController(GameView view, Game game){
         this.view = view;
+        this.game = game;
+        game.registerObserver(this);
         characterSelectView = view.getCharacterSelectView();
         characterSelectController = new CharacterSelectController(game,characterSelectView);
 
@@ -29,5 +32,15 @@ public class GameController {
         characterSelectView.viewToFront();
     }
 
-    
+
+    @Override
+    public void update() {
+        // Switch to next view
+        System.out.println("Next View");
+    }
+
+    @Override
+    public void updateCurrentPlayer() {
+        view.updateCurrentPlayerIndex(game.getCurrentPlayerIndex());
+    }
 }
