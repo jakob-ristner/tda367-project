@@ -14,9 +14,11 @@ public class StartScreenController {
     private Game game;
     private Button confirmButton;
     private TextField intInput;
+    private ViewInterface startScreenView;
 
     public StartScreenController(Game game, ViewInterface startSreenView) {
         this.game = game;
+        this.startScreenView = startSreenView;
 
         confirmButton = new Button();
         confirmButton.setText("Confirm");
@@ -27,6 +29,7 @@ public class StartScreenController {
             public void handle(ActionEvent actionEvent) {
                 if (istextFilled()) {
                     setGamePlayerAmount(Integer.parseInt(intInput.getText()));
+                    nextView();
                 }
             }
         });
@@ -52,7 +55,12 @@ public class StartScreenController {
         game.setPlayerAmount(playerAmount);
     }
 
+    private void nextView() {
+        startScreenView.nextView();
+    }
+
     public boolean istextFilled() {
         return !(intInput.getText().equals(""));
     }
+
 }

@@ -23,10 +23,10 @@ public class GameController implements GameObserver{
         game.registerObserver(this);
         characterSelectView = view.getCharacterSelectView();
         characterSelectController = new CharacterSelectController(game, characterSelectView);
-
         startScreenView = view.getStartScreenView();
         startScreenController = new StartScreenController(game, startScreenView);
-
+        startScreenView.setNextView(characterSelectView);
+        startScreenView.viewToFront();
     }
 
     private GameView getView(){

@@ -8,6 +8,7 @@ import model.Game;
 public class StartScreenView implements ViewInterface{
     private Game game;
     private Pane pane;
+    private ViewInterface nextView;
 
 
     public StartScreenView(Game game, Group root, int width, int height) {
@@ -26,5 +27,15 @@ public class StartScreenView implements ViewInterface{
     @Override
     public void addNode(Node node) {
         pane.getChildren().add(node);
+    }
+
+    @Override
+    public void setNextView(ViewInterface view) {
+        nextView = view;
+    }
+
+    @Override
+    public void nextView() {
+        nextView.viewToFront();
     }
 }

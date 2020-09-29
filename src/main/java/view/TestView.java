@@ -38,6 +38,15 @@ public class TestView implements ViewInterface{
 
     }
 
+    @Override
+    public void setNextView(ViewInterface view) {
+
+    }
+
+    @Override
+    public void nextView() {
+
+    }
 
 
 }

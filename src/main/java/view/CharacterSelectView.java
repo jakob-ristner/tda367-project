@@ -18,6 +18,7 @@ public class CharacterSelectView implements ViewInterface{
     private Pane pane;
     private Text text;
     private Text playerText;
+    private ViewInterface nextView;
 
 
 
@@ -62,6 +63,16 @@ public class CharacterSelectView implements ViewInterface{
     @Override
     public void addNode(Node node) {
         pane.getChildren().add(node);
+    }
+
+    @Override
+    public void setNextView(ViewInterface view) {
+        nextView = view;
+    }
+
+    @Override
+    public void nextView() {
+        nextView.viewToFront();
     }
 
 }
