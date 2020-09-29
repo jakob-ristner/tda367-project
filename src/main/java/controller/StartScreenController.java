@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import model.Game;
 import view.ViewInterface;
@@ -13,12 +14,12 @@ import view.ViewInterface;
 public class StartScreenController {
     private Game game;
     private Button confirmButton;
-    private TextField intInput;
+    private Spinner<Integer> intInput;
     private ViewInterface startScreenView;
 
-    public StartScreenController(Game game, ViewInterface startSreenView) {
+    public StartScreenController(Game game, ViewInterface startScreenView) {
         this.game = game;
-        this.startScreenView = startSreenView;
+        this.startScreenView = startScreenView;
 
         confirmButton = new Button();
         confirmButton.setText("Confirm");
@@ -27,25 +28,17 @@ public class StartScreenController {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (istextFilled()) {
-                    setGamePlayerAmount(Integer.parseInt(intInput.getText()));
+                    setGamePlayerAmount(intInput.getValue());
                     nextView();
-                }
             }
         });
 
-        intInput = new TextField();
-        intInput.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    intInput.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-            }
-        });
-        startSreenView.addNode(confirmButton);
-        startSreenView.addNode(intInput);
+        intInput = new Spinner<>(1,4,1,1);
+        intInput.setLayoutY(150);
+        intInput.setLayoutX(150);
+
+        this.startScreenView.addNode(confirmButton);
+        this.startScreenView.addNode(intInput);
     }
 
 
@@ -57,10 +50,6 @@ public class StartScreenController {
 
     private void nextView() {
         startScreenView.nextView();
-    }
-
-    public boolean istextFilled() {
-        return !(intInput.getText().equals(""));
     }
 
 }
