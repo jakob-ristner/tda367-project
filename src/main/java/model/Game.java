@@ -23,15 +23,13 @@ public class Game implements ControllerObservable{
 
 
     public Game() {
-        playerAmount = 4;
         observers = new ArrayList<>();
         createCharaters();
-        createPlayers(4);
-
     }
 
     public void setPlayerAmount(int playerAmount) {
         this.playerAmount = playerAmount;
+        createPlayers(playerAmount);
     }
 
     public int getPlayerAmount() {
@@ -160,5 +158,13 @@ public class Game implements ControllerObservable{
 
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
+    }
+
+    public boolean checkAllPlayersHaveChars() {
+        for (Player player : playerList)  {
+            if (!player.hasCharacter)
+                return false;
+        }
+        return true;
     }
 }

@@ -40,8 +40,7 @@ public class GameController implements GameObserver{
 
     @Override
     public void update() {
-        // Switch to next view
-        System.out.println("Next View");
+
     }
 
     @Override

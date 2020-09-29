@@ -64,6 +64,8 @@ public class CharacterSelectController {
                 game.getCurrentPlayer().setCharacter(characterList.get(0));
                 game.updateCurrentPlayer();
                 deActivateButton(character1Button);
+                if (game.checkAllPlayersHaveChars())
+                    nextView();
             }
         });
 
@@ -73,6 +75,8 @@ public class CharacterSelectController {
                 game.getCurrentPlayer().setCharacter(characterList.get(1));
                 game.updateCurrentPlayer();
                 deActivateButton(character2Button);
+                if (game.checkAllPlayersHaveChars())
+                    nextView();
             }
         });
 
@@ -82,6 +86,8 @@ public class CharacterSelectController {
                 game.getCurrentPlayer().setCharacter(characterList.get(2));
                 game.updateCurrentPlayer();
                 deActivateButton(character3Button);
+                if (game.checkAllPlayersHaveChars())
+                    nextView();
             }
         });
 
@@ -91,6 +97,8 @@ public class CharacterSelectController {
                 game.getCurrentPlayer().setCharacter(characterList.get(3));
                 game.updateCurrentPlayer();
                 deActivateButton(character4Button);
+                if (game.checkAllPlayersHaveChars())
+                    nextView();
             }
         });
 
@@ -100,6 +108,10 @@ public class CharacterSelectController {
 
     private void deActivateButton(Button button){
         button.setDisable(true);
+    }
+
+    private void nextView() {
+        characterSelectView.nextView();
     }
 
 
