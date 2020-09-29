@@ -22,18 +22,6 @@ public class ProjectTest {
 
 
 
-
-
-	@Test
-	public void testCreatePlayers(){
-		Game game = new Game();
-		int size = 4;
-		game.createPlayers(size);
-		Assert.assertTrue(game.getPlayerList().size()==size); //Four characters right now
-
-	}
-
-	
 	@Test
 	public void testEquippingItem(){
 		Player player = new Player();

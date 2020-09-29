@@ -35,5 +35,9 @@ public class Player {
         return dice.nextInt(character.getStat(Stat.SPEED));
     }
 
+    public String getCharacterName() {
+        return character.getName();
+    }
+
 
 }

@@ -12,16 +12,22 @@ import javafx.scene.*;
 
 import model.Game;
 
+import javax.swing.text.View;
 import java.awt.*;
 import java.sql.SQLOutput;
 
 public class GameView {
+	public static final int WINDOW_H = 500;
+	public static final int WINDOW_W = 500;
 	private Group root;
-	private TestView testView;
+	private CharacterSelectView characterSelectView;
+	private StartScreenView startScreenView;
 
 	public GameView(Game game) {
 		root = new Group();
-		testView = new TestView(root);
+		characterSelectView = new CharacterSelectView(game, root, WINDOW_W, WINDOW_H);
+		startScreenView = new StartScreenView(game, root, WINDOW_W, WINDOW_H);
+		startScreenView.viewToFront();
 
 	}
 
@@ -34,7 +40,19 @@ public class GameView {
 		return root;
 	}
 
-	public ViewInterface getTestView() {
-		return testView;
+
+	public ViewInterface getCharacterSelectView(){
+		return characterSelectView;
 	}
+
+	public ViewInterface getStartScreenView() {
+		return startScreenView;
+	}
+
+	public void updateCurrentPlayerIndex(int index) {
+		characterSelectView.setCurrentPlayerText(index);
+	}
+
+
+
 }
