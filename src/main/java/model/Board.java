@@ -49,6 +49,5 @@ public class Board {
     }
 
     private void getEventList(){
-
     }
 }
