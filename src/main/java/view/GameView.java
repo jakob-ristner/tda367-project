@@ -25,21 +25,15 @@ public class GameView {
 
 	public GameView(Game game) {
 		root = new Group();
-		characterSelectView = new CharacterSelectView(game, root, WINDOW_W, WINDOW_H);
-		startScreenView = new StartScreenView(game, root, WINDOW_W, WINDOW_H);
+		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H);
+		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
 		startScreenView.viewToFront();
 
-	}
-
-
-	public void addNode(Node node) {
-		root.getChildren().add(node);
 	}
 
 	public Group getRoot() {
 		return root;
 	}
-
 
 	public ViewInterface getCharacterSelectView(){
 		return characterSelectView;

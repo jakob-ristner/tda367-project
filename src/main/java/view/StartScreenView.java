@@ -3,15 +3,13 @@ package view;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import model.Game;
 
 public class StartScreenView implements ViewInterface{
-    private Game game;
     private Pane pane;
     private ViewInterface nextView;
 
 
-    public StartScreenView(Game game, Group root, int width, int height) {
+    public StartScreenView(Group root, int width, int height) {
         pane = new Pane();
         pane.setPrefSize(width, height);
         pane.setStyle("-fx-background-color: white");
