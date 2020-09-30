@@ -1,33 +1,54 @@
 package model;
 
+import controller.GameObserver;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 
-public class Game {
+public class Game implements ControllerObservable{
 
-
+    private List<GameObserver> observers;
     private List<Player> playerList;
     private List<Kharacter> characterList;
 
 
-    //private Board board;
+
+    private Board board;
+
+
+   
+
     private int playerAmount;
     private GameState gameState;
+    private int activePlayer;
+
+    private int currentPlayerIndex;
 
 
     public Game() {
 
+        board = new Board();
+
+        observers = new ArrayList<>();
+        createCharaters();
+    }
+
+    public void setPlayerAmount(int playerAmount) {
+        this.playerAmount = playerAmount;
+        createPlayers(playerAmount);
+    }
+
+
+    public int getPlayerAmount() {
+        return playerAmount;
     }
     //Must it be private?
     public void createPlayers(int amountPlayers) {
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++)
             playerList.add(new Player());
-    }
-
-    public void run() {
-
     }
 
     private void runCharacterSelectScreen() {
@@ -37,11 +58,6 @@ public class Game {
         }
     }
 
-    private void runStartScreen() {
-        playerAmount = 4;
-        createPlayers(playerAmount);
-    }
-
     private void runGame() {
         for (Player player: playerList)
             turn(player);
@@ -49,17 +65,32 @@ public class Game {
 
     private void turn(Player activePlayer) {
         int steps = activePlayer.rollStepsDice();
+
         while (steps > 0 ){
             //doorPickMethod
-            //move
-            //if(tile.event.exist && !playersIsHaunted)
-                //Do event
-            if (!(gameState == null)){
+            //activePlayer.playerMove(doorPickMethod);
+            if(getPlayerTile(activePlayer).hasEvent() && !activePlayer.isHaunted){
+                getPlayerTile(activePlayer).activate();
+            }
+            if (gameState != null){
                 gameState.turn(activePlayer,this);
             }
-            //end turn logic
             steps--;
         }
+        setNextPlayer();
+
+    }
+    private void setNextPlayer(){
+        activePlayer++;
+        if (activePlayer > playerAmount-1) activePlayer = 0;
+        
+    }
+    private Player activePlayer(){
+        return playerList.get(activePlayer);
+    }
+
+    private Tile getPlayerTile(Player player){
+       return board.getFloor(player.getFloor()).getTile(player.getX(),player.getY());
     }
 
     public boolean roomContainsInsanePlayer(){
@@ -108,6 +139,13 @@ public class Game {
 
 
     }
+    public List<String> getCharacterNames(){
+        List<String> characterNames = new ArrayList<>();
+        for(Kharacter a : characterList){
+            characterNames.add(a.getName());
+        }
+        return characterNames;
+    }
     public List<Kharacter> getCharacterList() {
         return characterList;
     }
@@ -118,5 +156,41 @@ public class Game {
 
     }
 
+    public Player getCurrentPlayer(){
+        return playerList.get(currentPlayerIndex);
+    }
 
+    public void updateCurrentPlayer(){
+        currentPlayerIndex++;
+        currentPlayerIndex = currentPlayerIndex % playerAmount;
+        for (GameObserver observer : observers)
+            observer.updateCurrentPlayer();
+        if (currentPlayerIndex == 0)
+            notifyNewTurn();
+    }
+
+
+    @Override
+    public void registerObserver(GameObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyNewTurn() {
+        for (GameObserver observer: observers) {
+            observer.update();
+        }
+    }
+
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
+    }
+
+    public boolean checkAllPlayersHaveChars() {
+        for (Player player : playerList)  {
+            if (!player.hasCharacter)
+                return false;
+        }
+        return true;
+    }
 }

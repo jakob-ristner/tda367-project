@@ -8,23 +8,25 @@ import model.Game;
 import view.GameView;
 import view.ViewInterface;
 
-public class GameController {
+public class GameController implements GameObserver{
     private GameView view;
-    private Button testButton;
+    private Game game;
+    private ViewInterface characterSelectView;
+    private CharacterSelectController characterSelectController;
+    private ViewInterface startScreenView;
+    private StartScreenController startScreenController;
+
 
     public GameController(GameView view, Game game){
         this.view = view;
-        testButton = new Button();
-        testButton.setLayoutX(300);
-        testButton.setLayoutY(300);
-        testButton.setText("Click me");
-        testButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                getView().getTestView().viewToFront();
-            }
-        });
-        view.getTestView().addNode(testButton);
+        this.game = game;
+        game.registerObserver(this);
+        characterSelectView = view.getCharacterSelectView();
+        characterSelectController = new CharacterSelectController(game, characterSelectView);
+        startScreenView = view.getStartScreenView();
+        startScreenController = new StartScreenController(game, startScreenView);
+        startScreenController.setNextview(characterSelectView);
+        startScreenView.viewToFront();
     }
 
     private GameView getView(){
@@ -32,4 +34,14 @@ public class GameController {
     }
 
 
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void updateCurrentPlayer() {
+        view.updateCurrentPlayerIndex(game.getCurrentPlayerIndex());
+
+    }
 }

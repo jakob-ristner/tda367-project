@@ -1,0 +1,28 @@
+# Meeting agenad
+
+Group: Gastuen
+Date: 2020-09-29
+Chair: Jakob Ristner
+Participants: Jakob Ristner, Jakob Heneriksson, David Andreasson, Karl Gunnarson
+                Erik Berg
+
+##Objectives
+
+- Todays goal is a functional character select screen by one group. Another
+  group is refactoring the floors to matrices instead of one dimensional lists.
+
+## Reports
+- Have not done anything since last meeting
+
+## Outcomes and assignments
+We created a character select and start screen, very rudimentary but functional, also created a way to link views that are going to be sequential.
+
+we need to fix the uml due to a few changes in the relationship between view and controller and model to some extent
+
+RAD almost finished, to be done before thursday
+
+############## Wrap up ########
+Finish RAD next meeting together
+
+
+
