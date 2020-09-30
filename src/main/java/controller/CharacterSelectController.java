@@ -4,13 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import model.Game;
-import model.Kharacter;
-import model.Player;
-import view.CharacterSelectView;
-import view.GameView;
 import view.ViewInterface;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +81,7 @@ public class CharacterSelectController {
     }
 
     private void buttonHandler(int index, Button button){
-        game.getCurrentPlayer().setCharacter(getCharacter(index));
+        game.getCurrentPlayer().setCharacter(game.getCharacterList().get(index));
         game.updateCurrentPlayer();
         deActivateButton(button);
         if (game.checkAllPlayersHaveChars())
@@ -102,9 +97,6 @@ public class CharacterSelectController {
         characterSelectView.nextView();
     }
 
-    private Kharacter getCharacter(int index) {
-        return game.getCharacterList().get(index);
-    }
 
 
 
