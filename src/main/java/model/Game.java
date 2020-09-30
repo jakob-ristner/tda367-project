@@ -15,14 +15,22 @@ public class Game implements ControllerObservable{
 
 
 
-    //private Board board;
+    private Board board;
+
+
+   
+
     private int playerAmount;
     private GameState gameState;
+    private int activePlayer;
 
     private int currentPlayerIndex;
 
 
     public Game() {
+
+        board = new Board();
+
         observers = new ArrayList<>();
         createCharaters();
     }
@@ -31,6 +39,7 @@ public class Game implements ControllerObservable{
         this.playerAmount = playerAmount;
         createPlayers(playerAmount);
     }
+
 
     public int getPlayerAmount() {
         return playerAmount;
@@ -59,15 +68,29 @@ public class Game implements ControllerObservable{
 
         while (steps > 0 ){
             //doorPickMethod
-            //move
-            //if(tile.event.exist && !playersIsHaunted)
-                //Do event
-            if (!(gameState == null)){
+            //activePlayer.playerMove(doorPickMethod);
+            if(getPlayerTile(activePlayer).hasEvent() && !activePlayer.isHaunted){
+                getPlayerTile(activePlayer).activate();
+            }
+            if (gameState != null){
                 gameState.turn(activePlayer,this);
             }
-            //end turn logic
             steps--;
         }
+        setNextPlayer();
+
+    }
+    private void setNextPlayer(){
+        activePlayer++;
+        if (activePlayer > playerAmount-1) activePlayer = 0;
+        
+    }
+    private Player activePlayer(){
+        return playerList.get(activePlayer);
+    }
+
+    private Tile getPlayerTile(Player player){
+       return board.getFloor(player.getFloor()).getTile(player.getX(),player.getY());
     }
 
     public boolean roomContainsInsanePlayer(){

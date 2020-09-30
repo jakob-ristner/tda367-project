@@ -4,7 +4,30 @@ import java.util.Random;
 public class Player {
     private Inventory inventory;
     public boolean isHaunted;
+
+    public int floor;
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    private int x;
+    private int y;
+
     public boolean hasCharacter;
+
 
     public Kharacter getCharacter() {
         return character;
@@ -17,6 +40,11 @@ public class Player {
         inventory = new Inventory();
         dice = new Random();
         hasCharacter = false;
+    }
+
+    public void playerMove(int [] xyChange){
+        x += xyChange[0];
+        y += xyChange[1];
     }
 
     public void addToInventory(Item item) {
