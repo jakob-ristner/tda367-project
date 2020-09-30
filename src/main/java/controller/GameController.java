@@ -33,10 +33,6 @@ public class GameController implements GameObserver{
         return view;
     }
 
-    public void openCharacterSelectView(){
-        characterSelectView.viewToFront();
-    }
-
 
     @Override
     public void update() {
