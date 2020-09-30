@@ -23,3 +23,6 @@ RAD almost finished, to be done before thursday
 
 ############## Wrap up ########
 Finish RAD next meeting together
+
+
+
