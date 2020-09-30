@@ -9,6 +9,6 @@ import javax.swing.text.View;
 public interface ViewInterface {
     void viewToFront();
     void addNode(Node node);
-    void setNextView(ViewInterface view);
-    void nextView();
+    void close();
+
 }

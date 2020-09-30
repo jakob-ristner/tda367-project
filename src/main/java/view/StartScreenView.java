@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
-public class StartScreenView implements ViewInterface{
+        public class StartScreenView implements ViewInterface, HasNextView{
     private Pane pane;
     private ViewInterface nextView;
 
@@ -25,6 +25,12 @@ public class StartScreenView implements ViewInterface{
     @Override
     public void addNode(Node node) {
         pane.getChildren().add(node);
+    }
+
+    @Override
+    public void close() {
+        pane.toBack();
+
     }
 
     @Override
