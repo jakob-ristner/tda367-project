@@ -1,0 +1,35 @@
+##### Meeting Agenda
+
+Group: Gastuen
+Date: 2020-09-30
+Chair: Erik
+Participants: Karl Gunnarsson, David Andreasson, Jakob Ristner, Jakob Henriksson, Erik Berg
+
+
+#####Objectives(5 min)
+- Update UML so that it corresponds with the actual code. 
+- Finish up RAD.
+- Plan ahead for next week and set up goals for the next iteration.
+
+
+######### Reports(15 min)
+Last meeting was about a lot of coding. A Start Screen was created and also a character select screen was made. 
+The tile and floor classes were refactored to better reflect the model. 
+
+####### Discussion Items(35 min)
+Is it relevant that all the controllers and all the views has a Game dependency?
+Maybe it isn't....
+
+
+The ViewInterface is maybe a little bit too big. Or at least shouldn't get bigger. We should split the interface into 
+two so that the methods setNextView and nextView is in a separate interface. That way there will (hopefully) be no 
+empty or redundant methods in the games. 
+
+
+What has been done with maven so far? Nothing. What do we have maven for? We have it for the hand-in. 
+
+## Outcomes and assignments (5 min)
+
+
+
+## Wrap up
