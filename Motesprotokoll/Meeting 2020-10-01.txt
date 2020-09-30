@@ -28,8 +28,18 @@ empty or redundant methods in the games.
 
 What has been done with maven so far? Nothing. What do we have maven for? We have it for the hand-in. 
 
-## Outcomes and assignments (5 min)
+Also a few questions we need to address with the supervisor:
+* All the buttons is being drawn in the Controller class - good/bad
+* All the controllers and Views have dependencies on the Game class - probably bad?
+* We also probably need some general MVC help.
 
+
+## Outcomes and assignments (5 min)
+The model part of the UML still needs some updating. 
+
+The RAD is almost finished and needs to be finish at the latest by thursday. 
 
 
 ## Wrap up
+Next meeting after Lunch. Then the next meeting is the meeting with the supervisor. 
+
