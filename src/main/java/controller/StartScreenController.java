@@ -16,6 +16,7 @@ public class StartScreenController {
     private Button confirmButton;
     private Spinner<Integer> intInput;
     private ViewInterface startScreenView;
+    private ViewInterface nextview;
 
     public StartScreenController(Game game, ViewInterface startScreenView) {
         this.game = game;
@@ -29,7 +30,7 @@ public class StartScreenController {
             @Override
             public void handle(ActionEvent actionEvent) {
                     setGamePlayerAmount(intInput.getValue());
-                    nextView();
+                    showNextView();
             }
         });
 
@@ -48,8 +49,12 @@ public class StartScreenController {
         game.setPlayerAmount(playerAmount);
     }
 
-    private void nextView() {
-        startScreenView.nextView();
+    public void setNextview(ViewInterface nextview) {
+        this.nextview = nextview;
+    }
+
+    private void showNextView() {
+        nextview.viewToFront();
     }
 
 }

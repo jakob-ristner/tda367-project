@@ -6,7 +6,7 @@ import javafx.scene.layout.AnchorPane;
 
 import javax.swing.text.View;
 
-public interface ViewInterface {
+public interface ViewInterface{
     void viewToFront();
     void addNode(Node node);
     void close();

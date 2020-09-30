@@ -8,11 +8,10 @@ import javafx.scene.text.TextAlignment;
 import java.util.Stack;
 
 
-public class CharacterSelectView implements ViewInterface, HasNextView{
+public class CharacterSelectView implements ViewInterface{
     private Pane pane;
     private Text text;
     private Text playerText;
-    private ViewInterface nextView;
     private Stack<Text> textStack;
 
 
@@ -63,14 +62,4 @@ public class CharacterSelectView implements ViewInterface, HasNextView{
 
     }
 
-    @Override
-    public void setNextView(ViewInterface view) {
-        nextView = view;
-    }
-
-    @Override
-    public void nextView() {
-        //nextView.viewToFront();
-        System.out.println("Next View");
-    }
 }

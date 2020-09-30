@@ -17,6 +17,7 @@ public class CharacterSelectController {
     private Button character4Button;
     private List<Button> buttonList;
     private ViewInterface characterSelectView;
+    private ViewInterface nextView;
 
     public CharacterSelectController(Game game,  ViewInterface characterSelectView){
         this.game = game;
@@ -85,7 +86,7 @@ public class CharacterSelectController {
         game.updateCurrentPlayer();
         deActivateButton(button);
         if (game.checkAllPlayersHaveChars())
-            nextView();
+            showNextView();
     }
 
 
@@ -93,8 +94,13 @@ public class CharacterSelectController {
         button.setDisable(true);
     }
 
-    private void nextView() {
-        characterSelectView.nextView();
+    private void showNextView() {
+        //nextView.viewToFront();
+        System.out.println("next view");
+    }
+
+    public void setNextView(ViewInterface nextView) {
+        this.nextView = nextView;
     }
 
 

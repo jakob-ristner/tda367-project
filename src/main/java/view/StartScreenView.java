@@ -4,10 +4,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
-        public class StartScreenView implements ViewInterface, HasNextView{
+        public class StartScreenView implements ViewInterface{
     private Pane pane;
-    private ViewInterface nextView;
-
 
     public StartScreenView(Group root, int width, int height) {
         pane = new Pane();
@@ -31,15 +29,5 @@ import javafx.scene.layout.Pane;
     public void close() {
         pane.toBack();
 
-    }
-
-    @Override
-    public void setNextView(ViewInterface view) {
-        nextView = view;
-    }
-
-    @Override
-    public void nextView() {
-        nextView.viewToFront();
     }
 }
