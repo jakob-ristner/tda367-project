@@ -2,22 +2,13 @@ package view;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import model.Game;
-import model.Kharacter;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
 import java.util.Stack;
 
 
 public class CharacterSelectView implements ViewInterface{
-    private Game game;
-    private List<String> characters;
     private Pane pane;
     private Text text;
     private Text playerText;
@@ -27,7 +18,7 @@ public class CharacterSelectView implements ViewInterface{
 
 
 
-    public CharacterSelectView(Game game, Group root, int width, int height){
+    public CharacterSelectView(Group root, int width, int height){
         textStack = new Stack<>();
         pane = new Pane();
         text = new Text("Choose your character");
@@ -46,10 +37,6 @@ public class CharacterSelectView implements ViewInterface{
         playerText.setLayoutY(150);
         addNode(playerText);
 
-
-
-        this.game = game;
-        characters = game.getCharacterNames();
         root.getChildren().add(pane);
 
         pane.setPrefSize(width, height);
