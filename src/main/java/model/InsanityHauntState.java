@@ -1,35 +1,49 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class InsanityHauntState implements GameState {
-    @Override
-    public void init(Game game, List<Player> playerList, Player activePlayer) {
+    Game game;
+    public InsanityHauntState(Game game){
+        this.game = game.getGame();
     }
+
+    @Override //Method for initing haunt, in this case, spawning the escape hatches
+    public void init() {
+    }
+
 
     @Override
     public void turn(Player activePlayer,Game game) {
         if (activePlayer.isHaunted() && game.getPlayerTile(activePlayer).hasPlayer()){
+            combat();
 
-            //combat()
+
         }
 
         //WinConditionChecker();
-
     }
 
-    public int combat(Player activePlayer, Player insanePlayer){
-        int attacker = activePlayer.rollStat(Stat.STRENGTH);
-        int defender = insanePlayer.rollStat(Stat.STRENGTH);
-        int result = defender-attacker;
-        if(result <= 0){
-            return 0;
+    public void combat(){
+        for (Player p: createListOfPlayersInSameRoom()){
+            int insanePlayerStrenght = game.getCurrentPlayer().rollStat(Stat.STRENGTH);
+            int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
+            int result = insanePlayerStrenght-playerInRoomStrenght;
+            p.getCharacter().updateStatFromCombat(Stat.STAMINA,result); //TODO, fix method for updating stats so it takes an int and a stat
         }
-        return result;
     }
-    //updateStatsBasedOnCombat
 
-    public 
+    public List<Player> createListOfPlayersInSameRoom() {
+        List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
+        for (Player p: game.getPlayerList()) {
+            if (game.getCurrentPlayer().getX() == p.getX() && game.getCurrentPlayer().getY() == p.getY()) {
+                listOfPlayersInTheSameRoom.add(p);
+            }
+        }
+        return listOfPlayersInTheSameRoom;
+    }
 
 
     @Override

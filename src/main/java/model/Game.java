@@ -16,9 +16,11 @@ public class Game implements ControllerObservable{
 
 
     private Board board;
+    private Game game;
+
+    private boolean isInstanciated = false;
 
 
-   
 
     private int playerAmount;
     private GameState gameState;
@@ -32,6 +34,14 @@ public class Game implements ControllerObservable{
 
         observers = new ArrayList<>();
         createCharaters();
+    }
+
+    //SingeltonPattern
+    public Game getGame() {
+        if (!isInstanciated) {
+            game = new Game();
+        }
+        return game;
     }
 
     public void setPlayerAmount(int playerAmount) {
