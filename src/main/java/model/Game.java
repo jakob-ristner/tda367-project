@@ -22,7 +22,6 @@ public class Game implements ControllerObservable{
 
     private int playerAmount;
     private GameState gameState;
-    private int activePlayer;
 
     private int currentPlayerIndex;
 
@@ -64,12 +63,14 @@ public class Game implements ControllerObservable{
     }
 
     private void turn(Player activePlayer) {
-        int steps = activePlayer.rollStepsDice();
+        activePlayer.setStepAmount();
+        int steps = activePlayer.getStepAmount();
 
         while (steps > 0 ){
             //doorPickMethod
             //activePlayer.playerMove(doorPickMethod);
-            if(getPlayerTile(activePlayer).hasEvent() && !activePlayer.isHaunted){
+            //getPlayerTile(activePlayer).setHasPlayer(true);
+            if(getPlayerTile(activePlayer).hasEvent() && activePlayer.isHaunted()){
                 getPlayerTile(activePlayer).activate();
             }
             if (gameState != null){
@@ -77,24 +78,16 @@ public class Game implements ControllerObservable{
             }
             steps--;
         }
-        setNextPlayer();
+        updateCurrentPlayer();
 
     }
-    private void setNextPlayer(){
-        activePlayer++;
-        if (activePlayer > playerAmount-1) activePlayer = 0;
-        
-    }
-    private Player activePlayer(){
-        return playerList.get(activePlayer);
-    }
 
-    private Tile getPlayerTile(Player player){
+   public Tile getPlayerTile(Player player){
        return board.getFloor(player.getFloor()).getTile(player.getX(),player.getY());
     }
 
     public boolean roomContainsInsanePlayer(){
-        return roomContainsInsanePlayer();
+        return roomContainsInsanePlayer();  //Why does it return itself??
     }
 
     private void runGameOverScreen() {

@@ -30,7 +30,7 @@ public class testPlayer {
         characterStat.put(Stat.STRENGTH,2);
 
         player.setCharacter(new Kharacter(characterStat,"TestCharacter"));
-        Assert.assertTrue(player.rollDice(Stat.STRENGTH,-1));
+        Assert.assertTrue(player.isEventPassed(Stat.STRENGTH,-1));
     }
 
 
