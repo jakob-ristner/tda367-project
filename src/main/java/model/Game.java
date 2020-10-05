@@ -2,16 +2,14 @@ package model;
 
 import controller.GameObserver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 public class Game implements ControllerObservable{
 
     private List<GameObserver> observers;
     private List<Player> playerList;
     private List<Kharacter> characterList;
+    private List<GameState> listOfHaunts = new ArrayList<>();
 
 
 
@@ -26,11 +24,14 @@ public class Game implements ControllerObservable{
     private GameState gameState;
 
     private int currentPlayerIndex;
+    private int eventCounter;
+    private Random random = new Random();
 
 
     public Game() {
 
         board = new Board();
+        listOfHaunts.add(new InsanityHauntState(this));
 
         observers = new ArrayList<>();
         createCharaters();
@@ -48,7 +49,15 @@ public class Game implements ControllerObservable{
         this.playerAmount = playerAmount;
         createPlayers(playerAmount);
     }
-
+    private void eventTriggered(){
+        eventCounter++;
+        if(eventCounter == 8){
+            gameState = getRandomHaunt();
+        }
+    }
+    private GameState getRandomHaunt(){
+        return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
+    }
 
     public int getPlayerAmount() {
         return playerAmount;
@@ -82,6 +91,7 @@ public class Game implements ControllerObservable{
             //getPlayerTile(activePlayer).setHasPlayer(true);
             if(getPlayerTile(activePlayer).hasEvent() && activePlayer.isHaunted()){
                 getPlayerTile(activePlayer).activate();
+                eventTriggered();
             }
             if (gameState != null){
                 gameState.turn(activePlayer,this);
@@ -175,6 +185,9 @@ public class Game implements ControllerObservable{
 
     public void updateCurrentPlayer(){
         currentPlayerIndex++;
+        if(currentPlayerIndex == playerAmount +1){ //TODO se om vi kan göra detta lite vackrare xD
+            currentPlayerIndex--;
+        }
         currentPlayerIndex = currentPlayerIndex % playerAmount;
         for (GameObserver observer : observers)
             observer.updateCurrentPlayer();
