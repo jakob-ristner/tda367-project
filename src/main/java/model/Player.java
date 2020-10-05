@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Player {
     private Inventory inventory;
-    public boolean isHaunted;
+    private boolean isHaunted = false;
 
     public int floor;
 
@@ -28,6 +28,8 @@ public class Player {
 
     public boolean hasCharacter;
 
+    private int steps;
+
 
     public Kharacter getCharacter() {
         return character;
@@ -35,11 +37,22 @@ public class Player {
 
     private Kharacter character;
     private Random dice;
+    private boolean isDead;
 
     public Player() {
         inventory = new Inventory();
         dice = new Random();
         hasCharacter = false;
+    }
+    public boolean isPlayerDead(){
+        for (int playerStat : character.getStats().values()){
+            if( playerStat <= 0) return true;
+        }
+        return false;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 
     public void playerMove(int [] xyChange){
@@ -52,23 +65,39 @@ public class Player {
         character.updateStat(item.getStats());
     }
 
-    public boolean rollDice(Stat stat, int threshhold) {
+    public boolean isEventPassed(Stat stat, int threshhold) {
         int statToRoll = character.getStat(stat);
         int roll = dice.nextInt(statToRoll + 1);
         return roll > threshhold;
     }
 
+    public int rollStat(Stat stat){
+        return dice.nextInt(character.getStat(stat));
+    }
+
+
     public void setCharacter(Kharacter character) {
         this.character = character;
         hasCharacter = true;
     }
-    public int rollStepsDice(){
-        return dice.nextInt(character.getStat(Stat.SPEED));
+    public void setStepAmount(){
+        steps = dice.nextInt(character.getStat(Stat.SPEED));
+    }
+
+
+    public int getStepAmount() {
+        return steps;
     }
 
     public String getCharacterName() {
         return character.getName();
     }
 
+    public void setHauntedPlayer(){
+        isHaunted = true;
+    }
 
+    public boolean isHaunted() {
+        return isHaunted;
+    }
 }
