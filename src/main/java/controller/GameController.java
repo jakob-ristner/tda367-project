@@ -22,7 +22,7 @@ public class GameController implements GameObserver{
         this.game = game;
         game.registerObserver(this);
         characterSelectView = view.getCharacterSelectView();
-        characterSelectController = new CharacterSelectController(game, characterSelectView);
+        characterSelectController = new CharacterSelectController(game, characterSelectView, view.getCharSelectButtons());
         startScreenView = view.getStartScreenView();
         startScreenController = new StartScreenController(game, startScreenView);
         startScreenController.setNextview(characterSelectView);

@@ -7,78 +7,51 @@ import model.Game;
 import view.ViewInterface;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CharacterSelectController {
     private Game game;
-    private Button character1Button;
-    private Button character2Button;
-    private Button character3Button;
-    private Button character4Button;
-    private List<Button> buttonList;
+    private HashMap<Integer, Button> buttonMap;
     private ViewInterface characterSelectView;
     private ViewInterface nextView;
 
-    public CharacterSelectController(Game game,  ViewInterface characterSelectView){
+    public CharacterSelectController(Game game, ViewInterface characterSelectView, HashMap<Integer, Button> buttonMap){
         this.game = game;
         this.characterSelectView = characterSelectView;
+        this.buttonMap = buttonMap;
         initButton();
-        for(Button b: buttonList){
-            characterSelectView.addNode(b);
-        }
-
     }
 
-    private void initButton(){
-        character1Button = new Button();
-        character2Button = new Button();
-        character3Button = new Button();
-        character4Button = new Button();
-        buttonList = new ArrayList<>();
-        List<String> characterNameList = game.getCharacterNames();
-
-        buttonList.add(character1Button);
-        buttonList.add(character2Button);
-        buttonList.add(character3Button);
-        buttonList.add(character4Button);
-
-
-        for(int i = 0; i < buttonList.size(); i++){
-            buttonList.get(i).setLayoutX(200);
-            buttonList.get(i).setLayoutY(200 + 50*i);
-            buttonList.get(i).setPrefSize(100, 30);
-            buttonList.get(i).setText(characterNameList.get(i));
-        }
-
-        character1Button.setOnAction(new EventHandler<ActionEvent>() {
+   private void initButton(){
+        buttonMap.get(0).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(0,character1Button);
+                buttonHandler(0, buttonMap.get(0));
             }
 
         });
 
-        character2Button.setOnAction(new EventHandler<ActionEvent>() {
+        buttonMap.get(1).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(1,character2Button);
+                buttonHandler(1, buttonMap.get(1));
             }
         });
 
-        character3Button.setOnAction(new EventHandler<ActionEvent>() {
+        buttonMap.get(2).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(2,character3Button);
+                buttonHandler(2, buttonMap.get(2));
             }
         });
 
-        character4Button.setOnAction(new EventHandler<ActionEvent>() {
+        buttonMap.get(3).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonHandler(3,character4Button);
+                buttonHandler(3, buttonMap.get(3));
             }
         });
-
     }
 
     private void buttonHandler(int index, Button button){
