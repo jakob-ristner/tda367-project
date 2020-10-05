@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import model.Game;
 import view.ViewInterface;
 
@@ -15,11 +16,13 @@ public class CharacterSelectController {
     private HashMap<Integer, Button> buttonMap;
     private ViewInterface characterSelectView;
     private ViewInterface nextView;
+    private List<Text> texts;
 
-    public CharacterSelectController(Game game, ViewInterface characterSelectView, HashMap<Integer, Button> buttonMap){
+    public CharacterSelectController(Game game, ViewInterface characterSelectView, HashMap<Integer, Button> buttonMap, List<Text> texts){
         this.game = game;
         this.characterSelectView = characterSelectView;
         this.buttonMap = buttonMap;
+        this.texts = texts;
         initButton();
     }
 
@@ -27,6 +30,7 @@ public class CharacterSelectController {
         buttonMap.get(0).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
                 buttonHandler(0, buttonMap.get(0));
             }
 
@@ -56,6 +60,7 @@ public class CharacterSelectController {
 
     private void buttonHandler(int index, Button button){
         game.getCurrentPlayer().setCharacter(game.getCharacterList().get(index));
+        texts.get(index).setText("Chosen by Player " + (game.getCurrentPlayerIndex()+1));
         game.updateCurrentPlayer();
         deActivateButton(button);
         if (game.checkAllPlayersHaveChars())

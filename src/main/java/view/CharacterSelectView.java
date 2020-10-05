@@ -17,18 +17,31 @@ public class CharacterSelectView implements ViewInterface{
     private Pane pane;
     private Text text;
     private Text playerText;
-    private Stack<Text> textStack;
     private Button character1Button;
     private Button character2Button;
     private Button character3Button;
     private Button character4Button;
     private HashMap<Integer, Button> buttonMap;
 
+    private Text textNextToButton1;
+    private Text textNextToButton2;
+    private Text textNextToButton3;
+    private Text textNextToButton4;
+    private List<Text> textsPlayer;
+
+    private Text statsNextToButton1;
+    private Text statsNextToButton2;
+    private Text statsNextToButton3;
+    private Text statsNextToButton4;
+    private List<Text> textsStats;
+
+
+
 
 
 
     public CharacterSelectView(Group root, int width, int height, List<String> characterNames){
-        textStack = new Stack<>();
+
         pane = new Pane();
         text = new Text("Choose your character");
         text.setStyle("-fx-font-size: 40px;");
@@ -39,6 +52,8 @@ public class CharacterSelectView implements ViewInterface{
         addNode(text);
 
         initButton(characterNames);
+
+        initText();
 
         playerText = new Text();
         playerText.setText("It's Player 1:s turn!");
@@ -75,6 +90,45 @@ public class CharacterSelectView implements ViewInterface{
             addNode(buttonMap.get(i));
         }
     }
+    private void initText(){
+        textNextToButton1 = new Text();
+        textNextToButton2 = new Text();
+        textNextToButton3 = new Text();
+        textNextToButton4 = new Text();
+        textsPlayer = new ArrayList<>();
+
+        textsPlayer.add(textNextToButton1);
+        textsPlayer.add(textNextToButton2);
+        textsPlayer.add(textNextToButton3);
+        textsPlayer.add(textNextToButton4);
+
+
+        for(int i = 0; i<textsPlayer.size(); i++){
+            textsPlayer.get(i).setLayoutX(buttonMap.get(i).getLayoutX() + 120);
+            textsPlayer.get(i).setLayoutY(buttonMap.get(i).getLayoutY());
+            addNode(textsPlayer.get(i));
+        }
+        statsNextToButton1 = new Text();
+        statsNextToButton2 = new Text();
+        statsNextToButton3 = new Text();
+        statsNextToButton4 = new Text();
+        textsStats = new ArrayList<>();
+
+        textsStats.add(statsNextToButton1);
+        textsStats.add(statsNextToButton2);
+        textsStats.add(statsNextToButton3);
+        textsStats.add(statsNextToButton4);
+
+        for(int i = 0; i<textsStats.size(); i++){
+            textsStats.get(i).setLayoutX(buttonMap.get(i).getLayoutX() - 120);
+            textsStats.get(i).setLayoutY(buttonMap.get(i).getLayoutY());
+            addNode(textsStats.get(i));
+        }
+
+
+
+    }
+
 
     @Override
     public void viewToFront() {
@@ -98,6 +152,10 @@ public class CharacterSelectView implements ViewInterface{
 
     public HashMap<Integer, Button> getButtonMap(){
         return buttonMap;
+    }
+
+    public List<Text> getTexts(){
+        return textsPlayer;
     }
 
 }

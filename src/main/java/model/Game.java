@@ -135,10 +135,8 @@ public class Game implements ControllerObservable{
         characterList.add(new Kharacter(sarah, "Sarah"));
 
 
-
-
-
     }
+
     public List<String> getCharacterNames(){
         List<String> characterNames = new ArrayList<>();
         for(Kharacter a : characterList){

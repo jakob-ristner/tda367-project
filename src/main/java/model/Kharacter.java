@@ -19,7 +19,6 @@ public class Kharacter {
         return stats.get(stat);
     }
 
-
     public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätte ful metod i know
         for (Stat playerStat : stats.keySet()) {
             for (Stat statToAdd : statsToAdd.keySet()) {
