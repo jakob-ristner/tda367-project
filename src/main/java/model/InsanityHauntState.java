@@ -19,19 +19,16 @@ public class InsanityHauntState implements GameState {
     public void turn(Player activePlayer,Game game) {
         if (activePlayer.isHaunted() && game.getPlayerTile(activePlayer).hasPlayer()){
             combat();
-
-
         }
-
-        //WinConditionChecker();
+        winConditionChecker();
     }
 
     public void combat(){
         for (Player p: createListOfPlayersInSameRoom()){
             int insanePlayerStrenght = game.getCurrentPlayer().rollStat(Stat.STRENGTH);
             int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
-            int result = insanePlayerStrenght-playerInRoomStrenght;
-            p.getCharacter().updateStatFromCombat(Stat.STAMINA,result); //TODO, fix method for updating stats so it takes an int and a stat
+            int damage = insanePlayerStrenght-playerInRoomStrenght;
+            p.getCharacter().updateStatFromCombat(Stat.STAMINA,damage);
         }
     }
 
@@ -45,9 +42,10 @@ public class InsanityHauntState implements GameState {
         return listOfPlayersInTheSameRoom;
     }
 
-
     @Override
     public void winConditionChecker() {
-        
+        if(game.getPlayerList().isEmpty()){
+            System.out.println("Monster Won");
+        }
     }
 }

@@ -37,11 +37,22 @@ public class Player {
 
     private Kharacter character;
     private Random dice;
+    private boolean isDead;
 
     public Player() {
         inventory = new Inventory();
         dice = new Random();
         hasCharacter = false;
+    }
+    public boolean isPlayerDead(){
+        for (int playerStat : character.getStats().values()){
+            if( playerStat <= 0) return true;
+        }
+        return false;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 
     public void playerMove(int [] xyChange){

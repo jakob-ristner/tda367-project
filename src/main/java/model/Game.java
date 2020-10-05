@@ -86,12 +86,22 @@ public class Game implements ControllerObservable{
             if (gameState != null){
                 gameState.turn(activePlayer,this);
             }
+            removeDeadPlayersFromGame();
             steps--;
+            if (!playerList.contains(activePlayer)) break;
         }
         updateCurrentPlayer();
 
     }
-
+    public void removeDeadPlayersFromGame(){
+        for (Player p: playerList){
+            p.isPlayerDead();
+            if(p.isDead()){
+                playerList.remove(p);
+                playerAmount--;
+            }
+        }
+    }
    public Tile getPlayerTile(Player player){
        return board.getFloor(player.getFloor()).getTile(player.getX(),player.getY());
     }
