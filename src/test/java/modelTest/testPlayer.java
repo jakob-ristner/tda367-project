@@ -7,10 +7,11 @@ import org.junit.Test;
 import java.util.HashMap;
 
 public class testPlayer {
+  
     @Test
     public void testEquippingItem(){
         Player player = new Player();
-        Game game = new Game();
+        Game game = Game.getInstance();
         game.createCharaters();
         player.setCharacter(game.getCharacterList().get(0));
         int characterStat = player.getCharacter().getStat(Stat.STRENGTH);
@@ -30,7 +31,7 @@ public class testPlayer {
         characterStat.put(Stat.STRENGTH,2);
 
         player.setCharacter(new Kharacter(characterStat,"TestCharacter"));
-        Assert.assertTrue(player.rollDice(Stat.STRENGTH,-1));
+        Assert.assertTrue(player.isEventPassed(Stat.STRENGTH,-1));
     }
 
 

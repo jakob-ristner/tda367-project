@@ -7,6 +7,7 @@ public class Tile {
     private boolean doorDown = true;
     private boolean doorLeft = true;
     private boolean doorRight = true;
+    private boolean hasPlayer;
 
 
     public Tile(int i, int j, Tile[][] tiles){
@@ -22,6 +23,14 @@ public class Tile {
 
     public void activate(){
         event.activate();
+    }
+
+    public boolean hasPlayer() {
+        return hasPlayer;
+    }
+
+    public void setHasPlayer(boolean hasPlayer) {
+        this.hasPlayer = hasPlayer;
     }
 
     public boolean hasEvent(){

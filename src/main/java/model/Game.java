@@ -2,44 +2,68 @@ package model;
 
 import controller.GameObserver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 public class Game implements ControllerObservable{
 
     private List<GameObserver> observers;
     private List<Player> playerList;
     private List<Kharacter> characterList;
+    private List<GameState> listOfHaunts = new ArrayList<>();
+    GameState insanityHaunt;
 
 
 
     private Board board;
+    private static Game gameInstance;
+
+    private static boolean isInstanciated = false;
 
 
-   
 
     private int playerAmount;
     private GameState gameState;
-    private int activePlayer;
 
     private int currentPlayerIndex;
+    private int eventCounter;
+    private Random random = new Random();
 
 
-    public Game() {
+    private Game() {
 
         board = new Board();
+        listOfHaunts.add(new InsanityHauntState());
 
         observers = new ArrayList<>();
         createCharaters();
+
+    }
+
+    //SingeltonPattern
+    public static Game getInstance() {
+        if (gameInstance == null) {
+            gameInstance = new Game();
+        }
+        return gameInstance;
+    }
+
+    public void initHaunt(){
+        listOfHaunts.get(0).init();
     }
 
     public void setPlayerAmount(int playerAmount) {
         this.playerAmount = playerAmount;
         createPlayers(playerAmount);
     }
-
+    private void eventTriggered(){
+        eventCounter++;
+        if(eventCounter == 8){
+            gameState = getRandomHaunt();
+        }
+    }
+    private GameState getRandomHaunt(){
+        return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
+    }
 
     public int getPlayerAmount() {
         return playerAmount;
@@ -64,37 +88,42 @@ public class Game implements ControllerObservable{
     }
 
     private void turn(Player activePlayer) {
-        int steps = activePlayer.rollStepsDice();
+        activePlayer.setStepAmount();
+        int steps = activePlayer.getStepAmount();
 
         while (steps > 0 ){
             //doorPickMethod
             //activePlayer.playerMove(doorPickMethod);
-            if(getPlayerTile(activePlayer).hasEvent() && !activePlayer.isHaunted){
+            //getPlayerTile(activePlayer).setHasPlayer(true);
+            if(getPlayerTile(activePlayer).hasEvent() && activePlayer.isHaunted()){
                 getPlayerTile(activePlayer).activate();
+                eventTriggered();
             }
             if (gameState != null){
-                gameState.turn(activePlayer,this);
+                gameState.turn(activePlayer);
             }
+            removeDeadPlayersFromGame();
             steps--;
+            if (!playerList.contains(activePlayer)) break;
         }
-        setNextPlayer();
+        updateCurrentPlayer();
 
     }
-    private void setNextPlayer(){
-        activePlayer++;
-        if (activePlayer > playerAmount-1) activePlayer = 0;
-        
+    public void removeDeadPlayersFromGame(){
+        for (Player p: playerList){
+            p.isPlayerDead();
+            if(p.isDead()){
+                playerList.remove(p);
+                playerAmount--;
+            }
+        }
     }
-    private Player activePlayer(){
-        return playerList.get(activePlayer);
-    }
-
-    private Tile getPlayerTile(Player player){
+   public Tile getPlayerTile(Player player){
        return board.getFloor(player.getFloor()).getTile(player.getX(),player.getY());
     }
 
     public boolean roomContainsInsanePlayer(){
-        return roomContainsInsanePlayer();
+        return roomContainsInsanePlayer();  //Why does it return itself??
     }
 
     private void runGameOverScreen() {
@@ -159,6 +188,9 @@ public class Game implements ControllerObservable{
     public List<Player> getPlayerList() {
         return playerList;
     }
+    void turn(Player activePlayer, Event event){
+
+    }
 
     public Player getCurrentPlayer(){
         return playerList.get(currentPlayerIndex);
@@ -166,6 +198,9 @@ public class Game implements ControllerObservable{
 
     public void updateCurrentPlayer(){
         currentPlayerIndex++;
+        if(currentPlayerIndex == playerAmount +1){ //TODO se om vi kan göra detta lite vackrare xD
+            currentPlayerIndex--;
+        }
         currentPlayerIndex = currentPlayerIndex % playerAmount;
         for (GameObserver observer : observers)
             observer.updateCurrentPlayer();
