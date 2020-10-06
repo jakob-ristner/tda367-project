@@ -45,6 +45,6 @@ public class Gastuen extends Application
 	}
 
 	public void modelInit() {
-		game = new Game();
+		game = Game.getInstance();
 	}
 }

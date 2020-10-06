@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GameState {
      void init();
-     void turn(Player activePlayer, Game game);
+     void turn(Player activePlayer);
      void winConditionChecker();
 
 

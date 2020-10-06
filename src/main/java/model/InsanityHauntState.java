@@ -6,17 +6,19 @@ import java.util.List;
 
 public class InsanityHauntState implements GameState {
     Game game;
-    public InsanityHauntState(Game game){
-        this.game = game.getGame();
+    public InsanityHauntState(){
+
     }
+
 
     @Override //Method for initing haunt, in this case, spawning the escape hatches
     public void init() {
+        game = Game.getInstance(); //Not sure if this will work.
     }
 
 
     @Override
-    public void turn(Player activePlayer,Game game) {
+    public void turn(Player activePlayer) {
         if (activePlayer.isHaunted() && game.getPlayerTile(activePlayer).hasPlayer()){
             combat();
         }

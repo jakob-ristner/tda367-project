@@ -10,13 +10,14 @@ public class Game implements ControllerObservable{
     private List<Player> playerList;
     private List<Kharacter> characterList;
     private List<GameState> listOfHaunts = new ArrayList<>();
+    GameState insanityHaunt;
 
 
 
     private Board board;
-    private Game game;
+    private static Game gameInstance;
 
-    private boolean isInstanciated = false;
+    private static boolean isInstanciated = false;
 
 
 
@@ -28,21 +29,26 @@ public class Game implements ControllerObservable{
     private Random random = new Random();
 
 
-    public Game() {
+    private Game() {
 
         board = new Board();
-        listOfHaunts.add(new InsanityHauntState(this));
+        listOfHaunts.add(new InsanityHauntState());
 
         observers = new ArrayList<>();
         createCharaters();
+
     }
 
     //SingeltonPattern
-    public Game getGame() {
-        if (!isInstanciated) {
-            game = new Game();
+    public static Game getInstance() {
+        if (gameInstance == null) {
+            gameInstance = new Game();
         }
-        return game;
+        return gameInstance;
+    }
+
+    public void initHaunt(){
+        listOfHaunts.get(0).init();
     }
 
     public void setPlayerAmount(int playerAmount) {
@@ -94,7 +100,7 @@ public class Game implements ControllerObservable{
                 eventTriggered();
             }
             if (gameState != null){
-                gameState.turn(activePlayer,this);
+                gameState.turn(activePlayer);
             }
             removeDeadPlayersFromGame();
             steps--;
