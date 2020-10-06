@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import model.Stat; //Måste lyfta ut från packet?
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +41,7 @@ public class CharacterSelectView implements ViewInterface{
 
 
 
-    public CharacterSelectView(Group root, int width, int height, List<String> characterNames){
+    public CharacterSelectView(Group root, int width, int height, List<String> characterNames, List< HashMap<Stat, Integer>> stats){
 
         pane = new Pane();
         text = new Text("Choose your character");
@@ -53,7 +54,7 @@ public class CharacterSelectView implements ViewInterface{
 
         initButton(characterNames);
 
-        initText();
+        initText(stats);
 
         playerText = new Text();
         playerText.setText("It's Player 1:s turn!");
@@ -90,7 +91,7 @@ public class CharacterSelectView implements ViewInterface{
             addNode(buttonMap.get(i));
         }
     }
-    private void initText(){
+    private void initText(List< HashMap<Stat, Integer>> stats){
         textNextToButton1 = new Text();
         textNextToButton2 = new Text();
         textNextToButton3 = new Text();
@@ -120,8 +121,9 @@ public class CharacterSelectView implements ViewInterface{
         textsStats.add(statsNextToButton4);
 
         for(int i = 0; i<textsStats.size(); i++){
-            textsStats.get(i).setLayoutX(buttonMap.get(i).getLayoutX() - 120);
-            textsStats.get(i).setLayoutY(buttonMap.get(i).getLayoutY());
+            textsStats.get(i).setLayoutX(buttonMap.get(i).getLayoutX() - 180);
+            textsStats.get(i).setLayoutY(buttonMap.get(i).getLayoutY() + 20);
+            textsStats.get(i).setText("Str: "+(stats.get(i).get(Stat.STRENGTH).toString())+ "  " +"Spe: "+stats.get(i).get(Stat.SPEED).toString()+ "  "+ "San " + stats.get(i).get(Stat.SANITY).toString()+ "  "+ "Stam: " + stats.get(i).get(Stat.STRENGTH).toString());
             addNode(textsStats.get(i));
         }
 

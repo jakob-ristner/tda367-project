@@ -144,6 +144,15 @@ public class Game implements ControllerObservable{
         }
         return characterNames;
     }
+    public List< HashMap<Stat, Integer>> getCharacterStats(){
+        List< HashMap<Stat, Integer>> characterStats = new ArrayList<>();
+        for(Kharacter a : characterList){
+            characterStats.add(a.getStats());
+        }
+        return characterStats;
+    }
+
+
     public List<Kharacter> getCharacterList() {
         return characterList;
     }

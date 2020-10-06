@@ -28,7 +28,7 @@ public class GameView {
 
 	public GameView(Game game) {
 		root = new Group();
-		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames());
+		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
 		startScreenView.viewToFront();
 
