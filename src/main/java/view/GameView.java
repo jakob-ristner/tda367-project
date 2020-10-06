@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.scene.*;
 
@@ -16,6 +17,7 @@ import javax.swing.text.View;
 import java.awt.*;
 import java.sql.SQLOutput;
 import java.util.HashMap;
+import java.util.List;
 
 public class GameView {
 	public static final int WINDOW_H = 500;
@@ -26,7 +28,7 @@ public class GameView {
 
 	public GameView(Game game) {
 		root = new Group();
-		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames());
+		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
 		startScreenView.viewToFront();
 
@@ -48,8 +50,13 @@ public class GameView {
 		characterSelectView.setCurrentPlayerText(index);
 	}
 
+
 	public HashMap<Integer, Button> getCharSelectButtons(){
 		return characterSelectView.getButtonMap();
+	}
+
+	public List<Text> getCharSelectTexts(){
+		return characterSelectView.getTexts();
 	}
 
 

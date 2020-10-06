@@ -19,7 +19,6 @@ public class Kharacter {
         return stats.get(stat);
     }
 
-
     public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
         for (Stat playerStat : stats.keySet()) {
             stats.put(playerStat, statsToAdd.get(playerStat)); //fick hjälp av pi med denna one linern, kolla om det fungerar.

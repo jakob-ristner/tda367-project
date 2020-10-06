@@ -22,7 +22,7 @@ public class GameController implements GameObserver{
         this.game = game;
         game.registerObserver(this);
         characterSelectView = view.getCharacterSelectView();
-        characterSelectController = new CharacterSelectController(game, characterSelectView, view.getCharSelectButtons());
+        characterSelectController = new CharacterSelectController(game, characterSelectView, view.getCharSelectButtons(), view.getCharSelectTexts());
         startScreenView = view.getStartScreenView();
         startScreenController = new StartScreenController(game, startScreenView);
         startScreenController.setNextview(characterSelectView);
@@ -31,6 +31,16 @@ public class GameController implements GameObserver{
 
     private GameView getView(){
         return view;
+    }
+
+    private int checkButtonIndex(){
+        for(int i = 0; i < view.getCharSelectButtons().size(); i++){
+
+            if(game.getCurrentPlayer().getCharacter().getName().equals(view.getCharSelectButtons().get(i).getText())){
+                return i;
+            }
+        }
+        return -1;
     }
 
 
@@ -42,6 +52,7 @@ public class GameController implements GameObserver{
     @Override
     public void updateCurrentPlayer() {
         view.updateCurrentPlayerIndex(game.getCurrentPlayerIndex());
+        //view.updateTextNextToCharacter(checkButtonIndex(),game.getCurrentPlayerIndex()-1);
 
     }
 }
