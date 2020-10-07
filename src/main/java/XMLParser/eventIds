@@ -1,0 +1,33 @@
+<events>
+    <event id="0">
+        <eventType>Item</eventType>
+        <speed>1</speed>
+        <sanity>1</sanity>
+        <strenght>1</strenght>
+        <stamina>1</stamina>
+        <eventText>You found an item it gives you </eventText>
+    </event>
+
+    <event id="1">
+        <eventType>diceRoll</eventType>
+        <eventThreshold>0.5</eventThreshold>
+        <speed>-1</speed>
+        <sanity>-1</sanity>
+        <strenght>-1</strenght>
+        <stamina>-1</stamina>
+        <eventText>Fight the spider, to win roll higher:</eventText>
+    </event>
+
+    <event id = "3">
+        <eventType>moveEvent</eventType>
+        <eventThreshold>0.5</eventThreshold>
+        <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
+        <floorDelta>-1</floorDelta>
+        <deltaX>0</deltaX>
+        <deltaY>0</deltaY>
+    </event>
+
+</events>
+
+
+
