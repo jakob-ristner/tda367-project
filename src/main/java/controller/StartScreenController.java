@@ -11,35 +11,30 @@ import model.Game;
 import view.ViewInterface;
 
 
-public class StartScreenController {
-    private Game game;
+public class StartScreenController extends AbstractController{
     private Button confirmButton;
     private Spinner<Integer> intInput;
-    private ViewInterface startScreenView;
-    private ViewInterface nextview;
 
-    public StartScreenController(Game game, ViewInterface startScreenView) {
-        this.game = game;
-        this.startScreenView = startScreenView;
+    public StartScreenController(Game game, ViewInterface view){
+        super(game, view);
+    }
 
-        confirmButton = new Button();
-        confirmButton.setText("Confirm");
-        confirmButton.setLayoutX(200);
-        confirmButton.setLayoutY(200);
+    public void setConfirmButton(Button confirmButton) {
+        this.confirmButton = confirmButton;
+        initButton();
+    }
+    public void setIntInput(Spinner<Integer> intInput) {
+        this.intInput = intInput;
+    }
+
+    private void initButton() {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                    setGamePlayerAmount(intInput.getValue());
-                    showNextView();
+                setGamePlayerAmount(intInput.getValue());
+                showNextView();
             }
         });
-
-        intInput = new Spinner<>(1,4,1,1);
-        intInput.setLayoutY(150);
-        intInput.setLayoutX(150);
-
-        this.startScreenView.addNode(confirmButton);
-        this.startScreenView.addNode(intInput);
     }
 
 
@@ -48,13 +43,4 @@ public class StartScreenController {
         playerAmount = Math.max(playerAmount, 0);
         game.setPlayerAmount(playerAmount);
     }
-
-    public void setNextview(ViewInterface nextview) {
-        this.nextview = nextview;
-    }
-
-    private void showNextView() {
-        nextview.viewToFront();
-    }
-
 }

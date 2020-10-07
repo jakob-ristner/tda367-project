@@ -11,8 +11,6 @@ import model.Stat; //Måste lyfta ut från packet?
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
-
 
 public class CharacterSelectView implements ViewInterface{
     private Pane pane;
