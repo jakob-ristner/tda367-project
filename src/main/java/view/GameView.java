@@ -12,6 +12,8 @@ import javafx.stage.*;
 import javafx.scene.*;
 
 import model.Game;
+import view.eventView.EventView;
+import view.eventView.HauntEventView;
 
 
 import javax.swing.text.View;
@@ -27,13 +29,16 @@ public class GameView {
 	private CharacterSelectView characterSelectView;
 	private StartScreenView startScreenView;
 	private MainGameView mainGameView;
+	private EventView hauntEventView;
 
 	public GameView(Game game) {
 		root = new Group();
 		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
+		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
 		startScreenView.viewToFront();
+		hauntEventView.viewToFront();
 
 	}
 

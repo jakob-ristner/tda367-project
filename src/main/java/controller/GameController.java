@@ -28,7 +28,7 @@ public class GameController implements GameObserver{
         startScreenView = view.getStartScreenView();
         startScreenController = new StartScreenController(game, startScreenView);
         startScreenController.setNextview(characterSelectView);
-        startScreenView.viewToFront();
+        //startScreenView.viewToFront();
 
         mainGameView = view.getMainGameView();
         characterSelectController.setNextView(mainGameView);

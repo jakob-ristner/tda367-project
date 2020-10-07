@@ -5,4 +5,9 @@ public class MoveEvent implements Event {
     public void activate() {
 
     }
+
+    @Override
+    public int getEventType() {
+        return 0;
+    }
 }
