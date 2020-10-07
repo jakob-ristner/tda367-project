@@ -20,8 +20,6 @@ public class Gastuen extends Application
 	private GameController controller;
 	public static void main(String[] args) {
 
-		XMLParser parser = new XMLParser();
-
 		launch(args);
 	}
 

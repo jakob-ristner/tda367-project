@@ -1,25 +1,25 @@
 <events>
     <event id="0">
-        <eventType>Item</eventType>
+        <eventType>1</eventType>
         <speed>1</speed>
         <sanity>1</sanity>
-        <strenght>1</strenght>
+        <strength>1</strength>
         <stamina>1</stamina>
         <eventText>You found an item it gives you </eventText>
     </event>
 
     <event id="1">
-        <eventType>diceRoll</eventType>
+        <eventType>2</eventType>
         <eventThreshold>0.5</eventThreshold>
         <speed>-1</speed>
         <sanity>-1</sanity>
-        <strenght>-1</strenght>
+        <strength>-1</strength>
         <stamina>-1</stamina>
         <eventText>Fight the spider, to win roll higher:</eventText>
     </event>
 
     <event id = "3">
-        <eventType>moveEvent</eventType>
+        <eventType>3</eventType>
         <eventThreshold>0.5</eventThreshold>
         <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
         <floorDelta>-1</floorDelta>

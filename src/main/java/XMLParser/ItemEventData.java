@@ -6,6 +6,22 @@ public class ItemEventData extends EventData{
     private int speed;
     private int sanity;
 
+    public int getStamina() {
+        return stamina;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getSanity() {
+        return sanity;
+    }
+
     public ItemEventData(int stamina, int strength, int speed, int sanity, String eventText, int id, String eventType) {
         super(eventText, eventType, id);
         this.stamina = stamina;
