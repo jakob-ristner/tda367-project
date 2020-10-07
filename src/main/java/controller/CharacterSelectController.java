@@ -73,8 +73,7 @@ public class CharacterSelectController {
     }
 
     private void showNextView() {
-        //nextView.viewToFront();
-        System.out.println("next view");
+        nextView.viewToFront();
     }
 
     public void setNextView(ViewInterface nextView) {
