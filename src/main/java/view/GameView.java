@@ -13,6 +13,7 @@ import javafx.scene.*;
 
 import model.Game;
 
+
 import javax.swing.text.View;
 import java.awt.*;
 import java.sql.SQLOutput;
@@ -20,16 +21,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GameView {
-	public static final int WINDOW_H = 500;
-	public static final int WINDOW_W = 500;
+	public static final int WINDOW_H = 800;
+	public static final int WINDOW_W = 1300;
 	private Group root;
 	private CharacterSelectView characterSelectView;
 	private StartScreenView startScreenView;
+	private MainGameView mainGameView;
 
 	public GameView(Game game) {
 		root = new Group();
 		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
+		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
 		startScreenView.viewToFront();
 
 	}
@@ -46,6 +49,10 @@ public class GameView {
 		return startScreenView;
 	}
 
+	public ViewInterface getMainGameView() {
+		return mainGameView;
+	}
+
 	public void updateCurrentPlayerIndex(int index) {
 		characterSelectView.setCurrentPlayerText(index);
 	}
@@ -57,6 +64,14 @@ public class GameView {
 
 	public List<Text> getCharSelectTexts(){
 		return characterSelectView.getTexts();
+	}
+
+	public void updateMainGameViewMapData() {
+		mainGameView.updateMapData();
+	}
+
+	public void initMapData() {
+		mainGameView.initMapData();
 	}
 
 

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import model.Event;
 import model.Game;
 import view.GameView;
+import view.MainGameView;
 import view.ViewInterface;
 
 public class GameController implements GameObserver{
@@ -15,6 +16,7 @@ public class GameController implements GameObserver{
     private CharacterSelectController characterSelectController;
     private ViewInterface startScreenView;
     private StartScreenController startScreenController;
+    private ViewInterface mainGameView;
 
 
     public GameController(GameView view, Game game){
@@ -27,6 +29,9 @@ public class GameController implements GameObserver{
         startScreenController = new StartScreenController(game, startScreenView);
         startScreenController.setNextview(characterSelectView);
         startScreenView.viewToFront();
+
+        mainGameView = view.getMainGameView();
+        characterSelectController.setNextView(mainGameView);
     }
 
     private GameView getView(){
@@ -54,5 +59,15 @@ public class GameController implements GameObserver{
         view.updateCurrentPlayerIndex(game.getCurrentPlayerIndex());
         //view.updateTextNextToCharacter(checkButtonIndex(),game.getCurrentPlayerIndex()-1);
 
+    }
+
+    @Override
+    public void updateMapData() {
+        view.updateMainGameViewMapData();
+    }
+
+    @Override
+    public void initMapData() {
+        view.initMapData();
     }
 }
