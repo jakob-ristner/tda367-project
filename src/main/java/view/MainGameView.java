@@ -36,6 +36,7 @@ public class MainGameView implements ViewInterface{
     private List<Text> currentPlayerStats;
     private List<Coord> playerCoords;
     private int currentPlayerIndex;
+    private Text currentFloor;
 
 
 
@@ -118,6 +119,7 @@ public class MainGameView implements ViewInterface{
         initPlayerSprites();
         initPlayersPaneData();
         initStatsPane();
+        initFloorPane();
     }
 
     private void initPlayerSprites() {
@@ -160,6 +162,7 @@ public class MainGameView implements ViewInterface{
         currentplayer.setTextAlignment(TextAlignment.CENTER);
         currentplayer.setLayoutX(0);
         currentplayer.setLayoutY(50);
+        currentplayer.setStyle("-fx-font-size: 30");
 
         currentPlayerStats = new ArrayList<>();
         List<String> playerStatStrings = game.getCurrentPlayerStatsAsStrings();
@@ -170,10 +173,21 @@ public class MainGameView implements ViewInterface{
             currStatText.setTextAlignment(TextAlignment.CENTER);
             currStatText.setLayoutX(0);
             currStatText.setLayoutY(100 + i * 50);
+            currStatText.setStyle("-fx-font-size: 20");
             currentPlayerStats.add(currStatText);
             statsPane.getChildren().add(currStatText);
         }
         statsPane.getChildren().add(currentplayer);
+    }
+
+    private void initFloorPane() {
+        currentFloor = new Text("Showing Floor: " + (game.getCurrentPlayer().getFloor() + 1));
+        currentFloor.setWrappingWidth(height - 150);
+        currentFloor.setTextAlignment(TextAlignment.CENTER);
+        currentFloor.setLayoutX(0);
+        currentFloor.setLayoutY(50);
+        currentFloor.setStyle("-fx-font-size: 20");
+        floorPane.getChildren().add(currentFloor);
     }
 
 

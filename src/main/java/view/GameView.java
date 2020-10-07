@@ -12,7 +12,7 @@ import javafx.stage.*;
 import javafx.scene.*;
 
 import model.Game;
-import sun.applet.Main;
+
 
 import javax.swing.text.View;
 import java.awt.*;
