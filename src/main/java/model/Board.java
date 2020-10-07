@@ -49,7 +49,7 @@ public class Board {
 
     private List<Integer> randomIndexList(){
         indexList = new ArrayList<>();
-        for(int i = 0; i < eventFactory.getEvents().size(); i++){
+        for(int i = 0; i < events.size(); i++){
 
             indexList.add(i);
         }
