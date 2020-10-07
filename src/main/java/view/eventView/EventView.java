@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import view.ViewInterface;
 
 
@@ -13,6 +15,7 @@ public abstract class EventView implements ViewInterface {
     Pane rootPane;
     AnchorPane eventPane;
     TextArea eventText;
+    Text header;
 
     int width;
     int height;
@@ -36,8 +39,21 @@ public abstract class EventView implements ViewInterface {
         rootPane.getChildren().add(eventPane);
 
         eventText = new TextArea();
-        addNode(eventText);
+
         eventText.setPrefSize((width -dwidth)/2, (height -dheight)/2);
+        eventText.setLayoutX(eventPane.getLayoutX() + dwidth/3);
+        eventText.setLayoutY(eventPane.getLayoutY() - 50);
+        eventText.setText("Lorem Ipsum Dolar Sit Amet...");
+        eventText.setStyle("-fx-border-color: black; -fx-border-size: 2px;");
+        eventText.setEditable(false);
+        addNode(eventText);
+
+        header = new Text();
+        header.setX(eventPane.getPrefWidth()/3);
+        header.setY(eventPane.getMinHeight() + 50);
+        header.setTextAlignment(TextAlignment.CENTER);
+        header.setStyle("-fx-font-size: 20;");
+        addNode(header);
     }
 
 

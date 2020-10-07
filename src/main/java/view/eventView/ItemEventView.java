@@ -9,6 +9,10 @@ public class ItemEventView extends EventView {
     public ItemEventView(Group root, int width, int height) {
         super(root, width, height);
         eventButton = new Button();
+        eventButton.setPrefSize(eventText.getPrefWidth(), 50);
+        eventButton.setLayoutX(eventText.getLayoutX());
+        eventButton.setLayoutY(eventPane.getLayoutY() + 220);
+        addNode(eventButton);
     }
 
     @Override
