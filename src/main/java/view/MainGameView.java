@@ -8,6 +8,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import model.Game;
 import utilities.Coord;
 
@@ -30,10 +31,12 @@ public class MainGameView implements ViewInterface{
     //model representations
     private List<Circle> playerSprite;
     private List<Text> allPlayersList;
+    private Text currentPlayerIindicator;
     private Text currentplayer;
     private Text currentPlayerStats;
     private List<Coord> playerCoords;
     private int currentPlayerIndex;
+
 
 
     private Game game;
@@ -111,7 +114,9 @@ public class MainGameView implements ViewInterface{
     }
 
     public void initMapData() {
+        currentPlayerIndex = game.getCurrentPlayerIndex();
         initPlayerSprites();
+        initPlayersPaneData();
     }
 
     private void initPlayerSprites() {
@@ -127,7 +132,28 @@ public class MainGameView implements ViewInterface{
             mapPane.getChildren().add(currCircle);
             playerSprite.add(currCircle);
         }
-        playerSprite.get(0).setStyle("-fx-stroke: #ff0000; -fx-stroke-width: 2");
+        playerSprite.get(currentPlayerIndex).setStyle("-fx-stroke: #ff0000; -fx-stroke-width: 2");
+    }
+
+    private void initPlayersPaneData() {
+        allPlayersList = new ArrayList<>();
+        currentPlayerIindicator = new Text("->");
+        playersPane.getChildren().add(currentPlayerIindicator);
+        Text currText;
+        for (int i = 0; i < game.getPlayerAmount(); i++) {
+           currText = new Text("Player " + (i + 1));
+           currText.setWrappingWidth((width - (height - 150)) / 2);
+           currText.setTextAlignment(TextAlignment.CENTER);
+           currText.setLayoutX(0);
+           currText.setLayoutY(50 + i * ((height - 150) / 2)/ game.getPlayerAmount());
+           playersPane.getChildren().add(currText);
+           allPlayersList.add(currText);
+        }
+        currentPlayerIindicator.setLayoutX(5);
+        currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
+
+
+
     }
 
 
