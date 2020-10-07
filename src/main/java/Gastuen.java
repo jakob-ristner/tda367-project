@@ -26,6 +26,7 @@ public class Gastuen extends Application
 		modelInit();
 		viewInit(stage);
 		controllerInit();	//Testing if this placement works
+		game.setObserver(controller);
 		stage.show();
 	}
 

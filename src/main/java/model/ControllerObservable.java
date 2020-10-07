@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ControllerObservable {
-    public void registerObserver(GameObserver observer);
-    public void notifyNewTurn();
+    public void setObserver(GameObserver observer);
+    public void notifyNewTurn(); // might be unecessary
     public void notifyGameEvent();
     public void notifyGameStart();
 }
