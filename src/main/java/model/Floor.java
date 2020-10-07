@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Floor {
+    private EventFactory eventFactory;
     private Tile[][] tiles= new Tile[6][6];
     private List<Tile> roomList = new ArrayList<>();
     private Random rand = new Random();
@@ -27,6 +28,7 @@ public class Floor {
 
     public void generateStairs(){
     }
+
 
    public void addEventsRandom(List<Event> eventList){
         int col;

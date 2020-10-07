@@ -9,9 +9,9 @@ public class Board {
     private Floor basementFloor;
     private Floor upperFloor;
      */
-    private List<Event> eventList = new ArrayList<>();
+    private EventFactory eventFactory;
     private int eventPerFloor = 5;
-    private List<Integer> indexList = new ArrayList<>();
+    private List<Integer> indexList;
     Random rand = new Random();
     private final int numberOfFloors = 3;
     private List<Floor> floors = new ArrayList<>();
@@ -26,23 +26,31 @@ public class Board {
         }
 
     }
+    public void createEvents(){
+        eventFactory = new EventFactory();
+        eventFactory.createEvent(new String("parserDoSomething"),eventPerFloor*numberOfFloors);
+    }
+
 
     public Floor getFloor(int i){
         return floors.get(i);
     }
 
-    private void randomIndexList(){
-        for(int i = 0; i < eventList.size(); i++){
+    private List<Integer> randomIndexList(){
+        indexList = new ArrayList<>();
+        for(int i = 0; i < eventFactory.getEvents().size(); i++){
             indexList.add(i);
         }
+        return indexList;
     }
 
     private List<Event> generateEventList(){
            int index;
+           indexList = randomIndexList();
            List<Event> floorEventList = new ArrayList<>();
            for(int i = 0; i < eventPerFloor; i++){
                index = rand.nextInt(indexList.size());
-               floorEventList.add(eventList.get(indexList.get(index)));
+               floorEventList.add(eventFactory.getEvents().get(indexList.get(index)));
                indexList.remove(index);
            }
            return floorEventList;
