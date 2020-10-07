@@ -63,8 +63,10 @@ public class CharacterSelectController {
         texts.get(index).setText("Chosen by Player " + (game.getCurrentPlayerIndex()+1));
         game.updateCurrentPlayer();
         deActivateButton(button);
-        if (game.checkAllPlayersHaveChars())
+        if (game.checkAllPlayersHaveChars()) {
+            gameIinitMapData();
             showNextView();
+        }
     }
 
 
@@ -73,15 +75,16 @@ public class CharacterSelectController {
     }
 
     private void showNextView() {
-        //nextView.viewToFront();
-        System.out.println("next view");
+        nextView.viewToFront();
     }
 
     public void setNextView(ViewInterface nextView) {
         this.nextView = nextView;
     }
 
-
+    private void gameIinitMapData() {
+        game.notifyGameStart();
+    }
 
 
 }
