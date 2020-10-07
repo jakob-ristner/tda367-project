@@ -1,6 +1,7 @@
 package model;
 
 import controller.GameObserver;
+import utilities.Coord;
 
 import java.util.*;
 
@@ -12,14 +13,10 @@ public class Game implements ControllerObservable{
     private List<GameState> listOfHaunts = new ArrayList<>();
     GameState insanityHaunt;
 
-
-
     private Board board;
     private static Game gameInstance;
 
     private static boolean isInstanciated = false;
-
-
 
     private int playerAmount;
     private GameState gameState;
@@ -70,9 +67,13 @@ public class Game implements ControllerObservable{
     }
     //Must it be private?
     public void createPlayers(int amountPlayers) {
+        Player currPlayer;
         playerList = new ArrayList<>();
-        for (int i = 0; i < amountPlayers; i++)
-            playerList.add(new Player());
+        for (int i = 0; i < amountPlayers; i++) {
+            currPlayer = new Player();
+            currPlayer.setPos(new Coord(i, 0, 0));
+            playerList.add(currPlayer);
+        }
     }
 
     private void runCharacterSelectScreen() {
@@ -227,6 +228,13 @@ public class Game implements ControllerObservable{
             observer.updateMapData();
     }
 
+    @Override
+    public void notifyGameStart() {
+        for (GameObserver observer: observers) {
+            observer.initMapData();
+        }
+    }
+
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
     }
@@ -237,5 +245,12 @@ public class Game implements ControllerObservable{
                 return false;
         }
         return true;
+    }
+
+    public List<Coord> getPlayerPositions() {
+        List<Coord> playerPositions = new ArrayList<>();
+        for (Player player: playerList)
+            playerPositions.add(player.getPos());
+        return playerPositions;
     }
 }

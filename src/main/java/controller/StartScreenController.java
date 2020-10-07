@@ -30,6 +30,7 @@ public class StartScreenController {
             @Override
             public void handle(ActionEvent actionEvent) {
                     setGamePlayerAmount(intInput.getValue());
+                    initMapData();
                     showNextView();
             }
         });
@@ -55,6 +56,10 @@ public class StartScreenController {
 
     private void showNextView() {
         nextview.viewToFront();
+    }
+
+    private void initMapData() {
+        game.notifyGameStart();
     }
 
 }

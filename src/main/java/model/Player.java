@@ -26,6 +26,14 @@ public class Player {
         return pos.getX();
     }
 
+    public void setPos(Coord pos) {
+        this.pos = pos;
+    }
+
+    public Coord getPos() {
+        return pos;
+    }
+
     public boolean hasCharacter;
 
     private int steps;

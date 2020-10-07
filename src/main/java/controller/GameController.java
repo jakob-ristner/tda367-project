@@ -65,4 +65,9 @@ public class GameController implements GameObserver{
     public void updateMapData() {
         view.updateMainGameViewMapData();
     }
+
+    @Override
+    public void initMapData() {
+        view.initMapData();
+    }
 }

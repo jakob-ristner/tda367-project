@@ -9,4 +9,5 @@ public interface ControllerObservable {
     public void registerObserver(GameObserver observer);
     public void notifyNewTurn();
     public void notifyGameEvent();
+    public void notifyGameStart();
 }

@@ -25,12 +25,16 @@ public class MainGameView implements ViewInterface{
     private AnchorPane inventoryPane;
     private AnchorPane floorPane;
 
+    private int rectSize;
+
     //model representations
-    private List<Circle> playerReps;
-    List<Text> allPlayersList;
-    Text currentplayer;
-    Text currentPlayerStats;
-    List<Coord> playerCoords;
+    private List<Circle> playerSprite;
+    private List<Text> allPlayersList;
+    private Text currentplayer;
+    private Text currentPlayerStats;
+    private List<Coord> playerCoords;
+    private int currentPlayerIndex;
+
 
     private Game game;
     List<List<Rectangle>> tileViews;
@@ -91,7 +95,7 @@ public class MainGameView implements ViewInterface{
     private void initTileViews() {
         tileViews = new ArrayList<>();
         Rectangle currentRect;
-        int rectSize = (height - 150) / 6;
+        rectSize = (height - 150) / 6;
         for(int i = 0; i < 6; i++) {
             tileViews.add(new ArrayList<Rectangle>());
             for (int k = 0; k < 6; k++) {
@@ -106,9 +110,31 @@ public class MainGameView implements ViewInterface{
 
     }
 
+    public void initMapData() {
+        initPlayerSprites();
+    }
+
+    private void initPlayerSprites() {
+        Circle currCircle;
+        playerSprite = new ArrayList<>();
+        playerCoords = game.getPlayerPositions();
+        for (int i = 0; i < game.getPlayerAmount(); i++) {
+            currCircle = new Circle();
+            currCircle.setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
+            currCircle.setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
+            currCircle.setRadius(15);
+            currCircle.setFill(Color.BLUE);
+            mapPane.getChildren().add(currCircle);
+            playerSprite.add(currCircle);
+        }
+        playerSprite.get(0).setStyle("-fx-stroke: #ff0000; -fx-stroke-width: 2");
+    }
+
+
     public void updateMapData() {
 
     }
+
 
 
     @Override

@@ -70,5 +70,9 @@ public class GameView {
 		mainGameView.updateMapData();
 	}
 
+	public void initMapData() {
+		mainGameView.initMapData();
+	}
+
 
 }
