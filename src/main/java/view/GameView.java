@@ -38,7 +38,7 @@ public class GameView {
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
 		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
 		startScreenView.viewToFront();
-		hauntEventView.viewToFront();
+		//hauntEventView.viewToFront(); //For testing of the eventViews
 
 	}
 
