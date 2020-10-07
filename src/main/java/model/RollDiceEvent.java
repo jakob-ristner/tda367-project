@@ -6,4 +6,9 @@ public class RollDiceEvent implements Event {
     public void activate() {
 
     }
+
+    @Override
+    public int getEventType() {
+        return 0;
+    }
 }

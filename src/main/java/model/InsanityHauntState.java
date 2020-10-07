@@ -3,9 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class InsanityHauntState implements GameState {
     Game game;
+    int numEscapeHatch = 4;
+    Random rand = new Random();
+
     public InsanityHauntState(){
 
     }
@@ -14,6 +18,7 @@ public class InsanityHauntState implements GameState {
     @Override //Method for initing haunt, in this case, spawning the escape hatches
     public void init() {
         game = Game.getInstance(); //Not sure if this will work.
+        createEscapeHatches();
     }
 
 
@@ -23,6 +28,19 @@ public class InsanityHauntState implements GameState {
             combat();
         }
         winConditionChecker();
+    }
+
+
+    private void createEscapeHatches(){
+        Tile tile;
+        int i = 0;
+        while(i < numEscapeHatch) {
+            tile = game.getBoard().getFloor(1).getTile(rand.nextInt(6), rand.nextInt(6));
+            if (!tile.hasEvent()) {
+                tile.setEvent(new ItemEvent()); //Change so that EventFactory has a factory for hauntEvents
+                i++;
+            }
+        }
     }
 
     public void combat(){
@@ -49,5 +67,6 @@ public class InsanityHauntState implements GameState {
         if(game.getPlayerList().isEmpty()){
             System.out.println("Monster Won");
         }
+
     }
 }

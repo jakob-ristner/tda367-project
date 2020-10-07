@@ -7,6 +7,8 @@ import javafx.scene.text.Text;
 import javafx.scene.*;
 
 import model.Game;
+import view.eventView.EventView;
+import view.eventView.HauntEventView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,7 @@ public class GameView {
 	private CharacterSelectView characterSelectView;
 	private StartScreenView startScreenView;
 	private MainGameView mainGameView;
+	private EventView hauntEventView;
 
 	public GameView(Game game) {
 		root = new Group();
@@ -26,7 +29,11 @@ public class GameView {
 		characterSelectView.initButton(game.getCharacterNames());
 		characterSelectView.initText(game.getCharacterStats());
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
+		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
 		startScreenView.viewToFront();
+
+		//hauntEventView.viewToFront(); //For testing of the eventViews
+
 	}
 
 	public Group getRoot() {
