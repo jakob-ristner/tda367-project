@@ -1,24 +1,15 @@
 package view;
 
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Spinner;
 import javafx.scene.text.Text;
-import javafx.stage.*;
 import javafx.scene.*;
 
 import model.Game;
 import view.eventView.EventView;
 import view.eventView.HauntEventView;
 
-
-import javax.swing.text.View;
-import java.awt.*;
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,11 +24,14 @@ public class GameView {
 
 	public GameView(Game game) {
 		root = new Group();
-		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
+		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H);
+		characterSelectView.initButton(game.getCharacterNames());
+		characterSelectView.initText(game.getCharacterStats());
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
 		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
 		startScreenView.viewToFront();
+
 		//hauntEventView.viewToFront(); //For testing of the eventViews
 
 	}
@@ -62,15 +56,6 @@ public class GameView {
 		characterSelectView.setCurrentPlayerText(index);
 	}
 
-
-	public HashMap<Integer, Button> getCharSelectButtons(){
-		return characterSelectView.getButtonMap();
-	}
-
-	public List<Text> getCharSelectTexts(){
-		return characterSelectView.getTexts();
-	}
-
 	public void updateMainGameViewMapData() {
 		mainGameView.updateMapData();
 	}
@@ -79,5 +64,22 @@ public class GameView {
 		mainGameView.initMapData();
 	}
 
+
+	//View element getters
+	public Button getStartScreenConfirmButton() {
+		return startScreenView.getButton();
+	}
+
+	public Spinner<Integer> getStartScreenIntInput() {
+		return startScreenView.getIntInput();
+	}
+
+	public List<Text> getCharSelectTexts(){
+		return characterSelectView.getTexts();
+	}
+
+	public HashMap<Integer, Button> getCharSelectButtons(){
+		return characterSelectView.getButtonMap();
+	}
 
 }

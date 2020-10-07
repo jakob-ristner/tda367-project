@@ -1,4 +1,5 @@
 
+import XMLParser.XMLParser;
 import controller.GameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,6 +20,8 @@ public class Gastuen extends Application
 	private GameController controller;
 	public static void main(String[] args) {
 
+		XMLParser xmlParser = new XMLParser();
+
 		launch(args);
 	}
 
@@ -26,6 +29,7 @@ public class Gastuen extends Application
 		modelInit();
 		viewInit(stage);
 		controllerInit();	//Testing if this placement works
+		game.setObserver(controller);
 		stage.show();
 	}
 

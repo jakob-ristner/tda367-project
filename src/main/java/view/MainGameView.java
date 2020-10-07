@@ -55,7 +55,6 @@ public class MainGameView implements ViewInterface{
         this.game = game;
         initPanes();
         initTileViews();
-        game.notifyGameEvent();
     }
 
     private void initPanes() {
@@ -111,7 +110,6 @@ public class MainGameView implements ViewInterface{
                 tileViews.get(i).add(currentRect);
             }
         }
-
     }
 
     public void initMapData() {

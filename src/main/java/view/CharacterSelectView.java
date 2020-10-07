@@ -11,39 +11,59 @@ import model.Stat; //Måste lyfta ut från packet?
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
-
 
 public class CharacterSelectView implements ViewInterface{
     private Pane pane;
+
+    private int width;
+    private int height;
+    private int buttonSpacing;
+
     private Text text;
     private Text playerText;
-    private Button character1Button;
-    private Button character2Button;
-    private Button character3Button;
-    private Button character4Button;
+    private List<Text> textsPlayer;
+    private List<Text> textsStats;
+    private List<HashMap<Stat, Integer>> statList;
     private HashMap<Integer, Button> buttonMap;
 
-    private Text textNextToButton1;
-    private Text textNextToButton2;
-    private Text textNextToButton3;
-    private Text textNextToButton4;
-    private List<Text> textsPlayer;
-
-    private Text statsNextToButton1;
-    private Text statsNextToButton2;
-    private Text statsNextToButton3;
-    private Text statsNextToButton4;
-    private List<Text> textsStats;
-
-
-
-
-
-
-    public CharacterSelectView(Group root, int width, int height, List<String> characterNames, List< HashMap<Stat, Integer>> stats){
+    public CharacterSelectView(Group root, int width, int height){
+        this.width = width;
+        this.height = height;
+        buttonSpacing = 70;
 
         pane = new Pane();
+        pane.setPrefSize(width, height);
+        pane.setStyle("-fx-background-color: green"); // temporary
+        root.getChildren().add(pane);
+    }
+
+
+    public void initButton(List<String> characterNames){
+        buttonMap = new HashMap<>();        //HashMap for access to buttons in Controller
+
+        Button currButton;
+        for (int i = 0; i < characterNames.size(); i++) {
+            currButton = new Button();
+            currButton.setLayoutX(width / 2);
+            currButton.setLayoutY(height / 2 + i * buttonSpacing);
+            currButton.setPrefSize(200, 30);
+            currButton.setText(characterNames.get(i));
+            addNode(currButton);
+            buttonMap.put(i, currButton);//One button for each char
+        }
+    }
+
+    public void initText(List< HashMap<Stat, Integer>> statList){
+        this.statList = statList;
+
+        playerText = new Text();
+        playerText.setText("It's Player 1:s turn!");
+        playerText.setWrappingWidth(300);
+        playerText.setTextAlignment(TextAlignment.CENTER);
+        playerText.setLayoutX(width / 2 - playerText.getWrappingWidth() / 2);
+        playerText.setLayoutY(150);
+        addNode(playerText);
+
         text = new Text("Choose your character");
         text.setStyle("-fx-font-size: 40px;");
         text.setWrappingWidth(300);
@@ -52,83 +72,48 @@ public class CharacterSelectView implements ViewInterface{
         text.setLayoutY(50);
         addNode(text);
 
-        initButton(characterNames);
-
-        initText(stats);
-
-        playerText = new Text();
-        playerText.setText("It's Player 1:s turn!");
-        playerText.setWrappingWidth(300);
-        playerText.setTextAlignment(TextAlignment.CENTER);
-        playerText.setLayoutX(width / 2 - text.getWrappingWidth() / 2);
-        playerText.setLayoutY(150);
-        addNode(playerText);
-
-        root.getChildren().add(pane);
-
-        pane.setPrefSize(width, height);
-        pane.setStyle("-fx-background-color: green");
-    }
-
-    private void initButton(List<String> characterNames){
-        character1Button = new Button();
-        character2Button = new Button();
-        character3Button = new Button();
-        character4Button = new Button();
-        buttonMap = new HashMap<>();        //HashMap for access to buttons in Controller
-
-        buttonMap.put(0,character1Button);  //With the Integer Key the controller knows which button is which.
-        buttonMap.put(1,character2Button);
-        buttonMap.put(2,character3Button);
-        buttonMap.put(3,character4Button);
-
-
-        for(int i = 0; i < buttonMap.size(); i++){
-            buttonMap.get(i).setLayoutX(200);
-            buttonMap.get(i).setLayoutY(200 + 50*i);
-            buttonMap.get(i).setPrefSize(100, 30);
-            buttonMap.get(i).setText(characterNames.get(i));
-            addNode(buttonMap.get(i));
-        }
-    }
-    private void initText(List< HashMap<Stat, Integer>> stats){
-        textNextToButton1 = new Text();
-        textNextToButton2 = new Text();
-        textNextToButton3 = new Text();
-        textNextToButton4 = new Text();
         textsPlayer = new ArrayList<>();
-
-        textsPlayer.add(textNextToButton1);
-        textsPlayer.add(textNextToButton2);
-        textsPlayer.add(textNextToButton3);
-        textsPlayer.add(textNextToButton4);
-
-
-        for(int i = 0; i<textsPlayer.size(); i++){
-            textsPlayer.get(i).setLayoutX(buttonMap.get(i).getLayoutX() + 120);
-            textsPlayer.get(i).setLayoutY(buttonMap.get(i).getLayoutY());
-            addNode(textsPlayer.get(i));
-        }
-        statsNextToButton1 = new Text();
-        statsNextToButton2 = new Text();
-        statsNextToButton3 = new Text();
-        statsNextToButton4 = new Text();
         textsStats = new ArrayList<>();
 
-        textsStats.add(statsNextToButton1);
-        textsStats.add(statsNextToButton2);
-        textsStats.add(statsNextToButton3);
-        textsStats.add(statsNextToButton4);
+        Text currPlayerText;
+        Text currStatText;
+        int refButtonX;
+        int refButtonY;
+        for (int i = 0; i < buttonMap.size(); i++) {
+            refButtonX = (int) buttonMap.get(i).getLayoutX();
+            refButtonY = (int) buttonMap.get(i).getLayoutY();
 
-        for(int i = 0; i<textsStats.size(); i++){
-            textsStats.get(i).setLayoutX(buttonMap.get(i).getLayoutX() - 180);
-            textsStats.get(i).setLayoutY(buttonMap.get(i).getLayoutY() + 20);
-            textsStats.get(i).setText("Str: "+(stats.get(i).get(Stat.STRENGTH).toString())+ "  " +"Spe: "+stats.get(i).get(Stat.SPEED).toString()+ "  "+ "San " + stats.get(i).get(Stat.SANITY).toString()+ "  "+ "Stam: " + stats.get(i).get(Stat.STRENGTH).toString());
-            addNode(textsStats.get(i));
+
+            currPlayerText = new Text();
+            currPlayerText.setWrappingWidth(200);
+            currPlayerText.setTextAlignment(TextAlignment.CENTER);
+            currPlayerText.setLayoutX(refButtonX + 200);
+            currPlayerText.setLayoutY(refButtonY + 20);
+            addNode(currPlayerText);
+            textsPlayer.add(currPlayerText);
+
+            currStatText = new Text();
+            currStatText.setWrappingWidth(180);
+            currStatText.setTextAlignment(TextAlignment.CENTER);
+            currStatText.setLayoutX(refButtonX - 180);
+            currStatText.setLayoutY(refButtonY + 20);
+            currStatText.setText(getAllStatsAsString(i));
+            addNode(currStatText);
+            textsStats.add(currStatText);
         }
+    }
 
+    private String getStatAsString(int statListIndex, Stat stat) {
+        return statList.get(statListIndex).get(stat).toString();
+    }
 
-
+    private String getAllStatsAsString(int statListIndex) {
+        String allStats= "";
+        allStats += ("Str: " + getStatAsString(statListIndex, Stat.STRENGTH));
+        allStats += ("  Spe: " + getStatAsString(statListIndex, Stat.SPEED));
+        allStats += ("  San: " + getStatAsString(statListIndex, Stat.SANITY));
+        allStats += ("  Stam: " + getStatAsString(statListIndex, Stat.STRENGTH));
+        return allStats;
     }
 
 

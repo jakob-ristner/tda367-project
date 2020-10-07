@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Game implements ControllerObservable{
 
-    private List<GameObserver> observers;
+    private GameObserver observer;
     private List<Player> playerList;
     private List<Kharacter> characterList;
     private List<GameState> listOfHaunts = new ArrayList<>();
@@ -27,13 +27,9 @@ public class Game implements ControllerObservable{
 
 
     private Game() {
-
         board = new Board();
         listOfHaunts.add(new InsanityHauntState());
-
-        observers = new ArrayList<>();
         createCharaters();
-
     }
 
     //SingeltonPattern
@@ -203,36 +199,30 @@ public class Game implements ControllerObservable{
             currentPlayerIndex--;
         }
         currentPlayerIndex = currentPlayerIndex % playerAmount;
-        for (GameObserver observer : observers)
-            observer.updateCurrentPlayer();
+        observer.updateCurrentPlayer();
         if (currentPlayerIndex == 0)
             notifyNewTurn();
     }
 
 
     @Override
-    public void registerObserver(GameObserver observer) {
-        observers.add(observer);
+    public void setObserver(GameObserver observer) {
+        this.observer = observer;
     }
 
     @Override
     public void notifyNewTurn() { //TODO change to only one observer not list
-        for (GameObserver observer: observers) {
-            observer.update();
-        }
+        observer.updateTurn();
     }
 
     @Override
     public void notifyGameEvent() {
-        for (GameObserver observer: observers)
-            observer.updateMapData();
+        observer.updateMapData();
     }
 
     @Override
     public void notifyGameStart() {
-        for (GameObserver observer: observers) {
-            observer.initMapData();
-        }
+        observer.initMapData();
     }
 
     public int getCurrentPlayerIndex() {
