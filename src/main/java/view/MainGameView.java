@@ -5,7 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import model.Game;
+import utilities.Coord;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,18 +24,30 @@ public class MainGameView implements ViewInterface{
     private AnchorPane playersPane;
     private AnchorPane inventoryPane;
     private AnchorPane floorPane;
+
+    //model representations
+    private List<Circle> playerReps;
+    List<Text> allPlayersList;
+    Text currentplayer;
+    Text currentPlayerStats;
+    List<Coord> playerCoords;
+
+    private Game game;
     List<List<Rectangle>> tileViews;
 
 
 
-    public MainGameView(Group root, int width, int height) {
+
+    public MainGameView(Group root, int width, int height, Game game) {
         rootPane = new Pane();
         rootPane.setPrefSize(width, height);
         root.getChildren().add(rootPane);
         this.width = width;
         this.height = height;
+        this.game = game;
         initPanes();
         initTileViews();
+        game.notifyGameEvent();
     }
 
     private void initPanes() {
@@ -82,11 +98,15 @@ public class MainGameView implements ViewInterface{
                 currentRect = new Rectangle(rectSize, rectSize);
                 currentRect.setX(i * rectSize);
                 currentRect.setY(k * rectSize);
-                currentRect.setStyle(" -fx-fill: white; -fx-border-style: solid; -fx-border-width: 5; -fx-border-color: black;");
+                currentRect.setStyle(" -fx-fill: black; -fx-stroke: white; -fx-stroke-width: 5;");
                 mapPane.getChildren().add(currentRect);
                 tileViews.get(i).add(currentRect);
             }
         }
+
+    }
+
+    public void updateMapData() {
 
     }
 

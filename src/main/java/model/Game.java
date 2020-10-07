@@ -215,10 +215,16 @@ public class Game implements ControllerObservable{
     }
 
     @Override
-    public void notifyNewTurn() {
+    public void notifyNewTurn() { //TODO change to only one observer not list
         for (GameObserver observer: observers) {
             observer.update();
         }
+    }
+
+    @Override
+    public void notifyGameEvent() {
+        for (GameObserver observer: observers)
+            observer.updateMapData();
     }
 
     public int getCurrentPlayerIndex() {

@@ -32,7 +32,7 @@ public class GameView {
 		root = new Group();
 		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
-		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H);
+		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
 		startScreenView.viewToFront();
 
 	}
@@ -64,6 +64,10 @@ public class GameView {
 
 	public List<Text> getCharSelectTexts(){
 		return characterSelectView.getTexts();
+	}
+
+	public void updateMainGameViewMapData() {
+		mainGameView.updateMapData();
 	}
 
 

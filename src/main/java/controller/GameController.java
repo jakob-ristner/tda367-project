@@ -60,4 +60,9 @@ public class GameController implements GameObserver{
         //view.updateTextNextToCharacter(checkButtonIndex(),game.getCurrentPlayerIndex()-1);
 
     }
+
+    @Override
+    public void updateMapData() {
+        view.updateMainGameViewMapData();
+    }
 }
