@@ -11,7 +11,7 @@ public class Board {
      */
     private EventFactory eventFactory;
     private int eventPerFloor = 5;
-    private List<Integer> indexList = new ArrayList<>();
+    private List<Integer> indexList;
     Random rand = new Random();
     private final int numberOfFloors = 3;
     private List<Floor> floors = new ArrayList<>();
@@ -36,14 +36,17 @@ public class Board {
         return floors.get(i);
     }
 
-    private void randomIndexList(){
+    private List<Integer> randomIndexList(){
+        indexList = new ArrayList<>();
         for(int i = 0; i < eventFactory.getEvents().size(); i++){
             indexList.add(i);
         }
+        return indexList;
     }
 
     private List<Event> generateEventList(){
            int index;
+           indexList = randomIndexList();
            List<Event> floorEventList = new ArrayList<>();
            for(int i = 0; i < eventPerFloor; i++){
                index = rand.nextInt(indexList.size());
