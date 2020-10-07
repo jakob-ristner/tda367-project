@@ -1,4 +1,5 @@
 
+import XMLParser.XMLParser;
 import controller.GameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,6 +19,8 @@ public class Gastuen extends Application
 	private Game game;
 	private GameController controller;
 	public static void main(String[] args) {
+
+		XMLParser xmlParser = new XMLParser();
 
 		launch(args);
 	}
