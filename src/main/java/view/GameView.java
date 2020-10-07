@@ -22,7 +22,9 @@ public class GameView {
 	public GameView(Game game) {
 		root = new Group();
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
-		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H, game.getCharacterNames(),game.getCharacterStats());
+		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H);
+		characterSelectView.initButton(game.getCharacterNames());
+		characterSelectView.initText(game.getCharacterStats());
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
 		startScreenView.viewToFront();
 	}
