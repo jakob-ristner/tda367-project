@@ -1,0 +1,39 @@
+##### Meeting Agenda
+
+Group: Gastuen
+Date: 2020-10-07
+Chair: Jakob
+Participants: Karl Gunnarsson, David Andreasson, Jakob Ristner, Jakob Henriksson, Erik Berg
+
+
+#####Objectives(5 min)
+-Start working on gameScreen
+-Start working on event structure
+-Start working on xml-parser
+-Continue working on game logic (haunt states)
+
+
+
+######### Reports(15 min)
+-Peer review finished.
+-First version of Rad, SSD has been finished.
+
+
+
+####### Discussion Items(35 min)
+-What should the eventFactory look like?- Three different methods to avoid checking strings, specific constructors have yet to be specified because we are not
+finished with the xml parser yet. 
+-Structure of the xml parser-resulted in having multiple data classes.
+-Adding "getEventType" to EventInterface so that the view can know which event has been triggered (in case we add a button). Will check ints from XML to check which
+event has been triggered.
+-Boolean with side effect or not? -decided not to, goes against an oop principle.
+
+
+## Outcomes and assignments (5 min)
+-Continue working on gameScreen
+-Continue working on event structure
+-Continue working on xml-parser
+-Continue working on game logic (haunt states)
+
+## Wrap up
+Next meeting is with the supervisor. 
