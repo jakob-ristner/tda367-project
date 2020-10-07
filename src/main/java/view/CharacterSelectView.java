@@ -33,6 +33,7 @@ public class CharacterSelectView implements ViewInterface{
     private Text statsNextToButton3;
     private Text statsNextToButton4;
     private List<Text> textsStats;
+    private List<HashMap<Stat, Integer>> statList;
 
 
 
@@ -89,7 +90,8 @@ public class CharacterSelectView implements ViewInterface{
             addNode(buttonMap.get(i));
         }
     }
-    private void initText(List< HashMap<Stat, Integer>> stats){
+    private void initText(List< HashMap<Stat, Integer>> statList){
+        this.statList = statList;
         textNextToButton1 = new Text();
         textNextToButton2 = new Text();
         textNextToButton3 = new Text();
@@ -121,12 +123,23 @@ public class CharacterSelectView implements ViewInterface{
         for(int i = 0; i<textsStats.size(); i++){
             textsStats.get(i).setLayoutX(buttonMap.get(i).getLayoutX() - 180);
             textsStats.get(i).setLayoutY(buttonMap.get(i).getLayoutY() + 20);
-            textsStats.get(i).setText("Str: "+(stats.get(i).get(Stat.STRENGTH).toString())+ "  " +"Spe: "+stats.get(i).get(Stat.SPEED).toString()+ "  "+ "San " + stats.get(i).get(Stat.SANITY).toString()+ "  "+ "Stam: " + stats.get(i).get(Stat.STRENGTH).toString());
+            textsStats.get(i).setText(getAllStatsAsString(i));
             addNode(textsStats.get(i));
         }
 
+    }
 
+    private String getStatAsString(int statListIndex, Stat stat) {
+        return statList.get(statListIndex).get(stat).toString();
+    }
 
+    private String getAllStatsAsString(int statListIndex) {
+        String allStats= "";
+        allStats += ("Str: " + getStatAsString(statListIndex, Stat.STRENGTH));
+        allStats += ("  Spe: " + getStatAsString(statListIndex, Stat.SPEED));
+        allStats += ("  San: " + getStatAsString(statListIndex, Stat.SANITY));
+        allStats += ("  Stam: " + getStatAsString(statListIndex, Stat.STRENGTH));
+        return allStats;
     }
 
 
