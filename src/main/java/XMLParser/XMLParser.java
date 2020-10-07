@@ -21,7 +21,7 @@ public class XMLParser {
     public XMLParser()  {
 
         String eventText;
-        String eventType;
+        int eventType;
         int id;
         int stamina;
         int strength;
@@ -39,21 +39,15 @@ public class XMLParser {
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(xmlFile);
             document.getDocumentElement().normalize();
-            System.out.println("Root " + document.getDocumentElement().getNodeName());
             NodeList nodeList = document.getElementsByTagName("event");
-            System.out.println("......................................");
 
             for (int i = 0; i < nodeList.getLength(); i++) {
 
+               element = (Element) nodeList.item(i);
 
-
-               Node node = nodeList.item(i);
-               System.out.println("\nCurrent element: " + node.getNodeName());
-               element = (Element) node;
-
-                if ( parseInt(getElement("eventType")) == 1){
+                if ( parseInt(getElement("eventType")) == -1){
                     id = parseInt(element.getAttribute("id"));
-                    eventType = getElement("eventType");
+                    eventType = parseInt(getElement("eventType"));
                     eventText = getElement("eventText");
                     stamina = parseInt(getElement("stamina"));
                     strength = parseInt(getElement("strength"));
@@ -63,9 +57,21 @@ public class XMLParser {
 
                     itemEventList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType));
                 }
-                if (parseInt(getElement("eventType")) == 3){
+                if (parseInt(getElement("eventType")) == -2){
                     id = parseInt(element.getAttribute("id"));
-                    eventType = getElement("eventType");
+                    eventThreshold = Double.parseDouble(getElement("eventThreshold"));
+                    eventType = parseInt(getElement("eventType"));
+                    eventText = getElement("eventText");
+                    stamina = parseInt(getElement("stamina"));
+                    strength = parseInt(getElement("strength"));
+                    speed = parseInt(getElement("speed"));
+                    sanity = parseInt(getElement("sanity"));
+
+                    rollEventList.add(new RollEventData(stamina,strength,speed,sanity,eventThreshold,eventText,id,eventType));
+                }
+                if (parseInt(getElement("eventType")) == -3){
+                    id = parseInt(element.getAttribute("id"));
+                    eventType = parseInt(getElement("eventType"));
                     eventText = getElement("eventText");
                     eventThreshold = Double.parseDouble(getElement("eventThreshold"));
                     deltaX = parseInt(getElement("deltaX"));
@@ -75,18 +81,7 @@ public class XMLParser {
                     moveEventList.add(new MoveEventData(eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
                 }
 
-                if (parseInt(getElement("eventType")) == 2){
-                    id = parseInt(element.getAttribute("id"));
-                    eventThreshold = Double.parseDouble(getElement("eventThreshold"));
-                    eventType = getElement("eventType");
-                    eventText = getElement("eventText");
-                    stamina = parseInt(getElement("stamina"));
-                    strength = parseInt(getElement("strength"));
-                    speed = parseInt(getElement("speed"));
-                    sanity = parseInt(getElement("sanity"));
 
-                    rollEventList.add(new RollEventData(stamina,strength,speed,sanity,eventThreshold,eventText,id,eventType));
-                }
 
 
                 /*
@@ -118,21 +113,32 @@ public class XMLParser {
 
     private void printList(){
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-        System.out.println(moveEventList.get(0).getDeltaFloor());
-        System.out.println(moveEventList.get(0).getDeltaX());
-        System.out.println(moveEventList.get(0).getDeltaY());
-        System.out.println(moveEventList.get(0).getEventThreshold());
+        System.out.println(itemEventList.get(0).getEventType());
+        System.out.println(itemEventList.get(0).getEventText());
+        System.out.println(itemEventList.get(0).getId());
+        System.out.println(itemEventList.get(0).getSanity());
+        System.out.println(itemEventList.get(0).getSpeed());
+        System.out.println(itemEventList.get(0).getStamina());
+        System.out.println(itemEventList.get(0).getStrength());
         System.out.println("--------------------------------------------------------");
+        System.out.println(rollEventList.get(0).getEventType());
+        System.out.println(rollEventList.get(0).getEventText());
+        System.out.println(rollEventList.get(0).getId());
         System.out.println(rollEventList.get(0).getEventThreshold());
         System.out.println(rollEventList.get(0).getSanity());
         System.out.println(rollEventList.get(0).getSpeed());
         System.out.println(rollEventList.get(0).getStamina());
         System.out.println(rollEventList.get(0).getStrength());
         System.out.println("--------------------------------------------------------");
-        System.out.println(itemEventList.get(0).getSanity());
-        System.out.println(itemEventList.get(0).getSpeed());
-        System.out.println(itemEventList.get(0).getStamina());
-        System.out.println(itemEventList.get(0).getStrength());
+        System.out.println(moveEventList.get(0).getEventType());
+        System.out.println(moveEventList.get(0).getEventText());
+        System.out.println(moveEventList.get(0).getId());
+        System.out.println(moveEventList.get(0).getEventThreshold());
+        System.out.println(moveEventList.get(0).getDeltaFloor());
+        System.out.println(moveEventList.get(0).getDeltaX());
+        System.out.println(moveEventList.get(0).getDeltaY());
+
+
     }
 
     private String getElement(String str){

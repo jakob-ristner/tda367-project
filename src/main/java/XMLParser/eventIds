@@ -1,6 +1,6 @@
 <events>
     <event id="0">
-        <eventType>1</eventType>
+        <eventType>-1</eventType>
         <speed>1</speed>
         <sanity>1</sanity>
         <strength>1</strength>
@@ -9,7 +9,7 @@
     </event>
 
     <event id="1">
-        <eventType>2</eventType>
+        <eventType>-2</eventType>
         <eventThreshold>0.5</eventThreshold>
         <speed>-1</speed>
         <sanity>-1</sanity>
@@ -18,8 +18,8 @@
         <eventText>Fight the spider, to win roll higher:</eventText>
     </event>
 
-    <event id = "3">
-        <eventType>3</eventType>
+    <event id = "2">
+        <eventType>-3</eventType>
         <eventThreshold>0.5</eventThreshold>
         <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
         <floorDelta>-1</floorDelta>

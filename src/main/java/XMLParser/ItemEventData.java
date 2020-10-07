@@ -22,7 +22,7 @@ public class ItemEventData extends EventData{
         return sanity;
     }
 
-    public ItemEventData(int stamina, int strength, int speed, int sanity, String eventText, int id, String eventType) {
+    public ItemEventData(int stamina, int strength, int speed, int sanity, String eventText, int id, int eventType) {
         super(eventText, eventType, id);
         this.stamina = stamina;
         this.strength = strength;

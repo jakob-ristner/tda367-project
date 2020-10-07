@@ -7,7 +7,7 @@ public class RollEventData extends EventData{
     private int sanity;
     private double eventThreshold;
 
-    public RollEventData(int stamina, int strength, int speed, int sanity, double eventThreshold,String eventText, int id, String eventType) {
+    public RollEventData(int stamina, int strength, int speed, int sanity, double eventThreshold,String eventText, int id, int eventType) {
         super(eventText,eventType,id);
         this.stamina = stamina;
         this.strength = strength;

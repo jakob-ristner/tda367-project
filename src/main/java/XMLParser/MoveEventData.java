@@ -6,7 +6,7 @@ public class MoveEventData extends EventData {
     private int deltaY;
     private int deltaFloor;
 
-    public MoveEventData(String eventText, String eventType, int id,int deltaX,int deltaY,int deltaFloor,double eventThreshold) {
+    public MoveEventData(String eventText, int eventType, int id,int deltaX,int deltaY,int deltaFloor,double eventThreshold) {
         super(eventText, eventType, id);
         this.eventThreshold = eventThreshold;
         this.deltaX = deltaX;
