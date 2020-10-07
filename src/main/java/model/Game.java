@@ -261,4 +261,8 @@ public class Game implements ControllerObservable{
     public List<String> getCurrentPlayerStatsAsStrings() {
         return getCurrentPlayer().getCharacterStatsAsStrings();
     }
+
+    public Board getBoard(){
+        return board;
+    }
 }
