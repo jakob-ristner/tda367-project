@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Kharacter {
 
@@ -17,6 +19,15 @@ public class Kharacter {
     }
     public int getStat(Stat stat) {
         return stats.get(stat);
+    }
+
+    public List<String> getStatsAsStrings() {
+        List<String> statStrings = new ArrayList<>();
+        statStrings.add("Speed: " + stats.get(Stat.SPEED));
+        statStrings.add("Strength: " + stats.get(Stat.STRENGTH));
+        statStrings.add("Stamina: " + stats.get(Stat.STAMINA));
+        statStrings.add("Sanity: " + stats.get(Stat.SANITY));
+        return statStrings;
     }
 
     public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know

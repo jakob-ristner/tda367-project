@@ -63,8 +63,10 @@ public class CharacterSelectController {
         texts.get(index).setText("Chosen by Player " + (game.getCurrentPlayerIndex()+1));
         game.updateCurrentPlayer();
         deActivateButton(button);
-        if (game.checkAllPlayersHaveChars())
+        if (game.checkAllPlayersHaveChars()) {
+            gameIinitMapData();
             showNextView();
+        }
     }
 
 
@@ -80,7 +82,9 @@ public class CharacterSelectController {
         this.nextView = nextView;
     }
 
-
+    private void gameIinitMapData() {
+        game.notifyGameStart();
+    }
 
 
 }

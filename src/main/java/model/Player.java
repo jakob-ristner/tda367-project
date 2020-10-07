@@ -1,12 +1,16 @@
 package model;
 import utilities.Coord;
 
+import java.util.List;
 import java.util.Random;
 
 public class Player {
     private Inventory inventory;
     private boolean isHaunted = false;
     private Coord pos;
+    private Kharacter character;
+    private Random dice;
+    private boolean isDead;
 
     public int floor;
 
@@ -43,9 +47,6 @@ public class Player {
         return character;
     }
 
-    private Kharacter character;
-    private Random dice;
-    private boolean isDead;
 
     public Player() {
         inventory = new Inventory();
@@ -106,5 +107,9 @@ public class Player {
 
     public boolean isHaunted() {
         return isHaunted;
+    }
+
+    public List<String> getCharacterStatsAsStrings() {
+        return character.getStatsAsStrings();
     }
 }

@@ -33,7 +33,7 @@ public class MainGameView implements ViewInterface{
     private List<Text> allPlayersList;
     private Text currentPlayerIindicator;
     private Text currentplayer;
-    private Text currentPlayerStats;
+    private List<Text> currentPlayerStats;
     private List<Coord> playerCoords;
     private int currentPlayerIndex;
 
@@ -117,6 +117,7 @@ public class MainGameView implements ViewInterface{
         currentPlayerIndex = game.getCurrentPlayerIndex();
         initPlayerSprites();
         initPlayersPaneData();
+        initStatsPane();
     }
 
     private void initPlayerSprites() {
@@ -149,11 +150,30 @@ public class MainGameView implements ViewInterface{
            playersPane.getChildren().add(currText);
            allPlayersList.add(currText);
         }
-        currentPlayerIindicator.setLayoutX(5);
+        currentPlayerIindicator.setLayoutX(50);
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
+    }
 
+    private void initStatsPane() {
+        currentplayer = new Text(game.getCurrentPlayersCharacterName());
+        currentplayer.setWrappingWidth((width - (height - 150)) / 2);
+        currentplayer.setTextAlignment(TextAlignment.CENTER);
+        currentplayer.setLayoutX(0);
+        currentplayer.setLayoutY(50);
 
-
+        currentPlayerStats = new ArrayList<>();
+        List<String> playerStatStrings = game.getCurrentPlayerStatsAsStrings();
+        Text currStatText;
+        for (int i = 0; i < playerStatStrings.size(); i++) {
+            currStatText = new Text(playerStatStrings.get(i));
+            currStatText.setWrappingWidth((width - (height - 150)) / 2);
+            currStatText.setTextAlignment(TextAlignment.CENTER);
+            currStatText.setLayoutX(0);
+            currStatText.setLayoutY(100 + i * 50);
+            currentPlayerStats.add(currStatText);
+            statsPane.getChildren().add(currStatText);
+        }
+        statsPane.getChildren().add(currentplayer);
     }
 
 

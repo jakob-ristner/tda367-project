@@ -253,4 +253,12 @@ public class Game implements ControllerObservable{
             playerPositions.add(player.getPos());
         return playerPositions;
     }
+
+    public String getCurrentPlayersCharacterName() {
+        return getCurrentPlayer().getCharacterName();
+    }
+
+    public List<String> getCurrentPlayerStatsAsStrings() {
+        return getCurrentPlayer().getCharacterStatsAsStrings();
+    }
 }
