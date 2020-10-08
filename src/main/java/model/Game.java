@@ -290,4 +290,8 @@ public class Game implements ControllerObservable{
     public HashMap<Integer, Boolean> getCurrentTileDoors() {
         return board.getCurrentPlayerTileDoors(getPlayerPositions().get(getCurrentPlayerIndex()));
     }
+
+    public int getCurrentPlayerStepsLeft() {
+        return getCurrentPlayer().getStepsLeft();
+    }
 }

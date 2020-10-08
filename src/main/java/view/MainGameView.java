@@ -46,6 +46,7 @@ public class MainGameView implements ViewInterface{
     private List<Coord> playerCoords;
     private int currentPlayerIndex;
     private Text currentFloor;
+    private Text stepsLeft;
 
     private HashMap<Integer, Boolean> currentTileDoors;
     private List<Button> doorButtons;
@@ -191,6 +192,14 @@ public class MainGameView implements ViewInterface{
             statsPane.getChildren().add(currStatText);
         }
         statsPane.getChildren().add(currentplayer);
+
+        stepsLeft = new Text("Steps left: " + game.getCurrentPlayerStepsLeft());
+        stepsLeft.setWrappingWidth((width - (height - 150)) / 2);
+        stepsLeft.setTextAlignment(TextAlignment.CENTER);
+        stepsLeft.setLayoutX(0);
+        stepsLeft.setLayoutY(100 + playerStatStrings.size() * 50);
+        stepsLeft.setStyle("-fx-font-size: 15");
+        statsPane.getChildren().add(stepsLeft);
     }
 
     private void initFloorPane() {
@@ -252,6 +261,9 @@ public class MainGameView implements ViewInterface{
 
         //updates the big character name in teh statspane
         currentplayer.setText(game.getCurrentPlayersCharacterName());
+
+        //updates stepcounter
+        stepsLeft.setText("Steps left: " + game.getCurrentPlayerStepsLeft());
 
         //updates the stat texts
         List<String> playerStatStrings = game.getCurrentPlayerStatsAsStrings();
