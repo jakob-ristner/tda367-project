@@ -1,6 +1,7 @@
 package XMLParser;
 
 
+import model.ItemEvent;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -14,7 +15,7 @@ public class XMLParser {
     private ArrayList<MoveEventData> moveEventList = new ArrayList<>();
     private ArrayList<RollEventData> rollEventList = new ArrayList<>();
     private ArrayList<ItemEventData> itemEventList = new ArrayList<>();
-
+    private ArrayList<EventData> eventDataList = new ArrayList<>();
 
     private Element element;
 
@@ -58,6 +59,7 @@ public class XMLParser {
 
 
                     itemEventList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType));
+                    eventDataList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType));
                 }
                 if (parseInt(getElement("eventType")) == -2){
                     id = parseInt(element.getAttribute("id"));
@@ -69,6 +71,7 @@ public class XMLParser {
 
 
                     rollEventList.add(new RollEventData(statChange,stat,eventThreshold,eventText,id,eventType));
+                    eventDataList.add(new RollEventData(statChange,stat,eventThreshold,eventText,id,eventType));
                 }
                 if (parseInt(getElement("eventType")) == -3){
                     id = parseInt(element.getAttribute("id"));
@@ -82,6 +85,7 @@ public class XMLParser {
                     statChange = parseInt(getElement("statChange"));
 
                     moveEventList.add(new MoveEventData(stat,statChange,eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
+                    eventDataList.add(new MoveEventData(stat,statChange,eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
                 }
 
 
@@ -141,13 +145,17 @@ public class XMLParser {
         System.out.println(moveEventList.get(0).getStat());
         System.out.println(moveEventList.get(0).getStatChange());
 
-
+        ItemEventData itemEventData = (ItemEventData) eventDataList.get(0);
     }
 
     private String getElement(String str){
         return element.getElementsByTagName(str).item(0).getTextContent();
 
 
+    }
+
+    public ArrayList<EventData> getEventDataList() {
+        return eventDataList;
     }
 
 
