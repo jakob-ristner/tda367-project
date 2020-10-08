@@ -27,7 +27,14 @@ public class MainGameView implements ViewInterface{
     private AnchorPane inventoryPane;
     private AnchorPane floorPane;
 
+    private static final int X = 0;
+    private static final int Y = 1;
+
+
     private int rectSize;
+    private int doorButtonSize;
+    private int doorButtonOffset;
+    private HashMap<Integer, int[]> doorOffsetMap;
 
     //model representations
     private List<Circle> playerSprite;
@@ -42,6 +49,7 @@ public class MainGameView implements ViewInterface{
 
     private HashMap<Integer, Boolean> currentTileDoors;
     private List<Button> doorButtons;
+    private List<Button> currentDoorButtons;
 
 
     private Game game;
@@ -122,6 +130,7 @@ public class MainGameView implements ViewInterface{
         initPlayersPaneData();
         initStatsPane();
         initFloorPane();
+        initButtons();
     }
 
     private void initPlayerSprites() {
@@ -196,11 +205,39 @@ public class MainGameView implements ViewInterface{
         floorPane.getChildren().add(currentFloor);
     }
 
-    void initButtons() {
+    private void initButtons() {
         currentTileDoors = game.getCurrentTileDoors();
+        doorButtonOffset = rectSize / 2;
+        doorButtonSize = 10;
+        doorOffsetMap = new HashMap<>();
+        doorOffsetMap.put(0, new int[]{0, -doorButtonOffset});
+        doorOffsetMap.put(1, new int[]{doorButtonOffset, 0});
+        doorOffsetMap.put(2, new int[]{0, doorButtonOffset});
+        doorOffsetMap.put(3, new int[]{-doorButtonOffset, 0});
 
+        doorButtons = new ArrayList<>();
+        Button currButton;
+        for (int i = 0; i < 4; i++) { // 4 directions to walk
+            currButton = new Button();
+            currButton.setPrefSize(doorButtonSize, doorButtonSize);
+            currButton.setLayoutX(getCurrentPlayerCenterX() + doorOffsetMap.get(i)[X]);
+            currButton.setLayoutY(getCurrentPlayerCenterY() + doorOffsetMap.get(i)[Y]);
+            doorButtons.add(currButton);
+            mapPane.getChildren().add(currButton);
+        }
+
+        for (int i = 0; i < currentTileDoors.size(); i++) {
+
+        }
     }
 
+    private int getCurrentPlayerCenterX() {
+        return (int) playerSprite.get(currentPlayerIndex).getCenterX();
+    }
+
+    private int getCurrentPlayerCenterY() {
+        return (int) playerSprite.get(currentPlayerIndex).getCenterY();
+    }
 
     public void updateMapData() {
 

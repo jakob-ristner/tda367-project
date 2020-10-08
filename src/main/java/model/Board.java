@@ -20,11 +20,12 @@ public class Board {
     private List<Floor> floors = new ArrayList<>();
     private List<Event> events = new ArrayList<>();
 
-    public void createBoard(){
+    public Board(){
         /*groundFloor = new Floor(generateEventList());
         basementFloor = new Floor(generateEventList());
         upperFloor = new Floor(generateEventList());
          */
+        createEvents(3, 5, 6);
         for (int i = 0; i < numberOfFloors ; i++) {
             floors.add(new Floor(generateEventList()));
         }
