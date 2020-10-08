@@ -1,6 +1,9 @@
 package model;
 
+import utilities.Coord;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -68,4 +71,8 @@ public class Board {
            return floorEventList;
     }
 
+    HashMap<Integer, Boolean> getCurrentPlayerTileDoors(Coord coord) {
+        Floor currentFloor = floors.get(coord.getFloor());
+        return currentFloor.getDoorsOnTile(coord.getX(), coord.getY());
+    }
 }

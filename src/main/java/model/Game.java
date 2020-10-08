@@ -67,7 +67,7 @@ public class Game implements ControllerObservable{
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++) {
             currPlayer = new Player();
-            currPlayer.setPos(new Coord(i, 0, 0));
+            currPlayer.setPos(new Coord(i, 0, i));
             playerList.add(currPlayer);
         }
     }
@@ -254,5 +254,23 @@ public class Game implements ControllerObservable{
 
     public Board getBoard(){
         return board;
+    }
+
+    public int getCurrentFloorNumber() {
+        return getCurrentPlayer().getFloor();
+    }
+
+    public List<Integer> getPlayerIndicesOnCurrentFloor() {
+        List<Integer> playerIndicesOnCurrentFloor = new ArrayList<>();
+        for (int i = 0; i < playerAmount; i++) {
+            if (playerList.get(i).getFloor() == getCurrentFloorNumber()) {
+               playerIndicesOnCurrentFloor.add(i);
+            }
+        }
+        return playerIndicesOnCurrentFloor;
+    }
+
+    public HashMap<Integer, Boolean> getCurrentTileDoors() {
+        return board.getCurrentPlayerTileDoors(getPlayerPositions().get(getCurrentPlayerIndex()));
     }
 }

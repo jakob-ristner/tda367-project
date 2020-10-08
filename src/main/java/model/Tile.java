@@ -1,5 +1,9 @@
 package model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import java.util.HashMap;
+
 public class Tile {
     private Event event;
     private boolean illuminated = false;
@@ -43,5 +47,14 @@ public class Tile {
 
     public void setEvent(Event event){
         this.event = event;
+    }
+
+    public HashMap<Integer, Boolean> getDoors() {
+        HashMap<Integer, Boolean> doors = new HashMap<>();
+        doors.put(0, doorUp);
+        doors.put(1, doorRight);
+        doors.put(2, doorDown);
+        doors.put(3, doorLeft);
+        return doors;
     }
 }

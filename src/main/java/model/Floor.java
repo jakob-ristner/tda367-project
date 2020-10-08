@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -72,6 +73,7 @@ public class Floor {
     }
 
 
-
-
+    HashMap<Integer, Boolean> getDoorsOnTile(int x, int y) {
+        return tiles[x][y].getDoors();
+    }
 }
