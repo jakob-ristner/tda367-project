@@ -12,20 +12,18 @@ public class Tile {
     private boolean hasPlayer;
 
 
-    public Tile(int i, int j, Tile[][] tiles){
-        setDoors(i,j,tiles);
+    public Tile(int i, int j, Tile[][] tiles) {
+        setDoors(i, j, tiles);
     }
-    private void setDoors(int col, int row, Tile[][] tiles){
+
+    private void setDoors(int col, int row, Tile[][] tiles) {
         if (row == 0) doorUp = false;
         if (col == 0) doorLeft = false;
-        if (row == tiles.length-1) doorDown = false;
-        if (col == tiles[0].length-1) doorRight = false;
+        if (row == tiles.length - 1) doorDown = false;
+        if (col == tiles[0].length - 1) doorRight = false;
 
     }
 
-    public void activate(){
-        event.activate();
-    }
 
     public boolean hasPlayer() {
         return hasPlayer;
@@ -35,17 +33,18 @@ public class Tile {
         this.hasPlayer = hasPlayer;
     }
 
-    public boolean hasEvent(){
-        return event!= null;
+    public boolean hasEvent() {
+        return event != null;
     }
 
-    public void toggleIllumination(){
+    public void toggleIllumination() {
         illuminated = !illuminated;
     }
 
-    public void setEvent(Event event){
+    public void setEvent(Event event) {
         this.event = event;
     }
+
 
     public HashMap<Integer, Boolean> getDoors() {
         HashMap<Integer, Boolean> doors = new HashMap<>();
@@ -54,5 +53,9 @@ public class Tile {
         doors.put(2, doorDown);
         doors.put(3, doorLeft);
         return doors;
+    }
+
+    public Event getEvent (){
+        return event;
     }
 }

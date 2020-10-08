@@ -94,7 +94,7 @@ public class Game implements ControllerObservable{
             //activePlayer.playerMove(doorPickMethod);
             //getPlayerTile(activePlayer).setHasPlayer(true);
             if(getPlayerTile(activePlayer).hasEvent() && activePlayer.isHaunted()){
-                getPlayerTile(activePlayer).activate();
+                //getPlayerTile(activePlayer).activate();
                 eventTriggered();
             }
             if (gameState != null){

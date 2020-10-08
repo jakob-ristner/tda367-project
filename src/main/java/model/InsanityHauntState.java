@@ -37,7 +37,7 @@ public class InsanityHauntState implements GameState {
         while(i < numEscapeHatch) {
             tile = game.getBoard().getFloor(1).getTile(rand.nextInt(6), rand.nextInt(6));
             if (!tile.hasEvent()) {
-                tile.setEvent(new ItemEvent()); //Change so that EventFactory has a factory for hauntEvents
+               // tile.setEvent(new ItemEvent()); //Change so that EventFactory has a factory for hauntEvents
                 i++;
             }
         }

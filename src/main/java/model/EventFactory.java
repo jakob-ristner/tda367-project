@@ -1,20 +1,21 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import utilities.Coord;
+
+
 
 public class EventFactory {
 
-    public static Event createItemEvent() {
-        ItemEvent event = new ItemEvent();
+    public static Event createItemEvent(Item item) {
+        ItemEvent event = new ItemEvent(item);
         return event;
     }
-    public static Event createRollDiceEvent() {
-        RollDiceEvent event = new RollDiceEvent();
+    public static Event createRollDiceEvent(Stat statToRollOn, int threshHold, int loseStatChange  ) {
+        RollDiceEvent event = new RollDiceEvent(statToRollOn,threshHold,loseStatChange);
         return event;
     }
-    public static Event createMouseEvent(){
-        MoveEvent event = new MoveEvent();
+    public static Event createMouseEvent(Coord coord, Stat statToRollOn, int threshHold ){
+        MoveEvent event = new MoveEvent(coord, statToRollOn, threshHold);
         return event;
     }
 }
