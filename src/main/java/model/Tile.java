@@ -18,8 +18,8 @@ public class Tile {
     private void setDoors(int col, int row, Tile[][] tiles){
         if (row == 0) doorUp = false;
         if (col == 0) doorLeft = false;
-        if (row == tiles.length) doorDown = false;
-        if (col == tiles[0].length) doorRight = false;
+        if (row == tiles.length-1) doorDown = false;
+        if (col == tiles[0].length-1) doorRight = false;
 
     }
 
