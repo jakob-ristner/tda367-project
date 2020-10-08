@@ -128,6 +128,8 @@ public class XMLParser {
         System.out.println(rollEventList.get(0).getEventText());
         System.out.println(rollEventList.get(0).getId());
         System.out.println(rollEventList.get(0).getEventThreshold());
+        System.out.println(moveEventList.get(0).getStat());
+        System.out.println(moveEventList.get(0).getStatChange());
         System.out.println("--------------------------------------------------------");
         System.out.println(moveEventList.get(0).getEventType());
         System.out.println(moveEventList.get(0).getEventText());
@@ -136,7 +138,8 @@ public class XMLParser {
         System.out.println(moveEventList.get(0).getDeltaFloor());
         System.out.println(moveEventList.get(0).getDeltaX());
         System.out.println(moveEventList.get(0).getDeltaY());
-        System.out.println();
+        System.out.println(moveEventList.get(0).getStat());
+        System.out.println(moveEventList.get(0).getStatChange());
 
 
     }

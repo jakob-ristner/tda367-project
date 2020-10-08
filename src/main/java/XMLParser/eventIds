@@ -19,7 +19,7 @@
     <event id = "2">
         <eventType>-3</eventType>
         <eventThreshold>0.5</eventThreshold>
-        <statToRollOn>Strength</statToRollOn>
+        <statToRollOn>Speed</statToRollOn>
         <statChange>1</statChange>
         <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
         <floorDelta>-1</floorDelta>
