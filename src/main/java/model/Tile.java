@@ -21,9 +21,7 @@ public class Tile {
 
     }
 
-    public void activate(){
-        event.activate();
-    }
+
 
     public boolean hasPlayer() {
         return hasPlayer;
@@ -43,5 +41,9 @@ public class Tile {
 
     public void setEvent(Event event){
         this.event = event;
+    }
+
+    public Event getEvent() {
+        return event;
     }
 }

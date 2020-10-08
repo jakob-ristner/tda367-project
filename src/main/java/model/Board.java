@@ -1,6 +1,9 @@
 package model;
 
+import utilities.Coord;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -28,17 +31,18 @@ public class Board {
 
     }
     public void createEvents(int nItemEvents, int nRollDiceEvents, int nMoveEvents){
+        HashMap<Stat,Integer> itemStats = new HashMap<>();
+        itemStats.put(Stat.STRENGTH,2);
+
         for(int i =0; i<nItemEvents; i++) {
-            events.add(EventFactory.createItemEvent());
+            events.add(EventFactory.createItemEvent(new Item("Sword",itemStats)));
         }
         for(int i =0; i<nRollDiceEvents; i++) {
-            events.add(EventFactory.createRollDiceEvent());
+            events.add(EventFactory.createRollDiceEvent(Stat.STRENGTH,1,2));
         }
         for(int i =0; i<nMoveEvents; i++) {
-            events.add(EventFactory.createMouseEvent());
+            events.add(EventFactory.createMouseEvent(new Coord(1,2,3),Stat.STRENGTH,5));
         }
-
-
     }
 
 

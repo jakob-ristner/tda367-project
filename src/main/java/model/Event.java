@@ -1,8 +1,8 @@
 package model;
 
 public interface Event {
-    void activate();
+    void activate(Player currentPlayer);
 
-    int getEventType();
+    int getEventType(); //for xml parser
 
 }

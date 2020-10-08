@@ -84,6 +84,7 @@ public class Player {
     }
 
 
+
     public void setCharacter(Kharacter character) {
         this.character = character;
         hasCharacter = true;
