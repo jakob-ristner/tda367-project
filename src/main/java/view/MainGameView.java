@@ -37,7 +37,7 @@ public class MainGameView implements ViewInterface{
     private HashMap<Integer, int[]> doorOffsetMap;
 
     //model representations
-    private List<Circle> playerSprite;
+    private List<Circle> playerSprites;
     private List<Circle> playersSpritesCurrentFloor;
     private List<Text> allPlayersList;
     private Text currentPlayerIindicator;
@@ -49,8 +49,6 @@ public class MainGameView implements ViewInterface{
 
     private HashMap<Integer, Boolean> currentTileDoors;
     private List<Button> doorButtons;
-    private List<Button> currentDoorButtons;
-
 
     private Game game;
     List<List<Rectangle>> tileViews;
@@ -135,7 +133,7 @@ public class MainGameView implements ViewInterface{
 
     private void initPlayerSprites() {
         Circle currCircle;
-        playerSprite = new ArrayList<>();
+        playerSprites = new ArrayList<>();
         playersSpritesCurrentFloor = new ArrayList<>();
         playerCoords = game.getPlayerPositions();
         for (int i = 0; i < game.getPlayerAmount(); i++) {
@@ -144,13 +142,13 @@ public class MainGameView implements ViewInterface{
             currCircle.setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
             currCircle.setRadius(15);
             currCircle.setFill(Color.BLUE);
-            playerSprite.add(currCircle);
+            playerSprites.add(currCircle);
         }
         for (Integer index: game.getPlayerIndicesOnCurrentFloor()) {
-            playersSpritesCurrentFloor.add(playerSprite.get(index));
-            mapPane.getChildren().add(playerSprite.get(index));
+            playersSpritesCurrentFloor.add(playerSprites.get(index));
+            mapPane.getChildren().add(playerSprites.get(index));
         }
-        playerSprite.get(currentPlayerIndex).setStyle("-fx-stroke: #ff0000; -fx-stroke-width: 2");
+        playerSprites.get(currentPlayerIndex).setStyle("-fx-stroke: #ff0000; -fx-stroke-width: 2");
     }
 
     private void initPlayersPaneData() {
@@ -196,7 +194,7 @@ public class MainGameView implements ViewInterface{
     }
 
     private void initFloorPane() {
-        currentFloor = new Text("Showing Floor: " + (game.getCurrentPlayer().getFloor() + 1));
+        currentFloor = new Text("Showing Floor: " + (game.getCurrentFloorNumber() + 1));
         currentFloor.setWrappingWidth(height - 150);
         currentFloor.setTextAlignment(TextAlignment.CENTER);
         currentFloor.setLayoutX(0);
@@ -207,7 +205,7 @@ public class MainGameView implements ViewInterface{
 
     private void initButtons() {
         currentTileDoors = game.getCurrentTileDoors();
-        doorButtonOffset = rectSize / 2;
+        doorButtonOffset = rectSize / 4;
         doorButtonSize = 10;
         doorOffsetMap = new HashMap<>();
         doorOffsetMap.put(0, new int[]{0, -doorButtonOffset});
@@ -220,27 +218,82 @@ public class MainGameView implements ViewInterface{
         for (int i = 0; i < 4; i++) { // 4 directions to walk
             currButton = new Button();
             currButton.setPrefSize(doorButtonSize, doorButtonSize);
-            currButton.setLayoutX(getCurrentPlayerCenterX() + doorOffsetMap.get(i)[X]);
-            currButton.setLayoutY(getCurrentPlayerCenterY() + doorOffsetMap.get(i)[Y]);
+            currButton.setLayoutX(getCurrentPlayerCenterX() + doorOffsetMap.get(i)[X] - doorButtonSize);
+            currButton.setLayoutY(getCurrentPlayerCenterY() + doorOffsetMap.get(i)[Y] - doorButtonSize);
+            currButton.setDisable(!currentTileDoors.get(i));
             doorButtons.add(currButton);
             mapPane.getChildren().add(currButton);
         }
-
-        for (int i = 0; i < currentTileDoors.size(); i++) {
-
-        }
-    }
-
-    private int getCurrentPlayerCenterX() {
-        return (int) playerSprite.get(currentPlayerIndex).getCenterX();
-    }
-
-    private int getCurrentPlayerCenterY() {
-        return (int) playerSprite.get(currentPlayerIndex).getCenterY();
     }
 
     public void updateMapData() {
+        currentPlayerIndex = game.getCurrentPlayerIndex();
+        updatePlayerSprites();
+        updatePlayersPaneData();
+        updateStatsPane();
+        updateFloorPane();
+        updateButtons();
+    }
 
+    private void updateButtons() {
+        for (int i = 0; i < doorButtons.size(); i++) {
+            doorButtons.get(i).setLayoutX(getCurrentPlayerCenterX() + doorOffsetMap.get(i)[X] - doorButtonSize);
+            doorButtons.get(i).setLayoutY(getCurrentPlayerCenterY() + doorOffsetMap.get(i)[Y] - doorButtonSize);
+            doorButtons.get(i).setDisable(!currentTileDoors.get(i));
+        }
+    }
+
+    private void updateFloorPane() {
+        currentFloor.setText("Showing Floor: " + (game.getCurrentFloorNumber() + 1));
+    }
+
+    private void updateStatsPane() {
+
+        //updates the big character name in teh statspane
+        currentplayer.setText(game.getCurrentPlayersCharacterName());
+
+        //updates the stat texts
+        List<String> playerStatStrings = game.getCurrentPlayerStatsAsStrings();
+        for (int i = 0; i < playerStatStrings.size(); i++) {
+            currentPlayerStats.get(i).setText(playerStatStrings.get(i));
+        }
+    }
+
+    private void updatePlayersPaneData() {
+        currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
+    }
+
+    private void updatePlayerSprites() {
+        //reset players that are shown
+        for (Circle playerSprite: playersSpritesCurrentFloor) {
+            playerSprite.setStyle("-fx-stroke-width: none; -fx-stroke: none"); // one of these will be the last currentplayer
+            mapPane.getChildren().remove(playerSprite);
+        }
+        playersSpritesCurrentFloor = new ArrayList<>();
+
+        //update position of all players
+        for (int i = 0; i < playerSprites.size(); i++) {
+           playerSprites.get(i).setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
+           playerSprites.get(i).setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
+        }
+
+        //update currentplayer indicator
+        playerSprites.get(currentPlayerIndex).setStyle("-fx-stroke: red; -fx-stroke-width: 2");
+
+        //show players on current floor
+        for (Integer index: game.getPlayerIndicesOnCurrentFloor()) {
+            playersSpritesCurrentFloor.add(playerSprites.get(index));
+            mapPane.getChildren().add(playerSprites.get(index));
+        }
+    }
+
+
+    private int getCurrentPlayerCenterX() {
+        return (int) playerSprites.get(currentPlayerIndex).getCenterX();
+    }
+
+    private int getCurrentPlayerCenterY() {
+        return (int) playerSprites.get(currentPlayerIndex).getCenterY();
     }
 
     List<Button> getDoorButtons() {
