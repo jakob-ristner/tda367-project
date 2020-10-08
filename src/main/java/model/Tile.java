@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.HashMap;
 
 public class Tile {
