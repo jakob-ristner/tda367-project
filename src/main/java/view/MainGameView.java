@@ -236,6 +236,7 @@ public class MainGameView implements ViewInterface{
     }
 
     private void updateButtons() {
+        currentTileDoors = game.getCurrentTileDoors();
         for (int i = 0; i < doorButtons.size(); i++) {
             doorButtons.get(i).setLayoutX(getCurrentPlayerCenterX() + doorOffsetMap.get(i)[X] - doorButtonSize);
             doorButtons.get(i).setLayoutY(getCurrentPlayerCenterY() + doorOffsetMap.get(i)[Y] - doorButtonSize);
@@ -296,8 +297,12 @@ public class MainGameView implements ViewInterface{
         return (int) playerSprites.get(currentPlayerIndex).getCenterY();
     }
 
-    List<Button> getDoorButtons() {
-        return doorButtons;
+    HashMap<Integer, Button> getDoorButtons() {
+        HashMap<Integer, Button> buttonHashMap = new HashMap<>();
+        for (int i = 0; i < doorButtons.size(); i++) {
+            buttonHashMap.put(i, doorButtons.get(i));
+        }
+        return buttonHashMap;
     }
 
 

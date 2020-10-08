@@ -40,6 +40,7 @@ public class GameController implements GameObserver{
         characterSelectController.setNextView(mainGameView);
 
         mainGameViewController = new MainGameViewController(game, mainGameView);
+        //mainGameViewController.setButtons(view.getMainGameViewDoorButtons());
     }
 
     @Override
@@ -55,6 +56,7 @@ public class GameController implements GameObserver{
     @Override
     public void initMapData() {
         view.initMapData();
+        mainGameViewController.setButtons(view.getMainGameViewDoorButtons());
     }
 
     @Override

@@ -79,12 +79,13 @@ public class Game implements ControllerObservable{
         }
     }
 
-    private void runGame() {
+    public void runGame() {
         for (Player player: playerList)
             turn(player);
     }
 
     private void turn(Player activePlayer) {
+        /*
         activePlayer.setStepAmount();
         int steps = activePlayer.getStepAmount();
 
@@ -103,9 +104,25 @@ public class Game implements ControllerObservable{
             steps--;
             if (!playerList.contains(activePlayer)) break;
         }
+
+
         updateCurrentPlayer();
 
+         */
+
     }
+
+    public void moveCurrentPlayer(int dx, int dy) {
+        Player currentPlayer = getCurrentPlayer();
+        if (currentPlayer.stepsLeft > 1) {
+            currentPlayer.playerMove(dx, dy);
+        } else {
+            currentPlayer.resetSteps();
+            updateCurrentPlayer();
+        }
+        notifyGameEvent();
+    }
+
     public void removeDeadPlayersFromGame(){
         for (Player p: playerList){
             p.isPlayerDead();
