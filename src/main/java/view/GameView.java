@@ -7,8 +7,7 @@ import javafx.scene.text.Text;
 import javafx.scene.*;
 
 import model.Game;
-import view.eventView.EventView;
-import view.eventView.HauntEventView;
+import view.eventView.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +19,13 @@ public class GameView {
 	private CharacterSelectView characterSelectView;
 	private StartScreenView startScreenView;
 	private MainGameView mainGameView;
+	private EventView gameWonEventView;
+	private EventView itemEventView;
+	private EventView moveEventView;
+	private EventView rollDiceView;
 	private EventView hauntEventView;
+
+	private HashMap<String, Button> buttonEventMap;
 
 	public GameView(Game game) {
 		root = new Group();
@@ -29,13 +34,37 @@ public class GameView {
 		characterSelectView.initButton(game.getCharacterNames());
 		characterSelectView.initText(game.getCharacterStats());
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
-		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
+		initEventView();
+		buttonEventMap = new HashMap<>();
+		initButtonEventMap();
+
 		startScreenView.viewToFront();
 
-		//hauntEventView.viewToFront(); //For testing of the eventViews
+		//gameWonEventView.viewToFront();//For testing of the eventViews
+
+		hauntEventView.viewToFront();
 
 	}
 
+	private void initButtonEventMap(){
+		buttonEventMap.put("GameWonEvent", gameWonEventView.getEventButton());
+		buttonEventMap.put("ItemEvent", itemEventView.getEventButton());
+		buttonEventMap.put("MoveEvent", moveEventView.getEventButton());
+		buttonEventMap.put("RollDiceEvent", rollDiceView.getEventButton());
+		buttonEventMap.put("HauntEvent",hauntEventView.getEventButton());
+	}
+	public HashMap<String, Button> getEventButtons(){
+		return buttonEventMap;
+	}
+
+	private void initEventView(){
+		gameWonEventView = new GameWonEventView(root,WINDOW_W,WINDOW_H);
+		itemEventView = new ItemEventView(root,WINDOW_W,WINDOW_H );
+		moveEventView = new MoveEventView(root,WINDOW_W,WINDOW_H);
+		rollDiceView = new RollDiceEventView(root,WINDOW_W,WINDOW_H);
+		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
+
+	}
 	public Group getRoot() {
 		return root;
 	}

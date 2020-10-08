@@ -12,8 +12,10 @@ public class MainGameViewController extends AbstractController{
     private HashMap<Integer, Button> buttonMap;
     private Button endTurnButton;
 
-    public MainGameViewController(Game game, ViewInterface view) {
-        super(game, view);
+
+    protected MainGameViewController(Game game) {
+        super(game);
+
     }
 
     void setDoorButtons(HashMap<Integer, Button> buttonMap) {

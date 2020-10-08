@@ -13,6 +13,7 @@ public class ItemEventView extends EventView {
         eventButton.setLayoutX(eventText.getLayoutX());
         eventButton.setLayoutY(eventPane.getLayoutY() + 220);
         addNode(eventButton);
+
     }
 
     @Override

@@ -13,8 +13,8 @@ public class CharacterSelectController extends AbstractController{
     private HashMap<Integer, Button> buttonMap;
     private List<Text> textList;
 
-    public CharacterSelectController(Game game, ViewInterface view){
-        super(game, view);
+    public CharacterSelectController(Game game){
+        super(game);
     }
 
     public void setButtonMap(HashMap<Integer, Button> buttonMap) {

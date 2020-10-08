@@ -1,5 +1,6 @@
 package controller;
 
+
 import model.Game;
 import view.GameView;
 import view.ViewInterface;
@@ -13,13 +14,14 @@ public class GameController implements GameObserver{
     private CharacterSelectController characterSelectController;
     private StartScreenController startScreenController;
     private MainGameViewController mainGameViewController;
-
+    private EventController eventController;
 
     public GameController(GameView view, Game game){
         this.view = view;
         this.game = game;
         initViews();
         initControllers();
+        //TODO when an event is activated make sure that the right view is toFronted...
     }
 
     private void initViews() {
@@ -29,18 +31,24 @@ public class GameController implements GameObserver{
     }
 
     private void initControllers() {
-        startScreenController = new StartScreenController(game, startScreenView);
+        startScreenController = new StartScreenController(game);
         startScreenController.setNextView(characterSelectView);
         startScreenController.setIntInput(view.getStartScreenIntInput());
         startScreenController.setConfirmButton(view.getStartScreenConfirmButton());
 
-        characterSelectController = new CharacterSelectController(game, characterSelectView);
+        characterSelectController = new CharacterSelectController(game);
         characterSelectController.setButtonMap(view.getCharSelectButtons());
         characterSelectController.setTextList(view.getCharSelectTexts());
         characterSelectController.setNextView(mainGameView);
 
-        mainGameViewController = new MainGameViewController(game, mainGameView);
-        //mainGameViewController.setButtons(view.getMainGameViewDoorButtons());
+
+        mainGameViewController = new MainGameViewController(game);
+
+        eventController = new EventController(game);
+        eventController.setEventButtonMap(view.getEventButtons());
+        eventController.setStartScreen(startScreenView);
+        eventController.setMainGameView(mainGameView);
+
     }
 
     @Override
