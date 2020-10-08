@@ -15,9 +15,11 @@ public class StartScreenController extends AbstractController{
     private Button confirmButton;
     private Spinner<Integer> intInput;
 
-    public StartScreenController(Game game, ViewInterface view){
-        super(game, view);
+    public StartScreenController(Game game){
+        super(game);
     }
+
+
 
     public void setConfirmButton(Button confirmButton) {
         this.confirmButton = confirmButton;

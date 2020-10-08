@@ -12,6 +12,7 @@ public class MoveEventView extends EventView {
         moveButton.setLayoutX(eventText.getLayoutX());
         moveButton.setLayoutY(eventPane.getLayoutY() + 220);
         addNode(moveButton);
+
     }
 
     @Override

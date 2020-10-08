@@ -10,12 +10,16 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import view.ViewInterface;
 
+import java.util.HashMap;
+
 
 public abstract class EventView implements ViewInterface {
     Pane rootPane;
     AnchorPane eventPane;
     TextArea eventText;
     Text header;
+
+
 
     int width;
     int height;
@@ -24,6 +28,8 @@ public abstract class EventView implements ViewInterface {
     public EventView(Group root, int width, int height) {
         this.width = width;
         this.height = height;
+
+
         rootPane = new Pane();
         rootPane.setPrefSize(width,height);
         rootPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5)");
@@ -55,6 +61,7 @@ public abstract class EventView implements ViewInterface {
         header.setStyle("-fx-font-size: 20;");
         addNode(header);
     }
+
 
 
     public Pane getRootPane() {

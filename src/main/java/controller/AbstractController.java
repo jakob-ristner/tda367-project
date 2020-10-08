@@ -5,12 +5,11 @@ import view.ViewInterface;
 
 public abstract class AbstractController {
     protected Game game;
-    protected ViewInterface view;
     private ViewInterface nextView;
 
-    protected AbstractController(Game game, ViewInterface view) {
+    protected AbstractController(Game game) {
         this.game = game;
-        this.view = view;
+
     }
 
     public void showNextView() {

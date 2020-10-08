@@ -12,6 +12,7 @@ public class RollDiceEventView extends EventView{
         rollDiceButton.setLayoutX(eventText.getLayoutX());
         rollDiceButton.setLayoutY(eventPane.getLayoutY() + 220);
         addNode(rollDiceButton);
+
     }
 
     @Override

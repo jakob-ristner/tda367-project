@@ -13,7 +13,7 @@ public class MainGameViewController extends AbstractController{
     private ViewInterface nextView;
 
 
-    protected MainGameViewController(Game game, ViewInterface view) {
-        super(game, view);
+    protected MainGameViewController(Game game) {
+        super(game);
     }
 }
