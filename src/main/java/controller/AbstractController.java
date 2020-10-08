@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.scene.control.Button;
 import model.Game;
 import view.ViewInterface;
 
@@ -20,4 +21,5 @@ public abstract class AbstractController {
     public void setNextView(ViewInterface nextView) {
         this.nextView = nextView;
     }
+
 }

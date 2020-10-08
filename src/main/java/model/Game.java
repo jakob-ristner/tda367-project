@@ -79,12 +79,13 @@ public class Game implements ControllerObservable{
         }
     }
 
-    private void runGame() {
+    public void runGame() {
         for (Player player: playerList)
             turn(player);
     }
 
     private void turn(Player activePlayer) {
+        /*
         activePlayer.setStepAmount();
         int steps = activePlayer.getStepAmount();
 
@@ -103,9 +104,22 @@ public class Game implements ControllerObservable{
             steps--;
             if (!playerList.contains(activePlayer)) break;
         }
+
+
         updateCurrentPlayer();
 
+         */
+
     }
+
+    public void moveCurrentPlayer(int dx, int dy) {
+        Player currentPlayer = getCurrentPlayer();
+        if (currentPlayer.stepsLeft > 0) {
+            currentPlayer.playerMove(dx, dy);
+        }
+        notifyGameEvent();
+    }
+
     public void removeDeadPlayersFromGame(){
         for (Player p: playerList){
             p.isPlayerDead();
@@ -194,6 +208,7 @@ public class Game implements ControllerObservable{
     }
 
     public void updateCurrentPlayer(){
+        getCurrentPlayer().resetSteps();
         currentPlayerIndex++;
         if(currentPlayerIndex == playerAmount +1){ //TODO se om vi kan göra detta lite vackrare xD
             currentPlayerIndex--;
@@ -272,5 +287,14 @@ public class Game implements ControllerObservable{
 
     public HashMap<Integer, Boolean> getCurrentTileDoors() {
         return board.getCurrentPlayerTileDoors(getPlayerPositions().get(getCurrentPlayerIndex()));
+    }
+
+    public int getCurrentPlayerStepsLeft() {
+        return getCurrentPlayer().getStepsLeft();
+    }
+
+    public void endTurn() {
+        updateCurrentPlayer();
+        notifyGameEvent();
     }
 }

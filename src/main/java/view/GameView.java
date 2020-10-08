@@ -82,4 +82,12 @@ public class GameView {
 		return characterSelectView.getButtonMap();
 	}
 
+	public HashMap<Integer, Button> getMainGameViewDoorButtons() {
+		return mainGameView.getDoorButtons();
+	}
+
+	public Button getMainGameViewEndTurnButton() {
+		return mainGameView.getEndTurnButton();
+	}
+
 }
