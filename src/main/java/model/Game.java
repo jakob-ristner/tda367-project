@@ -114,11 +114,8 @@ public class Game implements ControllerObservable{
 
     public void moveCurrentPlayer(int dx, int dy) {
         Player currentPlayer = getCurrentPlayer();
-        if (currentPlayer.stepsLeft > 1) {
+        if (currentPlayer.stepsLeft > 0) {
             currentPlayer.playerMove(dx, dy);
-        } else {
-            currentPlayer.resetSteps();
-            updateCurrentPlayer();
         }
         notifyGameEvent();
     }
@@ -211,6 +208,7 @@ public class Game implements ControllerObservable{
     }
 
     public void updateCurrentPlayer(){
+        getCurrentPlayer().resetSteps();
         currentPlayerIndex++;
         if(currentPlayerIndex == playerAmount +1){ //TODO se om vi kan göra detta lite vackrare xD
             currentPlayerIndex--;
@@ -293,5 +291,10 @@ public class Game implements ControllerObservable{
 
     public int getCurrentPlayerStepsLeft() {
         return getCurrentPlayer().getStepsLeft();
+    }
+
+    public void endTurn() {
+        updateCurrentPlayer();
+        notifyGameEvent();
     }
 }

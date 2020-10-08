@@ -50,6 +50,7 @@ public class MainGameView implements ViewInterface{
 
     private HashMap<Integer, Boolean> currentTileDoors;
     private List<Button> doorButtons;
+    private Button endTurnButton;
 
     private Game game;
     List<List<Rectangle>> tileViews;
@@ -210,6 +211,12 @@ public class MainGameView implements ViewInterface{
         currentFloor.setLayoutY(50);
         currentFloor.setStyle("-fx-font-size: 20");
         floorPane.getChildren().add(currentFloor);
+
+        endTurnButton = new Button();
+        endTurnButton.setText("End Turn");
+        endTurnButton.setLayoutX(0);
+        endTurnButton.setLayoutY(50);
+        floorPane.getChildren().add(endTurnButton);
     }
 
     private void initButtons() {
@@ -317,6 +324,9 @@ public class MainGameView implements ViewInterface{
         return buttonHashMap;
     }
 
+    Button getEndTurnButton() {
+        return endTurnButton;
+    }
 
 
     @Override

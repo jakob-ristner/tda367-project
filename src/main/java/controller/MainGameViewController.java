@@ -10,12 +10,13 @@ import java.util.HashMap;
 
 public class MainGameViewController extends AbstractController{
     private HashMap<Integer, Button> buttonMap;
+    private Button endTurnButton;
 
     public MainGameViewController(Game game, ViewInterface view) {
         super(game, view);
     }
 
-    void setButtons(HashMap<Integer, Button> buttonMap) {
+    void setDoorButtons(HashMap<Integer, Button> buttonMap) {
         this.buttonMap = buttonMap;
         buttonMap.get(0).setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -41,7 +42,16 @@ public class MainGameViewController extends AbstractController{
                 game.moveCurrentPlayer(-1, 0);
             }
         });
+    }
 
+    void setEndTurnButton(Button endTurnButton) {
+        this.endTurnButton = endTurnButton;
+        endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                game.endTurn();
+            }
+        });
     }
 
 }

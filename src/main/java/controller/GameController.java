@@ -56,7 +56,8 @@ public class GameController implements GameObserver{
     @Override
     public void initMapData() {
         view.initMapData();
-        mainGameViewController.setButtons(view.getMainGameViewDoorButtons());
+        mainGameViewController.setDoorButtons(view.getMainGameViewDoorButtons());
+        mainGameViewController.setEndTurnButton(view.getMainGameViewEndTurnButton());
     }
 
     @Override

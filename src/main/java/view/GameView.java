@@ -86,4 +86,8 @@ public class GameView {
 		return mainGameView.getDoorButtons();
 	}
 
+	public Button getMainGameViewEndTurnButton() {
+		return mainGameView.getEndTurnButton();
+	}
+
 }
