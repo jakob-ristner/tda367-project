@@ -42,7 +42,7 @@ public class GameView {
 
 		//gameWonEventView.viewToFront();//For testing of the eventViews
 
-		hauntEventView.viewToFront();
+		//hauntEventView.viewToFront();
 
 	}
 
