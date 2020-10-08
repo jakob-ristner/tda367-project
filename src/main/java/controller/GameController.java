@@ -41,12 +41,14 @@ public class GameController implements GameObserver{
         characterSelectController.setTextList(view.getCharSelectTexts());
         characterSelectController.setNextView(mainGameView);
 
+
         mainGameViewController = new MainGameViewController(game);
 
         eventController = new EventController(game);
         eventController.setEventButtonMap(view.getEventButtons());
         eventController.setStartScreen(startScreenView);
         eventController.setMainGameView(mainGameView);
+
     }
 
     @Override
@@ -62,6 +64,8 @@ public class GameController implements GameObserver{
     @Override
     public void initMapData() {
         view.initMapData();
+        mainGameViewController.setDoorButtons(view.getMainGameViewDoorButtons());
+        mainGameViewController.setEndTurnButton(view.getMainGameViewEndTurnButton());
     }
 
     @Override

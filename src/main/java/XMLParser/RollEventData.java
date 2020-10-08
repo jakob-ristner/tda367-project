@@ -1,35 +1,22 @@
 package XMLParser;
 
 public class RollEventData extends EventData{
-    private int stamina;
-    private int strength;
-    private int speed;
-    private int sanity;
+    private String stat;
+    private int statChange;
     private double eventThreshold;
 
-    public RollEventData(int stamina, int strength, int speed, int sanity, double eventThreshold,String eventText, int id, int eventType) {
+    public RollEventData(int statChange,String stat, double eventThreshold,String eventText, int id, int eventType) {
         super(eventText,eventType,id);
-        this.stamina = stamina;
-        this.strength = strength;
-        this.speed = speed;
-        this.sanity = sanity;
-        this.eventThreshold = eventThreshold;
+        this.statChange = statChange;
+        this.stat = stat;
     }
 
-    public int getStamina() {
-        return stamina;
+    public String getStat() {
+        return stat;
     }
 
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public int getSanity() {
-        return sanity;
+    public int getStatChange() {
+        return statChange;
     }
 
     public double getEventThreshold() {

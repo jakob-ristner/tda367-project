@@ -10,7 +10,10 @@ public class Player {
     private Coord pos;
     private Kharacter character;
     private Random dice;
+    int stepsLeft;
+    int steps;
     private boolean isDead;
+    public boolean hasCharacter;
 
     public int floor;
 
@@ -38,9 +41,7 @@ public class Player {
         return pos;
     }
 
-    public boolean hasCharacter;
 
-    private int steps;
 
 
     public Kharacter getCharacter() {
@@ -66,6 +67,7 @@ public class Player {
 
     public void playerMove(int dx, int dy){
         pos.move(dx, dy);
+        step();
     }
 
     public void addToInventory(Item item) {
@@ -84,18 +86,26 @@ public class Player {
     }
 
 
+
     public void setCharacter(Kharacter character) {
         this.character = character;
         hasCharacter = true;
-    }
-    public void setStepAmount(){
-        steps = dice.nextInt(character.getStat(Stat.SPEED));
+        steps = character.getStat(Stat.SPEED);
+        resetSteps();
     }
 
-
-    public int getStepAmount() {
-        return steps;
+    public void resetSteps() {
+        stepsLeft = steps;
     }
+
+    public void step() {
+        stepsLeft--;
+    }
+
+    public int getStepsLeft() {
+        return stepsLeft;
+    }
+
 
     public String getCharacterName() {
         return character.getName();

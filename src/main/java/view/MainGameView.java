@@ -46,9 +46,11 @@ public class MainGameView implements ViewInterface{
     private List<Coord> playerCoords;
     private int currentPlayerIndex;
     private Text currentFloor;
+    private Text stepsLeft;
 
     private HashMap<Integer, Boolean> currentTileDoors;
     private List<Button> doorButtons;
+    private Button endTurnButton;
 
     private Game game;
     List<List<Rectangle>> tileViews;
@@ -191,6 +193,14 @@ public class MainGameView implements ViewInterface{
             statsPane.getChildren().add(currStatText);
         }
         statsPane.getChildren().add(currentplayer);
+
+        stepsLeft = new Text("Steps left: " + game.getCurrentPlayerStepsLeft());
+        stepsLeft.setWrappingWidth((width - (height - 150)) / 2);
+        stepsLeft.setTextAlignment(TextAlignment.CENTER);
+        stepsLeft.setLayoutX(0);
+        stepsLeft.setLayoutY(100 + playerStatStrings.size() * 50);
+        stepsLeft.setStyle("-fx-font-size: 15");
+        statsPane.getChildren().add(stepsLeft);
     }
 
     private void initFloorPane() {
@@ -201,6 +211,12 @@ public class MainGameView implements ViewInterface{
         currentFloor.setLayoutY(50);
         currentFloor.setStyle("-fx-font-size: 20");
         floorPane.getChildren().add(currentFloor);
+
+        endTurnButton = new Button();
+        endTurnButton.setText("End Turn");
+        endTurnButton.setLayoutX(0);
+        endTurnButton.setLayoutY(50);
+        floorPane.getChildren().add(endTurnButton);
     }
 
     private void initButtons() {
@@ -236,6 +252,7 @@ public class MainGameView implements ViewInterface{
     }
 
     private void updateButtons() {
+        currentTileDoors = game.getCurrentTileDoors();
         for (int i = 0; i < doorButtons.size(); i++) {
             doorButtons.get(i).setLayoutX(getCurrentPlayerCenterX() + doorOffsetMap.get(i)[X] - doorButtonSize);
             doorButtons.get(i).setLayoutY(getCurrentPlayerCenterY() + doorOffsetMap.get(i)[Y] - doorButtonSize);
@@ -251,6 +268,9 @@ public class MainGameView implements ViewInterface{
 
         //updates the big character name in teh statspane
         currentplayer.setText(game.getCurrentPlayersCharacterName());
+
+        //updates stepcounter
+        stepsLeft.setText("Steps left: " + game.getCurrentPlayerStepsLeft());
 
         //updates the stat texts
         List<String> playerStatStrings = game.getCurrentPlayerStatsAsStrings();
@@ -296,10 +316,17 @@ public class MainGameView implements ViewInterface{
         return (int) playerSprites.get(currentPlayerIndex).getCenterY();
     }
 
-    List<Button> getDoorButtons() {
-        return doorButtons;
+    HashMap<Integer, Button> getDoorButtons() {
+        HashMap<Integer, Button> buttonHashMap = new HashMap<>();
+        for (int i = 0; i < doorButtons.size(); i++) {
+            buttonHashMap.put(i, doorButtons.get(i));
+        }
+        return buttonHashMap;
     }
 
+    Button getEndTurnButton() {
+        return endTurnButton;
+    }
 
 
     @Override

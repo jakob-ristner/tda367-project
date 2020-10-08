@@ -27,6 +27,8 @@ public class XMLParser {
         int strength;
         int speed;
         int sanity;
+        String stat;
+        int statChange;
         double eventThreshold;
         int deltaX;
         int deltaY;
@@ -62,12 +64,11 @@ public class XMLParser {
                     eventThreshold = Double.parseDouble(getElement("eventThreshold"));
                     eventType = parseInt(getElement("eventType"));
                     eventText = getElement("eventText");
-                    stamina = parseInt(getElement("stamina"));
-                    strength = parseInt(getElement("strength"));
-                    speed = parseInt(getElement("speed"));
-                    sanity = parseInt(getElement("sanity"));
+                    stat = element.getElementsByTagName("statToRollOn").item(0).getTextContent();
+                    statChange = parseInt(getElement("statChange"));
 
-                    rollEventList.add(new RollEventData(stamina,strength,speed,sanity,eventThreshold,eventText,id,eventType));
+
+                    rollEventList.add(new RollEventData(statChange,stat,eventThreshold,eventText,id,eventType));
                 }
                 if (parseInt(getElement("eventType")) == -3){
                     id = parseInt(element.getAttribute("id"));
@@ -77,8 +78,10 @@ public class XMLParser {
                     deltaX = parseInt(getElement("deltaX"));
                     deltaY = parseInt(getElement("deltaY"));
                     deltaFloor = parseInt(getElement("floorDelta"));
+                    stat = element.getElementsByTagName("statToRollOn").item(0).getTextContent();
+                    statChange = parseInt(getElement("statChange"));
 
-                    moveEventList.add(new MoveEventData(eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
+                    moveEventList.add(new MoveEventData(stat,statChange,eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
                 }
 
 
@@ -125,10 +128,8 @@ public class XMLParser {
         System.out.println(rollEventList.get(0).getEventText());
         System.out.println(rollEventList.get(0).getId());
         System.out.println(rollEventList.get(0).getEventThreshold());
-        System.out.println(rollEventList.get(0).getSanity());
-        System.out.println(rollEventList.get(0).getSpeed());
-        System.out.println(rollEventList.get(0).getStamina());
-        System.out.println(rollEventList.get(0).getStrength());
+        System.out.println(rollEventList.get(0).getStat());
+        System.out.println(rollEventList.get(0).getStatChange());
         System.out.println("--------------------------------------------------------");
         System.out.println(moveEventList.get(0).getEventType());
         System.out.println(moveEventList.get(0).getEventText());
@@ -137,6 +138,8 @@ public class XMLParser {
         System.out.println(moveEventList.get(0).getDeltaFloor());
         System.out.println(moveEventList.get(0).getDeltaX());
         System.out.println(moveEventList.get(0).getDeltaY());
+        System.out.println(moveEventList.get(0).getStat());
+        System.out.println(moveEventList.get(0).getStatChange());
 
 
     }

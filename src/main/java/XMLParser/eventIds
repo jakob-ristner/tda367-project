@@ -11,16 +11,16 @@
     <event id="1">
         <eventType>-2</eventType>
         <eventThreshold>0.5</eventThreshold>
-        <speed>-1</speed>
-        <sanity>-1</sanity>
-        <strength>-1</strength>
-        <stamina>-1</stamina>
+        <statToRollOn>Strength</statToRollOn>
+        <statChange>1</statChange>
         <eventText>Fight the spider, to win roll higher:</eventText>
     </event>
 
     <event id = "2">
         <eventType>-3</eventType>
         <eventThreshold>0.5</eventThreshold>
+        <statToRollOn>Speed</statToRollOn>
+        <statChange>1</statChange>
         <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
         <floorDelta>-1</floorDelta>
         <deltaX>0</deltaX>
