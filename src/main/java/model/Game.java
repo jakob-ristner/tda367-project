@@ -48,6 +48,7 @@ public class Game implements ControllerObservable{
     public void setPlayerAmount(int playerAmount) {
         this.playerAmount = playerAmount;
         createPlayers(playerAmount);
+
     }
     private void eventTriggered(){
         eventCounter++;

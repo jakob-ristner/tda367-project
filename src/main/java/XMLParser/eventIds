@@ -12,15 +12,24 @@
     <event id="1">
         <eventType>-2</eventType>
         <eventThreshold>1</eventThreshold>
-        <statToRollOn>Strength</statToRollOn>
+        <statToRollOn>1</statToRollOn>
         <statChange>1</statChange>
         <eventText>Fight the spider, to win roll higher:</eventText>
     </event>
 
-    <event id = "2">
+    <event id="2">
+         <eventType>-2</eventType>
+         <eventThreshold>1</eventThreshold>
+         <statToRollOn>2</statToRollOn>
+         <statChange>1</statChange>
+         <eventText>You heard a noice, how spooked are you?:</eventText>
+     </event>
+
+
+    <event id = "3">
         <eventType>-3</eventType>
         <eventThreshold>1</eventThreshold>
-        <statToRollOn>Speed</statToRollOn>
+        <statToRollOn>0</statToRollOn>
         <statChange>1</statChange>
         <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
         <floorDelta>-1</floorDelta>

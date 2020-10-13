@@ -3,7 +3,7 @@ package model;
 import utilities.Coord;
 
 public class MoveEvent implements Event {
-    String statToRollOn; //TODO: Fix so that this isn't a string but instead is an Enum
+    Stat statToRollOn; //TODO: Fix so that this isn't a string but instead is an Enum
     int threshHold;
     String eventText;
 
@@ -11,8 +11,8 @@ public class MoveEvent implements Event {
     int deltaY;
     int deltaZ;
 
-    public MoveEvent(String statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ) {
-        this.statToRollOn = statToRollOn;
+    public MoveEvent(int statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ) {
+        this.statToRollOn = Stat.from(statToRollOn);
         this.threshHold = threshHold;
         this.eventText = eventText;
         this.deltaX = deltaX;
@@ -22,10 +22,9 @@ public class MoveEvent implements Event {
 
     @Override
     public void activate(Player currentPlayer) {
-        //player.getstat * threshold ???????????????????????????????
-      /*  if(threshHold > currentPlayer.rollStat(statToRollOn)) { TODO:Please fix this method later guys. :)
-            currentPlayer.addCoord(coordDelta);
-        }*/
+      if(threshHold > currentPlayer.rollStat(statToRollOn)) {
+            currentPlayer.playerMoveEvent(deltaX,deltaY,deltaZ);
+        }
         System.out.println("move event triggered");
     }
 

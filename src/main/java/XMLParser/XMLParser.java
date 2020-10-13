@@ -28,7 +28,7 @@ public class XMLParser {
         int strength;
         int speed;
         int sanity;
-        String stat;
+        int stat;
         int statChange;
         int eventThreshold;
         int deltaX;
@@ -67,7 +67,7 @@ public class XMLParser {
                     eventThreshold = Integer.parseInt(getElement("eventThreshold"));
                     eventType = parseInt(getElement("eventType"));
                     eventText = getElement("eventText");
-                    stat = element.getElementsByTagName("statToRollOn").item(0).getTextContent();
+                    stat = parseInt((getElement("statToRollOn"))); /**/
                     statChange = parseInt(getElement("statChange"));
 
 
@@ -82,7 +82,7 @@ public class XMLParser {
                     deltaX = parseInt(getElement("deltaX"));
                     deltaY = parseInt(getElement("deltaY"));
                     deltaFloor = parseInt(getElement("floorDelta"));
-                    stat = element.getElementsByTagName("statToRollOn").item(0).getTextContent();
+                    stat = stat = parseInt((getElement("statToRollOn")));;
                     statChange = parseInt(getElement("statChange"));
 
                     moveEventList.add(new MoveEventData(stat,statChange,eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
