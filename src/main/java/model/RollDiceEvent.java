@@ -3,17 +3,19 @@ package model;
 import java.util.HashMap;
 
 public class RollDiceEvent implements Event {
-    Stat statToRollOn; //TODO: Fix so based on enum
+    Stat statToRollOn;
     int numberToRollVersus;
     private String eventText;
+    private int eventType;
 
     int loseStatChange;
 
-    public RollDiceEvent(int statToRollOn, int numberToRollVersus, int loseStatChange, String eventText) {
+    public RollDiceEvent(int statToRollOn, int numberToRollVersus, int loseStatChange, String eventText, int eventType) {
         this.statToRollOn = Stat.from(statToRollOn);
         this.numberToRollVersus = numberToRollVersus;
         this.loseStatChange = loseStatChange;
         this.eventText = eventText;
+        this.eventType = eventType;
         System.out.println(this.statToRollOn);
         System.out.println(eventText);
     }
@@ -32,6 +34,7 @@ public class RollDiceEvent implements Event {
 
     @Override
     public int getEventType() {
-        return -2;
+        return eventType;
     }
+
 }

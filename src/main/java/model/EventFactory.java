@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class EventFactory {
+public final class EventFactory {
 
 
 
@@ -21,28 +21,36 @@ public class EventFactory {
         Item item = new Item(parser.getItemEventList().get(index).getItemName(),statMap);
 
         String eventText = parser.getItemEventList().get(index).getEventText();
+        int eventType = parser.getItemEventList().get(index).getEventType();
 
-        ItemEvent event = new ItemEvent(item, eventText);
+        ItemEvent event = new ItemEvent(item, eventText, eventType);
         return event;
     }
+
     private static Event createRollDiceEvent(XMLParser parser, int index) {
         int statToRollOn = parser.getRollEventList().get(index).getStat();
         int threshHold = parser.getRollEventList().get(index).getEventThreshold();
         int statChange = parser.getRollEventList().get(index).getStatChange();
         String eventText = parser.getRollEventList().get(index).getEventText();
+        int eventType = parser.getRollEventList().get(index).getEventType();
 
-        RollDiceEvent event = new RollDiceEvent(statToRollOn,threshHold, statChange, eventText);
+        RollDiceEvent event = new RollDiceEvent(statToRollOn,threshHold, statChange, eventText, eventType);
         return event;
     }
+
     private static Event createMoveEvent(XMLParser parser, int index ){
         int stat =  parser.getMoveEventList().get(index).getStat();
         int treshHold = parser.getMoveEventList().get(index).getEventThreshold();
+
         String eventText = parser.getMoveEventList().get(index).getEventText();
+        int eventType = parser.getMoveEventList().get(index).getEventType();
+
         int deltaX =  parser.getMoveEventList().get(index).getDeltaX();
         int deltaY =  parser.getMoveEventList().get(index).getDeltaY();
         int deltaZ =  parser.getMoveEventList().get(index).getDeltaFloor();
 
-        MoveEvent event = new MoveEvent(stat, treshHold, eventText, deltaX, deltaY, deltaZ);
+
+        MoveEvent event = new MoveEvent(stat, treshHold, eventText, deltaX, deltaY, deltaZ, eventType);
         return event;
     }
 

@@ -5,11 +5,13 @@ import java.util.HashMap;
 public class ItemEvent implements Event {
     private Item item;
     private String eventText;
+    private int eventType;
 
 
-    public ItemEvent(Item item, String eventText) {
+    public ItemEvent(Item item, String eventText, int eventType) {
         this.item = item;
         this.eventText = eventText;
+        this.eventType = eventType;
     }
 
     @Override
@@ -20,6 +22,6 @@ public class ItemEvent implements Event {
 
     @Override
     public int getEventType() {
-        return -1;
+        return eventType;
     }
 }

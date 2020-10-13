@@ -3,21 +3,25 @@ package model;
 import utilities.Coord;
 
 public class MoveEvent implements Event {
-    Stat statToRollOn; //TODO: Fix so that this isn't a string but instead is an Enum
+    Stat statToRollOn;
     int threshHold;
+
     String eventText;
+    int eventType;
 
     int deltaX;
     int deltaY;
     int deltaZ;
 
-    public MoveEvent(int statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ) {
+
+    public MoveEvent(int statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ, int eventType) {
         this.statToRollOn = Stat.from(statToRollOn);
         this.threshHold = threshHold;
         this.eventText = eventText;
         this.deltaX = deltaX;
         this.deltaY = deltaY;
         this.deltaZ = deltaZ;
+        this.eventType = eventType;
     }
 
     @Override
@@ -30,6 +34,6 @@ public class MoveEvent implements Event {
 
     @Override
     public int getEventType() {
-        return -3; //for xml parser
+        return eventType; //From XMLparser
     }
 }
