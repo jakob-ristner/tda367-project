@@ -102,7 +102,7 @@ public class Player {
     }
 
     public void resetSteps() {
-        stepsLeft = steps;
+        stepsLeft = dice.nextInt(steps + 1);
     }
 
     public void step() {
