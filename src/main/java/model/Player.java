@@ -78,6 +78,7 @@ public class Player {
     public void addToInventory(Item item) {
         inventory.addItem(item);
         character.updateStat(item.getStats());
+        System.out.println(item.getName());
     }
 
     public boolean isEventPassed(Stat stat, int threshhold) {
@@ -126,5 +127,9 @@ public class Player {
 
     public List<String> getCharacterStatsAsStrings() {
         return character.getStatsAsStrings();
+    }
+
+    public List<String> getItemNames() {
+        return inventory.getNames();
     }
 }

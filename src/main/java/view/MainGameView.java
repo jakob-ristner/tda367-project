@@ -51,6 +51,7 @@ public class MainGameView implements ViewInterface{
     private HashMap<Integer, Boolean> currentTileDoors;
     private List<Button> doorButtons;
     private Button endTurnButton;
+    private List<Text> itemsInInventory;
 
     private Game game;
     List<List<Rectangle>> tileViews;
@@ -106,6 +107,7 @@ public class MainGameView implements ViewInterface{
         addNode(mapPane);
         addNode(floorPane);
     }
+    
 
     private void initTileViews() {
         tileViews = new ArrayList<>();
@@ -131,8 +133,14 @@ public class MainGameView implements ViewInterface{
         initStatsPane();
         initFloorPane();
         initButtons();
+        initInventoryPane();
     }
 
+    private void initInventoryPane() {
+        itemsInInventory = new ArrayList<>();
+        updateInventoryPane();
+    }
+    
     private void initPlayerSprites() {
         Circle currCircle;
         playerSprites = new ArrayList<>();
@@ -249,6 +257,25 @@ public class MainGameView implements ViewInterface{
         updateStatsPane();
         updateFloorPane();
         updateButtons();
+        updateInventoryPane();
+    }
+    
+    private void updateInventoryPane() {
+        for (Text itemText: itemsInInventory) {
+            inventoryPane.getChildren().remove(itemText);
+        }
+        itemsInInventory = new ArrayList<>();
+        List<String> itemStrings = game.getCurrentPlayerItemsAsText();
+        Text currText;
+        for (int i = 0; i < itemStrings.size(); i++) {
+            currText = new Text(itemStrings.get(i));
+            currText.setWrappingWidth((width - (height - 150)) / 2);
+            currText.setTextAlignment(TextAlignment.CENTER);
+            currText.setLayoutX(0);
+            currText.setLayoutY(20 + i * 30);
+            itemsInInventory.add(currText);
+            inventoryPane.getChildren().add(currText);
+        }
     }
 
     private void updateButtons() {
@@ -283,8 +310,7 @@ public class MainGameView implements ViewInterface{
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
     }
 
-    private void updatePlayerSprites()
-    {
+    private void updatePlayerSprites() {
         //reset players that are shown
         for (Circle playerSprite: playersSpritesCurrentFloor) {
             playerSprite.setStyle("-fx-stroke-width: none; -fx-stroke: none"); // one of these will be the last currentplayer
@@ -309,8 +335,7 @@ public class MainGameView implements ViewInterface{
             mapPane.getChildren().add(playerSprites.get(index));
         }
     }
-
-
+    
     private int getCurrentPlayerCenterX() {
         return (int) playerSprites.get(currentPlayerIndex).getCenterX();
     }

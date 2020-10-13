@@ -1,6 +1,7 @@
 package model;
 
 import controller.GameObserver;
+import javafx.scene.text.Text;
 import utilities.Coord;
 
 import java.util.*;
@@ -297,5 +298,9 @@ public class Game implements ControllerObservable{
     public void endTurn() {
         updateCurrentPlayer();
         notifyGameEvent();
+    }
+
+    public List<String> getCurrentPlayerItemsAsText() {
+        return getCurrentPlayer().getItemNames();
     }
 }
