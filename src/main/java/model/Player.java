@@ -41,6 +41,11 @@ public class Player {
         return pos;
     }
 
+    public void addCoord(Coord coord) {
+        //imagine it like a + operator
+        pos.add(coord);
+    }
+
 
 
 

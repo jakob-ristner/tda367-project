@@ -38,7 +38,7 @@ public class Board {
             events.add(EventFactory.createRollDiceEvent(Stat.STRENGTH,1,2));
         }
         for(int i =0; i < nMoveEvents; i++) {
-            events.add(EventFactory.createMouseEvent(new Coord(0,0,0),Stat.STRENGTH,5));
+            events.add(EventFactory.createMouseEvent(new Coord(0,0,-1),Stat.STRENGTH,5));
         }
     }
 
