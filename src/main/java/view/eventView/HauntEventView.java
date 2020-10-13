@@ -16,6 +16,7 @@ public class HauntEventView extends EventView {
         addNode(hauntButton);
     }
 
+
     @Override
     public Button getEventButton() {
         return hauntButton;
