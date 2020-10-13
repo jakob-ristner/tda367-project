@@ -35,6 +35,7 @@ public class Player {
 
     public void setPos(Coord pos) {
         this.pos = pos;
+        this.pos.sanityCheck();
     }
 
     public Coord getPos() {
@@ -44,6 +45,7 @@ public class Player {
     public void addCoord(Coord coord) {
         //imagine it like a + operator
         pos.add(coord);
+        System.out.println(getFloor());
     }
 
 
@@ -78,7 +80,6 @@ public class Player {
     public void addToInventory(Item item) {
         inventory.addItem(item);
         character.updateStat(item.getStats());
-        System.out.println(item.getName());
     }
 
     public boolean isEventPassed(Stat stat, int threshhold) {

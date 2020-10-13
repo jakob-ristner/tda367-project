@@ -9,7 +9,6 @@ public class Coord {
         this.x = x;
         this.y = y;
         this.floor = floor;
-        sanityCheck();
     }
 
     public int getX() {
@@ -61,15 +60,13 @@ public class Coord {
 
     }
 
-    private void sanityCheck() {
-        /* doesnt work right now, dont know why
+    public void sanityCheck() {
         floor = Math.min(floor, 2);
         floor = Math.max(floor, 0);
         x = Math.min(x, 5);
         x = Math.max(x, 0);
         y = Math.min(y, 5);
         y = Math.max(y, 0);
-        */
 
     }
 }
