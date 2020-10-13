@@ -1,5 +1,7 @@
 package model;
 
+import utilities.Coord;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,6 +77,11 @@ public class Floor {
 
     HashMap<Integer, Boolean> getDoorsOnTile(int x, int y) {
         return tiles[x][y].getDoors();
+    }
+
+    boolean tryActivateEventOnTile(Player player) {
+        Tile tile = tiles[player.getX()][player.getY()];
+        return tile.tryActivateEvent(player);
     }
 
 }

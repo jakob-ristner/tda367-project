@@ -116,6 +116,7 @@ public class Game implements ControllerObservable{
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.stepsLeft > 0) {
             currentPlayer.playerMove(dx, dy);
+            board.tryActivateEventOnPlayerPos(currentPlayer);
         }
         notifyGameEvent();
     }
