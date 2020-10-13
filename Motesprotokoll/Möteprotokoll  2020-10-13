@@ -1,0 +1,35 @@
+##### Meeting Agenda
+
+Group: Gastuen
+Date: 2020-10-13
+Chair: Jakob
+Participants: Karl Gunnarsson, David Andreasson, Jakob Ristner, Jakob Henriksson, Erik Berg
+
+
+#####Objectives(5 min)
+-Working on event controllers (Karl,Erik)
+-Working connecting board with events(Jakob R)
+-Creating tests(David)
+-Working on events(Jakob H)
+
+
+
+######### Reports(15 min)
+-XML parser done
+-Working on gameScreen
+-Working on event structure
+-Game logic mostly working.
+
+
+
+####### Discussion Items(35 min)
+-How should events be created? Should we create all events in method call or should
+    we create each one by one.
+
+
+## Outcomes and assignments (5 min)
+-Events should be create all at once.
+
+
+## Wrap up
+Next meeting is with the supervisor.
