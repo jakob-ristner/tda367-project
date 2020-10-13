@@ -76,6 +76,9 @@ public class Player {
         pos.move(dx, dy);
         step();
     }
+    void playerMoveEvent(int dx, int dy, int dz){
+        this.addCoord(new Coord(dx,dy,dz));
+    }
 
     public void addToInventory(Item item) {
         inventory.addItem(item);

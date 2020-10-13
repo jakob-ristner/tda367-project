@@ -14,7 +14,7 @@ public class ItemEvent implements Event {
 
     @Override
     public void activate(Player currentPlayer) {
-        System.out.println("item event triggered");
+        System.out.println(eventText);
         currentPlayer.addToInventory(item);
     }
 

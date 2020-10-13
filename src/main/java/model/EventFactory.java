@@ -26,7 +26,7 @@ public class EventFactory {
         return event;
     }
     private static Event createRollDiceEvent(XMLParser parser, int index) {
-        String statToRollOn = parser.getRollEventList().get(index).getStat();
+        int statToRollOn = parser.getRollEventList().get(index).getStat();
         int threshHold = parser.getRollEventList().get(index).getEventThreshold();
         int statChange = parser.getRollEventList().get(index).getStatChange();
         String eventText = parser.getRollEventList().get(index).getEventText();
@@ -35,7 +35,7 @@ public class EventFactory {
         return event;
     }
     private static Event createMoveEvent(XMLParser parser, int index ){
-        String stat =  parser.getMoveEventList().get(index).getStat();
+        int stat =  parser.getMoveEventList().get(index).getStat();
         int treshHold = parser.getMoveEventList().get(index).getEventThreshold();
         String eventText = parser.getMoveEventList().get(index).getEventText();
         int deltaX =  parser.getMoveEventList().get(index).getDeltaX();
