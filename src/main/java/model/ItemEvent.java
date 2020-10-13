@@ -3,10 +3,13 @@ package model;
 import java.util.HashMap;
 
 public class ItemEvent implements Event {
-    Item item;
+    private Item item;
+    private String eventText;
 
-    public ItemEvent(Item item) {
+
+    public ItemEvent(Item item, String eventText) {
         this.item = item;
+        this.eventText = eventText;
     }
 
     @Override

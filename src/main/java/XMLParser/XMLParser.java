@@ -1,7 +1,6 @@
 package XMLParser;
 
 
-import model.ItemEvent;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -22,6 +21,7 @@ public class XMLParser {
     public XMLParser()  {
 
         String eventText;
+        String itemName;
         int eventType;
         int id;
         int stamina;
@@ -30,7 +30,7 @@ public class XMLParser {
         int sanity;
         String stat;
         int statChange;
-        double eventThreshold;
+        int eventThreshold;
         int deltaX;
         int deltaY;
         int deltaFloor;
@@ -56,14 +56,15 @@ public class XMLParser {
                     strength = parseInt(getElement("strength"));
                     speed = parseInt(getElement("speed"));
                     sanity = parseInt(getElement("sanity"));
+                    itemName = getElement("itemName");
 
 
-                    itemEventList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType));
-                    eventDataList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType));
+                    itemEventList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType, itemName));
+                    eventDataList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType, itemName));
                 }
                 if (parseInt(getElement("eventType")) == -2){
                     id = parseInt(element.getAttribute("id"));
-                    eventThreshold = Double.parseDouble(getElement("eventThreshold"));
+                    eventThreshold = Integer.parseInt(getElement("eventThreshold"));
                     eventType = parseInt(getElement("eventType"));
                     eventText = getElement("eventText");
                     stat = element.getElementsByTagName("statToRollOn").item(0).getTextContent();
@@ -77,7 +78,7 @@ public class XMLParser {
                     id = parseInt(element.getAttribute("id"));
                     eventType = parseInt(getElement("eventType"));
                     eventText = getElement("eventText");
-                    eventThreshold = Double.parseDouble(getElement("eventThreshold"));
+                    eventThreshold = Integer.parseInt(getElement("eventThreshold"));
                     deltaX = parseInt(getElement("deltaX"));
                     deltaY = parseInt(getElement("deltaY"));
                     deltaFloor = parseInt(getElement("floorDelta"));
@@ -158,6 +159,15 @@ public class XMLParser {
         return eventDataList;
     }
 
+    public ArrayList<MoveEventData> getMoveEventList() {
+        return moveEventList;
+    }
 
+    public ArrayList<RollEventData> getRollEventList() {
+        return rollEventList;
+    }
 
+    public ArrayList<ItemEventData> getItemEventList() {
+        return itemEventList;
+    }
 }

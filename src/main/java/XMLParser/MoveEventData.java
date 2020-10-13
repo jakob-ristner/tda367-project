@@ -1,14 +1,14 @@
 package XMLParser;
 
 public class MoveEventData extends EventData {
-    private double eventThreshold;
+    private int eventThreshold;
     private int deltaX;
     private int deltaY;
     private int deltaFloor;
     private String stat;
     private int statChange;
 
-    public MoveEventData(String stat,int statChange,String eventText, int eventType, int id, int deltaX, int deltaY, int deltaFloor, double eventThreshold) {
+    public MoveEventData(String stat,int statChange,String eventText, int eventType, int id, int deltaX, int deltaY, int deltaFloor, int eventThreshold) {
         super(eventText, eventType, id);
         this.eventThreshold = eventThreshold;
         this.deltaX = deltaX;
@@ -26,7 +26,7 @@ public class MoveEventData extends EventData {
         return statChange;
     }
 
-    public double getEventThreshold() {
+    public int getEventThreshold() {
         return eventThreshold;
     }
 

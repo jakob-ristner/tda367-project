@@ -3,12 +3,13 @@ package XMLParser;
 public class RollEventData extends EventData{
     private String stat;
     private int statChange;
-    private double eventThreshold;
+    private int eventThreshold;
 
-    public RollEventData(int statChange,String stat, double eventThreshold,String eventText, int id, int eventType) {
+    public RollEventData(int statChange,String stat, int eventThreshold,String eventText, int id, int eventType) {
         super(eventText,eventType,id);
         this.statChange = statChange;
         this.stat = stat;
+        this.eventThreshold = eventThreshold;
     }
 
     public String getStat() {
@@ -19,7 +20,7 @@ public class RollEventData extends EventData{
         return statChange;
     }
 
-    public double getEventThreshold() {
+    public int getEventThreshold() {
         return eventThreshold;
     }
 }
