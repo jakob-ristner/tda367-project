@@ -17,9 +17,10 @@ public class MoveEvent implements Event {
     @Override
     public void activate(Player currentPlayer) {
         //player.getstat * threshold ???????????????????????????????
-        if(threshHold<currentPlayer.rollStat(statToRollOn)) {
+        if(threshHold > currentPlayer.rollStat(statToRollOn)) {
             currentPlayer.setPos(newCoord);
         }
+        System.out.println("move event triggered");
     }
 
     @Override

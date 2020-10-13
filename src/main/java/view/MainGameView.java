@@ -283,7 +283,8 @@ public class MainGameView implements ViewInterface{
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
     }
 
-    private void updatePlayerSprites() {
+    private void updatePlayerSprites()
+    {
         //reset players that are shown
         for (Circle playerSprite: playersSpritesCurrentFloor) {
             playerSprite.setStyle("-fx-stroke-width: none; -fx-stroke: none"); // one of these will be the last currentplayer
@@ -292,7 +293,9 @@ public class MainGameView implements ViewInterface{
         playersSpritesCurrentFloor = new ArrayList<>();
 
         //update position of all players
+        playerCoords = game.getPlayerPositions();
         for (int i = 0; i < playerSprites.size(); i++) {
+
            playerSprites.get(i).setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
            playerSprites.get(i).setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
         }

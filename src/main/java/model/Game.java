@@ -67,7 +67,7 @@ public class Game implements ControllerObservable{
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++) {
             currPlayer = new Player();
-            currPlayer.setPos(new Coord(i, 0, i));
+            currPlayer.setPos(new Coord(i, 0, 1));
             playerList.add(currPlayer);
         }
     }

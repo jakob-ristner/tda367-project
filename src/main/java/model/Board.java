@@ -8,23 +8,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Board {
-    /*private Floor groundFloor;
-    private Floor basementFloor;
-    private Floor upperFloor;
-     */
 
-    private int eventPerFloor;
     private List<Integer> indexList;
-    private final int numberOfFloors;
-    private List<Floor> floors;
     private List<Event> events;
-    private Random rand = new Random();
+    private final Random rand = new Random();
+    private final List<Floor> floors;
+    private final int numberOfFloors;
+    private final int eventPerFloor;
 
     public Board(){
-        /*groundFloor = new Floor(generateEventList());
-        basementFloor = new Floor(generateEventList());
-        upperFloor = new Floor(generateEventList());
-         */
+        eventPerFloor = 10;
         numberOfFloors = 3;
         floors = new ArrayList<>();
         createEvents(3, 5, 6);
@@ -38,14 +31,14 @@ public class Board {
         itemStats.put(Stat.STRENGTH,2);
         events = new ArrayList<>();
 
-        for(int i =0; i<nItemEvents; i++) {
+        for(int i = 0; i < nItemEvents; i++) {
             events.add(EventFactory.createItemEvent(new Item("Sword",itemStats)));
         }
-        for(int i =0; i<nRollDiceEvents; i++) {
+        for(int i = 0; i < nRollDiceEvents; i++) {
             events.add(EventFactory.createRollDiceEvent(Stat.STRENGTH,1,2));
         }
-        for(int i =0; i<nMoveEvents; i++) {
-            events.add(EventFactory.createMouseEvent(new Coord(1,2,3),Stat.STRENGTH,5));
+        for(int i =0; i < nMoveEvents; i++) {
+            events.add(EventFactory.createMouseEvent(new Coord(0,0,0),Stat.STRENGTH,5));
         }
     }
 
