@@ -1,6 +1,7 @@
 package model;
 
 import controller.GameObserver;
+import javafx.scene.text.Text;
 import utilities.Coord;
 
 import java.util.*;
@@ -67,7 +68,7 @@ public class Game implements ControllerObservable{
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++) {
             currPlayer = new Player();
-            currPlayer.setPos(new Coord(i, 0, i));
+            currPlayer.setPos(new Coord(i, 0, 1));
             playerList.add(currPlayer);
         }
     }
@@ -116,6 +117,7 @@ public class Game implements ControllerObservable{
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.stepsLeft > 0) {
             currentPlayer.playerMove(dx, dy);
+            board.tryActivateEventOnPlayerPos(currentPlayer);
         }
         notifyGameEvent();
     }
@@ -296,5 +298,9 @@ public class Game implements ControllerObservable{
     public void endTurn() {
         updateCurrentPlayer();
         notifyGameEvent();
+    }
+
+    public List<String> getCurrentPlayerItemsAsText() {
+        return getCurrentPlayer().getItemNames();
     }
 }

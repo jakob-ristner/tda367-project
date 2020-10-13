@@ -35,10 +35,17 @@ public class Player {
 
     public void setPos(Coord pos) {
         this.pos = pos;
+        this.pos.sanityCheck();
     }
 
     public Coord getPos() {
         return pos;
+    }
+
+    public void addCoord(Coord coord) {
+        //imagine it like a + operator
+        pos.add(coord);
+        System.out.println(getFloor());
     }
 
 
@@ -121,5 +128,9 @@ public class Player {
 
     public List<String> getCharacterStatsAsStrings() {
         return character.getStatsAsStrings();
+    }
+
+    public List<String> getItemNames() {
+        return inventory.getNames();
     }
 }

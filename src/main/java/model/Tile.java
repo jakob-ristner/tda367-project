@@ -11,9 +11,10 @@ public class Tile {
     private boolean doorLeft = true;
     private boolean doorRight = true;
     private boolean hasPlayer;
-
+    private boolean hasEvent;
 
     public Tile(int i, int j, Tile[][] tiles) {
+        hasEvent = false;
         setDoors(i, j, tiles);
     }
 
@@ -35,7 +36,7 @@ public class Tile {
     }
 
     public boolean hasEvent() {
-        return event != null;
+        return hasEvent;
     }
 
     public void toggleIllumination() {
@@ -43,6 +44,7 @@ public class Tile {
     }
 
     public void setEvent(Event event) {
+        hasEvent = true;
         this.event = event;
     }
 
@@ -58,5 +60,13 @@ public class Tile {
 
     public Event getEvent (){
         return event;
+    }
+
+    boolean tryActivateEvent(Player player) {
+        if (hasEvent) {
+            event.activate(player);
+            return true;
+        }
+        return false;
     }
 }
