@@ -82,39 +82,6 @@ public class Game implements ControllerObservable{
         }
     }
 
-    public void runGame() {
-        for (Player player: playerList)
-            turn(player);
-    }
-
-    private void turn(Player activePlayer) {
-        /*
-        activePlayer.setStepAmount();
-        int steps = activePlayer.getStepAmount();
-
-        while (steps > 0 ){
-            //doorPickMethod
-            //activePlayer.playerMove(doorPickMethod);
-            //getPlayerTile(activePlayer).setHasPlayer(true);
-            if(getPlayerTile(activePlayer).hasEvent() && activePlayer.isHaunted()){
-                //getPlayerTile(activePlayer).activate();
-                eventTriggered();
-            }
-            if (gameState != null){
-                gameState.turn(activePlayer);
-            }
-            removeDeadPlayersFromGame();
-            steps--;
-            if (!playerList.contains(activePlayer)) break;
-        }
-
-
-        updateCurrentPlayer();
-
-         */
-
-    }
-
     public void moveCurrentPlayer(int dx, int dy) {
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.getStepsLeft() > 0) {
