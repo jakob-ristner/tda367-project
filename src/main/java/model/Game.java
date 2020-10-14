@@ -177,8 +177,6 @@ public class Game implements ControllerObservable{
         characterList.add(new Kharacter(sven, "Sven Nordstadt"));
         characterList.add(new Kharacter(medera, "Medera Calvados"));
         characterList.add(new Kharacter(sarah, "Sarah"));
-
-
     }
 
     public List<String> getCharacterNames(){
@@ -188,6 +186,7 @@ public class Game implements ControllerObservable{
         }
         return characterNames;
     }
+
     public List< HashMap<Stat, Integer>> getCharacterStats(){
         List< HashMap<Stat, Integer>> characterStats = new ArrayList<>();
         for(Kharacter a : characterList){
