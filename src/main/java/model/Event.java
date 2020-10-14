@@ -1,7 +1,13 @@
 package model;
 
+import controller.EventObserver;
+
 public interface Event {
-    void activate(Player currentPlayer);
+    void activate();
+
+    void handleEvent(Player currentPlayer);
+
+    void setObserver(EventObserver observer);
 
     int getEventType(); //for xml parser
 

@@ -5,7 +5,7 @@ import model.Game;
 import view.GameView;
 import view.ViewInterface;
 
-public class GameController implements GameObserver{
+public class GameController implements GameObserver,EventObserver{
     private Game game;
     private GameView view;
     private ViewInterface characterSelectView;
@@ -21,7 +21,11 @@ public class GameController implements GameObserver{
         this.game = game;
         initViews();
         initControllers();
-        //TODO when an event is activated make sure that the right view is toFronted...
+        initEvent();
+    }
+
+    private void initEvent() {
+        game.registerEventObserver(this);
     }
 
     private void initViews() {
@@ -72,4 +76,12 @@ public class GameController implements GameObserver{
     public void updateTurn() {
         //TODO add turn counter maybe?
     }
+
+    @Override
+    public void updateEventView(int eventType, String eventText) {
+        view.updateEventView(eventType, eventText);
+
+    }
+
+
 }

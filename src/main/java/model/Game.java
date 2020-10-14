@@ -1,7 +1,7 @@
 package model;
 
+import controller.EventObserver;
 import controller.GameObserver;
-import javafx.scene.text.Text;
 import utilities.Coord;
 
 import java.util.*;
@@ -40,6 +40,14 @@ public class Game implements ControllerObservable{
         }
         return gameInstance;
     }
+
+
+    public void registerEventObserver(EventObserver eventObserver){
+        for (Event e: board.getEvents()) {
+            e.setObserver(eventObserver);
+        }
+    }
+
 
     public void initHaunt(){
         listOfHaunts.get(0).init();
@@ -88,7 +96,13 @@ public class Game implements ControllerObservable{
             currentPlayer.playerMove(dx, dy);
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
-        notifyGameEvent();
+        notifyGameData();
+    }
+
+    public void handleEvent(){
+        Player currentPlayer = getCurrentPlayer();
+        board.handleEvent(currentPlayer);
+
     }
 
     public void removeDeadPlayersFromGame(){
@@ -144,8 +158,6 @@ public class Game implements ControllerObservable{
         characterList.add(new Kharacter(sven, "Sven Nordstadt"));
         characterList.add(new Kharacter(medera, "Medera Calvados"));
         characterList.add(new Kharacter(sarah, "Sarah"));
-
-
     }
 
     public List<String> getCharacterNames(){
@@ -155,6 +167,7 @@ public class Game implements ControllerObservable{
         }
         return characterNames;
     }
+
     public List< HashMap<Stat, Integer>> getCharacterStats(){
         List< HashMap<Stat, Integer>> characterStats = new ArrayList<>();
         for(Kharacter a : characterList){
@@ -202,7 +215,7 @@ public class Game implements ControllerObservable{
     }
 
     @Override
-    public void notifyGameEvent() {
+    public void notifyGameData() {
         observer.updateMapData();
     }
 
@@ -210,6 +223,7 @@ public class Game implements ControllerObservable{
     public void notifyGameStart() {
         observer.initMapData();
     }
+
 
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
@@ -266,7 +280,7 @@ public class Game implements ControllerObservable{
 
     public void endTurn() {
         updateCurrentPlayer();
-        notifyGameEvent();
+        notifyGameData();
     }
 
     public List<String> getCurrentPlayerItemsAsText() {

@@ -96,8 +96,8 @@ public abstract class EventView implements ViewInterface {
         return eventText;
     }
 
-    public void setEventText(TextArea eventText) {
-        this.eventText = eventText;
+    public void setEventText(String text) {
+        eventText.setText(text);
     }
 
 

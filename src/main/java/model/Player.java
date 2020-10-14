@@ -49,7 +49,7 @@ public class Player {
         System.out.println(getFloor());
     }
 
-    Kharacter getCharacter() {
+    public Kharacter getCharacter() {
         return character;
     }
 
@@ -76,16 +76,16 @@ public class Player {
         step();
     }
 
-    void playerMoveEvent(int dx, int dy, int dz) {
-        this.addCoord(new Coord(dx, dy, dz));
+    public void playerMoveEvent(int dx, int dy, int dz){
+        this.addCoord(new Coord(dx,dy,dz));
     }
 
-    void addToInventory(Item item) {
+    public void addToInventory(Item item) {
         inventory.addItem(item);
         character.updateStat(item.getStats());
     }
 
-    int rollStat(Stat stat) {
+    public int rollStat(Stat stat) {
         return dice.nextInt(character.getStat(stat));
     }
 

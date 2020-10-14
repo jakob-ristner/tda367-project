@@ -62,11 +62,15 @@ public class Tile {
         return event;
     }
 
-    boolean tryActivateEvent(Player player) {
+    boolean tryActivateEvent() {
         if (hasEvent) {
-            event.activate(player);
+            event.activate();
             return true;
         }
         return false;
+    }
+
+    public void handleEvent(Player currentPlayer) {
+        event.handleEvent(currentPlayer);
     }
 }

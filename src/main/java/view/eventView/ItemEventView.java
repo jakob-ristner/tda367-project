@@ -21,10 +21,7 @@ public class ItemEventView extends EventView {
         return eventButton;
     }
 
-    @Override
-    public void viewToFront() {
 
-    }
 
     @Override
     public void close() {

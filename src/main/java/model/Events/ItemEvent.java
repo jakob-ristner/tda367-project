@@ -1,6 +1,9 @@
-package model;
+package model.Events;
 
-public class ItemEvent implements Event {
+import model.Player;
+import model.Item;
+
+public class ItemEvent extends GameEvent {
     private Item item;
     private String eventText;
     private int eventType;
@@ -12,10 +15,16 @@ public class ItemEvent implements Event {
     }
 
     @Override
-    public void activate(Player currentPlayer) {
-        System.out.println(eventText);
+    public void activate() {
+        observer.updateEventView(eventType, eventText);
+        System.out.print("ItemEvent");
+    }
+
+    @Override
+    public void handleEvent(Player currentPlayer) {
         currentPlayer.addToInventory(item);
     }
+
 
     @Override
     public int getEventType() {

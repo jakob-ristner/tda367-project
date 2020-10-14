@@ -4,6 +4,7 @@ import controller.GameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.EventFactory;
 import model.Game;
 import view.GameView;
 
@@ -26,6 +27,7 @@ public class Gastuen extends Application
 	}
 
 	public void start(Stage stage) {
+	//	EventFactory.setObserver(controller);
 		modelInit();
 		viewInit(stage);
 		controllerInit();	//Testing if this placement works

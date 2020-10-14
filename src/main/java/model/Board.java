@@ -1,5 +1,6 @@
 package model;
 
+import controller.EventObserver;
 import utilities.Coord;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class Board {
 
     }
 
+    List<Event> getEvents(){
+        return events;
+    }
 
 
     public Floor getFloor(int i){
@@ -62,5 +66,10 @@ public class Board {
     boolean tryActivateEventOnPlayerPos(Player player) {
         Floor floor = floors.get(player.getFloor());
         return floor.tryActivateEventOnTile(player);
+    }
+
+    public void handleEvent(Player currentPlayer) {
+        Floor floor = floors.get(currentPlayer.getFloor());
+        floor.handleEvent(currentPlayer);
     }
 }

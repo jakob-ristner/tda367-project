@@ -5,4 +5,5 @@ public interface GameObserver {
     void updateMapData();
     void initMapData();
     void updateTurn();
+
 }

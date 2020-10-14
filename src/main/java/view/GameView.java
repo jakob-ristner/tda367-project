@@ -6,6 +6,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.text.Text;
 import javafx.scene.*;
 
+import model.Event;
 import model.Game;
 import view.eventView.*;
 
@@ -26,6 +27,7 @@ public class GameView {
 	private EventView hauntEventView;
 
 	private HashMap<String, Button> buttonEventMap;
+	private HashMap<Integer, EventView> eventViewMap;
 
 	public GameView(Game game) {
 		root = new Group();
@@ -45,6 +47,11 @@ public class GameView {
 		//hauntEventView.viewToFront();
 
 	}
+	public void updateEventView(int eventType, String eventText){
+		EventView currentEventView = eventViewMap.get(eventType);
+		currentEventView.setEventText(eventText);
+		currentEventView.viewToFront();
+	}
 
 	private void initButtonEventMap(){
 		buttonEventMap.put("GameWonEvent", gameWonEventView.getEventButton());
@@ -58,11 +65,16 @@ public class GameView {
 	}
 
 	private void initEventView(){
+		eventViewMap = new HashMap<>();
 		gameWonEventView = new GameWonEventView(root,WINDOW_W,WINDOW_H);
 		itemEventView = new ItemEventView(root,WINDOW_W,WINDOW_H );
-		moveEventView = new MoveEventView(root,WINDOW_W,WINDOW_H);
+		eventViewMap.put(-1, itemEventView);
 		rollDiceView = new RollDiceEventView(root,WINDOW_W,WINDOW_H);
+		eventViewMap.put(-2, rollDiceView);
+		moveEventView = new MoveEventView(root,WINDOW_W,WINDOW_H);
+		eventViewMap.put(-3, moveEventView);
 		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
+
 
 	}
 	public Group getRoot() {

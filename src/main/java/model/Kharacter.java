@@ -31,7 +31,7 @@ public class Kharacter {
         return statStrings;
     }
 
-    void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
+    public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
         for (Stat playerStat : stats.keySet()) {
             //stats.put(playerStat, statsToAdd.get(playerStat)); //fick hjälp av pi med denna one linern, kolla om det fungerar.
             for (Stat statToAdd : statsToAdd.keySet()) {

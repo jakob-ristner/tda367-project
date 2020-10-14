@@ -1,7 +1,10 @@
 package model;
 
 import XMLParser.XMLParser;
-import utilities.Coord;
+import model.Events.ItemEvent;
+import model.Events.MoveEvent;
+import model.Events.RollDiceEvent;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +12,6 @@ import java.util.List;
 
 
 public final class EventFactory {
-
-
 
     private static Event createItemEvent(XMLParser parser, int index) {
         HashMap<Stat, Integer> statMap = new HashMap<>();
@@ -24,6 +25,7 @@ public final class EventFactory {
         int eventType = parser.getItemEventList().get(index).getEventType();
 
         ItemEvent event = new ItemEvent(item, eventText, eventType);
+       // event.setObserver(observer);
         return event;
     }
 
@@ -35,10 +37,11 @@ public final class EventFactory {
         int eventType = parser.getRollEventList().get(index).getEventType();
 
         RollDiceEvent event = new RollDiceEvent(statToRollOn,threshHold, statChange, eventText, eventType);
+       // event.setObserver(observer);
         return event;
     }
 
-    private static Event createMoveEvent(XMLParser parser, int index ){
+    private static Event createMoveEvent(XMLParser parser, int index){
         int stat =  parser.getMoveEventList().get(index).getStat();
         int treshHold = parser.getMoveEventList().get(index).getEventThreshold();
 
@@ -51,6 +54,7 @@ public final class EventFactory {
 
 
         MoveEvent event = new MoveEvent(stat, treshHold, eventText, deltaX, deltaY, deltaZ, eventType);
+        //event.setObserver(observer);
         return event;
     }
 
