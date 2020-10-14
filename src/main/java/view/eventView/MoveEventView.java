@@ -20,10 +20,7 @@ public class MoveEventView extends EventView {
         return moveButton;
     }
 
-    @Override
-    public void viewToFront() {
 
-    }
 
     @Override
     public void close() {
