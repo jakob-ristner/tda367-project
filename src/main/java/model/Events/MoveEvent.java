@@ -1,6 +1,7 @@
-package model;
+package model.Events;
 
-import utilities.Coord;
+import model.Player;
+import model.Stat;
 
 public class MoveEvent extends GameEvent {
     Stat statToRollOn;
@@ -25,13 +26,17 @@ public class MoveEvent extends GameEvent {
     }
 
     @Override
-    public void activate(Player currentPlayer) {
-      /*if(threshHold > currentPlayer.rollStat(statToRollOn)) {
-            currentPlayer.playerMoveEvent(deltaX,deltaY,deltaZ);
-        }
-        System.out.println("move event triggered"); */
+    public void activate() {
       observer.updateEventView(eventType, eventText);
         System.out.println("moveEvent");
+    }
+
+    @Override
+    public void handleEvent(Player currentPlayer) {
+        if(threshHold > currentPlayer.rollStat(statToRollOn)) {
+            currentPlayer.playerMoveEvent(deltaX,deltaY,deltaZ);
+        }
+        System.out.println("move event triggered");
     }
 
     @Override

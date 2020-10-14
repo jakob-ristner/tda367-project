@@ -1,7 +1,9 @@
 package model;
 
 import XMLParser.XMLParser;
-import controller.EventObserver;
+import model.Events.ItemEvent;
+import model.Events.MoveEvent;
+import model.Events.RollDiceEvent;
 
 
 import java.util.ArrayList;

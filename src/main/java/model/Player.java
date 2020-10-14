@@ -76,7 +76,7 @@ public class Player {
         pos.move(dx, dy);
         step();
     }
-    void playerMoveEvent(int dx, int dy, int dz){
+    public void playerMoveEvent(int dx, int dy, int dz){
         this.addCoord(new Coord(dx,dy,dz));
     }
 

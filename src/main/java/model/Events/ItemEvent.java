@@ -1,6 +1,7 @@
-package model;
+package model.Events;
 
-import java.util.HashMap;
+import model.Item;
+import model.Player;
 
 public class ItemEvent extends GameEvent {
     private Item item;
@@ -15,12 +16,16 @@ public class ItemEvent extends GameEvent {
     }
 
     @Override
-    public void activate(Player currentPlayer) {
-        /*System.out.println(eventText);
-        currentPlayer.addToInventory(item);*/
+    public void activate() {
         observer.updateEventView(eventType, eventText);
         System.out.print("ItemEvent");
     }
+
+    @Override
+    public void handleEvent(Player currentPlayer) {
+        currentPlayer.addToInventory(item);
+    }
+
 
     @Override
     public int getEventType() {

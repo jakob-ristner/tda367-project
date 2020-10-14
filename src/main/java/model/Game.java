@@ -41,11 +41,13 @@ public class Game implements ControllerObservable{
         return gameInstance;
     }
 
+
     public void registerEventObserver(EventObserver eventObserver){
         for (Event e: board.getEvents()) {
             e.setObserver(eventObserver);
         }
     }
+
 
     public void initHaunt(){
         listOfHaunts.get(0).init();
@@ -128,6 +130,12 @@ public class Game implements ControllerObservable{
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
         notifyGameData();
+    }
+
+    public void handleEvent(){
+        Player currentPlayer = getCurrentPlayer();
+        board.handleEvent(currentPlayer);
+
     }
 
     public void removeDeadPlayersFromGame(){

@@ -81,7 +81,11 @@ public class Floor {
 
     boolean tryActivateEventOnTile(Player player) {
         Tile tile = tiles[player.getX()][player.getY()];
-        return tile.tryActivateEvent(player);
+        return tile.tryActivateEvent();
     }
 
+    public void handleEvent(Player currentPlayer) {
+        Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
+        tile.handleEvent(currentPlayer);
+    }
 }

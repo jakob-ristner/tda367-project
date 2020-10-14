@@ -67,4 +67,9 @@ public class Board {
         Floor floor = floors.get(player.getFloor());
         return floor.tryActivateEventOnTile(player);
     }
+
+    public void handleEvent(Player currentPlayer) {
+        Floor floor = floors.get(currentPlayer.getFloor());
+        floor.handleEvent(currentPlayer);
+    }
 }
