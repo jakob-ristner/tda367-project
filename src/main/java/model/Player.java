@@ -17,7 +17,7 @@ public class Player {
     private Kharacter character;
     private final Random dice;
 
-    public Player() {
+    Player() {
         inventory = new Inventory();
         dice = new Random();
     }

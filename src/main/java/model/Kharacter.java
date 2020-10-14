@@ -9,19 +9,20 @@ public class Kharacter {
     private String name;
     private HashMap<Stat, Integer> stats;
 
-    public Kharacter(HashMap<Stat, Integer> stats, String name) {
+    Kharacter(HashMap<Stat, Integer> stats, String name) {
         this.stats = stats;
         this.name = name;
     }
 
-    public HashMap<Stat, Integer> getStats() {
+    HashMap<Stat, Integer> getStats() {
         return stats;
     }
-    public int getStat(Stat stat) {
+
+    int getStat(Stat stat) {
         return stats.get(stat);
     }
 
-    public List<String> getStatsAsStrings() {
+    List<String> getStatsAsStrings() {
         List<String> statStrings = new ArrayList<>();
         statStrings.add("Speed: " + stats.get(Stat.SPEED));
         statStrings.add("Strength: " + stats.get(Stat.STRENGTH));
@@ -30,10 +31,10 @@ public class Kharacter {
         return statStrings;
     }
 
-    public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
+    void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
         for (Stat playerStat : stats.keySet()) {
             //stats.put(playerStat, statsToAdd.get(playerStat)); //fick hjälp av pi med denna one linern, kolla om det fungerar.
-           for (Stat statToAdd : statsToAdd.keySet()) {
+            for (Stat statToAdd : statsToAdd.keySet()) {
                 if (playerStat == statToAdd)
                     stats.put(playerStat, stats.get(playerStat) + statsToAdd.get(statToAdd));
             }
@@ -41,13 +42,13 @@ public class Kharacter {
 
         }
     }
-    public void updateStatFromCombat(Stat stat, int damage){
+
+    void updateStatFromCombat(Stat stat, int damage) {
         stats.put(stat, stats.get(stat) - damage);
     }
 
 
-
-    public String getName() {
+    String getName() {
         return name;
     }
 }

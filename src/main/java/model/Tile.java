@@ -27,7 +27,7 @@ public class Tile {
     }
 
 
-    public boolean hasPlayer() {
+    boolean hasPlayer() {
         return hasPlayer;
     }
 
@@ -49,7 +49,7 @@ public class Tile {
     }
 
 
-    public HashMap<Integer, Boolean> getDoors() {
+    HashMap<Integer, Boolean> getDoors() {
         HashMap<Integer, Boolean> doors = new HashMap<>();
         doors.put(0, doorUp);
         doors.put(1, doorRight);
@@ -58,7 +58,7 @@ public class Tile {
         return doors;
     }
 
-    public Event getEvent (){
+    Event getEvent() {
         return event;
     }
 

@@ -127,7 +127,7 @@ public class Game implements ControllerObservable{
     public void removeDeadPlayersFromGame(){
         for (Player p: playerList){
             p.isPlayerDead();
-            if(p.isDead()){
+            if(p.isPlayerDead()){
                 playerList.remove(p);
                 playerAmount--;
             }

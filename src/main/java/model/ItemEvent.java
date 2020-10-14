@@ -1,12 +1,9 @@
 package model;
 
-import java.util.HashMap;
-
 public class ItemEvent implements Event {
     private Item item;
     private String eventText;
     private int eventType;
-
 
     public ItemEvent(Item item, String eventText, int eventType) {
         this.item = item;
