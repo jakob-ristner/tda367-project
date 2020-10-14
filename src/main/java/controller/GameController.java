@@ -21,7 +21,11 @@ public class GameController implements GameObserver,EventObserver{
         this.game = game;
         initViews();
         initControllers();
-        //TODO when an event is activated make sure that the right view is toFronted...
+        initEvent();
+    }
+
+    private void initEvent() {
+        game.registerEventObserver(this);
     }
 
     private void initViews() {

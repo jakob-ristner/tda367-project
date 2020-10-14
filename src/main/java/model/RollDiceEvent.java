@@ -31,6 +31,7 @@ public class RollDiceEvent extends GameEvent {
         }
         System.out.println("rolldice event triggered"); */
         observer.updateEventView(eventType, eventText);
+        System.out.println("rollDiceEvent");
     }
 
     @Override

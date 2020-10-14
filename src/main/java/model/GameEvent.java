@@ -11,6 +11,5 @@ public abstract class GameEvent implements EventObservable, Event {
     @Override
     public void setObserver(EventObserver observer){
         this.observer = observer;
-
     }
 }

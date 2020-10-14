@@ -19,6 +19,7 @@ public class ItemEvent extends GameEvent {
         /*System.out.println(eventText);
         currentPlayer.addToInventory(item);*/
         observer.updateEventView(eventType, eventText);
+        System.out.print("ItemEvent");
     }
 
     @Override

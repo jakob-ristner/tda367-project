@@ -1,5 +1,6 @@
 package model;
 
+import controller.EventObserver;
 import controller.GameObserver;
 import utilities.Coord;
 
@@ -38,6 +39,12 @@ public class Game implements ControllerObservable{
             gameInstance = new Game();
         }
         return gameInstance;
+    }
+
+    public void registerEventObserver(EventObserver eventObserver){
+        for (Event e: board.getEvents()) {
+            e.setObserver(eventObserver);
+        }
     }
 
     public void initHaunt(){

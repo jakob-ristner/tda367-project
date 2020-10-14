@@ -1,5 +1,6 @@
 package model;
 
+import controller.EventObserver;
 import utilities.Coord;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class Board {
 
     }
 
+    List<Event> getEvents(){
+        return events;
+    }
 
 
     public Floor getFloor(int i){

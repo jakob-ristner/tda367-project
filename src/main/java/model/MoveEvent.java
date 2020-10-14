@@ -31,6 +31,7 @@ public class MoveEvent extends GameEvent {
         }
         System.out.println("move event triggered"); */
       observer.updateEventView(eventType, eventText);
+        System.out.println("moveEvent");
     }
 
     @Override
