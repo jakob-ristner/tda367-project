@@ -2,7 +2,7 @@ package model;
 
 import java.util.HashMap;
 
-public class RollDiceEvent implements Event {
+public class RollDiceEvent extends GameEvent {
     Stat statToRollOn;
     int numberToRollVersus;
     private String eventText;
@@ -22,14 +22,15 @@ public class RollDiceEvent implements Event {
 
     @Override
     public void activate(Player currentPlayer) {
-        HashMap<Stat,Integer> statsToUpdate = new HashMap<>();
+        /*HashMap<Stat,Integer> statsToUpdate = new HashMap<>();
 
         statsToUpdate.put(statToRollOn, loseStatChange);
         int diceRoll = currentPlayer.rollStat(statToRollOn);
         if(numberToRollVersus > diceRoll){
             currentPlayer.getCharacter().updateStat(statsToUpdate);
         }
-        System.out.println("rolldice event triggered");
+        System.out.println("rolldice event triggered"); */
+        observer.updateEventView(eventType, eventText);
     }
 
     @Override

@@ -2,7 +2,7 @@ package model;
 
 import java.util.HashMap;
 
-public class ItemEvent implements Event {
+public class ItemEvent extends GameEvent {
     private Item item;
     private String eventText;
     private int eventType;
@@ -16,8 +16,9 @@ public class ItemEvent implements Event {
 
     @Override
     public void activate(Player currentPlayer) {
-        System.out.println(eventText);
-        currentPlayer.addToInventory(item);
+        /*System.out.println(eventText);
+        currentPlayer.addToInventory(item);*/
+        observer.updateEventView(eventType, eventText);
     }
 
     @Override

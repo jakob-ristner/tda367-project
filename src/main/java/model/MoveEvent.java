@@ -2,7 +2,7 @@ package model;
 
 import utilities.Coord;
 
-public class MoveEvent implements Event {
+public class MoveEvent extends GameEvent {
     Stat statToRollOn;
     int threshHold;
 
@@ -26,10 +26,11 @@ public class MoveEvent implements Event {
 
     @Override
     public void activate(Player currentPlayer) {
-      if(threshHold > currentPlayer.rollStat(statToRollOn)) {
+      /*if(threshHold > currentPlayer.rollStat(statToRollOn)) {
             currentPlayer.playerMoveEvent(deltaX,deltaY,deltaZ);
         }
-        System.out.println("move event triggered");
+        System.out.println("move event triggered"); */
+      observer.updateEventView(eventType, eventText);
     }
 
     @Override

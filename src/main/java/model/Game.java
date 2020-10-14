@@ -1,7 +1,6 @@
 package model;
 
 import controller.GameObserver;
-import javafx.scene.text.Text;
 import utilities.Coord;
 
 import java.util.*;
@@ -121,7 +120,7 @@ public class Game implements ControllerObservable{
             currentPlayer.playerMove(dx, dy);
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
-        notifyGameEvent();
+        notifyGameData();
     }
 
     public void removeDeadPlayersFromGame(){
@@ -234,7 +233,7 @@ public class Game implements ControllerObservable{
     }
 
     @Override
-    public void notifyGameEvent() {
+    public void notifyGameData() {
         observer.updateMapData();
     }
 
@@ -242,6 +241,7 @@ public class Game implements ControllerObservable{
     public void notifyGameStart() {
         observer.initMapData();
     }
+
 
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
@@ -298,7 +298,7 @@ public class Game implements ControllerObservable{
 
     public void endTurn() {
         updateCurrentPlayer();
-        notifyGameEvent();
+        notifyGameData();
     }
 
     public List<String> getCurrentPlayerItemsAsText() {
