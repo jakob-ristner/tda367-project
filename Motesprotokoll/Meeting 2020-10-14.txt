@@ -1,0 +1,39 @@
+# Meeting Agenda
+
+Group: Gastuen
+Date:2020-10-14
+Chair: Karl Gunnarsson
+Participants: Karl Gunnarsson, Erik Berg, David Andreasson, Jakob Henriksson, Jakob Ristner
+
+
+## Objectives (5 min) 
+
+- Working on eventviews, new observer pattern(Karl, Erik).
+- Working on tests(David, Jakob H)
+- Working on refactoring XML-parser (David)
+- Working on refactoring code(Jakob R)
+
+## Reports (15 min) from previous meeting
+
+- There now exists get method for all events, all events are created at once. 
+
+
+## Discussion items (35 min)
+
+- Decided to add an abstract class for Events, discussed how the different events was supposed to trigger a new view.
+- Decided to to start implement a new observer patter so that events can notify controller that orders view. 
+- Having some troubles with tests, how do we test package private functionality? 
+
+
+## Outcomes and assignments (5 min)
+
+- Ask Handledare on how to to create packages for test and how we are so suposed to test the package private funtctionality.
+- Continue on refactoring code.
+- Continue working on eventviews.
+- Continue working on XML-parser.
+
+
+## Wrap up
+
+- Ask questions for supervisor abouts tests.
+- Next meeting is with supervisor. 
