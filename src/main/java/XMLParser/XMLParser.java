@@ -20,22 +20,6 @@ public class XMLParser {
 
     public XMLParser()  {
 
-        String eventText;
-        String itemName;
-        int eventType;
-        int id;
-        int stamina;
-        int strength;
-        int speed;
-        int sanity;
-        int stat;
-        int statChange;
-        int eventThreshold;
-        int deltaX;
-        int deltaY;
-        int deltaFloor;
-
-
         try {
             File xmlFile = new File("src/main/java/XMLParser/eventIds");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -49,44 +33,57 @@ public class XMLParser {
                element = (Element) nodeList.item(i);
 
                 if ( parseInt(getElement("eventType")) == -1){
-                    id = parseInt(element.getAttribute("id"));
-                    eventType = parseInt(getElement("eventType"));
-                    eventText = getElement("eventText");
-                    stamina = parseInt(getElement("stamina"));
-                    strength = parseInt(getElement("strength"));
-                    speed = parseInt(getElement("speed"));
-                    sanity = parseInt(getElement("sanity"));
-                    itemName = getElement("itemName");
+                    ItemEventData itemEventData = new ItemEventData();
+
+                    itemEventData.setId(parseInt(element.getAttribute("id")));
+                    itemEventData.setEventType(parseInt(getElement("eventType")));
+                    itemEventData.setEventText(getElement("eventText"));
+                    itemEventData.setStamina(parseInt(getElement("stamina")));
+                    itemEventData.setStrength(parseInt(getElement("strength")));
+                    itemEventData.setSpeed(parseInt(getElement("speed")));
+                    itemEventData.setSanity(parseInt(getElement("sanity")));
+                    itemEventData.setItemName(getElement("itemName"));
 
 
-                    itemEventList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType, itemName));
-                    eventDataList.add(new ItemEventData(stamina,strength,speed,sanity,eventText,id,eventType, itemName));
-                }
-                if (parseInt(getElement("eventType")) == -2){
-                    id = parseInt(element.getAttribute("id"));
-                    eventThreshold = Integer.parseInt(getElement("eventThreshold"));
-                    eventType = parseInt(getElement("eventType"));
-                    eventText = getElement("eventText");
-                    stat = parseInt((getElement("statToRollOn"))); /**/
-                    statChange = parseInt(getElement("statChange"));
+
+                    itemEventList.add(itemEventData);
+                    eventDataList.add(itemEventData);
+
+                }else if (parseInt(getElement("eventType")) == -2){
+                    RollEventData rollEventData = new RollEventData();
+
+                    rollEventData.setId(parseInt(element.getAttribute("id")));
+                    rollEventData.setEventType(parseInt(getElement("eventType")));
+                    rollEventData.setEventText(getElement("eventText"));
+                    rollEventData.setEventThreshold(parseInt(getElement("eventThreshold")));
+                    rollEventData.setStat(parseInt((getElement("statToRollOn"))));
+                    rollEventData.setStatChange(parseInt(getElement("statChange")));
 
 
-                    rollEventList.add(new RollEventData(statChange,stat,eventThreshold,eventText,id,eventType));
-                    eventDataList.add(new RollEventData(statChange,stat,eventThreshold,eventText,id,eventType));
-                }
-                if (parseInt(getElement("eventType")) == -3){
-                    id = parseInt(element.getAttribute("id"));
-                    eventType = parseInt(getElement("eventType"));
-                    eventText = getElement("eventText");
-                    eventThreshold = Integer.parseInt(getElement("eventThreshold"));
-                    deltaX = parseInt(getElement("deltaX"));
-                    deltaY = parseInt(getElement("deltaY"));
-                    deltaFloor = parseInt(getElement("floorDelta"));
-                    stat = stat = parseInt((getElement("statToRollOn")));;
-                    statChange = parseInt(getElement("statChange"));
 
-                    moveEventList.add(new MoveEventData(stat,statChange,eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
-                    eventDataList.add(new MoveEventData(stat,statChange,eventText,eventType,id,deltaX,deltaY,deltaFloor,eventThreshold));
+                    rollEventList.add(rollEventData);
+                    eventDataList.add(rollEventData);
+
+                }else if (parseInt(getElement("eventType")) == -3){
+                    MoveEventData moveEventData = new MoveEventData();
+
+                    moveEventData.setId(parseInt(element.getAttribute("id")));
+                    moveEventData.setEventType(parseInt(getElement("eventType")));
+                    moveEventData.setEventText(getElement("eventText"));
+                    moveEventData.setEventThreshold(parseInt(getElement("eventThreshold")));
+                    moveEventData.setStat(parseInt((getElement("statToRollOn"))));
+                    moveEventData.setStatChange(parseInt(getElement("statChange")));
+                    moveEventData.setDeltaFloor(parseInt(getElement("floorDelta")));
+                    moveEventData.setDeltaY(parseInt(getElement("deltaY")));
+                    moveEventData.setDeltaX(parseInt(getElement("deltaX")));
+
+
+
+
+
+
+                    moveEventList.add(moveEventData);
+                    eventDataList.add(moveEventData);
                 }
 
 
