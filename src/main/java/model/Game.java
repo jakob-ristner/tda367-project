@@ -117,7 +117,7 @@ public class Game implements ControllerObservable{
 
     public void moveCurrentPlayer(int dx, int dy) {
         Player currentPlayer = getCurrentPlayer();
-        if (currentPlayer.stepsLeft > 0) {
+        if (currentPlayer.getStepsLeft() > 0) {
             currentPlayer.playerMove(dx, dy);
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
@@ -250,7 +250,7 @@ public class Game implements ControllerObservable{
 
     public boolean checkAllPlayersHaveChars() {
         for (Player player : playerList)  {
-            if (!player.hasCharacter)
+            if (!player.getHasCharacter())
                 return false;
         }
         return true;
@@ -304,5 +304,13 @@ public class Game implements ControllerObservable{
 
     public List<String> getCurrentPlayerItemsAsText() {
         return getCurrentPlayer().getItemNames();
+    }
+
+    public boolean currentPlayerHasCharacter() {
+        return getCurrentPlayer().getHasCharacter();
+    }
+
+    public void setCurrentPlayersCharacter(int index) {
+        getCurrentPlayer().setCharacter(characterList.get(index));
     }
 }

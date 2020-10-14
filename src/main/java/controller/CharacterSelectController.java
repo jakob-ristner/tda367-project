@@ -54,8 +54,8 @@ public class CharacterSelectController extends AbstractController{
     }
 
     private void buttonHandler(int index, Button button){
-        game.getCurrentPlayer().setCharacter(game.getCharacterList().get(index));
-        textList.get(index).setText("Chosen by Player " + (game.getCurrentPlayerIndex()+1));
+        game.setCurrentPlayersCharacter(index);
+        textList.get(index).setText("Chosen by Player " + (game.getCurrentPlayerIndex() + 1));
         game.updateCurrentPlayer();
         button.setDisable(true);
         if (game.checkAllPlayersHaveChars()) {
