@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Spinner;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -28,17 +29,15 @@ public class testPlayer {
 
     @Test
     public void testRollDice(){
-        /*
+
         Player player = new Player();
-        HashMap<Stat, Integer> characterStat = new HashMap<>();
-        characterStat.put(Stat.STRENGTH,2);
+        Game game = Game.getInstance();
+        game.createCharaters();
+        player.setCharacter(game.getCharacterList().get(0));
 
-        player.setCharacter(new Kharacter(characterStat,"TestCharacter"));
-        Assert.assertTrue(player.isEventPassed(Stat.STRENGTH,-1));
+       Assert.assertTrue(0 <= player.rollStat(Stat.SPEED) && player.rollStat(Stat.SPEED) <= player.getCharacter().getStat(Stat.SPEED));
 
-         */
     }
-
 
 }
 
