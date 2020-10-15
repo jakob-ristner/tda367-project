@@ -131,12 +131,6 @@ public class CharacterSelectView implements ViewInterface{
         pane.getChildren().add(node);
     }
 
-    @Override
-    public void close() {
-        pane.toBack();
-
-    }
-
     public HashMap<Integer, Button> getButtonMap(){
         return buttonMap;
     }

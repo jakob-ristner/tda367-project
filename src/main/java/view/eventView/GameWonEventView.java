@@ -25,10 +25,4 @@ public class GameWonEventView extends EventView {
         return gameWonButton;
     }
 
-
-
-    @Override
-    public void close() {
-
-    }
 }

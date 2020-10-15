@@ -10,6 +10,7 @@ public class RollDiceEvent extends GameEvent {
     int numberToRollVersus;
     private String eventText;
     private int eventType;
+    private String effectText;
 
     int loseStatChange;
 
@@ -35,8 +36,10 @@ public class RollDiceEvent extends GameEvent {
 
         statsToUpdate.put(statToRollOn, loseStatChange);
         int diceRoll = currentPlayer.rollStat(statToRollOn);
-        if(numberToRollVersus > diceRoll){
+        if(numberToRollVersus > diceRoll){ //TODO: Skaffa texten från xml.
             currentPlayer.getCharacter().updateStat(statsToUpdate);
+            effectText = "You rolled good enough /testing";
+            observer.updateEventEffect();
         }
         System.out.println("rolldice event triggered");
     }
@@ -45,6 +48,11 @@ public class RollDiceEvent extends GameEvent {
     @Override
     public int getEventType() {
         return eventType;
+    }
+
+    @Override
+    public String getEventEffectText() {
+        return effectText;
     }
 
 }

@@ -31,6 +31,7 @@ public class Game implements ControllerObservable{
         board = new Board();
         listOfHaunts.add(new InsanityHauntState());
         createCharaters();
+
     }
 
     //SingeltonPattern
@@ -135,7 +136,7 @@ public class Game implements ControllerObservable{
     public void handleEvent(){
         Player currentPlayer = getCurrentPlayer();
         board.handleEvent(currentPlayer);
-
+        observer.updateMapData();
     }
 
     public void removeDeadPlayersFromGame(){
@@ -257,6 +258,9 @@ public class Game implements ControllerObservable{
         observer.initMapData();
     }
 
+    public String getEventEffectText(){
+        return board.getEventEffectText(getCurrentPlayer());
+    }
 
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;

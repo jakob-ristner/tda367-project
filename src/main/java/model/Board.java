@@ -72,4 +72,9 @@ public class Board {
         Floor floor = floors.get(currentPlayer.getFloor());
         floor.handleEvent(currentPlayer);
     }
+
+    public String getEventEffectText(Player currentPlayer){
+        Floor floor = floors.get(currentPlayer.getFloor());
+        return floor.getEventEffectText(currentPlayer);
+    }
 }

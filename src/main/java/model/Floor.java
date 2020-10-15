@@ -88,4 +88,9 @@ public class Floor {
         Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
         tile.handleEvent(currentPlayer);
     }
+
+    public String getEventEffectText(Player currentPlayer){
+        Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
+        return tile.getEventEffectText();
+    }
 }

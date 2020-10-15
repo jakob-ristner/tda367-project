@@ -101,6 +101,11 @@ public class GameView {
 		mainGameView.updateMapData();
 	}
 
+	public void updateEventEffect(){
+		mainGameView.setEventEffectText();
+		//mainGameView.fadeEventText(); //TODO: fix so that this works. The rest works.
+	}
+
 	public void initMapData() {
 		mainGameView.initMapData();
 	}

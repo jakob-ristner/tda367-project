@@ -73,4 +73,8 @@ public class Tile {
     public void handleEvent(Player currentPlayer) {
         event.handleEvent(currentPlayer);
     }
+
+    String getEventEffectText(){
+        return event.getEventEffectText();
+    }
 }

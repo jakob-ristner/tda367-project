@@ -6,7 +6,7 @@
         <strength>1</strength>
         <stamina>1</stamina>
         <itemName>Dirk</itemName>
-        <eventText>You found an item it gives you </eventText>
+        <eventText>You found a Dirk it gives you 1 speed, 1 sanity, 1 strength and 1 stamina</eventText>
     </event>
 
     <event id="1">
@@ -22,7 +22,7 @@
          <eventThreshold>1</eventThreshold>
          <statToRollOn>2</statToRollOn>
          <statChange>1</statChange>
-         <eventText>You heard a noice, how spooked are you?:</eventText>
+         <eventText>You heard a noise, how spooked are you?:</eventText>
      </event>
 
 
@@ -31,7 +31,7 @@
         <eventThreshold>1</eventThreshold>
         <statToRollOn>0</statToRollOn>
         <statChange>1</statChange>
-        <eventText>There is a hole in the floor to not fall down roll higher:</eventText>
+        <eventText>There is a hole in the floor to not fall down roll speed higher than 1</eventText>
         <floorDelta>-1</floorDelta>
         <deltaX>0</deltaX>
         <deltaY>0</deltaY>
