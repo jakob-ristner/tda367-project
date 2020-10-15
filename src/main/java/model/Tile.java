@@ -58,10 +58,6 @@ public class Tile {
         return doors;
     }
 
-    Event getEvent() {
-        return event;
-    }
-
     boolean tryActivateEvent() {
         if (hasEvent) {
             event.activate();
@@ -72,5 +68,9 @@ public class Tile {
 
     public void handleEvent(Player currentPlayer) {
         event.handleEvent(currentPlayer);
+        if (!event.isPermanent()){
+            event = null;
+            hasEvent = false;
+        }
     }
 }

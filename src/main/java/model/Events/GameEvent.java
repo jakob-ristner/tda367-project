@@ -6,8 +6,15 @@ import model.EventObservable;
 
 public abstract class GameEvent implements EventObservable, Event {
     protected EventObserver observer;
+    protected boolean permanent;
 
-    GameEvent() {
+    GameEvent(boolean permanent) {
+        this.permanent = permanent;
+    }
+
+    @Override
+    public boolean isPermanent() {
+        return permanent;
     }
 
     @Override

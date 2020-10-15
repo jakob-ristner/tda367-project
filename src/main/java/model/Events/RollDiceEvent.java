@@ -13,7 +13,8 @@ public class RollDiceEvent extends GameEvent {
 
     int loseStatChange;
 
-    public RollDiceEvent(int statToRollOn, int numberToRollVersus, int loseStatChange, String eventText, int eventType) {
+    public RollDiceEvent(int statToRollOn, int numberToRollVersus, int loseStatChange, String eventText, int eventType, boolean permanent) {
+        super(permanent);
         this.statToRollOn = Stat.from(statToRollOn);
         this.numberToRollVersus = numberToRollVersus;
         this.loseStatChange = loseStatChange;

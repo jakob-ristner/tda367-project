@@ -15,7 +15,8 @@ public class MoveEvent extends GameEvent {
     int deltaZ;
 
 
-    public MoveEvent(int statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ, int eventType) {
+    public MoveEvent(int statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ, int eventType, boolean permanent) {
+        super(permanent);
         this.statToRollOn = Stat.from(statToRollOn);
         this.threshHold = threshHold;
         this.eventText = eventText;

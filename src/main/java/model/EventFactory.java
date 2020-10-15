@@ -56,7 +56,7 @@ public final class EventFactory {
         String eventText = parser.getRollEventList().get(index).getEventText();
         int eventType = parser.getRollEventList().get(index).getEventType();
 
-        RollDiceEvent event = new RollDiceEvent(statToRollOn, threshHold, statChange, eventText, eventType);
+        RollDiceEvent event = new RollDiceEvent(statToRollOn, threshHold, statChange, eventText, eventType, false);
         return event;
     }
 
@@ -72,7 +72,7 @@ public final class EventFactory {
         int deltaZ = parser.getMoveEventList().get(index).getDeltaFloor();
 
 
-        MoveEvent event = new MoveEvent(stat, treshHold, eventText, deltaX, deltaY, deltaZ, eventType);
+        MoveEvent event = new MoveEvent(stat, treshHold, eventText, deltaX, deltaY, deltaZ, eventType, true);
         return event;
     }
 
