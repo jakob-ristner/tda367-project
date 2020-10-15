@@ -25,6 +25,9 @@ public class Item {
         return name;
     }
 
+    /**
+     * @return text to be shown in view on pickup
+     */
     public String getPickupText() {
         return pickupText;
     }
