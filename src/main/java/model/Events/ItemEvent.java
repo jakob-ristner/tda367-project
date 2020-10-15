@@ -9,6 +9,7 @@ public class ItemEvent extends GameEvent {
     private int eventType;
 
     public ItemEvent(Item item, String eventText, int eventType) {
+        super(false);
         this.item = item;
         this.eventText = eventText;
         this.eventText += item.getPickupText();
@@ -31,4 +32,5 @@ public class ItemEvent extends GameEvent {
     public int getEventType() {
         return eventType;
     }
+
 }
