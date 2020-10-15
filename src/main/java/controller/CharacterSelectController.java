@@ -27,7 +27,18 @@ public class CharacterSelectController extends AbstractController{
     }
 
    private void initButtons(){
-        buttonMap.get(0).setOnAction(new EventHandler<ActionEvent>() {
+        for(int i = 0; i < buttonMap.size(); i++){
+            final int tmp = i;
+            buttonMap.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    buttonHandler(tmp, buttonMap.get(tmp));
+                }
+            });
+        }
+
+
+        /*buttonMap.get(0).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 buttonHandler(0, buttonMap.get(0));
@@ -51,6 +62,8 @@ public class CharacterSelectController extends AbstractController{
                 buttonHandler(3, buttonMap.get(3));
             }
         });
+        */
+
     }
 
     private void buttonHandler(int index, Button button){

@@ -9,8 +9,18 @@ public class Kharacter {
     private String name;
     private HashMap<Stat, Integer> stats;
 
-    Kharacter(HashMap<Stat, Integer> stats, String name) {
-        this.stats = stats;
+    /**
+     *
+     * @param name Name of character
+     * @param statValue The arraylist is used for refactoring our hashmap. We are using the index 'i' in order to get our
+     *                  key(stat) and statValue[i] to get our Integer.
+     */
+
+    Kharacter(String name, int[] statValue) {
+        stats=new HashMap<>();
+        for(int i = 0; i<statValue.length;i++) {
+            stats.put(Stat.from(i), statValue[i]);
+        }
         this.name = name;
     }
 

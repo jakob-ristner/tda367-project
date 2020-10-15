@@ -10,7 +10,7 @@ public class Game implements ControllerObservable{
 
     private GameObserver observer;
     private List<Player> playerList;
-    private List<Kharacter> characterList;
+    private List<Kharacter> characterList = KharacterFactory.getCharacters();
     private List<GameState> listOfHaunts = new ArrayList<>();
     GameState insanityHaunt;
 
@@ -30,7 +30,7 @@ public class Game implements ControllerObservable{
     private Game() {
         board = new Board();
         listOfHaunts.add(new InsanityHauntState());
-        createCharaters();
+       // createCharaters();
     }
 
     //SingeltonPattern
@@ -128,6 +128,7 @@ public class Game implements ControllerObservable{
     }
     //Must it be private?
     public void createCharaters() {
+        /*
 
         HashMap<Stat, Integer> rufus = new HashMap<>();
         HashMap<Stat, Integer> medera = new HashMap<>();
@@ -155,10 +156,18 @@ public class Game implements ControllerObservable{
         sarah.put(Stat.SANITY, 6);
 
         characterList = new ArrayList<>();
+
         characterList.add(new Kharacter(rufus, "Rufus von gross"));
         characterList.add(new Kharacter(sven, "Sven Nordstadt"));
         characterList.add(new Kharacter(medera, "Medera Calvados"));
         characterList.add(new Kharacter(sarah, "Sarah"));
+
+
+
+        characterList.add(new Kharacter("Sven Nordstadt",new int[]{2,2,3,6}));
+        characterList.add(new Kharacter("Medera Calvados",new int[]{2,2,3,6}));
+        characterList.add(new Kharacter("Sarah",new int[]{2,2,3,6}));
+        */
     }
 
     public List<String> getCharacterNames(){
