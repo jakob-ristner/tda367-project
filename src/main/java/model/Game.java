@@ -102,6 +102,7 @@ public class Game implements ControllerObservable{
     public void handleEvent(){
         Player currentPlayer = getCurrentPlayer();
         board.handleEvent(currentPlayer);
+        observer.updateMapData();
 
     }
 
