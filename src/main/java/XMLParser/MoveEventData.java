@@ -8,13 +8,30 @@ public class MoveEventData extends EventData {
     private int stat;
     private int statChange;
 
-    public MoveEventData(int stat,int statChange,String eventText, int eventType, int id, int deltaX, int deltaY, int deltaFloor, int eventThreshold) {
-        super(eventText, eventType, id);
+    MoveEventData() {
+    }
+
+    void setEventThreshold(int eventThreshold) {
         this.eventThreshold = eventThreshold;
+    }
+
+    void setDeltaX(int deltaX) {
         this.deltaX = deltaX;
+    }
+
+    void setDeltaY(int deltaY) {
         this.deltaY = deltaY;
+    }
+
+    void setDeltaFloor(int deltaFloor) {
         this.deltaFloor = deltaFloor;
+    }
+
+    void setStat(int stat) {
         this.stat = stat;
+    }
+
+    void setStatChange(int statChange) {
         this.statChange = statChange;
     }
 

@@ -32,6 +32,9 @@ public class Kharacter {
         return stats.get(stat);
     }
 
+    /**
+     * @return strings to represent stats in view
+     */
     List<String> getStatsAsStrings() {
         List<String> statStrings = new ArrayList<>();
         statStrings.add("Speed: " + stats.get(Stat.SPEED));
@@ -41,15 +44,16 @@ public class Kharacter {
         return statStrings;
     }
 
+    /**
+     * adds to Stat hashmaps together
+     * @param statsToAdd for example stats of an item
+     */
     public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
         for (Stat playerStat : stats.keySet()) {
-            //stats.put(playerStat, statsToAdd.get(playerStat)); //fick hjälp av pi med denna one linern, kolla om det fungerar.
             for (Stat statToAdd : statsToAdd.keySet()) {
                 if (playerStat == statToAdd)
                     stats.put(playerStat, stats.get(playerStat) + statsToAdd.get(statToAdd));
             }
-
-
         }
     }
 

@@ -14,6 +14,9 @@ public class Inventory {
         itemList.add(item);
     }
 
+    /**
+     * @return names of all items on inventory
+     */
     public List<String> getNames() {
         List<String> names = new ArrayList<>();
         for(Item item: itemList)
