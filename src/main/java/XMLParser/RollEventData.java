@@ -5,10 +5,18 @@ public class RollEventData extends EventData{
     private int statChange;
     private int eventThreshold;
 
-    public RollEventData(int statChange,int stat, int eventThreshold,String eventText, int id, int eventType) {
-        super(eventText,eventType,id);
-        this.statChange = statChange;
+    RollEventData() {
+    }
+
+    void setStat(int stat) {
         this.stat = stat;
+    }
+
+    void setStatChange(int statChange) {
+        this.statChange = statChange;
+    }
+
+    void setEventThreshold(int eventThreshold) {
         this.eventThreshold = eventThreshold;
     }
 

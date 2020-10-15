@@ -5,9 +5,19 @@ public abstract class EventData {
     private int eventType;
     private int id;
 
-    public EventData(String eventText, int eventType, int id) {
+    EventData() {
+
+    }
+
+    void setEventText(String eventText) {
         this.eventText = eventText;
+    }
+
+    void setEventType(int eventType) {
         this.eventType = eventType;
+    }
+
+    void setId(int id) {
         this.id = id;
     }
 
