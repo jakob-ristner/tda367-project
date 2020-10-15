@@ -11,6 +11,7 @@ public class ItemEvent extends GameEvent {
     public ItemEvent(Item item, String eventText, int eventType) {
         this.item = item;
         this.eventText = eventText;
+        this.eventText += item.getPickupText();
         this.eventType = eventType;
     }
 

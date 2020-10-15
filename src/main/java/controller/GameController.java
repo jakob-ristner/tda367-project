@@ -80,6 +80,7 @@ public class GameController implements GameObserver,EventObserver{
     @Override
     public void updateEventView(int eventType, String eventText) {
         view.updateEventView(eventType, eventText);
+        view.updateMainGameViewMapData();
 
     }
 

@@ -4,12 +4,13 @@ import java.util.HashMap;
 
 public class Item {
     private String name;
+    private String pickupText;
     private HashMap<Stat, Integer> stats;
 
     public Item(String name, HashMap<Stat, Integer> stats) {
         this.name = name;
         this.stats = stats;
-
+        setPickupText();
     }
 
     public HashMap<Stat, Integer> getStats() {
@@ -23,5 +24,18 @@ public class Item {
     public String getName() {
         return name;
     }
+
+    public String getPickupText() {
+        return pickupText;
+    }
+
+    private void setPickupText() {
+       pickupText = "\n";
+       for (Stat stat: stats.keySet()) {
+           pickupText += (stat.toString().toLowerCase() + ": " + stats.get(stat) + "\n");
+       }
+    }
+
+
 
 }
