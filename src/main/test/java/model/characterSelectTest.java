@@ -1,4 +1,4 @@
-package modelTest;
+package model;
 
 public class characterSelectTest {
 

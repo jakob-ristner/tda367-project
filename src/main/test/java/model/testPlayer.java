@@ -1,6 +1,5 @@
-package modelTest;
+package model;
 
-import model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +9,7 @@ public class testPlayer {
   
     @Test
     public void testEquippingItem(){
-        /*
+
         Player player = new Player();
         Game game = Game.getInstance();
         game.createCharaters();
@@ -24,7 +23,7 @@ public class testPlayer {
         player.addToInventory(sword);
         Assert.assertTrue(player.getCharacter().getStat(Stat.STRENGTH)== characterStat+sword.getStat(Stat.STRENGTH));
 
-         */
+
     }
 
     @Test
