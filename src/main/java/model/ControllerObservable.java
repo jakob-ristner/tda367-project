@@ -10,5 +10,4 @@ public interface ControllerObservable {
      void notifyNewTurn(); // might be unecessary
      void notifyGameData();
      void notifyGameStart();
-
 }

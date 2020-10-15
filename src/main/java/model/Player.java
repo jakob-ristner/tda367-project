@@ -85,8 +85,12 @@ public class Player {
         character.updateStat(item.getStats());
     }
 
+    /**
+     * @param stat stat to roll dice on
+     * @return random number from 0 to stat value
+     */
     public int rollStat(Stat stat) {
-        return dice.nextInt(character.getStat(stat));
+        return dice.nextInt(character.getStat(stat) + 1);
     }
 
     void resetSteps() {
