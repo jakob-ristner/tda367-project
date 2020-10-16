@@ -43,7 +43,7 @@ public class Player {
         this.pos.sanityCheck();
     }
 
-    void addCoord(Coord coord) {
+    public void addCoord(Coord coord) {
         //imagine it like a + operator
         pos.add(coord);
         System.out.println(getFloor());
