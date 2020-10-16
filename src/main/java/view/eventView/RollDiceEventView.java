@@ -13,6 +13,8 @@ public class RollDiceEventView extends EventView{
         rollDiceButton.setLayoutY(eventPane.getLayoutY() + 220);
         addNode(rollDiceButton);
 
+        header.setText("Watch your back!");
+
     }
 
     @Override
@@ -21,8 +23,5 @@ public class RollDiceEventView extends EventView{
     }
 
 
-    @Override
-    public void close() {
 
-    }
 }

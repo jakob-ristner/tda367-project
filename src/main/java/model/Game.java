@@ -50,6 +50,20 @@ public class Game implements ControllerObservable {
 
 
 
+
+
+
+    public void moveCurrentPlayer(int dx, int dy) {
+        Player currentPlayer = getCurrentPlayer();
+        if (currentPlayer.getStepsLeft() > 0) {
+            currentPlayer.playerMove(dx, dy);
+            board.tryActivateEventOnPlayerPos(currentPlayer);
+        }
+        notifyGameData();
+    }
+
+
+
    /*
     public boolean roomContainsInsanePlayer(){
         return roomContainsInsanePlayer();  //Why does it return itself??
@@ -128,6 +142,9 @@ public class Game implements ControllerObservable {
         observer.initMapData();
     }
 
+    public String getEventEffectText(){
+        return board.getEventEffectText(getCurrentPlayer());
+    }
 
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
@@ -222,14 +239,7 @@ public class Game implements ControllerObservable {
 
 
 
-    public void moveCurrentPlayer(int dx, int dy) {
-        Player currentPlayer = getCurrentPlayer();
-        if (currentPlayer.getStepsLeft() > 0) {
-            currentPlayer.playerMove(dx, dy);
-            board.tryActivateEventOnPlayerPos(currentPlayer);
-        }
-        notifyGameData();
-    }
+
 
     public void handleEvent() {
         Player currentPlayer = getCurrentPlayer();

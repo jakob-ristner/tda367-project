@@ -1,5 +1,6 @@
 package view;
 
+import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+import javafx.util.Duration;
 import model.Game;
 import utilities.Coord;
 
@@ -46,6 +48,7 @@ public class MainGameView implements ViewInterface{
     private List<Coord> playerCoords;
     private int currentPlayerIndex;
     private Text currentFloor;
+    private Text eventEffectText;
     private Text stepsLeft;
 
     private HashMap<Integer, Boolean> currentTileDoors;
@@ -54,7 +57,7 @@ public class MainGameView implements ViewInterface{
     private List<Text> itemsInInventory;
 
     private Game game;
-    List<List<Rectangle>> tileViews;
+    private List<List<Rectangle>> tileViews;
 
 
 
@@ -220,11 +223,36 @@ public class MainGameView implements ViewInterface{
         currentFloor.setStyle("-fx-font-size: 20");
         floorPane.getChildren().add(currentFloor);
 
+        eventEffectText = new Text();
+        eventEffectText.setWrappingWidth(height-150);
+        eventEffectText.setTextAlignment(TextAlignment.CENTER);
+        eventEffectText.setLayoutX(0);
+        eventEffectText.setLayoutY(100);
+        eventEffectText.setStyle("-fx-font-size: 14");
+        eventEffectText.setFill(Color.RED);
+        floorPane.getChildren().add(eventEffectText);
+
         endTurnButton = new Button();
         endTurnButton.setText("End Turn");
         endTurnButton.setLayoutX(0);
         endTurnButton.setLayoutY(50);
         floorPane.getChildren().add(endTurnButton);
+
+
+    }
+
+    void setEventEffectText(){
+        eventEffectText.setText(game.getEventEffectText());
+    }
+
+    void fadeEventText() {
+        FadeTransition fade = new FadeTransition();
+        fade.setDuration(Duration.millis(5000));
+        fade.setFromValue(10);
+        fade.setToValue(0);
+        fade.setNode(eventEffectText);
+        fade.setAutoReverse(false);
+        fade.play();
     }
 
     private void initButtons() {
@@ -249,6 +277,8 @@ public class MainGameView implements ViewInterface{
             mapPane.getChildren().add(currButton);
         }
     }
+
+
 
     public void updateMapData() {
         currentPlayerIndex = game.getCurrentPlayerIndex();
@@ -367,8 +397,5 @@ public class MainGameView implements ViewInterface{
         rootPane.getChildren().add(node);
     }
 
-    @Override
-    public void close() {
 
-    }
 }

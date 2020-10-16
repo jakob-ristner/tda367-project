@@ -101,6 +101,11 @@ public class GameView {
 		mainGameView.updateMapData();
 	}
 
+	public void updateEventEffect(){
+		mainGameView.setEventEffectText();
+		mainGameView.fadeEventText();
+	}
+
 	public void initMapData() {
 		mainGameView.initMapData();
 	}

@@ -22,8 +22,5 @@ public class HauntEventView extends EventView {
         return hauntButton;
     }
 
-    @Override
-    public void close() {
 
-    }
 }

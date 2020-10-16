@@ -34,27 +34,30 @@ public class EventController extends AbstractController {
         eventButtonMap.get("RollDiceEvent").setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                game.handleEvent();
                 setNextView(mainGameView);
+                game.handleEvent();
                 showNextView();
+
             }
         });
 
         eventButtonMap.get("ItemEvent").setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                game.handleEvent();
                 setNextView(mainGameView);
+                game.handleEvent();
                 showNextView();
+
             }
         });
 
         eventButtonMap.get("MoveEvent").setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                game.handleEvent();
                 setNextView(mainGameView);
+                game.handleEvent();
                 showNextView();
+
             }
         });
 

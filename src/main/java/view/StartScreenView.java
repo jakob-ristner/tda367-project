@@ -51,10 +51,7 @@ public class StartScreenView implements ViewInterface {
         pane.getChildren().add(node);
     }
 
-    @Override
-    public void close() {
-        pane.toBack();
-    }
+
 
     public Button getButton() {
         return confirmButton;

@@ -73,4 +73,8 @@ public class Tile {
             hasEvent = false;
         }
     }
+
+    String getEventEffectText(){
+        return event.getEventEffectText();
+    }
 }

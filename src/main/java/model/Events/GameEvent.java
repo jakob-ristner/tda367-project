@@ -2,9 +2,8 @@ package model.Events;
 
 import controller.EventObserver;
 import model.Event;
-import model.EventObservable;
 
-public abstract class GameEvent implements EventObservable, Event {
+public abstract class GameEvent implements Event {
     protected EventObserver observer;
     protected boolean permanent;
 
