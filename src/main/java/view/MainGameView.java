@@ -245,9 +245,10 @@ public class MainGameView implements ViewInterface{
         eventEffectText.setText(game.getEventEffectText());
     }
 
+
     void fadeEventText() {
         FadeTransition fade = new FadeTransition();
-        fade.setDuration(Duration.millis(5000));
+        fade.setDuration(Duration.millis(4000));
         fade.setFromValue(10);
         fade.setToValue(0);
         fade.setNode(eventEffectText);

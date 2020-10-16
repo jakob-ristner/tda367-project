@@ -82,10 +82,24 @@ public class Floor {
         }
     }
 
-
+    /**
+     * Chaining of a getter down to Event
+     * @param currentPlayer current Active player
+     * @return String of text to be displayed on mainGameView.
+     */
     public String getEventEffectText(Player currentPlayer){
         Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
         return tile.getEventEffectText();
+    }
+
+    /**
+     * Chaining of a getter down to Event
+     * @param currentPlayer current Active player
+     * @return String of text to be displayed on eventButton.
+     */
+    String getEventButtonText(Player currentPlayer){
+        Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
+        return tile.getEventButtonText();
     }
 
 }

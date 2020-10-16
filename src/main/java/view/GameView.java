@@ -28,9 +28,11 @@ public class GameView {
 
 	private HashMap<String, Button> buttonEventMap;
 	private HashMap<Integer, EventView> eventViewMap;
+	private Game game;
 
 	public GameView(Game game) {
 		root = new Group();
+		this.game = game;
 		startScreenView = new StartScreenView(root, WINDOW_W, WINDOW_H);
 		characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H);
 		characterSelectView.initButton(game.getCharacterNames());
@@ -50,6 +52,7 @@ public class GameView {
 	public void updateEventView(int eventType, String eventText){
 		EventView currentEventView = eventViewMap.get(eventType);
 		currentEventView.setEventText(eventText);
+		currentEventView.setEventButtonText(game.getEventButtonText());
 		currentEventView.viewToFront();
 	}
 

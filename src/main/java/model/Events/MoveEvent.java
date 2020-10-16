@@ -11,6 +11,7 @@ public class MoveEvent extends GameEvent {
     String eventText;
     int eventType;
     private String effectText;
+    private String eventButtonText;
 
     int deltaX;
     int deltaY;
@@ -28,12 +29,21 @@ public class MoveEvent extends GameEvent {
         this.eventType = eventType;
     }
 
+    /**
+     * Activates the event. Sets the buttonText to be displayed and tells the controller to update the view.
+     */
     @Override
     public void activate() {
-      observer.updateEventView(eventType, eventText);
+        eventButtonText = "Roll " + statToRollOn.toString().toLowerCase() + " higher than " + threshHold + " to succeed!";
+        observer.updateEventView(eventType, eventText);
         System.out.println("moveEvent");
     }
 
+    /**
+     * Sets effectText and handles the event via rolling a player's stat.
+     * asks the controller to update the view.
+     * @param currentPlayer
+     */
     @Override
     public void handleEvent(Player currentPlayer) {
         if(threshHold > currentPlayer.rollStat(statToRollOn)) {//TODO: Fix so that we have 2 scenarios coming from the xml parser. One negative and one positive.
@@ -55,5 +65,10 @@ public class MoveEvent extends GameEvent {
     @Override
     public String getEventEffectText() {
         return effectText;
+    }
+
+    @Override
+    public String getEventButtonText() {
+        return eventButtonText;
     }
 }

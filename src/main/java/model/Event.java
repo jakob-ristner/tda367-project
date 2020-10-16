@@ -16,6 +16,6 @@ public interface Event {
 
     String getEventEffectText();
 
-
+    String getEventButtonText();
 
 }

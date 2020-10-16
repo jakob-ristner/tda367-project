@@ -11,6 +11,7 @@ public class RollDiceEvent extends GameEvent {
     private String eventText;
     private int eventType;
     private String effectText;
+    private String eventButtonText;
 
     int loseStatChange;
 
@@ -25,12 +26,25 @@ public class RollDiceEvent extends GameEvent {
         System.out.println(eventText);
     }
 
+
+    /**
+     * Activates the Event.
+     * Sets the buttonText.
+     * Asks the controller to update the view.
+     */
     @Override
     public void activate() {
+        eventButtonText = "Roll " + statToRollOn.toString().toLowerCase() + " higher than " + numberToRollVersus + " to succeed!";
         observer.updateEventView(eventType, eventText);
         System.out.println("rollDiceEvent");
     }
 
+    /**
+     * Handles the event via rolling a player's stat.
+     * Sets effectText.
+     * Asks controller to update view.
+     * @param currentPlayer
+     */
     @Override
     public void handleEvent(Player currentPlayer) {
         HashMap<Stat,Integer> statsToUpdate = new HashMap<>();
@@ -57,6 +71,11 @@ public class RollDiceEvent extends GameEvent {
     @Override
     public String getEventEffectText() {
         return effectText;
+    }
+
+    @Override
+    public String getEventButtonText() {
+        return eventButtonText;
     }
 
 }

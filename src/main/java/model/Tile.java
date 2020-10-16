@@ -74,6 +74,18 @@ public class Tile {
         }
     }
 
+    /**
+     * Getter for the event's buttonText.
+     * @return String to be displayed on eventView.
+     */
+    String getEventButtonText(){
+        return event.getEventButtonText();
+    }
+
+    /**
+     * Getter for the event's outcome text
+     * @return String to be displayed on mainGameView.
+     */
     String getEventEffectText(){
         return event.getEventEffectText();
     }

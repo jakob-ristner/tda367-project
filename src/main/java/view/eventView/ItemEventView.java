@@ -14,8 +14,10 @@ public class ItemEventView extends EventView {
         eventButton.setLayoutY(eventPane.getLayoutY() + 220);
         addNode(eventButton);
 
+
         header.setText("You've found an item!");
     }
+
 
     @Override
     public Button getEventButton() {

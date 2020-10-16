@@ -80,6 +80,10 @@ public abstract class EventView implements ViewInterface {
         rootPane.toFront();
     }
 
+    public void setEventButtonText(String s){
+        getEventButton().setText(s);
+    }
+
     public void setRootPane(Pane rootPane) {
         this.rootPane = rootPane;
     }

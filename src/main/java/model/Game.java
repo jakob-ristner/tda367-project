@@ -122,6 +122,7 @@ public class Game implements ControllerObservable {
     }
 
 
+
     @Override
     public void setObserver(GameObserver observer) {
         this.observer = observer;
@@ -245,6 +246,14 @@ public class Game implements ControllerObservable {
         Player currentPlayer = getCurrentPlayer();
         board.handleEvent(currentPlayer);
         observer.updateMapData();
+    }
+
+    /**
+     * Getter for the buttonText on the eventButton
+     * @return String
+     */
+    public String getEventButtonText(){
+        return board.getEventButtonText(getCurrentPlayer());
     }
 
     public void removeDeadPlayersFromGame() {

@@ -97,8 +97,23 @@ public class Board {
         floor.handleEvent(currentPlayer);
     }
 
+    /**
+     * Chaining of a getter down to Event
+     * @param currentPlayer current active player
+     * @return String effectText
+     */
     public String getEventEffectText(Player currentPlayer){
         Floor floor = floors.get(currentPlayer.getFloor());
         return floor.getEventEffectText(currentPlayer);
+    }
+
+    /**
+     * Chaining of a getter down to Event
+     * @param currentPlayer current Active player
+     * @return String of text to be displayed on Button.
+     */
+    String getEventButtonText(Player currentPlayer){
+        Floor floor = floors.get(currentPlayer.getFloor());
+        return floor.getEventButtonText(currentPlayer);
     }
 }
