@@ -36,11 +36,13 @@ public class MoveEvent extends GameEvent {
     @Override
     public void handleEvent(Player currentPlayer) {
         if(threshHold > currentPlayer.rollStat(statToRollOn)) {//TODO: Fix so that we have 2 scenarios coming from the xml parser. One negative and one positive.
-            effectText = "TESTING";
+            effectText = "You were moved";
             observer.updateEventEffect();
             currentPlayer.addCoord(coord);
+        }else{
+         effectText = "You're still standing on the same tile";
+         observer.updateEventEffect();
         }
-
         System.out.println("move event triggered");
     }
 

@@ -223,7 +223,7 @@ public class MainGameView implements ViewInterface{
         currentFloor.setStyle("-fx-font-size: 20");
         floorPane.getChildren().add(currentFloor);
 
-        eventEffectText = new Text("Bla bla bla här kommer det stå grejer om vad som hände. Fakea dragon");
+        eventEffectText = new Text();
         eventEffectText.setWrappingWidth(height-150);
         eventEffectText.setTextAlignment(TextAlignment.CENTER);
         eventEffectText.setLayoutX(0);
@@ -247,7 +247,7 @@ public class MainGameView implements ViewInterface{
 
     void fadeEventText() {
         FadeTransition fade = new FadeTransition();
-        fade.setDuration(Duration.millis(4000));
+        fade.setDuration(Duration.millis(5000));
         fade.setFromValue(10);
         fade.setToValue(0);
         fade.setNode(eventEffectText);

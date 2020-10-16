@@ -37,10 +37,13 @@ public class RollDiceEvent extends GameEvent {
         statsToUpdate.put(statToRollOn, loseStatChange);
         int diceRoll = currentPlayer.rollStat(statToRollOn);
         if(numberToRollVersus > diceRoll){ //TODO: Skaffa texten från xml.
-            currentPlayer.getCharacter().updateStat(statsToUpdate);
-            effectText = "You rolled good enough /testing";
-            observer.updateEventEffect();
+            effectText = "You rolled " + diceRoll + " which is lower than " + numberToRollVersus;
+            currentPlayer.getCharacter().updateStat(statsToUpdate); //Why is the stats only updated if you lose the roll?
+                                                                    //sometimes something good can happen if you succeed right?
+        }else{
+            effectText = "You rolled higher";
         }
+        observer.updateEventEffect();
         System.out.println("rolldice event triggered");
     }
 
