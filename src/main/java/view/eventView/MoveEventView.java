@@ -13,7 +13,7 @@ public class MoveEventView extends EventView {
         moveButton.setLayoutY(eventPane.getLayoutY() + 220);
         addNode(moveButton);
 
-        header.setText("You ended up in a dangerous situation!");
+        header.setText("You have encountered a problem");
 
     }
 

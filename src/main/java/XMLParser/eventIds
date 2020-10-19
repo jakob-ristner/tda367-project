@@ -14,7 +14,7 @@
         <eventThreshold>2</eventThreshold>
         <statToRollOn>1</statToRollOn>
         <statChange>-1</statChange>
-        <eventText>There lands a spider on your shoulder, to wipe it off, attempt a strength roll higher than 1. If you fail the roll, loose 1 strength.</eventText>
+        <eventText>There lands a spider on your shoulder, attempt a strength roll to wipe it off. If you fail the roll, loose 1 strength.</eventText>
     </event>
 
     <event id="2">
@@ -22,7 +22,7 @@
          <eventThreshold>1</eventThreshold>
          <statToRollOn>2</statToRollOn>
          <statChange>-1</statChange>
-         <eventText>You heard a screeching noise, how spooked are you? Attempt a sanity roll higher than 1. If you loose, loose 1 sanity.</eventText>
+         <eventText>You heard a screeching noise, how spooked are you? Attempt a sanity roll. If you loose, loose 1 sanity.</eventText>
      </event>
 
 
@@ -31,7 +31,7 @@
         <eventThreshold>1</eventThreshold>
         <statToRollOn>0</statToRollOn>
         <statChange>1</statChange>
-        <eventText>You find a large hole in the floor to try to jump over it, attempt a speed roll higher than 1 to pass.</eventText>
+        <eventText>You find a large hole in the floor. To try to jump over it, attempt a speed roll</eventText>
         <floorDelta>-1</floorDelta>
         <deltaX>0</deltaX>
         <deltaY>0</deltaY>
@@ -115,7 +115,7 @@
     <event id = "11">
         <eventType>-3</eventType>
         <eventThreshold>3</eventThreshold>
-        <statToRollOn>1</statToRollOn>
+        <statToRollOn>0</statToRollOn>
         <statChange>1</statChange>
         <eventText>You find an elevator leading downwards. Attempt a speed roll to descend.</eventText>
         <floorDelta>-1</floorDelta>
