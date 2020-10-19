@@ -63,6 +63,7 @@ public class RollDiceEvent extends GameEvent {
     }
 
 
+
     @Override
     public int getEventType() {
         return eventType;

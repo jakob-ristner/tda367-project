@@ -17,7 +17,14 @@ public class GameTest {
         Game game = Game.getInstance();
         int playerAmount = 2;
         game.setPlayerAmount(playerAmount);
-        Assert.assertTrue(game.getPlayerList().size() == playerAmount);
+        Assert.assertEquals(game.getPlayerList().size(), playerAmount);
 
+    }
+    @Test
+    public void testAllPlayersHasCharacter(){
+        Game game =Game.getInstance();
+        game.createPlayers(2);
+        game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
+        Assert.assertFalse(game.checkAllPlayersHaveChars());
     }
 }
