@@ -250,9 +250,10 @@ public class MainGameView implements ViewInterface{
 
         endTurnButton = new Button();
         endTurnButton.setText("End Turn");
-        endTurnButton.setFont(Font.font("Ink Free",20));
-        endTurnButton.setLayoutX(0);
-        endTurnButton.setLayoutY(50);
+        endTurnButton.setPrefSize((width - (height - 150))/2 -10,150 - 5);
+        endTurnButton.setFont(Font.font("Ink Free",30));
+        endTurnButton.setLayoutX(height - 150 + 10);
+        endTurnButton.setLayoutY(5);
         floorPane.getChildren().add(endTurnButton);
 
 

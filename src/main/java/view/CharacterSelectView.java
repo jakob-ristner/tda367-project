@@ -4,6 +4,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import model.Stat; //Måste lyfta ut från packet?
@@ -33,7 +35,7 @@ public class CharacterSelectView implements ViewInterface{
 
         pane = new Pane();
         pane.setPrefSize(width, height);
-        pane.setStyle("-fx-background-color: green"); // temporary
+        pane.setStyle("-fx-background-color: Black"); // temporary
         root.getChildren().add(pane);
     }
 
@@ -48,6 +50,7 @@ public class CharacterSelectView implements ViewInterface{
             currButton.setLayoutY(height / 2 + i * buttonSpacing);
             currButton.setPrefSize(200, 30);
             currButton.setText(characterNames.get(i));
+            currButton.setFont(Font.font("Ink Free",20));
             addNode(currButton);
             buttonMap.put(i, currButton);//One button for each char
         }
@@ -58,6 +61,8 @@ public class CharacterSelectView implements ViewInterface{
 
         playerText = new Text();
         playerText.setText("It's Player 1:s turn!");
+        playerText.setFont(Font.font("Ink Free",25));
+        playerText.setFill(Color.WHITE);
         playerText.setWrappingWidth(300);
         playerText.setTextAlignment(TextAlignment.CENTER);
         playerText.setLayoutX(width / 2 - playerText.getWrappingWidth() / 2);
@@ -65,7 +70,9 @@ public class CharacterSelectView implements ViewInterface{
         addNode(playerText);
 
         text = new Text("Choose your character");
-        text.setStyle("-fx-font-size: 40px;");
+        //text.setStyle("-fx-font-size: 40px;");
+        text.setFont(Font.font("Ink Free",50));
+        text.setFill(Color.WHITE);
         text.setWrappingWidth(300);
         text.setTextAlignment(TextAlignment.CENTER);
         text.setLayoutX(width / 2 - text.getWrappingWidth() / 2);
@@ -89,6 +96,8 @@ public class CharacterSelectView implements ViewInterface{
             currPlayerText.setTextAlignment(TextAlignment.CENTER);
             currPlayerText.setLayoutX(refButtonX + 200);
             currPlayerText.setLayoutY(refButtonY + 20);
+            currPlayerText.setFont(Font.font("Ink Free",20));
+            currPlayerText.setFill(Color.WHITE);
             addNode(currPlayerText);
             textsPlayer.add(currPlayerText);
 
@@ -98,6 +107,8 @@ public class CharacterSelectView implements ViewInterface{
             currStatText.setLayoutX(refButtonX - 180);
             currStatText.setLayoutY(refButtonY + 20);
             currStatText.setText(getAllStatsAsString(i));
+            currStatText.setFont(Font.font("Ink Free",23));
+            currStatText.setFill(Color.WHITE);
             addNode(currStatText);
             textsStats.add(currStatText);
         }
