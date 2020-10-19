@@ -6,7 +6,7 @@
         <strength>1</strength>
         <stamina>1</stamina>
         <itemName>Dirk</itemName>
-        <eventText>You found a Dirk it gives you 1 speed, 1 sanity, 1 strength and 1 stamina</eventText>
+        <eventText>You found a Dirk it gives you 1 speed, 1 sanity, 1 strength and 1 stamina.</eventText>
     </event>
 
     <event id="1">
@@ -14,7 +14,7 @@
         <eventThreshold>1</eventThreshold>
         <statToRollOn>1</statToRollOn>
         <statChange>1</statChange>
-        <eventText>Fight the spider, to win roll higher:</eventText>
+        <eventText>There lands a spider on your shoulder, to wipe it off, attempt a strenght roll higher than 1. If you fail the roll, loose 1 strenght.</eventText>
     </event>
 
     <event id="2">
@@ -22,7 +22,7 @@
          <eventThreshold>1</eventThreshold>
          <statToRollOn>2</statToRollOn>
          <statChange>1</statChange>
-         <eventText>You heard a noise, how spooked are you?:</eventText>
+         <eventText>You heard a screeching noise, how spooked are you? Attempt a sanity roll higher than 1. If you loose, loose 1 sanity.</eventText>
      </event>
 
 
@@ -31,11 +31,73 @@
         <eventThreshold>1</eventThreshold>
         <statToRollOn>0</statToRollOn>
         <statChange>1</statChange>
-        <eventText>There is a hole in the floor to not fall down roll speed higher than 1</eventText>
+        <eventText>You find a large hole in the floor to try to jump over it, attempt a speed roll higher than 1 to pass.</eventText>
         <floorDelta>-1</floorDelta>
         <deltaX>0</deltaX>
         <deltaY>0</deltaY>
     </event>
+
+    <event id="4">
+        <eventType>-2</eventType>
+        <eventThreshold>3</eventThreshold>
+        <statToRollOn>2</statToRollOn>
+        <statChange>-1</statChange>
+        <eventText>You enter an ominous chapel. A glowing coffin draws your attention. Opening the lid you see a skeleton. You must attempt at sanity roll. To keep your sanity roll higher than 3.</eventText>
+    </event>
+
+    <event id="5">
+        <eventType>-2</eventType>
+        <eventThreshold>1</eventThreshold>
+        <statToRollOn>2</statToRollOn>
+        <statChange>1</statChange>
+        <eventText>You find an fountain statue containing holy water. To drink it, attempt a sanity roll. If you roll higher than 1, Gain 1 sanity.</eventText>
+    </event>
+
+    <event id="6">
+        <eventType>-1</eventType>
+        <speed>0</speed>
+        <sanity>0</sanity>
+        <strength>2</strength>
+        <stamina>0</stamina>
+        <itemName>Revolver</itemName>
+        <eventText>You see something glimmer in one the rooms bookshelves. You obtained a revolver. It gives you 2 strenght.</eventText>
+    </event>
+
+    <event id="7">
+        <eventType>-1</eventType>
+        <speed>-1</speed>
+        <sanity>0</sanity>
+        <strength>2</strength>
+        <stamina>0</stamina>
+        <itemName>Sword</itemName>
+        <eventText>You enter a room with a statue of a great hero. The statue is holding a shining sword. You take it, quite heavy to the touch but the sword is in pristine condition. It gives you 2 strenght but slows you down by 1 speed. </eventText>
+    </event>
+
+    <event id="8">
+        <eventType>-1</eventType>
+        <speed>0</speed>
+        <sanity>1</sanity>
+        <strength>0</strength>
+        <stamina>0</stamina>
+        <itemName>Torch</itemName>
+        <eventText>The room you enter is noticeably brighter than previous rooms. You obtain a torch. It gives you 1 sanity. </eventText>
+    </event>
+
+    <event id="9">
+        <eventType>-1</eventType>
+        <speed>0</speed>
+        <sanity>0</sanity>
+        <strength>2</strength>
+        <stamina>0</stamina>
+        <itemName>Sneakers</itemName>
+        <eventText>You find a pair of shoes from a previous adventurer. With your new shoes on your feet you feel ready to run. You obtain 1 speed.</eventText>
+    </event>
+
+
+
+
+
+
 
 </events>
 
