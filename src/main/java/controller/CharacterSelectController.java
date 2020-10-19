@@ -12,6 +12,11 @@ import java.util.List;
 public class CharacterSelectController extends AbstractController{
     private HashMap<Integer, Button> buttonMap;
     private List<Text> textList;
+    private Button startGameButton;
+    private Text text;
+
+
+
 
     public CharacterSelectController(Game game){
         super(game);
@@ -22,8 +27,17 @@ public class CharacterSelectController extends AbstractController{
         initButtons();
     }
 
+    //Choose your character-> All players have chosen a character
+    public void setTextAbove(Text text){
+        this.text = text;
+    }
+
     public void setTextList(List<Text> textList) {
         this.textList = textList;
+    }
+    public void setStartGameButton(Button newButton) {
+        startGameButton = newButton;
+        startGameButton.setDisable(true);
     }
 
    private void initButtons(){
@@ -36,6 +50,13 @@ public class CharacterSelectController extends AbstractController{
                 }
             });
         }
+        startGameButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showNextView();
+            }
+        });
+
 
 
         /*buttonMap.get(0).setOnAction(new EventHandler<ActionEvent>() {
@@ -66,6 +87,7 @@ public class CharacterSelectController extends AbstractController{
 
     }
 
+
     private void buttonHandler(int index, Button button){
         game.setCurrentPlayersCharacter(index);
         textList.get(index).setText("Chosen by Player " + (game.getCurrentPlayerIndex() + 1));
@@ -73,8 +95,14 @@ public class CharacterSelectController extends AbstractController{
         button.setDisable(true);
         if (game.checkAllPlayersHaveChars()) {
             gameIinitMapData();
-            showNextView();
+            for(int i = 0; i<buttonMap.size(); i++){
+                buttonMap.get(i).setDisable(true);
+            }
+            startGameButton.setDisable(false);
         }
+
+
+
     }
 
     private void gameIinitMapData() {
