@@ -35,7 +35,9 @@ public class Item {
     private void setPickupText() {
        pickupText = "\n";
        for (Stat stat: stats.keySet()) {
-           pickupText += (stat.toString().toLowerCase() + ": " + stats.get(stat) + "\n");
+           if(stats.get(stat) != 0) {
+               pickupText += (stat.toString().toLowerCase() + ": " + stats.get(stat) + "\n");
+           }
        }
     }
 

@@ -53,6 +53,7 @@ public class Kharacter {
             for (Stat statToAdd : statsToAdd.keySet()) {
                 if (playerStat == statToAdd)
                     stats.put(playerStat, stats.get(playerStat) + statsToAdd.get(statToAdd));
+                System.out.println("STATS UPDATED");
             }
         }
     }
