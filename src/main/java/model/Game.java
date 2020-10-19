@@ -52,7 +52,6 @@ public class Game implements ControllerObservable {
 
 
 
-
     public void moveCurrentPlayer(int dx, int dy) {
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.getStepsLeft() > 0) {
@@ -61,6 +60,7 @@ public class Game implements ControllerObservable {
         }
         notifyGameData();
     }
+
 
 
 

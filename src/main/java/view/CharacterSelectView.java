@@ -118,7 +118,7 @@ public class CharacterSelectView implements ViewInterface{
 
     private String getAllStatsAsString(int statListIndex) {
         String allStats= "";
-        allStats += ("Str: " + getStatAsString(statListIndex, Stat.STRENGTH));
+        allStats += ("  Str: " + getStatAsString(statListIndex, Stat.STRENGTH));
         allStats += ("  Spe: " + getStatAsString(statListIndex, Stat.SPEED));
         allStats += ("  San: " + getStatAsString(statListIndex, Stat.SANITY));
         allStats += ("  Stam: " + getStatAsString(statListIndex, Stat.STRENGTH));
