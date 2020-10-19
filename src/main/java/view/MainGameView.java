@@ -141,6 +141,13 @@ public class MainGameView implements ViewInterface{
 
     private void initInventoryPane() {
         itemsInInventory = new ArrayList<>();
+        Text titleText = new Text("Inventory");
+        titleText.setWrappingWidth((width - (height - 150)) / 2);
+        titleText.setTextAlignment(TextAlignment.CENTER);
+        titleText.setLayoutX(0);
+        titleText.setLayoutY(20);
+        titleText.setStyle("-fx-font-family: Hack; -fx-font-size: 20");
+        inventoryPane.getChildren().add(titleText);
         updateInventoryPane();
     }
     
@@ -303,7 +310,7 @@ public class MainGameView implements ViewInterface{
             currText.setWrappingWidth((width - (height - 150)) / 2);
             currText.setTextAlignment(TextAlignment.CENTER);
             currText.setLayoutX(0);
-            currText.setLayoutY(20 + i * 30);
+            currText.setLayoutY(50 + i * 30);
             itemsInInventory.add(currText);
             inventoryPane.getChildren().add(currText);
         }
