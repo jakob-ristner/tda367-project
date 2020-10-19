@@ -49,6 +49,7 @@ public class GameView {
 		//hauntEventView.viewToFront();
 
 	}
+
 	public void updateEventView(int eventType, String eventText){
 		EventView currentEventView = eventViewMap.get(eventType);
 		currentEventView.setEventText(eventText);
@@ -63,6 +64,7 @@ public class GameView {
 		buttonEventMap.put("RollDiceEvent", rollDiceView.getEventButton());
 		buttonEventMap.put("HauntEvent",hauntEventView.getEventButton());
 	}
+
 	public HashMap<String, Button> getEventButtons(){
 		return buttonEventMap;
 	}
@@ -80,6 +82,13 @@ public class GameView {
 
 
 	}
+
+	public void initHauntView(){
+		hauntEventView.setEventText(game.getHauntText());
+		hauntEventView.viewToFront();
+
+	}
+
 	public Group getRoot() {
 		return root;
 	}

@@ -9,6 +9,8 @@ public class InsanityHauntState implements GameState {
     Game game;
     int numEscapeHatch = 4;
     Random rand = new Random();
+    private final String hauntText = "Ooga booga you just got haunted with the Insane haunt. The rules for this gamemode is as follows...";
+    //private final String buttonText = "Continue game";
 
     public InsanityHauntState(){
 
@@ -19,6 +21,7 @@ public class InsanityHauntState implements GameState {
     public void init() {
         game = Game.getInstance(); //Not sure if this will work.
         createEscapeHatches();
+
     }
 
 
@@ -68,5 +71,15 @@ public class InsanityHauntState implements GameState {
             System.out.println("Monster Won");
         }
 
+    }
+
+    @Override
+    public String getHauntText() {
+        return hauntText;
+    }
+
+    @Override
+    public String getButtonText() {
+        return null;
     }
 }

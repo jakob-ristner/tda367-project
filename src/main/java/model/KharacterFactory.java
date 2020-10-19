@@ -26,12 +26,17 @@ public final class KharacterFactory {
         return (new Kharacter("Sven Nordstadt",new int[]{3,3,4,3}));
 
     }
+
+    public static Kharacter createDebugKhar(){
+        return (new Kharacter("Debug", new int[]{99,99,99,99}));
+    }
     public static List<Kharacter> getCharacters(){
         List<Kharacter> kharacters = new ArrayList<>();
         kharacters.add(createMedera());
         kharacters.add(createRufus());
         kharacters.add(createSven());
         kharacters.add(createSarah());
+        kharacters.add(createDebugKhar());
         return kharacters;
     }
 

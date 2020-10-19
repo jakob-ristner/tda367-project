@@ -78,6 +78,11 @@ public class GameController implements GameObserver,EventObserver{
     }
 
     @Override
+    public void initHauntView() {
+        view.initHauntView();
+    }
+
+    @Override
     public void updateEventEffect() {
         view.updateEventEffect();
     }

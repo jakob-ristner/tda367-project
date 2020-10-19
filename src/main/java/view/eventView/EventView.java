@@ -84,17 +84,7 @@ public abstract class EventView implements ViewInterface {
         getEventButton().setText(s);
     }
 
-    public void setRootPane(Pane rootPane) {
-        this.rootPane = rootPane;
-    }
 
-    public AnchorPane getEventPane() {
-        return eventPane;
-    }
-
-    public void setEventPane(AnchorPane eventPane) {
-        this.eventPane = eventPane;
-    }
 
     public TextArea getEventText() {
         return eventText;

@@ -13,7 +13,7 @@ public class testPlayer {
 
         Player player = new Player();
         Game game = Game.getInstance();
-        game.createCharaters();
+        //game.createCharaters();
         player.setCharacter(game.getCharacterList().get(0));
         int characterStat = player.getCharacter().getStat(Stat.STRENGTH);
 
@@ -32,7 +32,7 @@ public class testPlayer {
 
         Player player = new Player();
         Game game = Game.getInstance();
-        game.createCharaters();
+        //game.createCharaters();
         player.setCharacter(game.getCharacterList().get(0));
 
        Assert.assertTrue(0 <= player.rollStat(Stat.SPEED) && player.rollStat(Stat.SPEED) <= player.getCharacter().getStat(Stat.SPEED));

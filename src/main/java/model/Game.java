@@ -59,6 +59,7 @@ public class Game implements ControllerObservable {
             currentPlayer.playerMove(dx, dy);
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
+        checkForHauntInit();
         notifyGameData();
     }
 
@@ -82,6 +83,14 @@ public class Game implements ControllerObservable {
             characterNames.add(a.getName());
         }
         return characterNames;
+    }
+
+    public String getHauntText(){
+        return gameState.getHauntText();
+    }
+
+    public String getButtonText(){
+        return gameState.getButtonText();
     }
 
     public List<HashMap<Stat, Integer>> getCharacterStats() {
@@ -143,6 +152,11 @@ public class Game implements ControllerObservable {
         observer.initMapData();
     }
 
+    @Override
+    public void notifyHaunt() {
+        observer.initHauntView();
+    }
+
     public String getEventEffectText(){
         return board.getEventEffectText(getCurrentPlayer());
     }
@@ -201,8 +215,10 @@ public class Game implements ControllerObservable {
     }
 
     public void endTurn() {
+        checkForHauntInit();
         updateCurrentPlayer();
         notifyGameData();
+
     }
 
     public List<String> getCurrentPlayerItemsAsText() {
@@ -245,6 +261,7 @@ public class Game implements ControllerObservable {
     public void handleEvent() {
         Player currentPlayer = getCurrentPlayer();
         board.handleEvent(currentPlayer);
+        eventTriggered();
         observer.updateMapData();
     }
 
@@ -276,7 +293,7 @@ public class Game implements ControllerObservable {
 
 
     void initHaunt() {
-        listOfHaunts.get(0).init();
+        gameState.init();
     }
 
     /**
@@ -284,8 +301,14 @@ public class Game implements ControllerObservable {
      */
     private void eventTriggered() {
         eventCounter++;
-        if (eventCounter == 8) {
+        System.out.println("Eventnr:" + eventCounter);
+    }
+
+    private void checkForHauntInit(){
+        if(eventCounter == 1 && gameState == null){
             gameState = getRandomHaunt();
+            initHaunt();
+            notifyHaunt();
         }
     }
 
@@ -312,47 +335,11 @@ public class Game implements ControllerObservable {
             playerList.add(currPlayer);
         }
     }
-/*
-    private void createCharaters() {
 
-        HashMap<Stat, Integer> rufus = new HashMap<>();
-        HashMap<Stat, Integer> medera = new HashMap<>();
-        HashMap<Stat, Integer> sven = new HashMap<>();
-        HashMap<Stat, Integer> sarah = new HashMap<>();
-
-        rufus.put(Stat.STRENGTH, 2);
-        rufus.put(Stat.STAMINA, 2);
-        rufus.put(Stat.SPEED, 3);
-        rufus.put(Stat.SANITY, 6);
-
-        medera.put(Stat.STRENGTH, 6);
-        medera.put(Stat.STAMINA, 2);
-        medera.put(Stat.SPEED, 3);
-        medera.put(Stat.SANITY, 2);
-
-        sven.put(Stat.STRENGTH, 3);
-        sven.put(Stat.STAMINA, 3);
-        sven.put(Stat.SPEED, 3);
-        sven.put(Stat.SANITY, 4);
-
-        sarah.put(Stat.STRENGTH, 2);
-        sarah.put(Stat.STAMINA, 2);
-        sarah.put(Stat.SPEED, 6);
-        sarah.put(Stat.SANITY, 6);
-
-        characterList = new ArrayList<>();
-        characterList.add(new Kharacter(rufus, "Rufus von gross"));
-        characterList.add(new Kharacter(sven, "Sven Nordstadt"));
-        characterList.add(new Kharacter(medera, "Medera Calvados"));
-        characterList.add(new Kharacter(sarah, "Sarah"));
-    }
-
- */
 
     private Game() {
         board = new Board();
         listOfHaunts.add(new InsanityHauntState());
-        //createCharaters();
     }
 
 
