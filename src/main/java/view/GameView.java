@@ -97,8 +97,10 @@ public class GameView {
 	}
 
 	public void updateCurrentPlayerIndex(int index) {
-		characterSelectView.setCurrentPlayerText(index);
+		characterSelectView.setPlayerTexts(index, game.getPlayerAmount());
 	}
+	//when all players have chosen a character
+
 
 	public void updateMainGameViewMapData() {
 		mainGameView.updateMapData();
@@ -129,6 +131,9 @@ public class GameView {
 
 	public HashMap<Integer, Button> getCharSelectButtons(){
 		return characterSelectView.getButtonMap();
+	}
+	public Button getStartGameButton(){
+		return characterSelectView.getStartButton();
 	}
 
 	public HashMap<Integer, Button> getMainGameViewDoorButtons() {

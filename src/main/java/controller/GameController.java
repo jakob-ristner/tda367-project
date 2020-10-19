@@ -41,10 +41,10 @@ public class GameController implements GameObserver,EventObserver{
         startScreenController.setConfirmButton(view.getStartScreenConfirmButton());
 
         characterSelectController = new CharacterSelectController(game);
+        characterSelectController.setStartGameButton(view.getStartGameButton());
         characterSelectController.setButtonMap(view.getCharSelectButtons());
         characterSelectController.setTextList(view.getCharSelectTexts());
         characterSelectController.setNextView(mainGameView);
-
 
         mainGameViewController = new MainGameViewController(game);
 
@@ -81,13 +81,10 @@ public class GameController implements GameObserver,EventObserver{
     public void updateEventEffect() {
         view.updateEventEffect();
     }
-
     @Override
     public void updateEventView(int eventType, String eventText) {
         view.updateEventView(eventType, eventText);
         view.updateMainGameViewMapData();
 
     }
-
-
 }

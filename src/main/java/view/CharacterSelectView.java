@@ -25,6 +25,7 @@ public class CharacterSelectView implements ViewInterface{
     private List<Text> textsStats;
     private List<HashMap<Stat, Integer>> statList;
     private HashMap<Integer, Button> buttonMap;
+    private Button startButton;
 
     public CharacterSelectView(Group root, int width, int height){
         this.width = width;
@@ -41,6 +42,13 @@ public class CharacterSelectView implements ViewInterface{
     public void initButton(List<String> characterNames){
         buttonMap = new HashMap<>();        //HashMap for access to buttons in Controller
 
+        startButton = new Button();
+        startButton.setLayoutX(width / 2 -180);
+        startButton.setLayoutY(height / 2 + characterNames.size() * buttonSpacing);
+        startButton.setPrefSize(400, 50);
+        startButton.setText("Start Game");
+        addNode(startButton);
+
         Button currButton;
         for (int i = 0; i < characterNames.size(); i++) {
             currButton = new Button();
@@ -51,6 +59,7 @@ public class CharacterSelectView implements ViewInterface{
             addNode(currButton);
             buttonMap.put(i, currButton);//One button for each char
         }
+
     }
 
     public void initText(List< HashMap<Stat, Integer>> statList){
@@ -122,8 +131,11 @@ public class CharacterSelectView implements ViewInterface{
         pane.toFront();
     }
 
-    public void setCurrentPlayerText(int index) {
+    public void setPlayerTexts(int index, int amountPlayers) {
         playerText.setText("It's Player " + (index+1) + ":s turn!");
+        if(index == amountPlayers){
+            playerText.setText("All players have chosen a character");
+        }
     }
 
     @Override
@@ -135,8 +147,16 @@ public class CharacterSelectView implements ViewInterface{
         return buttonMap;
     }
 
+    public Button getStartButton() {
+        return startButton;
+    }
+
     public List<Text> getTexts(){
         return textsPlayer;
+    }
+    // Choose your character->All players have chosen a character
+    public void setText(){
+        text.setText("All players have chosen a character");
     }
 
 }

@@ -287,7 +287,6 @@ public class MainGameView implements ViewInterface{
     }
 
 
-
     public void updateMapData() {
         currentPlayerIndex = game.getCurrentPlayerIndex();
         updatePlayerSprites();
