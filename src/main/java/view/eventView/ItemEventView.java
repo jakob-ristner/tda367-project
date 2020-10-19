@@ -2,6 +2,8 @@ package view.eventView;
 
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class ItemEventView extends EventView {
     Button eventButton;
@@ -12,10 +14,11 @@ public class ItemEventView extends EventView {
         eventButton.setPrefSize(eventText.getPrefWidth(), 50);
         eventButton.setLayoutX(eventText.getLayoutX());
         eventButton.setLayoutY(eventPane.getLayoutY() + 220);
+        eventButton.setFont(Font.font("Ink Free",20));
         addNode(eventButton);
-
-
         header.setText("You've found an item!");
+        header.setFont(Font.font("Ink Free",20));
+        header.setFill(Color.WHITE);
     }
 
 

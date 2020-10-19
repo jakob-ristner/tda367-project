@@ -160,7 +160,7 @@
         <sanity>-1</sanity>
         <strength>0</strength>
         <stamina>2</stamina>
-        <itemName>Zombie</itemName>
+        <itemName>Dried meat</itemName>
         <eventText>You find a room resembling a kitchen, you find a small bit of dried meat. After eating it you gain: </eventText>
     </event>
 

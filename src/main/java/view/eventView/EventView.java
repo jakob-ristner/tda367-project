@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import view.ViewInterface;
@@ -41,7 +43,7 @@ public abstract class EventView implements ViewInterface {
         eventPane.setPrefSize(width - dwidth, height - dheight);
         eventPane.setLayoutX(dwidth/2);
         eventPane.setLayoutY(dheight/2);
-        eventPane.setStyle("-fx-background-color: white");
+        eventPane.setStyle("-fx-background-color: black; -fx-border-size: 2px; -fx-border-color: white;");
         rootPane.getChildren().add(eventPane);
 
         eventText = new TextArea();
@@ -49,8 +51,12 @@ public abstract class EventView implements ViewInterface {
         eventText.setPrefSize((width -dwidth)/2, (height -dheight)/2);
         eventText.setLayoutX(eventPane.getLayoutX() + dwidth/3);
         eventText.setLayoutY(eventPane.getLayoutY() - 50);
-        eventText.setText("Lorem Ipsum Dolar Sit Amet...");
-        eventText.setStyle("-fx-border-color: black; -fx-border-size: 2px;");
+        //eventText.setText("Lorem Ipsum Dolar Sit Amet...");
+        eventText.setStyle("-fx-border-color: white; -fx-control-inner-background: black; -fx-background-color: black; -fx-border-size: 2px; -fx-text-fill: white;");
+        eventText.setFont(Font.font("Ink Free",20));
+        eventText.setWrapText(true);
+
+
         eventText.setEditable(false);
         addNode(eventText);
 
