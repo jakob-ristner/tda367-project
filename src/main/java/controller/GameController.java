@@ -83,6 +83,11 @@ public class GameController implements GameObserver,EventObserver{
     }
 
     @Override
+    public void initCombatScreen() {
+        view.initCombatScreen();
+    }
+
+    @Override
     public void updateEventEffect() {
         view.updateEventEffect();
     }

@@ -6,7 +6,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.text.Text;
 import javafx.scene.*;
 
-import model.Event;
 import model.Game;
 import view.eventView.*;
 
@@ -20,6 +19,8 @@ public class GameView {
 	private CharacterSelectView characterSelectView;
 	private StartScreenView startScreenView;
 	private MainGameView mainGameView;
+	private CombatScreenView combatScreenView;
+
 	private EventView gameWonEventView;
 	private EventView itemEventView;
 	private EventView moveEventView;
@@ -38,6 +39,7 @@ public class GameView {
 		characterSelectView.initButton(game.getCharacterNames());
 		characterSelectView.initText(game.getCharacterStats());
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
+		combatScreenView = new CombatScreenView(root, WINDOW_W, WINDOW_H);
 		initEventView();
 		buttonEventMap = new HashMap<>();
 		initButtonEventMap();
@@ -47,7 +49,8 @@ public class GameView {
 		//gameWonEventView.viewToFront();//For testing of the eventViews
 
 		//hauntEventView.viewToFront();
-
+		//combatScreenView.initPlayerCircles(3,1);
+		//combatScreenView.viewToFront();
 	}
 
 	public void updateEventView(int eventType, String eventText){
@@ -148,4 +151,9 @@ public class GameView {
 		return mainGameView.getEndTurnButton();
 	}
 
+	public void initCombatScreen() {
+		combatScreenView.setStaminaText(game.getStaminaNameMap());
+		combatScreenView.initPlayerCircles(game.getNonHauntedNamesList(), game.getHauntedNamesInSameRoom());
+		combatScreenView.viewToFront();
+	}
 }

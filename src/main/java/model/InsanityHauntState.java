@@ -29,15 +29,12 @@ public class InsanityHauntState implements GameState {
 
     @Override
     public void turn(Player activePlayer) {
-        if (activePlayer.isHaunted()){
-            combat();
-        }
+        combat(); //TODO: ples fix
         winConditionChecker();
     }
 
 
     private void createEscapeHatches(){
-
         Tile tile;
         int i = 0;
         while(i < numEscapeHatch) {
@@ -51,24 +48,23 @@ public class InsanityHauntState implements GameState {
 
     private void combat(){
         System.out.println("Combat!!!!!!!!!!!");
-        for (Player p: createListOfPlayersInSameRoom()){
-            int insanePlayerStrenght = game.getCurrentPlayer().rollStat(Stat.STRENGTH);
+        Player hauntedPlayer = null;
+        List<Player> playersInRoom = game.createListOfPlayersInSameRoom();
+
+        for (Player p: playersInRoom){
+            if (p.isHaunted()) {
+                hauntedPlayer = p;
+                playersInRoom.remove(p);
+            }
+        }
+        for (Player p:playersInRoom) {
+            int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);
             int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
             int damage = insanePlayerStrenght-playerInRoomStrenght;
             p.getCharacter().updateStatFromCombat(Stat.STAMINA,damage);
         }
     }
 
-    public List<Player> createListOfPlayersInSameRoom() {
-        List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
-        for (Player p: game.getPlayerList()) {
-            if (!p.equals(game.getCurrentPlayer()) && game.getCurrentPlayer().getX() == p.getX() && game.getCurrentPlayer().getY() == p.getY()) {
-                listOfPlayersInTheSameRoom.add(p);
-            }
-        }
-
-        return listOfPlayersInTheSameRoom;
-    }
 
     @Override
     public void winConditionChecker() {

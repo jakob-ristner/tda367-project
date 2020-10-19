@@ -18,7 +18,7 @@ public class Game implements ControllerObservable {
 
     private List<Kharacter> characterList = KharacterFactory.getCharacters();
     private List<GameState> listOfHaunts = new ArrayList<>();
-    GameState insanityHaunt;
+    private GameState insanityHaunt;
 
     private Board board;
 
@@ -29,6 +29,7 @@ public class Game implements ControllerObservable {
     private int currentPlayerIndex;
     private int eventCounter;
     private Random random = new Random();
+    private List<Player> listOfPlayersInTheSameRoom;
 
 
 
@@ -110,10 +111,6 @@ public class Game implements ControllerObservable {
         return playerList;
     }
 
-    void turn(Player activePlayer, Event event) {
-
-    }
-
     public Player getCurrentPlayer() {
         return playerList.get(currentPlayerIndex);
     }
@@ -130,6 +127,42 @@ public class Game implements ControllerObservable {
             notifyNewTurn();
     }
 
+    public List<String> getHauntedNamesInSameRoom(){
+        List<String> hauntedNameList = new ArrayList<>();
+        for(Player p: listOfPlayersInTheSameRoom){ //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
+            if(p.isHaunted()){
+                hauntedNameList.add(p.getCharacterName());
+            }
+        }
+        return hauntedNameList;
+    }
+
+    public List<String> getNonHauntedNamesList(){
+        List<String> nonHauntedNames = new ArrayList<>();
+        for(Player p: listOfPlayersInTheSameRoom){  //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
+            if(!p.isHaunted()){
+                nonHauntedNames.add(p.getCharacterName());
+            }
+        }
+        return nonHauntedNames;
+    }
+    public HashMap<String, Integer> getStaminaNameMap(){
+        HashMap<String, Integer> staminaNameMap = new HashMap<>();
+        for(Player p: listOfPlayersInTheSameRoom){
+            staminaNameMap.put(p.getCharacterName(), p.getCharacter().getStat(Stat.STAMINA));
+        }
+        return staminaNameMap;
+    }
+
+    List<Player> createListOfPlayersInSameRoom() {
+        listOfPlayersInTheSameRoom = new ArrayList<>();
+        for (Player p : getPlayerList()) {
+            if (getCurrentPlayer().getX() == p.getX() && getCurrentPlayer().getY() == p.getY()) {
+                listOfPlayersInTheSameRoom.add(p);
+            }
+        }
+        return listOfPlayersInTheSameRoom;
+    }
 
 
     @Override
@@ -299,7 +332,7 @@ public class Game implements ControllerObservable {
     /**
      * starts haunt if event counter reaches threshold
      */
-    private void eventTriggered() {
+    void eventTriggered() {
         eventCounter++;
         System.out.println("Eventnr:" + eventCounter);
     }
@@ -310,9 +343,14 @@ public class Game implements ControllerObservable {
             initHaunt();
             notifyHaunt();
         }
+
+        for (Player p:createListOfPlayersInSameRoom()){
+            if(p.isHaunted() && listOfPlayersInTheSameRoom.size() > 1)
+                observer.initCombatScreen();
+        }
     }
 
-    private GameState getRandomHaunt() {
+     GameState getRandomHaunt() {
         return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
     }
 

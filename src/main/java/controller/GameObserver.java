@@ -6,6 +6,7 @@ public interface GameObserver {
     void initMapData();
     void updateTurn();
     void initHauntView();
+    void initCombatScreen();
 
 
 }
