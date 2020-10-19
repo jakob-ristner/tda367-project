@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -12,22 +11,25 @@ public class InsanityHauntState implements GameState {
     private final String hauntText = "Ooga booga you just got haunted with the Insane haunt. The rules for this gamemode is as follows...";
     //private final String buttonText = "Continue game";
 
-    public InsanityHauntState(){
-
-    }
+    public InsanityHauntState(){}
 
 
     @Override //Method for initing haunt, in this case, spawning the escape hatches
     public void init() {
         game = Game.getInstance(); //Not sure if this will work.
         createEscapeHatches();
+        setHauntedPlayer();
 
+    }
+
+    private void setHauntedPlayer() {
+        game.getCurrentPlayer().setIsHaunted();
     }
 
 
     @Override
     public void turn(Player activePlayer) {
-        if (activePlayer.isHaunted() && game.getPlayerTile(activePlayer).hasPlayer()){
+        if (activePlayer.isHaunted()){
             combat();
         }
         winConditionChecker();
@@ -35,6 +37,7 @@ public class InsanityHauntState implements GameState {
 
 
     private void createEscapeHatches(){
+
         Tile tile;
         int i = 0;
         while(i < numEscapeHatch) {
@@ -46,7 +49,8 @@ public class InsanityHauntState implements GameState {
         }
     }
 
-    public void combat(){
+    private void combat(){
+        System.out.println("Combat!!!!!!!!!!!");
         for (Player p: createListOfPlayersInSameRoom()){
             int insanePlayerStrenght = game.getCurrentPlayer().rollStat(Stat.STRENGTH);
             int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
@@ -58,10 +62,11 @@ public class InsanityHauntState implements GameState {
     public List<Player> createListOfPlayersInSameRoom() {
         List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
         for (Player p: game.getPlayerList()) {
-            if (game.getCurrentPlayer().getX() == p.getX() && game.getCurrentPlayer().getY() == p.getY()) {
+            if (!p.equals(game.getCurrentPlayer()) && game.getCurrentPlayer().getX() == p.getX() && game.getCurrentPlayer().getY() == p.getY()) {
                 listOfPlayersInTheSameRoom.add(p);
             }
         }
+
         return listOfPlayersInTheSameRoom;
     }
 

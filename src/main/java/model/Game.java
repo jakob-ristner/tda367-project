@@ -292,7 +292,7 @@ public class Game implements ControllerObservable {
     }
 
 
-    void initHaunt() {
+    private void initHaunt() {
         gameState.init();
     }
 
