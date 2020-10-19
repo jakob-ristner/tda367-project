@@ -152,8 +152,8 @@ public class GameView {
 	}
 
 	public void initCombatScreen() {
-		combatScreenView.setStaminaText(game.getStaminaNameMap());
 		combatScreenView.initPlayerCircles(game.getNonHauntedNamesList(), game.getHauntedNamesInSameRoom());
+		combatScreenView.setStaminaText(game.getStaminaNameMap());
 		combatScreenView.viewToFront();
 	}
 }
