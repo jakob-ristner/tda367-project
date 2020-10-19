@@ -19,7 +19,7 @@ public final class KharacterFactory {
 
     }
     public static Kharacter createSarah(){
-        return (new Kharacter("Sarah",new int[]{6,2,6,2}));
+        return (new Kharacter("Sarah Woodstock",new int[]{6,2,6,2}));
 
     }
     public static Kharacter createSven(){

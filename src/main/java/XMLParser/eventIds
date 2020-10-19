@@ -157,7 +157,7 @@
     <event id="14">
         <eventType>-1</eventType>
         <speed>0</speed>
-        <sanity></sanity>
+        <sanity>-1</sanity>
         <strength>0</strength>
         <stamina>2</stamina>
         <itemName>Zombie</itemName>

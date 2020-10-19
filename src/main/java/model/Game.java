@@ -203,6 +203,7 @@ public class Game implements ControllerObservable {
     public void endTurn() {
         updateCurrentPlayer();
         notifyGameData();
+        //removeDeadPlayersFromGame(); TODO fix this, gives nullpointer exeption
     }
 
     public List<String> getCurrentPlayerItemsAsText() {
@@ -258,7 +259,6 @@ public class Game implements ControllerObservable {
 
     public void removeDeadPlayersFromGame() {
         for (Player p : playerList) {
-            p.isPlayerDead();
             if (p.isPlayerDead()) {
                 playerList.remove(p);
                 playerAmount--;

@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
@@ -21,6 +22,7 @@ public class StartScreenView implements ViewInterface {
 
         confirmButton = new Button();
         confirmButton.setText("Confirm");
+        confirmButton.setFont(Font.font("Ink Free"));
         confirmButton.setLayoutX(width / 2 + confirmButton.getWidth() / 2);
         confirmButton.setLayoutY(height / 2);
 
@@ -30,6 +32,7 @@ public class StartScreenView implements ViewInterface {
 
         Text titleText = new Text("Choose the amount of players");
         titleText.setStyle("-fx-font-size: 25");
+        titleText.setFont(Font.font("Ink Free"));
         titleText.setWrappingWidth(width);
         titleText.setTextAlignment(TextAlignment.CENTER);
         titleText.setLayoutX(0);
