@@ -33,7 +33,6 @@ public class CombatController extends AbstractController{
         combatButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
                 game.notifyCombat();
                 exitButton.setDisable(false);
                 combatButton.setDisable(true);

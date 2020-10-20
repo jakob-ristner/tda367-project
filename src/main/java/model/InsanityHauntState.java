@@ -59,6 +59,7 @@ public class InsanityHauntState implements GameState {
         playersInRoom.remove(hauntedPlayer);
 
         if (hauntedPlayer != null && !playersInRoom.isEmpty()) {
+            game.saveOldStaminaMap();
             game.notifyCombat();
             for (Player p : playersInRoom) {
                 int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);

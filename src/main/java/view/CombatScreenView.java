@@ -68,7 +68,7 @@ public class CombatScreenView implements ViewInterface{
         addNode(header);
     }
 
-    public void setStaminaText(HashMap<String, Integer> damageMap, HashMap<String, Integer> staminaNameMap){
+    public void setStaminaText( HashMap<String, Integer> staminaNameMap, HashMap<String, Integer> damageMap){
         removeTextLabels();
 
         Text staminaText;

@@ -172,8 +172,11 @@ public class Game implements ControllerObservable {
         for(Player p: createListOfPlayersInSameRoom()){
             staminaNameMap.put(p.getCharacterName(), p.getCharacter().getStat(Stat.STAMINA));
         }
-        this.staminaNameMap = staminaNameMap;
         return staminaNameMap;
+    }
+
+   void saveOldStaminaMap(){
+        staminaNameMap = getStaminaNameMap();
     }
 
     List<Player> createListOfPlayersInSameRoom() {

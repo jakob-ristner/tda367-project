@@ -45,7 +45,7 @@ public class TestPlayer {
         int minRoll = 0;
         int rollValue = player.rollStat(Stat.SPEED);
 
-       Assert.assertTrue(minRoll <= rollValue && rollValue <= maxRoll);
+        Assert.assertTrue(minRoll <= rollValue && rollValue <= maxRoll);
     }
 
     /**
