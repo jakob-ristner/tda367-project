@@ -46,7 +46,6 @@ public class Player {
     public void addCoord(Coord coord) {
         //imagine it like a + operator
         pos.add(coord);
-        System.out.println(getFloor());
     }
 
     public Kharacter getCharacter() {
@@ -66,7 +65,9 @@ public class Player {
 
     boolean isPlayerDead() {
         for (int playerStat : character.getStats().values()) {
-            if (playerStat <= 0) return true;
+            if (playerStat <= 0) {
+                return true;
+            }
         }
         return false;
     }

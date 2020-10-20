@@ -48,7 +48,6 @@ public class InsanityHauntState implements GameState {
 
 
     private void combat(){
-        System.out.println("Combat!!!!!!!!!!!");
         Player hauntedPlayer = null;
         List<Player> playersInRoom = game.createListOfPlayersInSameRoom();
         for (Player p: playersInRoom){
