@@ -26,5 +26,7 @@ public class GameTest {
         game.createPlayers(2);
         game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
         Assert.assertFalse(game.checkAllPlayersHaveChars());
+        game.getPlayerList().get(0).setCharacter(KharacterFactory.createMedera());
+        Assert.assertTrue(game.checkAllPlayersHaveChars());
     }
 }
