@@ -28,7 +28,7 @@ public final class KharacterFactory {
     }
 
     public static Kharacter createDebugKhar(){
-        return (new Kharacter("Debug", new int[]{99,99,99,99}));
+        return (new Kharacter("Debug", new int[]{99,2,2,2}));
     }
     public static List<Kharacter> getCharacters(){
         List<Kharacter> kharacters = new ArrayList<>();

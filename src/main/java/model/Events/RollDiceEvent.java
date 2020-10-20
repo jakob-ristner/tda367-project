@@ -12,18 +12,19 @@ public class RollDiceEvent extends GameEvent {
     private int eventType;
     private String effectText;
     private String eventButtonText;
+    private boolean positiveEvent;
+    private int statChange;
 
-    int loseStatChange;
-
-    public RollDiceEvent(int statToRollOn, int numberToRollVersus, int loseStatChange, String eventText, int eventType, boolean permanent) {
+    public RollDiceEvent(int statToRollOn, int numberToRollVersus, int statChange, String eventText, int eventType, boolean permanent) {
         super(permanent);
         this.statToRollOn = Stat.from(statToRollOn);
         this.numberToRollVersus = numberToRollVersus;
-        this.loseStatChange = loseStatChange;
+        this.statChange = statChange;
         this.eventText = eventText;
         this.eventType = eventType;
         System.out.println(this.statToRollOn);
         System.out.println(eventText);
+        this.positiveEvent = Math.signum(statChange) == 1;
     }
 
 
@@ -49,14 +50,19 @@ public class RollDiceEvent extends GameEvent {
     public void handleEvent(Player currentPlayer) {
         HashMap<Stat,Integer> statsToUpdate = new HashMap<>();
 
-        statsToUpdate.put(statToRollOn, loseStatChange);
+        statsToUpdate.put(statToRollOn, statChange);
         int diceRoll = currentPlayer.rollStat(statToRollOn);
-        if(numberToRollVersus > diceRoll){ //TODO: Skaffa texten från xml.
-            effectText = "You rolled " + diceRoll + " which is lower than " + numberToRollVersus; // Hämta text från xml
-            currentPlayer.getCharacter().updateStat(statsToUpdate); //Why is the stats only updated if you lose the roll?
-                                                                    //sometimes something good can happen if you succeed right?
+
+        if(numberToRollVersus > diceRoll){
+            effectText = "You rolled " + diceRoll + " which is lower than " + numberToRollVersus;
+            if(!positiveEvent){
+                currentPlayer.getCharacter().updateStat(statsToUpdate);
+            }
         }else{
-            effectText = "You rolled higher"; //Hämta text från xml
+            if(positiveEvent){
+                currentPlayer.getCharacter().updateStat(statsToUpdate);
+            }
+            effectText = "You succeeded in the roll by rolling" + " " + diceRoll;
         }
         observer.updateEventEffect();
         System.out.println("rolldice event triggered");
