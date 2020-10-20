@@ -15,7 +15,6 @@ public interface GameState {
      void turn(Player activePlayer);
      boolean winConditionChecker();
      String getHauntText();
-     String getButtonText();
 
 
 }

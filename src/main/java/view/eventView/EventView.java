@@ -6,13 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import view.ViewInterface;
-
-import java.util.HashMap;
 
 
 public abstract class EventView implements ViewInterface {
@@ -89,7 +86,6 @@ public abstract class EventView implements ViewInterface {
     public void setEventButtonText(String s){
         getEventButton().setText(s);
     }
-
 
 
     public TextArea getEventText() {

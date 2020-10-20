@@ -10,7 +10,7 @@ import model.Event;
  */
 
 public abstract class GameEvent implements Event {
-    protected EventObserver observer;
+    protected static EventObserver observer;    //Bad code practise. Should not be static. Didn't know how to fix without though.
     protected boolean permanent;
 
     GameEvent(boolean permanent) {
@@ -24,6 +24,6 @@ public abstract class GameEvent implements Event {
 
     @Override
     public void setObserver(EventObserver observer){
-        this.observer = observer;
+        GameEvent.observer = observer;
     }
 }

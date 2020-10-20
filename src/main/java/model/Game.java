@@ -29,35 +29,14 @@ public class Game implements ControllerObservable {
     private int currentPlayerIndex;
     private int eventCounter;
     private Random random = new Random();
-    private List<Player> listOfPlayersInTheSameRoom;
-
-
 
     //SingeltonPattern
-
-
-
-
-
-
-
-
-    private void runCharacterSelectScreen() {
-        //Temporary character select
-        for (int i = 0; i < playerAmount; i++) {
-            playerList.get(i).setCharacter(characterList.get(i));
-        }
-    }
-
-
-
-
 
     public void moveCurrentPlayer(int dx, int dy) {
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.getStepsLeft() > 0) {
             currentPlayer.playerMove(dx, dy);
-            board.tryActivateEventOnPlayerPos(currentPlayer);
+            board.tryActivateEventOnPlayerPos(currentPlayer); //As of now haunted players can not activate events.
         }
         removeDeadPlayersFromGame();
         hauntCheck();
@@ -98,10 +77,6 @@ public class Game implements ControllerObservable {
 
     public String getHauntText(){
         return gameState.getHauntText();
-    }
-
-    public String getButtonText(){
-        return gameState.getButtonText();
     }
 
     public List<HashMap<Stat, Integer>> getCharacterStats() {
@@ -425,5 +400,14 @@ public class Game implements ControllerObservable {
     }
 
 
+    public void resetGame() { //TODO: discuss if this is the way we want to do it. If it is implement a method in controller which resets view.
+        board = new Board();
+        listOfHaunts.clear();
+        listOfHaunts.add(new InsanityHauntState());
 
+        playerList.clear();
+        characterList.clear();
+        characterList = KharacterFactory.getCharacters();
+        eventCounter = 0;
+    }
 }

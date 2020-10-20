@@ -1,6 +1,7 @@
 package model;
 
 import XMLParser.XMLParser;
+import model.Events.GameWonEvent;
 import model.Events.ItemEvent;
 import model.Events.MoveEvent;
 import model.Events.RollDiceEvent;
@@ -32,6 +33,11 @@ public final class EventFactory {
         }
 
         return eventList;
+    }
+
+    static Event createEscapeEvent(){
+        GameWonEvent event = new GameWonEvent();
+        return event;
     }
 
     private static Event createItemEvent(XMLParser parser, int index) {

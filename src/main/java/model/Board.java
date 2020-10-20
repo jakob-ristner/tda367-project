@@ -84,6 +84,9 @@ public class Board {
      * @return boolean, true if there was an event was activated, flase if not
      */
     boolean tryActivateEventOnPlayerPos(Player player) {
+        if(player.isHaunted()){
+            return false;
+        }
         Floor floor = floors.get(player.getFloor());
         return floor.tryActivateEventOnTile(player);
     }

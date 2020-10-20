@@ -52,7 +52,7 @@ public class InsanityHauntState implements GameState {
         while(i < numEscapeHatch) {
             tile = game.getBoard().getFloor(1).getTile(rand.nextInt(6), rand.nextInt(6));
             if (!tile.hasEvent()) {
-               // tile.setEvent(new ItemEvent()); //Change so that EventFactory has a factory for hauntEvents
+                tile.setEvent(EventFactory.createEscapeEvent());
                 i++;
             }
         }
@@ -87,7 +87,7 @@ public class InsanityHauntState implements GameState {
      */
     @Override
     public boolean winConditionChecker() {
-        if(game.getPlayerList().isEmpty()){
+        if(game.getPlayerList().isEmpty() || (game.getPlayerList().size() == 1 && game.getPlayerList().get(0).isHaunted())){
             System.out.println("Monster Won");
             return true;
         }
@@ -99,8 +99,4 @@ public class InsanityHauntState implements GameState {
         return hauntText;
     }
 
-    @Override
-    public String getButtonText() {
-        return null;
-    }
 }

@@ -74,13 +74,15 @@ public class GameView {
 
 	private void initEventView(){
 		eventViewMap = new HashMap<>();
-		gameWonEventView = new GameWonEventView(root,WINDOW_W,WINDOW_H);
+
 		itemEventView = new ItemEventView(root,WINDOW_W,WINDOW_H );
 		eventViewMap.put(-1, itemEventView);
 		rollDiceView = new RollDiceEventView(root,WINDOW_W,WINDOW_H);
 		eventViewMap.put(-2, rollDiceView);
 		moveEventView = new MoveEventView(root,WINDOW_W,WINDOW_H);
 		eventViewMap.put(-3, moveEventView);
+		gameWonEventView = new GameWonEventView(root,WINDOW_W,WINDOW_H);
+		eventViewMap.put(-4, gameWonEventView);
 		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
 
 

@@ -65,6 +65,9 @@ public class EventController extends AbstractController {
             @Override
             public void handle(ActionEvent event) {
                 setNextView(startScreen);
+                game.resetGame();
+                //game = null;
+                //game = Game.getInstance();
                 showNextView();
             }
         });
