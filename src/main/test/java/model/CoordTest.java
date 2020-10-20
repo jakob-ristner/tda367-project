@@ -4,8 +4,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import utilities.Coord;
 
-public class CoordTest {
 
+
+public class CoordTest {
+    /**
+     * Testing if getters works
+     * Testing coords outside of the map (setFloor(5) is outside map 0-1-2-0-1-2->output 2
+     * Testing lower limit aswell (floor -1) when adding.
+     */
     @Test
     public void testSanityCheck() {
         Coord coord = new Coord(0, 0, 0);

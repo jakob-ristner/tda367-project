@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Random;
 
 public class Floor {
-    private Tile[][] tiles = new Tile[6][6];
+    private final int mapSize;
+    private Tile[][] tiles;
     private Random rand = new Random();
 
     Floor(List<Event> eventList) {
+        mapSize = 6;
+        tiles = new Tile[mapSize][mapSize];
         generateTileMap();
         addEventsRandom(eventList);
     }
