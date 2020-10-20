@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
@@ -44,7 +45,8 @@ public class CombatScreenView implements ViewInterface{
         combatButton.setLayoutX(width/2 - combatButton.getPrefWidth()/2);
         combatButton.setLayoutY(height - combatButton.getPrefHeight() - 50);
         combatButton.setText("Battle!");
-        combatButton.setStyle("-fx-font-size: 15px;");
+        combatButton.setFont(Font.font("Ink Free",25));
+        //combatButton.setStyle("-fx-font-size: 15px;");
         addNode(combatButton);
         combatButtonList.add(combatButton);
 
@@ -52,19 +54,21 @@ public class CombatScreenView implements ViewInterface{
         exitButton.setPrefSize(width/10, height/10);
         exitButton.setLayoutX(width - exitButton.getPrefWidth() - 10);
         exitButton.setLayoutY(10);
-        exitButton.setText("Exit");
+        exitButton.setText("Exit battle");
+        exitButton.setFont(Font.font("Ink Free",20));
         combatButtonList.add(exitButton);
         exitButton.setDisable(true);
         addNode(exitButton);
 
 
-        header = new Text("Combat");
-        header.setWrappingWidth(100);
+        header = new Text("The insane one is about to strike you");
+        header.setFont(Font.font("Ink Free",45));
+        header.setWrappingWidth(400);
         header.setLayoutX(width/2 - header.getWrappingWidth()/2);
         header.setLayoutY(50);
         header.setFill(Color.WHITE);
         header.setTextAlignment(TextAlignment.CENTER);
-        header.setStyle("-fx-font-size: 16px;");
+        //header.setStyle("-fx-font-size: 16px;");
         addNode(header);
     }
 
@@ -77,9 +81,10 @@ public class CombatScreenView implements ViewInterface{
 
         for(String s : staminaNameMap.keySet()){
             staminaText = new Text();
-            staminaText.setLayoutY(playerCircles.get(s).getCenterY()+20); //Hämtar jag verkligen ut playerCircles här????
-            staminaText.setLayoutX(playerCircles.get(s).getCenterX() - 10);
+            staminaText.setLayoutY(playerCircles.get(s).getCenterY()+30); //Hämtar jag verkligen ut playerCircles här????
+            staminaText.setLayoutX(playerCircles.get(s).getCenterX() - 30);
             staminaText.setText("Stamina: " + staminaNameMap.get(s).toString());
+            staminaText.setFont(Font.font("Ink Free",15));
             staminaText.setFill(Color.WHITE);
             addNode(staminaText);
             toRemove.add(staminaText);
@@ -91,6 +96,7 @@ public class CombatScreenView implements ViewInterface{
 
                 damageText.setLayoutY(playerCircles.get(s).getCenterY());
                 damageText.setText("Damage: -" + damageMap.get(s).toString());
+                damageText.setFont(Font.font("Ink Free",20));
                 damageText.setFill(Color.RED);
                 addNode(damageText);
                 toRemove.add(damageText);
