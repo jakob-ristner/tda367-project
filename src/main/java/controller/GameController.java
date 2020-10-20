@@ -11,10 +11,13 @@ public class GameController implements GameObserver,EventObserver{
     private ViewInterface characterSelectView;
     private ViewInterface startScreenView;
     private ViewInterface mainGameView;
+    private ViewInterface combatView;
     private CharacterSelectController characterSelectController;
     private StartScreenController startScreenController;
     private MainGameViewController mainGameViewController;
     private EventController eventController;
+    private CombatController combatController;
+
 
     public GameController(GameView view, Game game){
         this.view = view;
@@ -32,6 +35,7 @@ public class GameController implements GameObserver,EventObserver{
         startScreenView = view.getStartScreenView();
         characterSelectView = view.getCharacterSelectView();
         mainGameView = view.getMainGameView();
+        combatView = view.getCombatView();
     }
 
     private void initControllers() {
@@ -52,6 +56,12 @@ public class GameController implements GameObserver,EventObserver{
         eventController.setEventButtonMap(view.getEventButtons());
         eventController.setStartScreen(startScreenView);
         eventController.setMainGameView(mainGameView);
+
+        combatController = new CombatController(game, combatView);
+        combatController.setButton(view.getCombatButton());
+        combatController.setNextView(mainGameView);
+
+
 
     }
 
@@ -75,6 +85,16 @@ public class GameController implements GameObserver,EventObserver{
     @Override
     public void updateTurn() {
         //TODO add turn counter maybe?
+    }
+
+    @Override
+    public void initHauntView() {
+        view.initHauntView();
+    }
+
+    @Override
+    public void initCombatScreen() {
+        view.initCombatScreen();
     }
 
     @Override

@@ -6,6 +6,8 @@ public interface GameState {
      void init();
      void turn(Player activePlayer);
      boolean winConditionChecker();
+     String getHauntText();
+     String getButtonText();
 
 
 }

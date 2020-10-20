@@ -107,7 +107,7 @@ public class Player {
         return character.getName();
     }
 
-    void setHauntedPlayer() {
+    void setIsHaunted() {
         isHaunted = true;
     }
 

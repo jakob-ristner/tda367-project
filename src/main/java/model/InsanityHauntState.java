@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -9,24 +8,28 @@ public class InsanityHauntState implements GameState {
     Game game;
     int numEscapeHatch = 4;
     Random rand = new Random();
+    private final String hauntText = "Ooga booga you just got haunted with the Insane haunt. The rules for this gamemode is as follows...";
+    //private final String buttonText = "Continue game";
 
-    public InsanityHauntState(){
-
-    }
+    public InsanityHauntState(){}
 
 
     @Override //Method for initing haunt, in this case, spawning the escape hatches
     public void init() {
         game = Game.getInstance(); //Not sure if this will work.
         createEscapeHatches();
+        setHauntedPlayer();
+
+    }
+
+    private void setHauntedPlayer() {
+        game.getCurrentPlayer().setIsHaunted();
     }
 
 
     @Override
     public void turn(Player activePlayer) {
-        if (activePlayer.isHaunted() && game.getPlayerTile(activePlayer).hasPlayer()){
-            combat();
-        }
+        combat();
         winConditionChecker();
     }
 
@@ -43,24 +46,29 @@ public class InsanityHauntState implements GameState {
         }
     }
 
-    public void combat(){
-        for (Player p: createListOfPlayersInSameRoom()){
-            int insanePlayerStrenght = game.getCurrentPlayer().rollStat(Stat.STRENGTH);
-            int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
-            int damage = insanePlayerStrenght-playerInRoomStrenght;
-            p.getCharacter().updateStatFromCombat(Stat.STAMINA,damage);
+
+    private void combat(){
+        System.out.println("Combat!!!!!!!!!!!");
+        Player hauntedPlayer = null;
+        List<Player> playersInRoom = game.createListOfPlayersInSameRoom();
+        for (Player p: playersInRoom){
+            if (p.isHaunted()) {
+                hauntedPlayer = p;
+            }
+        }
+        playersInRoom.remove(hauntedPlayer);
+
+        if (hauntedPlayer != null && !playersInRoom.isEmpty()) {
+            game.notifyCombat();
+            for (Player p : playersInRoom) {
+                int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);
+                int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
+                int damage = insanePlayerStrenght - playerInRoomStrenght;
+                p.getCharacter().updateStatFromCombat(Stat.STAMINA, damage);
+            }
         }
     }
 
-    public List<Player> createListOfPlayersInSameRoom() {
-        List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
-        for (Player p: game.getPlayerList()) {
-            if (game.getCurrentPlayer().getX() == p.getX() && game.getCurrentPlayer().getY() == p.getY()) {
-                listOfPlayersInTheSameRoom.add(p);
-            }
-        }
-        return listOfPlayersInTheSameRoom;
-    }
 
     @Override
     public boolean winConditionChecker() {
@@ -69,5 +77,15 @@ public class InsanityHauntState implements GameState {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String getHauntText() {
+        return hauntText;
+    }
+
+    @Override
+    public String getButtonText() {
+        return null;
     }
 }
