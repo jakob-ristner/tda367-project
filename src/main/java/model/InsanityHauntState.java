@@ -63,10 +63,11 @@ public class InsanityHauntState implements GameState {
     }
 
     @Override
-    public void winConditionChecker() {
+    public boolean winConditionChecker() {
         if(game.getPlayerList().isEmpty()){
             System.out.println("Monster Won");
+            return true;
         }
-
+        return false;
     }
 }

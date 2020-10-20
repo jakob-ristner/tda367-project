@@ -302,6 +302,15 @@ public class Game implements ControllerObservable {
         createPlayers(playerAmount);
     }
 
+    int nonHauntedPlayersLeft(){
+        int count = 0;
+        for (Player player: playerList){
+            if (!player.isHaunted())
+                count++;
+        }
+        return count;
+    }
+
     //Must it be private?
     void createPlayers(int amountPlayers) {
         Player currPlayer;
