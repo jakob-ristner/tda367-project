@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -8,10 +9,15 @@ public class InsanityHauntState implements GameState {
     Game game;
     int numEscapeHatch = 4;
     Random rand = new Random();
+    HashMap<Stat, Integer> statBoost;
     private final String hauntText = "Ooga booga you just got haunted with the Insane haunt. The rules for this gamemode is as follows...";
     //private final String buttonText = "Continue game";
 
-    public InsanityHauntState(){}
+    public InsanityHauntState(){
+        statBoost = new HashMap<>();
+        statBoost.put(Stat.STRENGTH, 15);
+        statBoost.put(Stat.SPEED, 5);
+    }
 
 
     @Override //Method for initing haunt, in this case, spawning the escape hatches
@@ -24,6 +30,7 @@ public class InsanityHauntState implements GameState {
 
     private void setHauntedPlayer() {
         game.getCurrentPlayer().setIsHaunted();
+        game.getCurrentPlayer().getCharacter().updateStat(statBoost);
     }
 
     /**
@@ -68,7 +75,7 @@ public class InsanityHauntState implements GameState {
             for (Player p : playersInRoom) {
                 int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);
                 int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
-                int damage = insanePlayerStrenght - playerInRoomStrenght;
+                int damage = Math.max(0,insanePlayerStrenght - playerInRoomStrenght);
                 p.getCharacter().updateStatFromCombat(Stat.STAMINA, damage);
             }
         }

@@ -59,8 +59,8 @@ public class Game implements ControllerObservable {
             currentPlayer.playerMove(dx, dy);
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
+        removeDeadPlayersFromGame();
         hauntCheck();
-        removeDeadPlayersFromGame(); //TODO: Fix so people actually can die.
         notifyGameData();
 
     }
@@ -280,8 +280,8 @@ public class Game implements ControllerObservable {
     }
 
     public void endTurn() {
+        removeDeadPlayersFromGame();
         checkForHauntInit();
-        removeDeadPlayersFromGame(); //TODO: Fix so that people actually are removed
         updateCurrentPlayer();
         notifyGameData();
     }

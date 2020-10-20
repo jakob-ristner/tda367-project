@@ -120,7 +120,7 @@ public class CombatScreenView implements ViewInterface{
         int xDelta = 50;
         int yDelta = 40;
 
-        //removeCircles();
+        removeCircles();
         Circle currentCircle;
 
         for (int i = 0; i < nonHauntedNames.size(); i++){

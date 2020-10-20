@@ -63,7 +63,7 @@ public class Player {
         resetSteps();
     }
 
-    boolean isPlayerDead() {
+    boolean isPlayerDead() {    //Is it intended that a person should die if any stat is below 0?
         for (int playerStat : character.getStats().values()) {
             if (playerStat <= 0) {
                 return true;
