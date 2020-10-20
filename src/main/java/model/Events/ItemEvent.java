@@ -24,7 +24,7 @@ public class ItemEvent extends GameEvent {
      */
     @Override
     public void activate() {
-        eventButtonText = "Equip " + item.getName() + "!";
+        eventButtonText = "Bring " + item.getName() + "!";
         observer.updateEventView(eventType, eventText);
         System.out.print("ItemEvent");
     }
