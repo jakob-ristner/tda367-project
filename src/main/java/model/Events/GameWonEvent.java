@@ -14,7 +14,7 @@ public class GameWonEvent extends GameEvent {
 
     @Override
     public void activate() {
-        //observer.updateEventView(eventType, eventText);
+        observer.updateEventView(eventType, eventText);
     }
 
     @Override
