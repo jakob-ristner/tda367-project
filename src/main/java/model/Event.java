@@ -2,6 +2,11 @@ package model;
 
 import controller.EventObserver;
 
+/**
+ * All events implements this interface
+ * activate() Tells the eventView to activate
+ * handleEvents(Player currentPlayer) is what the event does to a player.
+ */
 public interface Event {
 
     void activate();

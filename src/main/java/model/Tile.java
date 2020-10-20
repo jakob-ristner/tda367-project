@@ -48,7 +48,10 @@ public class Tile {
         this.event = event;
     }
 
-
+    /**
+     * HashMap so that doors is easily accessible through an int
+     * @return
+     */
     HashMap<Integer, Boolean> getDoors() {
         HashMap<Integer, Boolean> doors = new HashMap<>();
         doors.put(0, doorUp);
@@ -65,6 +68,11 @@ public class Tile {
         }
         return false;
     }
+
+    /**
+     * Handles an event with the player as a parameter, if it is not a permanent event it  will disappear
+     * @param currentPlayer player that enters the tile
+     */
 
     public void handleEvent(Player currentPlayer) {
         event.handleEvent(currentPlayer);

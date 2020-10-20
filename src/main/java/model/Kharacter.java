@@ -13,8 +13,8 @@ public class Kharacter {
     /**
      *
      * @param name Name of character
-     * @param statValue The arraylist is used for refactoring our hashmap. We are using the index 'i' in order to get our
-     *                  key(stat) and statValue[i] to get our Integer.
+     * @param statValue The arraylist is used for refactoring our hashmap. Using the index 'i' in order to get
+     * the key(stat) and statValue[i] to get the Integer.
      */
 
     Kharacter(String name, int[] statValue) {
@@ -47,7 +47,7 @@ public class Kharacter {
 
     /**
      * adds to Stat hashmaps together
-     * @param statsToAdd for example stats of an item
+     * @param statsToAdd can be stats of an item etc
      */
     public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
         for (Stat playerStat : stats.keySet()) {
