@@ -35,7 +35,7 @@ public class CombatController extends AbstractController{
             public void handle(ActionEvent actionEvent) {
 
                 game.notifyCombat();
-                combatView.addNode(exitButton);
+                exitButton.setDisable(false);
                 combatButton.setDisable(true);
 
             }
@@ -44,6 +44,8 @@ public class CombatController extends AbstractController{
             @Override
             public void handle(ActionEvent actionEvent) {
                 showNextView();
+                combatButton.setDisable(false);
+                exitButton.setDisable(true);
             }
         });
     }

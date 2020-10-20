@@ -54,6 +54,9 @@ public class CombatScreenView implements ViewInterface{
         exitButton.setLayoutY(10);
         exitButton.setText("Exit");
         combatButtonList.add(exitButton);
+        exitButton.setDisable(true);
+        addNode(exitButton);
+
 
         header = new Text("Combat");
         header.setWrappingWidth(100);
