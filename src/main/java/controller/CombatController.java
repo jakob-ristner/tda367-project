@@ -1,17 +1,12 @@
 package controller;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.util.Duration;
 import model.Game;
 import view.ViewInterface;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CombatController extends AbstractController{
     Button combatButton;
