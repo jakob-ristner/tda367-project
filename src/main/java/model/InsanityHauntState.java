@@ -29,7 +29,7 @@ public class InsanityHauntState implements GameState {
 
     @Override
     public void turn(Player activePlayer) {
-        combat(); //TODO: ples fix
+        combat();
         winConditionChecker();
     }
 
@@ -46,22 +46,26 @@ public class InsanityHauntState implements GameState {
         }
     }
 
+
     private void combat(){
         System.out.println("Combat!!!!!!!!!!!");
         Player hauntedPlayer = null;
         List<Player> playersInRoom = game.createListOfPlayersInSameRoom();
-
         for (Player p: playersInRoom){
             if (p.isHaunted()) {
                 hauntedPlayer = p;
-                playersInRoom.remove(p);
             }
         }
-        for (Player p:playersInRoom) {
-            int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);
-            int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
-            int damage = insanePlayerStrenght-playerInRoomStrenght;
-            p.getCharacter().updateStatFromCombat(Stat.STAMINA,damage);
+        playersInRoom.remove(hauntedPlayer);
+
+        if (hauntedPlayer != null && !playersInRoom.isEmpty()) {
+            game.notifyCombat();
+            for (Player p : playersInRoom) {
+                int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);
+                int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
+                int damage = insanePlayerStrenght - playerInRoomStrenght;
+                p.getCharacter().updateStatFromCombat(Stat.STAMINA, damage);
+            }
         }
     }
 

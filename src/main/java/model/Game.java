@@ -18,7 +18,7 @@ public class Game implements ControllerObservable {
 
     private List<Kharacter> characterList = KharacterFactory.getCharacters();
     private List<GameState> listOfHaunts = new ArrayList<>();
-    private GameState insanityHaunt;
+    private HashMap<String, Integer> staminaNameMap = new HashMap<>();
 
     private Board board;
 
@@ -60,8 +60,16 @@ public class Game implements ControllerObservable {
             currentPlayer.playerMove(dx, dy);
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
-        checkForHauntInit();
+        hauntCheck();
         notifyGameData();
+    }
+
+    private void hauntCheck(){
+        checkForHauntInit();
+        if (gameState != null){
+            gameState.turn(getCurrentPlayer());
+        }
+
     }
 
 
@@ -129,7 +137,7 @@ public class Game implements ControllerObservable {
 
     public List<String> getHauntedNamesInSameRoom(){
         List<String> hauntedNameList = new ArrayList<>();
-        for(Player p: listOfPlayersInTheSameRoom){ //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
+        for(Player p: createListOfPlayersInSameRoom()){ //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
             if(p.isHaunted()){
                 hauntedNameList.add(p.getCharacterName());
             }
@@ -139,23 +147,36 @@ public class Game implements ControllerObservable {
 
     public List<String> getNonHauntedNamesList(){
         List<String> nonHauntedNames = new ArrayList<>();
-        for(Player p: listOfPlayersInTheSameRoom){  //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
+        for(Player p: createListOfPlayersInSameRoom()){  //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
             if(!p.isHaunted()){
                 nonHauntedNames.add(p.getCharacterName());
             }
         }
         return nonHauntedNames;
     }
+
+    public HashMap<String, Integer> getDamageMap(){
+        HashMap<String, Integer> damageMap = new HashMap<>();
+        int damage;
+        if (!staminaNameMap.isEmpty()) {
+            for (Player p : createListOfPlayersInSameRoom()) {
+                damage = Math.abs(staminaNameMap.get(p.getCharacterName()) - p.getCharacter().getStat(Stat.STAMINA));
+                damageMap.put(p.getCharacterName(), damage);
+            }
+        }
+        return damageMap;
+    }
     public HashMap<String, Integer> getStaminaNameMap(){
         HashMap<String, Integer> staminaNameMap = new HashMap<>();
-        for(Player p: listOfPlayersInTheSameRoom){
+        for(Player p: createListOfPlayersInSameRoom()){
             staminaNameMap.put(p.getCharacterName(), p.getCharacter().getStat(Stat.STAMINA));
         }
+        this.staminaNameMap = staminaNameMap;
         return staminaNameMap;
     }
 
     List<Player> createListOfPlayersInSameRoom() {
-        listOfPlayersInTheSameRoom = new ArrayList<>();
+        List <Player> listOfPlayersInTheSameRoom = new ArrayList<>();
         for (Player p : getPlayerList()) {
             if (getCurrentPlayer().getX() == p.getX() && getCurrentPlayer().getY() == p.getY()) {
                 listOfPlayersInTheSameRoom.add(p);
@@ -188,6 +209,11 @@ public class Game implements ControllerObservable {
     @Override
     public void notifyHaunt() {
         observer.initHauntView();
+    }
+
+    @Override
+    public void notifyCombat() {
+        observer.initCombatScreen();
     }
 
     public String getEventEffectText(){
@@ -306,6 +332,7 @@ public class Game implements ControllerObservable {
         return board.getEventButtonText(getCurrentPlayer());
     }
 
+
     public void removeDeadPlayersFromGame() {
         for (Player p : playerList) {
             p.isPlayerDead();
@@ -342,11 +369,6 @@ public class Game implements ControllerObservable {
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();
-        }
-
-        for (Player p:createListOfPlayersInSameRoom()){
-            if(p.isHaunted() && listOfPlayersInTheSameRoom.size() > 1)
-                observer.initCombatScreen();
         }
     }
 

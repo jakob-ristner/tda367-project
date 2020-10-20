@@ -9,6 +9,7 @@ public class Kharacter {
     private String name;
     private HashMap<Stat, Integer> stats;
 
+
     /**
      *
      * @param name Name of character
@@ -58,7 +59,10 @@ public class Kharacter {
     }
 
     void updateStatFromCombat(Stat stat, int damage) {
-        stats.put(stat, stats.get(stat) - damage);
+
+        int oldv = stats.get(stat);
+
+        stats.put(stat, oldv-damage);
     }
 
 

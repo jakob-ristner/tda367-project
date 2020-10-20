@@ -151,9 +151,17 @@ public class GameView {
 		return mainGameView.getEndTurnButton();
 	}
 
+	public List<Button> getCombatButton(){
+		return combatScreenView.getCombatButton();
+	}
+
 	public void initCombatScreen() {
 		combatScreenView.initPlayerCircles(game.getNonHauntedNamesList(), game.getHauntedNamesInSameRoom());
-		combatScreenView.setStaminaText(game.getStaminaNameMap());
+		combatScreenView.setStaminaText(game.getDamageMap(),game.getStaminaNameMap());
 		combatScreenView.viewToFront();
+	}
+
+	public ViewInterface getCombatView() {
+		return combatScreenView;
 	}
 }
