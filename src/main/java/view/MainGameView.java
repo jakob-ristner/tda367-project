@@ -328,8 +328,7 @@ public class MainGameView implements ViewInterface{
             currText.setWrappingWidth((width - (height - 150)) / 2);
             currText.setTextAlignment(TextAlignment.CENTER);
             currText.setLayoutX(0);
-
-            currText.setLayoutY(50 + i * 30);
+            currText.setLayoutY(80 + i * 30);
             currText.setFont(Font.font("Ink Free",20));
             currText.setFill(Color.WHITE);
 

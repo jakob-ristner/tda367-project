@@ -49,6 +49,7 @@ public class CharacterSelectView implements ViewInterface{
         startButton.setLayoutY(height / 2 + characterNames.size() * buttonSpacing);
         startButton.setPrefSize(400, 50);
         startButton.setText("Start Game");
+        startButton.setFont(Font.font("Ink Free",20));
         addNode(startButton);
 
         Button currButton;
