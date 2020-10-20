@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -119,7 +120,9 @@ public class CombatScreenView implements ViewInterface{
         int xDelta = 50;
         int yDelta = 40;
 
+        //removeCircles();
         Circle currentCircle;
+
         for (int i = 0; i < nonHauntedNames.size(); i++){
             currentCircle = new Circle(10);
             currentCircle.setCenterX(width/2 + xDelta);
@@ -136,6 +139,13 @@ public class CombatScreenView implements ViewInterface{
             playerCircles.put(hauntedNames.get(i), currentCircle);
             addNode(currentCircle);
         }
+    }
+    private void removeCircles(){
+        Collection<Circle> removableCircles = playerCircles.values();
+        for(Circle c : removableCircles){
+            rootPane.getChildren().remove(c);
+        }
+        playerCircles.clear();
     }
 
     public List<Button> getCombatButton() {
