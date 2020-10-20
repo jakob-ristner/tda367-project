@@ -60,7 +60,7 @@ public class Game implements ControllerObservable {
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
         hauntCheck();
-        //removeDeadPlayersFromGame(); //TODO: Fix so people actually can die.
+        removeDeadPlayersFromGame(); //TODO: Fix so people actually can die.
         notifyGameData();
 
     }
@@ -281,7 +281,7 @@ public class Game implements ControllerObservable {
 
     public void endTurn() {
         checkForHauntInit();
-        //removeDeadPlayersFromGame(); //TODO: Fix so that people actually are removed
+        removeDeadPlayersFromGame(); //TODO: Fix so that people actually are removed
         updateCurrentPlayer();
         notifyGameData();
     }
@@ -338,13 +338,23 @@ public class Game implements ControllerObservable {
         return board.getEventButtonText(getCurrentPlayer());
     }
 
-
     public void removeDeadPlayersFromGame() {
-        for (Player p : playerList) {
-            if (p.isPlayerDead()) {
-                playerList.remove(p);
-                playerAmount--;
+        List<Player> deadPlayers = new ArrayList<>();
+        for (int i = 0; i < playerList.size(); i ++) {
+            if (playerList.get(i).isPlayerDead()) {
+                deadPlayers.add(playerList.get(i));
             }
+        }
+        for (int i = 0; i < deadPlayers.size(); i++) {
+            playerList.remove(deadPlayers.get(i));
+            playerAmount--;
+            /*
+            if (playerAmount == 0) {
+                playerAmount = 1;
+
+            }
+
+             */
         }
     }
 
@@ -366,7 +376,6 @@ public class Game implements ControllerObservable {
      */
     void eventTriggered() {
         eventCounter++;
-        System.out.println("Eventnr:" + eventCounter);
     }
 
     private void checkForHauntInit(){

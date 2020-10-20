@@ -160,6 +160,7 @@ public class MainGameView implements ViewInterface{
         playerSprites = new ArrayList<>();
         playersSpritesCurrentFloor = new ArrayList<>();
         playerCoords = game.getPlayerPositions();
+        System.out.println(game.getPlayerAmount());
         for (int i = 0; i < game.getPlayerAmount(); i++) {
             currCircle = new Circle();
             currCircle.setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
@@ -371,6 +372,11 @@ public class MainGameView implements ViewInterface{
 
     private void updatePlayerSprites() {
         //reset players that are shown
+        for (Circle playerSprite : playerSprites) {
+            mapPane.getChildren().remove(playerSprite);
+        }
+        initPlayerSprites();
+
         for (Circle playerSprite: playersSpritesCurrentFloor) {
             playerSprite.setStyle("-fx-stroke-width: none; -fx-stroke: none"); // one of these will be the last currentplayer
             mapPane.getChildren().remove(playerSprite);
@@ -380,7 +386,6 @@ public class MainGameView implements ViewInterface{
         //update position of all players
         playerCoords = game.getPlayerPositions();
         for (int i = 0; i < playerSprites.size(); i++) {
-
            playerSprites.get(i).setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
            playerSprites.get(i).setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
         }

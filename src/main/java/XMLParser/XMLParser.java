@@ -85,30 +85,9 @@ public class XMLParser {
                     moveEventList.add(moveEventData);
                     eventDataList.add(moveEventData);
                 }
-
-
-
-
-                /*
-
-                if (node.getNodeType() == Node.ELEMENT_NODE){
-                    System.out.println("dddddddddddddddddddddddd");
-                    Element element = (Element) node;
-                    System.out.println(element.getAttribute("id"));
-                    System.out.println(element.getElementsByTagName("eventType").item(0).getTextContent());
-
-                    if (element.getElementsByTagName("eventType").toString().equals("Item")){
-                        System.out.println("lllllllllllllllllllllllllllllll");
-                    }
-                }
-
-                 */
-
-
-
             }
 
-            printList();
+            //printList();
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
