@@ -26,14 +26,19 @@ public class InsanityHauntState implements GameState {
         game.getCurrentPlayer().setIsHaunted();
     }
 
-
+    /**
+     * The new turn when the state is activated
+     * @param activePlayer the current player.
+     */
     @Override
     public void turn(Player activePlayer) {
         combat();
         winConditionChecker();
     }
 
-
+    /**
+     * Creates escapeHatches for the players that are not hunted.
+     */
     private void createEscapeHatches(){
         Tile tile;
         int i = 0;
@@ -69,7 +74,10 @@ public class InsanityHauntState implements GameState {
         }
     }
 
-
+    /**
+     *
+     * @return if the monster kills all players the game is won, return true.
+     */
     @Override
     public boolean winConditionChecker() {
         if(game.getPlayerList().isEmpty()){
