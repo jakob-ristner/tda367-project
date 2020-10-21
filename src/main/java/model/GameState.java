@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 /**
   *All states will (or game modes) will implement this interface.
   *Contains an init if game changes
