@@ -97,6 +97,7 @@ public class GameView {
 	public void initHauntView(){
 		hauntEventView.setEventText(game.getHauntText());
 		hauntEventView.viewToFront();
+		hauntEventView.getEventButton().setText("Accept the role as the haunted one," + " " + game.getCurrentPlayersCharacterName());
 
 	}
 

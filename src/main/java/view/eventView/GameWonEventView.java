@@ -15,7 +15,6 @@ public class GameWonEventView extends EventView {
         gameWonButton.setLayoutX(eventText.getLayoutX());
         gameWonButton.setLayoutY(eventPane.getLayoutY() + 220);
         gameWonButton.setFont(Font.font("Ink Free",20));
-        gameWonButton.setText("You bested the horrors of the house and escaped. Adventurer side wins!");
         addNode(gameWonButton);
 
 
