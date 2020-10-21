@@ -8,16 +8,16 @@ public abstract class AbstractController {
     protected Game game;
     private ViewInterface nextView;
 
-    protected AbstractController(Game game) {
+    AbstractController(Game game) {
         this.game = game;
 
     }
 
-    public void showNextView() {
+    void showNextView() {
         nextView.viewToFront();
     }
 
-    public void setNextView(ViewInterface nextView) {
+    void setNextView(ViewInterface nextView) {
         this.nextView = nextView;
     }
 

@@ -14,31 +14,28 @@ public class TestFloor {
      * Check if each floor has an event, also control that the whole method has been covered since the events are put in
      * a random place.
      */
-/*
+
     @Test
     public void testAddTile(){
-        int numberOfTiles = 6*6;
+        int numberOfEvents = 15;
         List<Event> events = new ArrayList<>();
-        while (0<numberOfTiles){
+
+        for(int i = 0; i < numberOfEvents; i++){
             Event event = new MoveEvent(1,1,"h",1,2,3,1,true,true);
             events.add(event);
-            numberOfTiles--;
         }
+
         Floor floor = new Floor(events, 1);
+        int count = 0;
         for(int x = 0; x<6; x++){
             for (int y = 0; y<6; y++){
-                Assert.assertTrue(floor.getTile(x,y).hasEvent());
-
+                if(floor.getTile(x,y).hasEvent()){
+                    count++;
+                }
             }
         }
-
-
-
+        Assert.assertEquals(count,numberOfEvents);
 
     }
-
- */
-
-
 
 }

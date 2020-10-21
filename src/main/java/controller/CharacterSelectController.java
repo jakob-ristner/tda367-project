@@ -9,6 +9,10 @@ import view.ViewInterface;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Controller for the characterSelectView
+ */
+
 public class CharacterSelectController extends AbstractController{
     private HashMap<Integer, Button> buttonMap;
     private List<Text> textList;
@@ -22,6 +26,10 @@ public class CharacterSelectController extends AbstractController{
         super(game);
     }
 
+    /**
+     *
+     * @param buttonMap
+     */
     public void setButtonMap(HashMap<Integer, Button> buttonMap) {
         this.buttonMap = buttonMap;
         initButtons();
