@@ -1,6 +1,5 @@
 package model.Events;
 
-import model.Event;
 import model.Player;
 
 public class GameWonEvent extends GameEvent {

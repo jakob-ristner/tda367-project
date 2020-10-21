@@ -20,11 +20,11 @@ public class testFloor {
         int numberOfTiles = 6*6;
         List<Event> events = new ArrayList<>();
         while (0<numberOfTiles){
-            Event event = new MoveEvent(1,1,"h",1,2,3,1,true);
+            Event event = new MoveEvent(1,1,"h",1,2,3,1,true,true);
             events.add(event);
             numberOfTiles--;
         }
-        Floor floor = new Floor(events);
+        Floor floor = new Floor(events, 1);
         for(int x = 0; x<6; x++){
             for (int y = 0; y<6; y++){
                 Assert.assertTrue(floor.getTile(x,y).hasEvent());

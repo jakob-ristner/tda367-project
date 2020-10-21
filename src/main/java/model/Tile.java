@@ -12,10 +12,35 @@ public class Tile {
     private boolean doorRight = true;
     private boolean hasPlayer;
     private boolean hasEvent;
+    private boolean stairUp;
+    private boolean stairDown;
+    private boolean hasStair;
 
     public Tile(int i, int j, Tile[][] tiles) {
         hasEvent = false;
         setDoors(i, j, tiles);
+    }
+
+    void setStairUp(boolean stairUp){
+        this.stairUp = stairUp;
+        hasStair = true;
+    }
+
+    void setStairDown(boolean stairDown){
+        this.stairDown = stairDown;
+        hasStair = true;
+    }
+
+    boolean hasStairUp(){
+        return stairUp;
+    }
+
+    boolean hasStairDown(){
+        return stairDown;
+    }
+
+    boolean hasStair(){
+        return hasStair;
     }
 
     private void setDoors(int col, int row, Tile[][] tiles) {

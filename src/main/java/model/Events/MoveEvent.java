@@ -14,6 +14,7 @@ public class MoveEvent extends GameEvent {
     private String eventButtonText;
     private boolean positiveEvent;
 
+
     Coord coord;
 
 
