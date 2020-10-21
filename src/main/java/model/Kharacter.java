@@ -59,7 +59,11 @@ public class Kharacter {
         }
     }
 
-
+    /**
+     * used to parse combat damage to statChange
+     * @param stat
+     * @param damage
+     */
     void updateStatFromCombat(Stat stat, int damage) {
         int oldv = stats.get(stat);
         stats.put(stat, oldv-damage);

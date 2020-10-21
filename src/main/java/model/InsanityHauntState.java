@@ -57,7 +57,9 @@ public class InsanityHauntState implements GameState {
         }
     }
 
-
+    /**
+     * Logic for the combat between players during haunt
+     */
     private void combat(){
         Player hauntedPlayer = null;
         List<Player> playersInRoom = game.createListOfPlayersInSameRoom();

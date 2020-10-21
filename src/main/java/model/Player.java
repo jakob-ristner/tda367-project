@@ -43,8 +43,11 @@ public class Player {
         this.pos.sanityCheck();
     }
 
+    /**
+     * Works like a + operator
+     * @param coord the coord to be added to player cord
+     */
     public void addCoord(Coord coord) {
-        //imagine it like a + operator
         pos.add(coord);
     }
 
