@@ -14,7 +14,7 @@ public class InsanityHauntState implements GameState {
 
     public InsanityHauntState(){
         statBoost = new HashMap<>();
-        statBoost.put(Stat.STRENGTH, 15);
+        statBoost.put(Stat.STRENGTH, 10);
         statBoost.put(Stat.SPEED, 5);
     }
 
