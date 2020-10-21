@@ -5,7 +5,6 @@ package model;
  */
 public interface ControllerObservable {
      void setObserver(GameObserver observer);
-     void notifyNewTurn(); // might be unecessary
      void notifyGameData();
      void notifyGameStart();
      void notifyHaunt();

@@ -91,11 +91,6 @@ public class GameController implements GameObserver, EventObserver {
     }
 
     @Override
-    public void updateTurn() {
-        //TODO add turn counter maybe?
-    }
-
-    @Override
     public void initHauntView() {
         view.initHauntView();
     }

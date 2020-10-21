@@ -126,8 +126,7 @@ public class Game implements ControllerObservable {
         observer.updateCurrentPlayer();
         currentPlayerIndex = currentPlayerIndex % playerAmount;
 
-        if (currentPlayerIndex == 0)
-            notifyNewTurn();
+        //if (currentPlayerIndex == 0)
     }
 
 
@@ -195,10 +194,6 @@ public class Game implements ControllerObservable {
         this.observer = observer;
     }
 
-    @Override
-    public void notifyNewTurn() { //TODO change to only one observer not list
-        observer.updateTurn();
-    }
 
     @Override
     public void notifyGameData() {
