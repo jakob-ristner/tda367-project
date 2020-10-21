@@ -35,6 +35,9 @@ public abstract class EventFactory {
         return eventList;
     }
 
+    /**
+     * @return returns events that triggers the "GameWonEventView"
+     */
     static Event createEscapeEvent(){
         GameWonEvent event = new GameWonEvent();
         return event;

@@ -4,6 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * InsanityHauntState is a GameState
+ * Occurs after a player has triggered X amount of events
+ * InsanityHauntState makes a player haunted, giving the haunted player the ability to attack other players.
+ * The winCondition for the haunted player if all players is killed
+ * The winCondition for the other players is finding a escapeHatch.
+ */
+
 public class InsanityHauntState implements GameState {
     Game game;
     int numEscapeHatch = 4;

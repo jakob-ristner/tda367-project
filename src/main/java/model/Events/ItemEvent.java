@@ -10,6 +10,13 @@ public class ItemEvent extends GameEvent {
     private String effectText;
     private String eventButtonText;
 
+    /**
+     *
+     * @param item the item the character receives
+     * @param eventText Information for the player
+     * @param eventType In order to know which view to use
+     */
+
     public ItemEvent(Item item, String eventText, int eventType) {
         super(false);
         this.item = item;

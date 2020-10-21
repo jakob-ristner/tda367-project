@@ -15,9 +15,10 @@ public class Floor {
     private Random rand = new Random();
 
     /**
-     *
+     * mapSize is the amount of tiles squared.
      * @param eventList List of events from Board
-     * @param floor amount of floors.
+     * @param floor which floor it is
+     *
      */
 
     Floor(List<Event> eventList, int floor) {

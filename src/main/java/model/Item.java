@@ -2,6 +2,9 @@ package model;
 
 import java.util.HashMap;
 
+/**
+ * Items can be equipped by a player and has stats as an attribute.
+ */
 public class Item {
     private String name;
     private String pickupText;

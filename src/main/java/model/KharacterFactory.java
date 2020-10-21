@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * This is where we create our Kharacters. We are using a factory class so that our hard coded characters are located
- * at the same place. Kharacter needs a string and an int[] more info->Kharacter.
+ * at the same place. Kharacter constructor has a string and an int[] as parameters more info->Kharacter.
  */
 
 public abstract class KharacterFactory {

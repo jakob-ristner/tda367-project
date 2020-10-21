@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Kharacter class that player can choose
+ * Created in KharacterFactory
+ */
 public class Kharacter {
 
     private String name;

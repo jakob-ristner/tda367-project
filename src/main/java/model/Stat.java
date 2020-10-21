@@ -3,6 +3,9 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Stats is a kharacter and items attributes.
+ */
 public enum Stat {
     SPEED(0), STRENGTH(1), SANITY(2), STAMINA(3);
 

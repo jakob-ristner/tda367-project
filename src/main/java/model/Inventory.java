@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Inventory is a space for items that is carried by the player.
+ */
 public class Inventory {
     private List<Item> itemList;
 

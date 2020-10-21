@@ -17,7 +17,18 @@ public class MoveEvent extends GameEvent {
 
     Coord coord;
 
-
+    /**
+     *
+     * @param statToRollOn which stat to roll on, using int as an identifier for stat
+     * @param threshHold the value you have to roll versus
+     * @param eventText for player interaction, text involving the event
+     * @param deltaX how the event moves you in X-axis
+     * @param deltaY how the event moves you in Y-axis
+     * @param deltaFloor how the event moves you in Z-axis
+     * @param eventType In order to know which view to use
+     * @param permanent Checks if the event is permanent(holes in the ground does not disappear after triggered etc)
+     * @param positiveEvent Checks if the event has a positive or negative outcome
+     */
     public MoveEvent(int statToRollOn, int threshHold,
                      String eventText, int deltaX, int deltaY, int deltaFloor,
                      int eventType, boolean permanent, boolean positiveEvent) {
