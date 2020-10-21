@@ -32,6 +32,9 @@ public class Item {
         return pickupText;
     }
 
+    /**
+     * creates the text for the pick up prompt
+     */
     private void setPickupText() {
        pickupText = "\n";
        for (Stat stat: stats.keySet()) {

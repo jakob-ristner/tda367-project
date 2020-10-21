@@ -32,6 +32,11 @@ public class Game implements ControllerObservable {
 
     //SingeltonPattern
 
+    /**
+     * Moves currentPlayer and does sanityChecks for the move
+     * @param dx delta to move in X
+     * @param dy delta to move in Y
+     */
     public void moveCurrentPlayer(int dx, int dy) {
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.getStepsLeft() > 0) {
@@ -49,6 +54,9 @@ public class Game implements ControllerObservable {
 
     }
 
+    /**
+     * Checks if haunt is activated
+     */
     private void hauntCheck(){
         checkForHauntInit();
         if (gameState != null){
@@ -72,6 +80,7 @@ public class Game implements ControllerObservable {
     }
     //Must it be private?
 
+
     public List<String> getCharacterNames() {
         List<String> characterNames = new ArrayList<>();
         for (Kharacter a : characterList) {
@@ -80,9 +89,11 @@ public class Game implements ControllerObservable {
         return characterNames;
     }
 
+
     public String getHauntText(){
         return gameState.getHauntText();
     }
+
 
     public List<HashMap<Stat, Integer>> getCharacterStats() {
         List<HashMap<Stat, Integer>> characterStats = new ArrayList<>();
@@ -118,6 +129,7 @@ public class Game implements ControllerObservable {
             notifyNewTurn();
     }
 
+
     public List<String> getHauntedNamesInSameRoom(){
         List<String> hauntedNameList = new ArrayList<>();
         for(Player p: createListOfPlayersInSameRoom()){ //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
@@ -138,6 +150,10 @@ public class Game implements ControllerObservable {
         return nonHauntedNames;
     }
 
+    /**
+     * get a hashmap of damage taken after battle
+     * @return hashmap with name and stat change after battle
+     */
     public HashMap<String, Integer> getDamageMap(){
         HashMap<String, Integer> damageMap = new HashMap<>();
         int damage;
@@ -149,6 +165,7 @@ public class Game implements ControllerObservable {
         }
         return damageMap;
     }
+
     public HashMap<String, Integer> getStaminaNameMap(){
         HashMap<String, Integer> staminaNameMap = new HashMap<>();
         for(Player p: createListOfPlayersInSameRoom()){

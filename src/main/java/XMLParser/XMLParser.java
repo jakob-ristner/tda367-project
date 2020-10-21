@@ -18,6 +18,10 @@ public class XMLParser {
 
     private Element element;
 
+    /**
+     * This is a DOM-pparser and gets all the nodes for the XML at once
+     * It creates 3 lists of different data types that is later used in EventFactory
+     */
     public XMLParser()  {
 
         try {
