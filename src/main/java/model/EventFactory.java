@@ -76,9 +76,12 @@ public final class EventFactory {
         int deltaX = parser.getMoveEventList().get(index).getDeltaX();
         int deltaY = parser.getMoveEventList().get(index).getDeltaY();
         int deltaZ = parser.getMoveEventList().get(index).getDeltaFloor();
+        boolean positiveEvent = parser.getMoveEventList().get(index).getPositiveEvent();
 
 
-        MoveEvent event = new MoveEvent(stat, treshHold, eventText, deltaX, deltaY, deltaZ, eventType, true);
+        MoveEvent event = new MoveEvent(stat, treshHold, eventText,
+                deltaX, deltaY, deltaZ, eventType,
+                true, positiveEvent);
         return event;
     }
 

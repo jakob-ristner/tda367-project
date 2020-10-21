@@ -35,6 +35,7 @@
         <floorDelta>-1</floorDelta>
         <deltaX>0</deltaX>
         <deltaY>0</deltaY>
+        <positiveEvent>false</positiveEvent>
     </event>
 
     <event id="4">
@@ -110,6 +111,7 @@
         <floorDelta>1</floorDelta>
         <deltaX>0</deltaX>
         <deltaY>0</deltaY>
+        <positiveEvent>true</positiveEvent>
     </event>
 
     <event id = "11">
@@ -121,6 +123,7 @@
         <floorDelta>-1</floorDelta>
         <deltaX>0</deltaX>
         <deltaY>0</deltaY>
+        <positiveEvent>true</positiveEvent>
     </event>
 
     <event id="12">
@@ -131,17 +134,6 @@
         <stamina>0</stamina>
         <itemName>Zombie</itemName>
         <eventText>You smell something horrendous over your shoulder, you turn around to witness a zombie. Even though you are shaken the zombie seems friendly. You gain: </eventText>
-    </event>
-
-    <event id = "13">
-        <eventType>-3</eventType>
-        <eventThreshold>3</eventThreshold>
-        <statToRollOn>1</statToRollOn>
-        <statChange>1</statChange>
-        <eventText>You find an elevator leading downwards. Attempt a speed roll to descend.</eventText>
-        <floorDelta>-1</floorDelta>
-        <deltaX>0</deltaX>
-        <deltaY>0</deltaY>
     </event>
 
     <event id="13">

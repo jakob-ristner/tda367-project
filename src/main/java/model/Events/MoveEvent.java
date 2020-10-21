@@ -12,21 +12,21 @@ public class MoveEvent extends GameEvent {
     int eventType;
     private String effectText;
     private String eventButtonText;
-
-    int deltaX;
-    int deltaY;
-    int deltaZ;
+    private boolean positiveEvent;
 
     Coord coord;
 
 
-    public MoveEvent(int statToRollOn, int threshHold, String eventText, int deltaX, int deltaY, int deltaZ, int eventType, boolean permanent) {
+    public MoveEvent(int statToRollOn, int threshHold,
+                     String eventText, int deltaX, int deltaY, int deltaZ,
+                     int eventType, boolean permanent, boolean positiveEvent) {
         super(permanent);
         this.statToRollOn = Stat.from(statToRollOn);
         this.threshHold = threshHold;
         this.eventText = eventText;
         coord = new Coord(deltaX,deltaY,deltaZ);
         this.eventType = eventType;
+        this.positiveEvent = positiveEvent;
     }
 
     /**
@@ -34,9 +34,12 @@ public class MoveEvent extends GameEvent {
      */
     @Override
     public void activate() {
-        eventButtonText = "Roll " + statToRollOn.toString().toLowerCase() + " higher than " + threshHold + " to succeed!";
+        eventButtonText = "Roll " + statToRollOn.toString().toLowerCase() + " higher than " + threshHold;
+        String eventTextEnding = " to avoid being moved!";
+        if (positiveEvent)
+            eventTextEnding = " to move!";
+        eventButtonText = eventButtonText + eventTextEnding;
         observer.updateEventView(eventType, eventText);
-        System.out.println("moveEvent");
     }
 
     /**
@@ -46,6 +49,17 @@ public class MoveEvent extends GameEvent {
      */
     @Override
     public void handleEvent(Player currentPlayer) {
+        int playerDiceRoll = currentPlayer.rollStat(statToRollOn);
+        boolean playerRolledHigher = playerDiceRoll > threshHold;
+        boolean moved = playerRolledHigher == positiveEvent;
+        effectText = "You are still standing on the same tile";
+        if (moved) {
+            effectText = "you were moved";
+            currentPlayer.addCoord(coord);
+        }
+        observer.updateEventEffect();
+
+        /*
         if(threshHold > currentPlayer.rollStat(statToRollOn)) {//TODO: Fix so that we have 2 scenarios coming from the xml parser. One negative and one positive.
             effectText = "You were moved";
             observer.updateEventEffect();
@@ -55,6 +69,8 @@ public class MoveEvent extends GameEvent {
          observer.updateEventEffect();
         }
         System.out.println("move event triggered");
+
+         */
     }
 
     @Override

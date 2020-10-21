@@ -353,7 +353,7 @@ public class Game implements ControllerObservable {
     }
 
     private void checkForHauntInit(){
-        if(eventCounter == 1 && gameState == null){
+        if(eventCounter == 10000 && gameState == null){
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();

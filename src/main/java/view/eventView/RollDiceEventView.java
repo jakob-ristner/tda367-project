@@ -18,7 +18,6 @@ public class RollDiceEventView extends EventView{
         header.setText("Watch your back!");
         header.setFont(Font.font("Ink Free",20));
         header.setFill(Color.WHITE);
-
     }
 
     @Override

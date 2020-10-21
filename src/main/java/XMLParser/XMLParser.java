@@ -76,6 +76,7 @@ public class XMLParser {
                     moveEventData.setDeltaFloor(parseInt(getElement("floorDelta")));
                     moveEventData.setDeltaY(parseInt(getElement("deltaY")));
                     moveEventData.setDeltaX(parseInt(getElement("deltaX")));
+                    moveEventData.setPositiveEvent(Boolean.parseBoolean(getElement("positiveEvent")));
 
 
 

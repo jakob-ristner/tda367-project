@@ -7,6 +7,7 @@ public class MoveEventData extends EventData {
     private int deltaFloor;
     private int stat;
     private int statChange;
+    boolean positiveEvent;
 
     MoveEventData() {
     }
@@ -35,6 +36,10 @@ public class MoveEventData extends EventData {
         this.statChange = statChange;
     }
 
+    void setPositiveEvent(boolean positiveEvent) {
+        this.positiveEvent = positiveEvent;
+    }
+
     public int getStat() {
         return stat;
     }
@@ -58,5 +63,10 @@ public class MoveEventData extends EventData {
     public int getDeltaFloor() {
         return deltaFloor;
     }
+
+    public boolean getPositiveEvent() {
+        return positiveEvent;
+    }
+
 
 }
