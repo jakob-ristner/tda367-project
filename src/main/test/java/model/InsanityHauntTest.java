@@ -2,6 +2,7 @@ package model;
 
 import org.junit.Assert;
 import org.junit.Test;
+import utilities.Coord;
 
 public class InsanityHauntTest {
     /**
@@ -19,5 +20,26 @@ public class InsanityHauntTest {
     }
 
  */
+
+    @Test
+    public void testCombat(){
+        Game game = Game.getInstance();
+        game.createPlayers(3);
+
+        InsanityHauntState insanityHauntState = new InsanityHauntState();
+        System.out.println(game.getCurrentPlayer());
+        game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
+        game.getPlayerList().get(1).setCharacter(KharacterFactory.createRufus());
+        game.getPlayerList().get(2).setCharacter(KharacterFactory.createRufus());
+        //insanityHauntState.init();
+
+        game.getPlayerList().get(0).setPos(new Coord(1,2,2));
+        game.getPlayerList().get(1).setPos(new Coord(1,2,2));
+        game.getPlayerList().get(2).setPos(new Coord(1,2,2));
+       //insanityHauntState.turn(game.getPlayerList().get(3));
+
+    }
+
+
 }
 
