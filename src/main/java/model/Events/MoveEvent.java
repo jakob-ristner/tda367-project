@@ -19,13 +19,13 @@ public class MoveEvent extends GameEvent {
 
 
     public MoveEvent(int statToRollOn, int threshHold,
-                     String eventText, int deltaX, int deltaY, int deltaZ,
+                     String eventText, int deltaX, int deltaY, int deltaFloor,
                      int eventType, boolean permanent, boolean positiveEvent) {
         super(permanent);
         this.statToRollOn = Stat.from(statToRollOn);
         this.threshHold = threshHold;
         this.eventText = eventText;
-        coord = new Coord(deltaX,deltaY,deltaZ);
+        coord = new Coord(deltaX,deltaY,deltaFloor);
         this.eventType = eventType;
         this.positiveEvent = positiveEvent;
     }
@@ -56,10 +56,11 @@ public class MoveEvent extends GameEvent {
         effectText = "You are still standing on the same tile";
         if (moved) {
             effectText = "you were moved";
+            observer.updateEventEffect();
             currentPlayer.addCoord(coord);
+        }else {
+            observer.updateEventEffect();
         }
-        observer.updateEventEffect();
-
         /*
         if(threshHold > currentPlayer.rollStat(statToRollOn)) {//TODO: Fix so that we have 2 scenarios coming from the xml parser. One negative and one positive.
             effectText = "You were moved";

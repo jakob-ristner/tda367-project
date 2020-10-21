@@ -114,7 +114,7 @@
         <positiveEvent>true</positiveEvent>
     </event>
 
-    <event id = "11">
+    <event id = "12">
         <eventType>-3</eventType>
         <eventThreshold>3</eventThreshold>
         <statToRollOn>0</statToRollOn>
@@ -126,7 +126,7 @@
         <positiveEvent>true</positiveEvent>
     </event>
 
-    <event id="12">
+    <event id="13">
         <eventType>-1</eventType>
         <speed>0</speed>
         <sanity>-1</sanity>
@@ -136,7 +136,7 @@
         <eventText>You smell something horrendous over your shoulder, you turn around to witness a zombie. Even though you are shaken the zombie seems friendly. You gain: </eventText>
     </event>
 
-    <event id="13">
+    <event id="14">
         <eventType>-1</eventType>
         <speed>-1</speed>
         <sanity>+2</sanity>
@@ -146,7 +146,7 @@
         <eventText>You see a bible lying on the floor. You open it at find a small pocket flask. You open it and take a sip. The booze inside calm you down. You gain:  </eventText>
     </event>
 
-    <event id="14">
+    <event id="15">
         <eventType>-1</eventType>
         <speed>0</speed>
         <sanity>-1</sanity>
@@ -156,7 +156,7 @@
         <eventText>You find a room resembling a kitchen, you find a small bit of dried meat. After eating it you gain: </eventText>
     </event>
 
-    <event id="15">
+    <event id="16">
         <eventType>-2</eventType>
         <eventThreshold>3</eventThreshold>
         <statToRollOn>2</statToRollOn>

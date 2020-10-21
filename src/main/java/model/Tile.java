@@ -101,10 +101,6 @@ public class Tile {
 
     public void handleEvent(Player currentPlayer) {
         event.handleEvent(currentPlayer);
-        if (!event.isPermanent()){
-            event = null;
-            hasEvent = false;
-        }
     }
 
     /**
@@ -120,6 +116,12 @@ public class Tile {
      * @return String to be displayed on mainGameView.
      */
     String getEventEffectText(){
-        return event.getEventEffectText();
+        String effectText = event.getEventEffectText();
+        if (!event.isPermanent()){
+            event = null;
+            hasEvent = false;
+        }
+        return effectText;
+
     }
 }
