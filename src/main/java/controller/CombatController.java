@@ -38,6 +38,7 @@ public class CombatController extends AbstractController{
             @Override
             public void handle(ActionEvent actionEvent) {
                 showNextView();
+                game.winConditionChecker();
                 combatButton.setDisable(false);
                 exitButton.setDisable(true);
             }

@@ -16,6 +16,7 @@ public class Tile {
     private boolean stairDown;
     private boolean hasStair;
 
+
     public Tile(int i, int j, Tile[][] tiles) {
         hasEvent = false;
         setDoors(i, j, tiles);

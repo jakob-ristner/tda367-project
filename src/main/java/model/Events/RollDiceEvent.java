@@ -5,6 +5,7 @@ import model.Stat;
 
 import java.util.HashMap;
 
+
 public class RollDiceEvent extends GameEvent {
     Stat statToRollOn;
     int numberToRollVersus;
@@ -42,6 +43,7 @@ public class RollDiceEvent extends GameEvent {
 
     /**
      * Handles the event via rolling a player's stat.
+     * RollDiceEvent can both be positive and negative, hence the if statements.
      * Sets effectText.
      * Asks controller to update view.
      * @param currentPlayer
