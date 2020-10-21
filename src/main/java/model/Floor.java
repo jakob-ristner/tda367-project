@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -8,13 +7,47 @@ import java.util.Random;
 public class Floor {
     private final int mapSize;
     private Tile[][] tiles;
+    private final int amountOfStairs = 4;
+    private final int stairSpacing;
     private Random rand = new Random();
 
-    Floor(List<Event> eventList) {
+    Floor(List<Event> eventList, int floor) {
         mapSize = 6;
+        stairSpacing  = mapSize/3;
         tiles = new Tile[mapSize][mapSize];
         generateTileMap();
+        generateStairs(floor);
         addEventsRandom(eventList);
+    }
+
+    private void generateStairs(int floor) {
+        if(floor == 0){
+            setStairUp(0);
+        }else if(floor == 1){
+            setStairDown(0);
+            setStairUp(mapSize-1);
+        }else{
+            setStairDown(mapSize-1);
+        }
+    }
+
+    private void setStairUp(int row){
+        Tile tile;
+        for(int i = 0; i < amountOfStairs/2; i++){
+            //tile = tiles[row][stairSpacing * (i+1)];
+            tile = tiles[stairSpacing * (i+1)][row];
+            tile.setStairUp(true);
+        }
+
+    }
+
+    private void setStairDown(int row){
+        Tile tile;
+        for(int i = 0; i < amountOfStairs/2; i++){
+            //tile = tiles[row][stairSpacing * (i+1)];
+            tile = tiles[stairSpacing * (i+1)][row];
+            tile.setStairDown(true);
+        }
     }
 
     /**
@@ -37,7 +70,7 @@ public class Floor {
         for (int i = 0; i < eventList.size(); i++) {
             row = rand.nextInt(tiles.length);
             col = rand.nextInt(tiles[0].length);
-            while (tiles[row][col].hasEvent()) {
+            while (tiles[row][col].hasEvent() || tiles[row][col].hasStair()) {
                 row = rand.nextInt(tiles.length);
                 col = rand.nextInt(tiles[0].length);
             }

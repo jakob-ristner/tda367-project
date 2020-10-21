@@ -13,10 +13,6 @@ public class MoveEvent extends GameEvent {
     private String effectText;
     private String eventButtonText;
 
-    int deltaX;
-    int deltaY;
-    int deltaZ;
-
     Coord coord;
 
 

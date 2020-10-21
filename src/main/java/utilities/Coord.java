@@ -38,17 +38,20 @@ public class Coord {
         sanityCheck();
     }
 
-    public void moveX(int dx) {
+    private void moveX(int dx) {
         x += dx;
     }
 
-    public void moveY(int dy) {
+    private void moveY(int dy) {
         y += dy;
     }
 
-    public void move(int dx, int dy) {
+    private void moveFloor(int dFloor){floor += dFloor;}
+
+    public void move(int dx, int dy, int dFloor) {
         moveX(dx);
         moveY(dy);
+        moveFloor(dFloor);
         sanityCheck();
     }
 

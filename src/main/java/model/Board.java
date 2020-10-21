@@ -21,7 +21,7 @@ public class Board {
         events = EventFactory.createEventList();
 
         for (int i = 0; i < numberOfFloors; i++) {
-            floors.add(new Floor(generateEventList()));
+            floors.add(new Floor(generateEventList(), i));
         }
     }
 

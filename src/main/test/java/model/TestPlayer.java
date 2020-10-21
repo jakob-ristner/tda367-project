@@ -59,7 +59,7 @@ public class TestPlayer {
         player.setPos(new Coord(1,2,2));
         player.addCoord(new Coord(-1,-2,-1));
         Assert.assertEquals(player.getFloor(),1);
-        player.playerMove(1,2);
+        player.playerMove(1,2, player.getFloor());
         Assert.assertEquals(player.getX(),1);
         Assert.assertEquals(player.getY(),2);
     }

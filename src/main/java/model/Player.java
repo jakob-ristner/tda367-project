@@ -72,8 +72,8 @@ public class Player {
         return false;
     }
 
-    void playerMove(int dx, int dy) {
-        pos.move(dx, dy);
+    void playerMove(int dx, int dy, int dFloor) {
+        pos.move(dx, dy, dFloor);
         step();
     }
 

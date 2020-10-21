@@ -24,7 +24,7 @@ public class testFloor {
             events.add(event);
             numberOfTiles--;
         }
-        Floor floor = new Floor(events);
+        Floor floor = new Floor(events, 1);
         for(int x = 0; x<6; x++){
             for (int y = 0; y<6; y++){
                 Assert.assertTrue(floor.getTile(x,y).hasEvent());
