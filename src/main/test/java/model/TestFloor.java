@@ -9,10 +9,10 @@ import java.util.List;
 public class TestFloor {
 
     /**
-     * Created a 6*6 matrix, while loop in order to fill an eventlist with 36 events.
+     * Adding 15 events to list
      * Create a floor with the events.
-     * Check if each floor has an event, also control that the whole method has been covered since the events are put in
-     * a random place.
+     * Check if 15 event is on the floor
+     * Sometimes it does not cover if statement in addTile, but should work.
      */
 
     @Test

@@ -6,7 +6,7 @@ import model.Event;
 /**
  * Abstraction of all events.
  * Some Events are permanent, stairs to another floor or a hole in the ground four example.
- *
+ * In order to know which view to use
  */
 
 public abstract class GameEvent implements Event {

@@ -16,6 +16,15 @@ public class RollDiceEvent extends GameEvent {
     private boolean positiveEvent;
     private int statChange;
 
+    /**
+     *
+     * @param statToRollOn which stat to roll on, using int as an identifier for stat
+     * @param numberToRollVersus the value you have to roll versus
+     * @param statChange the stat outcome after an event
+     * @param eventText for player interaction, text involving the event
+     * @param eventType In order to know which view to use
+     * @param permanent checks if the event is permanent
+     */
     public RollDiceEvent(int statToRollOn, int numberToRollVersus, int statChange, String eventText, int eventType, boolean permanent) {
         super(permanent);
         this.statToRollOn = Stat.from(statToRollOn);

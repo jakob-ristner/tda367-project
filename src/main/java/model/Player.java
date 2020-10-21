@@ -5,6 +5,13 @@ import utilities.Coord;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This is the playerClass containing a character and an inventory.
+ * A player has Coords as a position
+ * Checkers for the player is isHaunted, hasCharacter and isDead
+ * Has int steps and steps left for moving around on the board.
+ */
+
 public class Player {
     private int stepsLeft;
     private int steps;

@@ -16,6 +16,10 @@ public class Board {
     private List<Integer> indexList;
     private final List<Event> events;
 
+    /**
+     * A board consists of three floors
+     * Receives a list of events from EventFactory
+     */
     public Board() {
         floors = new ArrayList<>();
         events = EventFactory.createEventList();
