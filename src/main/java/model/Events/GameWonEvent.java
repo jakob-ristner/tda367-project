@@ -5,7 +5,8 @@ import model.Player;
 public class GameWonEvent extends GameEvent {
 
     int eventType = -4;
-    String eventText = "The game has been won my friend. You and your team are the lucky winners!";
+    String eventText = "The game has been won my friend. You and your team are the lucky winners! ";
+
 
     public GameWonEvent() {
         super(false);

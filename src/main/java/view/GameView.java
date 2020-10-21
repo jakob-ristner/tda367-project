@@ -51,19 +51,13 @@ public class GameView {
 		initButtonEventMap();
 
 		startScreenView.viewToFront();
-
-		//gameWonEventView.viewToFront();//For testing of the eventViews
-
-		//hauntEventView.viewToFront();
-		//combatScreenView.initPlayerCircles(3,1);
-		//combatScreenView.viewToFront();
 	}
 
-	public void updateEventView(int eventType, String eventText){
-		EventView currentEventView = eventViewMap.get(eventType);
-		currentEventView.setEventText(eventText);
-		currentEventView.setEventButtonText(game.getEventButtonText());
-		currentEventView.viewToFront();
+	//Init methods for the view
+	public void initHauntView(){
+		hauntEventView.setEventText(game.getHauntText());
+		hauntEventView.viewToFront();
+
 	}
 
 	private void initButtonEventMap(){
@@ -72,10 +66,6 @@ public class GameView {
 		buttonEventMap.put("MoveEvent", moveEventView.getEventButton());
 		buttonEventMap.put("RollDiceEvent", rollDiceView.getEventButton());
 		buttonEventMap.put("HauntEvent",hauntEventView.getEventButton());
-	}
-
-	public HashMap<String, Button> getEventButtons(){
-		return buttonEventMap;
 	}
 
 	private void initEventView(){
@@ -90,17 +80,23 @@ public class GameView {
 		gameWonEventView = new GameWonEventView(root,WINDOW_W,WINDOW_H);
 		eventViewMap.put(-4, gameWonEventView);
 		hauntEventView = new HauntEventView(root,WINDOW_W,WINDOW_H);
-
-
 	}
 
-	public void initHauntView(){
-		hauntEventView.setEventText(game.getHauntText());
-		hauntEventView.viewToFront();
-
+	public void initMapData() {
+		mainGameView.initMapData();
 	}
 
+	public void initCombatScreen() {
+		combatScreenView.initPlayerCircles(game.getNonHauntedNamesList(), game.getHauntedNamesInSameRoom());
+		combatScreenView.setStaminaText(game.getStaminaNameMap(), game.getDamageMap());
+		combatScreenView.viewToFront();
+	}
 
+	public void initGameOverView(){
+		gameOverView.viewToFront();
+	}
+
+	//Getters for views
 	public Group getRoot() {
 		return root;
 	}
@@ -117,11 +113,11 @@ public class GameView {
 		return mainGameView;
 	}
 
+	//View update methods
+
 	public void updateCurrentPlayerIndex(int index) {
 		characterSelectView.setPlayerTexts(index, game.getPlayerAmount());
 	}
-	//when all players have chosen a character
-
 
 	public void updateMainGameViewMapData() {
 		mainGameView.updateMapData();
@@ -132,14 +128,24 @@ public class GameView {
 		mainGameView.fadeEventText();
 	}
 
-	public void initMapData() {
-		mainGameView.initMapData();
+	public void updateEventView(int eventType, String eventText){
+		EventView currentEventView = eventViewMap.get(eventType);
+		currentEventView.setEventText(eventText);
+		currentEventView.setEventButtonText(game.getEventButtonText());
+		currentEventView.viewToFront();
 	}
+
+
+
 
 
 	//View element getters
 	public Button getStartScreenConfirmButton() {
 		return startScreenView.getButton();
+	}
+
+	public HashMap<String, Button> getEventButtons(){
+		return buttonEventMap;
 	}
 
 	public Spinner<Integer> getStartScreenIntInput() {
@@ -167,15 +173,6 @@ public class GameView {
 
 	public List<Button> getCombatButton(){
 		return combatScreenView.getCombatButton();
-	}
-
-	public void initCombatScreen() {
-		combatScreenView.initPlayerCircles(game.getNonHauntedNamesList(), game.getHauntedNamesInSameRoom());
-		combatScreenView.setStaminaText(game.getStaminaNameMap(), game.getDamageMap());
-		combatScreenView.viewToFront();
-	}
-	public void initGameOverView(){
-		gameOverView.viewToFront();
 	}
 
 	public ViewInterface getCombatView() {

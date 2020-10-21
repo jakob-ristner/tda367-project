@@ -95,11 +95,13 @@ public class Game implements ControllerObservable {
     }
 
 
-    public List<HashMap<Stat, Integer>> getCharacterStats() {
-        List<HashMap<Stat, Integer>> characterStats = new ArrayList<>();
+    public List<List<String>> getCharacterStats() {
+        List<List<String>> characterStats = new ArrayList<>();
         for (Kharacter a : characterList) {
-            characterStats.add(a.getStats());
+            characterStats.add(a.getStatsAsStrings());
         }
+
+
         return characterStats;
     }
 
