@@ -326,7 +326,6 @@ public class Game implements ControllerObservable {
             /*
             if (playerAmount == 0) {
                 playerAmount = 1;
-
             }
 
              */

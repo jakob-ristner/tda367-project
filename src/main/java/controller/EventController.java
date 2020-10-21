@@ -64,11 +64,7 @@ public class EventController extends AbstractController {
         eventButtonMap.get("GameWonEvent").setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                setNextView(startScreen);
-                game.resetGame();
-                //game = null;
-                //game = Game.getInstance();
-                showNextView();
+                System.exit(0);
             }
         });
 
