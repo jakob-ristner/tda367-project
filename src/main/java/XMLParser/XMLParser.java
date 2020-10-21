@@ -99,7 +99,7 @@ public class XMLParser {
 
 
     }
-
+/*
     private void printList(){
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         System.out.println(itemEventList.get(0).getEventType());
@@ -129,6 +129,8 @@ public class XMLParser {
 
         ItemEventData itemEventData = (ItemEventData) eventDataList.get(0);
     }
+
+ */
 
     private String getElement(String str){
         return element.getElementsByTagName(str).item(0).getTextContent();
