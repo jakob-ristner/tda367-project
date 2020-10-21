@@ -72,4 +72,8 @@ public class Coord {
         y = Math.max(y, 0);
 
     }
+
+    public boolean equals(Coord coord) {
+        return (x == coord.getX() && y == coord.getY() && floor == coord.getFloor());
+    }
 }

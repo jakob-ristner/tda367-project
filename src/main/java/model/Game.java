@@ -182,7 +182,7 @@ public class Game implements ControllerObservable {
     List<Player> createListOfPlayersInSameRoom() {
         List <Player> listOfPlayersInTheSameRoom = new ArrayList<>();
         for (Player p : getPlayerList()) {
-            if (getCurrentPlayer().getX() == p.getX() && getCurrentPlayer().getY() == p.getY() && getCurrentPlayer().getFloor() == p.getFloor()) {
+            if (p.getPos().equals(getCurrentPlayer().getPos())) {
                 listOfPlayersInTheSameRoom.add(p);
             }
         }

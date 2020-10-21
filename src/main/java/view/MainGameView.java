@@ -407,10 +407,13 @@ public class MainGameView implements ViewInterface{
     }
 
     private void updatePlayersPaneData() {
+        List<Text> deadPlayerTexts = new ArrayList<>();
         for (Integer i: game.getDeadPlayerIndices()) {
-            System.out.println("removing player");
+            deadPlayerTexts.add(allPlayersList.get(i));
             playersPane.getChildren().remove(allPlayersList.get(i));
-            allPlayersList.remove(allPlayersList.get(i));
+        }
+        for (Text deadPlayer: deadPlayerTexts) {
+            allPlayersList.remove(deadPlayer);
         }
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
     }
