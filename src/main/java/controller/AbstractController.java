@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.scene.control.Button;
 import model.Game;
 import view.ViewInterface;
 

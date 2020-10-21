@@ -18,7 +18,7 @@ public class CombatController extends AbstractController{
         this.combatView = combatView;
     }
 
-    public void setButton(List<Button> buttonList) {
+    void setButton(List<Button> buttonList) {
         this.combatButton = buttonList.get(0);
         this.exitButton = buttonList.get(1);
         initButton();

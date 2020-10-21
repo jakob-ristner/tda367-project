@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import model.Game;
-import view.ViewInterface;
 
 import java.util.HashMap;
 

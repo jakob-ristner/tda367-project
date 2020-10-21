@@ -10,7 +10,6 @@ import java.util.HashMap;
 
 public class EventController extends AbstractController {
     private HashMap<String, Button> eventButtonMap;
-    private ViewInterface startScreen;
     private ViewInterface mainGameView;
     protected EventController(Game game) {
         super(game);
@@ -19,10 +18,6 @@ public class EventController extends AbstractController {
 
     void setMainGameView(ViewInterface mainGameView){
         this.mainGameView = mainGameView;
-    }
-
-    void setStartScreen(ViewInterface startScreen){
-        this.startScreen = startScreen;
     }
 
     void setEventButtonMap(HashMap<String, Button> eventButtonMap){

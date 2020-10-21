@@ -59,7 +59,6 @@ public class GameController implements GameObserver, EventObserver {
 
         eventController = new EventController(game);
         eventController.setEventButtonMap(view.getEventButtons());
-        eventController.setStartScreen(startScreenView);
         eventController.setMainGameView(mainGameView);
 
         combatController = new CombatController(game, combatView);
