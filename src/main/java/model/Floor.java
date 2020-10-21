@@ -14,6 +14,12 @@ public class Floor {
     private final int stairSpacing;
     private Random rand = new Random();
 
+    /**
+     *
+     * @param eventList List of events from Board
+     * @param floor amount of floors.
+     */
+
     Floor(List<Event> eventList, int floor) {
         mapSize = 6;
         stairSpacing  = mapSize/3;
@@ -23,6 +29,11 @@ public class Floor {
         addEventsRandom(eventList);
     }
 
+    /**
+     *
+     * @param floor amount of floors
+     * Method generates stairs, if floor 0 stair up, floor1 stair upDown, floor2 stair down
+     */
     private void generateStairs(int floor) {
         if(floor == 0){
             setStairUp(0);
@@ -34,6 +45,11 @@ public class Floor {
         }
     }
 
+    /**
+     *
+     * @param row
+     * Set stair down, int is row, i+1 is Col
+     */
     private void setStairUp(int row){
         Tile tile;
         for(int i = 0; i < amountOfStairs/2; i++){
@@ -44,6 +60,11 @@ public class Floor {
 
     }
 
+    /**
+     *
+     * @param row
+     * Set stair down, int is row, i+1 is Col
+     */
     private void setStairDown(int row){
         Tile tile;
         for(int i = 0; i < amountOfStairs/2; i++){
