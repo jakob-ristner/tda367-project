@@ -1,0 +1,26 @@
+Meeting 21/10 2020
+
+Group: Gastuen
+Chair: Jakob Ristner
+Participants: Jakob H, Jakob R, Erik B, David A, Karl G
+
+##Objectives##
+
+    *Win condition checker
+    *Some bugs crashing the game
+    *Stairs
+    *UML and SDD
+    *Finishing touches
+
+##Discussion Items##
+    Discussed how the stairs should be represented in the model and 
+    where they should be places. Since there is not much time left 
+    we talked about what aspects of the game should be prioritised. The
+    Result being that we agreed on functionality being first priority and
+    good intuitive visual representation being less of one.
+    Not much more discussion, mostly just 
+    working and trying to finish the project. 
+
+##Objectives & assignments##
+    *Karl works on updating UML diagram and SDD
+    *The rest of us are fixing bugs and implementing features
