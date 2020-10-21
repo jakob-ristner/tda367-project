@@ -1,5 +1,8 @@
 package model;
 
+import utilities.Coord;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -134,6 +137,30 @@ public class Floor {
     String getEventButtonText(Player currentPlayer){
         Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
         return tile.getEventButtonText();
+    }
+
+    List<Coord> stairsUp(int floor) {
+        List<Coord> coords = new ArrayList<>();
+        for (int x = 0; x < mapSize; x++) {
+            for (int y = 0; y < mapSize; y++) {
+                if (tiles[x][y].hasStairUp()) {
+                    coords.add(new Coord(x, y, floor));
+                }
+            }
+        }
+        return coords;
+    }
+
+    List<Coord> stairsDown(int floor) {
+        List<Coord> coords = new ArrayList<>();
+        for (int x = 0; x < mapSize; x++) {
+            for (int y = 0; y < mapSize; y++) {
+                if (tiles[x][y].hasStairDown()) {
+                    coords.add(new Coord(x, y, floor));
+                }
+            }
+        }
+        return coords;
     }
 
 }

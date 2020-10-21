@@ -57,6 +57,7 @@ public class MainGameView implements ViewInterface{
     private List<Button> doorButtons;
     private Button endTurnButton;
     private List<Text> itemsInInventory;
+    private List<Text> stairs;
 
     private Game game;
     private List<List<Rectangle>> tileViews;
@@ -130,6 +131,7 @@ public class MainGameView implements ViewInterface{
                 tileViews.get(i).add(currentRect);
             }
         }
+
     }
 
     public void initMapData() {
@@ -140,6 +142,7 @@ public class MainGameView implements ViewInterface{
         initFloorPane();
         initButtons();
         initInventoryPane();
+        initStair();
     }
 
     private void initInventoryPane() {
@@ -264,8 +267,45 @@ public class MainGameView implements ViewInterface{
         endTurnButton.setLayoutX(height - 150 + 10);
         endTurnButton.setLayoutY(5);
         floorPane.getChildren().add(endTurnButton);
+    }
 
+    private void initStair() {
+        stairs = new ArrayList<>();
+        updateStairs();
+    }
 
+    private void updateStairs() {
+        for (Text stair : stairs) {
+            mapPane.getChildren().remove(stair);
+        }
+        stairs = new ArrayList<>();
+
+        List<Coord> stairsUp = game.getStairsUpOnCurrentFloor();
+        Text currText;
+        for (Coord coord : stairsUp) {
+            currText = new Text("^");
+            currText.setStyle("-fx-text-fill: red; -fx-font-size: 20");
+            currText.setFill(Color.RED);
+            currText.setWrappingWidth(rectSize);
+            currText.setTextAlignment(TextAlignment.CENTER);
+            currText.setLayoutY(rectSize * coord.getY() + 40);
+            currText.setLayoutX(rectSize * coord.getX());
+            mapPane.getChildren().add(currText);
+            stairs.add(currText);
+        }
+
+        List<Coord> stairsDown = game.getStairsDownOnCurrentFloor();
+        for (Coord coord : stairsDown) {
+            currText = new Text("v");
+            currText.setStyle("-fx-text-fill: red; -fx-font-size: 20");
+            currText.setFill(Color.RED);
+            currText.setWrappingWidth(rectSize);
+            currText.setTextAlignment(TextAlignment.CENTER);
+            currText.setLayoutY(rectSize * coord.getY() + 40);
+            currText.setLayoutX(rectSize * coord.getX());
+            mapPane.getChildren().add(currText);
+            stairs.add(currText);
+        }
     }
 
     void setEventEffectText(){
@@ -315,6 +355,7 @@ public class MainGameView implements ViewInterface{
         updateFloorPane();
         updateButtons();
         updateInventoryPane();
+        updateStairs();
     }
     
     private void updateInventoryPane() {

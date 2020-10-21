@@ -414,4 +414,12 @@ public class Game implements ControllerObservable {
         characterList = KharacterFactory.getCharacters();
         eventCounter = 0;
     }
+
+    public List<Coord> getStairsDownOnCurrentFloor() {
+        return board.getStairsDownOnCurrentFloor(getCurrentFloorNumber());
+    }
+
+    public List<Coord> getStairsUpOnCurrentFloor() {
+        return board.getStairsUpOnCurrentFloor(getCurrentFloorNumber());
+    }
 }

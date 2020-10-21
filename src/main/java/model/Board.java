@@ -119,4 +119,12 @@ public class Board {
         Floor floor = floors.get(currentPlayer.getFloor());
         return floor.getEventButtonText(currentPlayer);
     }
+
+    List<Coord> getStairsUpOnCurrentFloor(int floor) {
+        return floors.get(floor).stairsUp(floor);
+    }
+
+    List<Coord> getStairsDownOnCurrentFloor(int floor) {
+        return floors.get(floor).stairsDown(floor);
+    }
 }
