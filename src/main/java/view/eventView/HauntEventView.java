@@ -14,7 +14,7 @@ public class HauntEventView extends EventView {
         hauntButton.setPrefSize(eventText.getPrefWidth(), 50);
         hauntButton.setLayoutX(eventText.getLayoutX());
         hauntButton.setLayoutY(eventPane.getLayoutY() + 220);
-        hauntButton.setText("Spooky Spooky you are now insane!");
+        hauntButton.setText("Accept the role as the haunted one");
         hauntButton.setFont(Font.font("Ink Free",20));
 
         addNode(hauntButton);

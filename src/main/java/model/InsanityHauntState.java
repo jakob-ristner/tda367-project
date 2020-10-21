@@ -9,7 +9,12 @@ public class InsanityHauntState implements GameState {
     int numEscapeHatch = 4;
     Random rand = new Random();
     HashMap<Stat, Integer> statBoost;
-    private final String hauntText = "Ooga booga you just got haunted with the Insane haunt. The rules for this gamemode is as follows...";
+    private final String hauntText = "After wandering the house for too long your mind begins to break down." +
+            "You hear whispers from the old gods telling you that only way to carry on is to betray your friends.\n " +
+            "\n The rules for this haunt are: \n" +
+            "\n The haunted players objective is to kill all the other players\n" +
+            "\n The adventurers objective is to find a hidden escape hatch to escape the horrors of the house";
+
     //private final String buttonText = "Continue game";
 
     public InsanityHauntState(){
