@@ -8,7 +8,7 @@ import java.util.List;
  * at the same place. Kharacter needs a string and an int[] more info->Kharacter.
  */
 
-public final class KharacterFactory {
+public abstract class KharacterFactory {
 
     public static Kharacter createRufus(){
         return (new Kharacter("Rufus von Gross",new int[]{2,2,3,6}));

@@ -1,7 +1,5 @@
 package model;
 
-import controller.EventObserver;
-import controller.GameObserver;
 import utilities.Coord;
 
 import java.util.ArrayList;
@@ -96,11 +94,13 @@ public class Game implements ControllerObservable {
     }
 
 
-    public List<HashMap<Stat, Integer>> getCharacterStats() {
-        List<HashMap<Stat, Integer>> characterStats = new ArrayList<>();
+    public List<List<String>> getCharacterStats() {
+        List<List<String>> characterStats = new ArrayList<>();
         for (Kharacter a : characterList) {
-            characterStats.add(a.getStats());
+            characterStats.add(a.getStatsAsStrings());
         }
+
+
         return characterStats;
     }
 
@@ -126,8 +126,7 @@ public class Game implements ControllerObservable {
         observer.updateCurrentPlayer();
         currentPlayerIndex = currentPlayerIndex % playerAmount;
 
-        if (currentPlayerIndex == 0)
-            notifyNewTurn();
+        //if (currentPlayerIndex == 0)
     }
 
 
@@ -195,10 +194,6 @@ public class Game implements ControllerObservable {
         this.observer = observer;
     }
 
-    @Override
-    public void notifyNewTurn() { //TODO change to only one observer not list
-        observer.updateTurn();
-    }
 
     @Override
     public void notifyGameData() {

@@ -4,11 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import model.Game;
-import view.ViewInterface;
+
 
 
 public class GameOverController extends AbstractController {
-    ViewInterface gameOverView;;
     Button closeGameButton;
 
 
@@ -17,7 +16,6 @@ public class GameOverController extends AbstractController {
     }
     void setCloseGameButton(Button closeGameButton) {
         this.closeGameButton = closeGameButton;
-
         initButton();
     }
 
@@ -28,9 +26,6 @@ public class GameOverController extends AbstractController {
                 System.exit(1);
             }
         });
-
     }
-
-
 
 }

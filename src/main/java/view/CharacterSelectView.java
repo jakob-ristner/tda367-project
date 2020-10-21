@@ -8,7 +8,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import model.Stat; //Måste lyfta ut från packet?
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +24,7 @@ public class CharacterSelectView implements ViewInterface{
     private Text playerText;
     private List<Text> textsPlayer;
     private List<Text> textsStats;
-    private List<HashMap<Stat, Integer>> statList;
+    private List<List<String>> statList;
     private HashMap<Integer, Button> buttonMap;
     private Button startButton;
 
@@ -66,7 +65,7 @@ public class CharacterSelectView implements ViewInterface{
 
     }
 
-    public void initText(List< HashMap<Stat, Integer>> statList){
+    public void initText(List< List<String>> statList){
         this.statList = statList;
 
         playerText = new Text();
@@ -117,23 +116,20 @@ public class CharacterSelectView implements ViewInterface{
             currStatText.setLayoutX(refButtonX - 180);
             currStatText.setLayoutY(refButtonY + 20);
             currStatText.setText(getAllStatsAsString(i));
-            currStatText.setFont(Font.font("Ink Free",23));
+            currStatText.setFont(Font.font("Ink Free",15));
             currStatText.setFill(Color.WHITE);
             addNode(currStatText);
             textsStats.add(currStatText);
         }
     }
 
-    private String getStatAsString(int statListIndex, Stat stat) {
-        return statList.get(statListIndex).get(stat).toString();
-    }
 
     private String getAllStatsAsString(int statListIndex) {
         String allStats= "";
-        allStats += ("  Str: " + getStatAsString(statListIndex, Stat.STRENGTH));
-        allStats += ("  Spe: " + getStatAsString(statListIndex, Stat.SPEED));
-        allStats += ("  San: " + getStatAsString(statListIndex, Stat.SANITY));
-        allStats += ("  Stam: " + getStatAsString(statListIndex, Stat.STRENGTH));
+        for (String stat: statList.get(statListIndex)) {
+            allStats += stat;
+            allStats += " ";
+        }
         return allStats;
     }
 

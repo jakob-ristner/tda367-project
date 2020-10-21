@@ -1,14 +1,11 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
+
 import model.Game;
-import view.ViewInterface;
 
 
 public class StartScreenController extends AbstractController{
@@ -21,11 +18,12 @@ public class StartScreenController extends AbstractController{
 
 
 
-    public void setConfirmButton(Button confirmButton) {
+    void setConfirmButton(Button confirmButton) {
         this.confirmButton = confirmButton;
         initButton();
     }
-    public void setIntInput(Spinner<Integer> intInput) {
+
+    void setIntInput(Spinner<Integer> intInput) {
         this.intInput = intInput;
     }
 

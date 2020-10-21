@@ -1,6 +1,6 @@
 package model.Events;
 
-import controller.EventObserver;
+import model.EventObserver;
 import model.Event;
 
 /**

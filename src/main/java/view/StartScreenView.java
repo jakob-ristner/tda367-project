@@ -6,12 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import java.awt.*;
 
 public class StartScreenView implements ViewInterface {
     private Pane pane;

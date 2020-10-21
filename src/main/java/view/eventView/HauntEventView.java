@@ -2,7 +2,6 @@ package view.eventView;
 
 import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class HauntEventView extends EventView {
@@ -14,7 +13,6 @@ public class HauntEventView extends EventView {
         hauntButton.setPrefSize(eventText.getPrefWidth(), 50);
         hauntButton.setLayoutX(eventText.getLayoutX());
         hauntButton.setLayoutY(eventPane.getLayoutY() + 220);
-        hauntButton.setText("Spooky Spooky you are now insane!");
         hauntButton.setFont(Font.font("Ink Free",20));
 
         addNode(hauntButton);
