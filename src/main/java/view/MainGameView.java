@@ -1,7 +1,6 @@
 package view;
 
 import javafx.animation.FadeTransition;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

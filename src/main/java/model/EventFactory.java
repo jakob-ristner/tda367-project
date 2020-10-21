@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public final class EventFactory {
+public abstract class EventFactory {
 
     /**
      * generates list of events from xml file
