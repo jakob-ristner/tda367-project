@@ -11,7 +11,7 @@ public class InsanityHauntState implements GameState {
     HashMap<Stat, Integer> statBoost;
     private final String hauntText = "After wandering the house for too long your mind begins to break down." +
             "You hear whispers from the old gods telling you that only way to carry on is to betray your friends.\n " +
-            "\n The rules for this haunt are: \n" +
+            "\n The rules for this haunt are written below: \n" +
             "\n The haunted players objective is to kill all the other players\n" +
             "\n The adventurers objective is to find a hidden escape hatch to escape the horrors of the house";
 
