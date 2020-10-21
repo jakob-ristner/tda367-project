@@ -14,7 +14,7 @@ public class TestFloor {
      * Check if each floor has an event, also control that the whole method has been covered since the events are put in
      * a random place.
      */
-
+/*
     @Test
     public void testAddTile(){
         int numberOfTiles = 6*6;
@@ -34,6 +34,11 @@ public class TestFloor {
 
 
 
+
     }
+
+ */
+
+
 
 }
