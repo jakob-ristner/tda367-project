@@ -37,9 +37,9 @@ public class Game implements ControllerObservable {
         if (currentPlayer.getStepsLeft() > 0) {
             currentPlayer.playerMove(dx, dy, 0);
             if(getPlayerTile(currentPlayer).hasStairDown()){
-                currentPlayer.playerMove(0,0,-1);
+                currentPlayer.addCoord(new Coord(0,0,-1));
             }else if(getPlayerTile(currentPlayer).hasStairUp()) {
-                currentPlayer.playerMove(0, 0, 1);
+                currentPlayer.addCoord(new Coord(0,0,1));
             }
             board.tryActivateEventOnPlayerPos(currentPlayer); //As of now haunted players can not activate events.
         }
