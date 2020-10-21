@@ -13,6 +13,7 @@ public class Tile {
     private boolean hasPlayer;
     private boolean hasEvent;
 
+
     public Tile(int i, int j, Tile[][] tiles) {
         hasEvent = false;
         setDoors(i, j, tiles);

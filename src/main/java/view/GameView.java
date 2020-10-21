@@ -21,6 +21,10 @@ public class GameView {
 	private MainGameView mainGameView;
 	private CombatScreenView combatScreenView;
 
+
+
+	private GameOverView gameOverView;
+
 	private EventView gameWonEventView;
 	private EventView itemEventView;
 	private EventView moveEventView;
@@ -40,6 +44,8 @@ public class GameView {
 		characterSelectView.initText(game.getCharacterStats());
 		mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
 		combatScreenView = new CombatScreenView(root, WINDOW_W, WINDOW_H);
+		gameOverView = new GameOverView(root,WINDOW_W,WINDOW_H);
+
 		initEventView();
 		buttonEventMap = new HashMap<>();
 		initButtonEventMap();
@@ -93,6 +99,7 @@ public class GameView {
 		hauntEventView.viewToFront();
 
 	}
+
 
 	public Group getRoot() {
 		return root;
@@ -167,8 +174,19 @@ public class GameView {
 		combatScreenView.setStaminaText(game.getStaminaNameMap(), game.getDamageMap());
 		combatScreenView.viewToFront();
 	}
+	public void initGameOverView(){
+		gameOverView.viewToFront();
+	}
 
 	public ViewInterface getCombatView() {
 		return combatScreenView;
+	}
+
+	public ViewInterface getGameOverView() {
+		return gameOverView;
+	}
+
+	public Button getCloseGameButton(){
+		return gameOverView.getCloseGameButton();
 	}
 }

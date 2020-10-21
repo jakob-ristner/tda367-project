@@ -1,6 +1,7 @@
 package controller;
 
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import model.Game;
 import view.GameView;
 import view.ViewInterface;
@@ -8,12 +9,14 @@ import view.ViewInterface;
 public class GameController implements GameObserver,EventObserver{
     private Game game;
     private GameView view;
+    private ViewInterface gameOverView;
     private ViewInterface characterSelectView;
     private ViewInterface startScreenView;
     private ViewInterface mainGameView;
     private ViewInterface combatView;
     private CharacterSelectController characterSelectController;
     private StartScreenController startScreenController;
+    private GameOverController gameOverController;
     private MainGameViewController mainGameViewController;
     private EventController eventController;
     private CombatController combatController;
@@ -36,6 +39,7 @@ public class GameController implements GameObserver,EventObserver{
         characterSelectView = view.getCharacterSelectView();
         mainGameView = view.getMainGameView();
         combatView = view.getCombatView();
+        gameOverView=view.getGameOverView();
     }
 
     private void initControllers() {
@@ -60,6 +64,10 @@ public class GameController implements GameObserver,EventObserver{
         combatController = new CombatController(game, combatView);
         combatController.setButton(view.getCombatButton());
         combatController.setNextView(mainGameView);
+
+        gameOverController= new GameOverController(game);
+        gameOverController.setCloseGameButton(view.getCloseGameButton());
+
 
 
 
@@ -95,6 +103,14 @@ public class GameController implements GameObserver,EventObserver{
     @Override
     public void initCombatScreen() {
         view.initCombatScreen();
+
+    }
+
+    @Override
+    public void initGameOverView() {
+        view.initGameOverView();
+
+
     }
 
     @Override

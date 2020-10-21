@@ -185,6 +185,7 @@ public class Game implements ControllerObservable {
     @Override
     public void notifyGameStart() {
         observer.initMapData();
+
     }
 
     @Override
@@ -195,6 +196,12 @@ public class Game implements ControllerObservable {
     @Override
     public void notifyCombat() {
         observer.initCombatScreen();
+    }
+
+    @Override
+    public void notifyGameOver() {
+        observer.initGameOverView();
+
     }
 
     public String getEventEffectText(){
@@ -361,6 +368,7 @@ public class Game implements ControllerObservable {
         }
     }
 
+
      GameState getRandomHaunt() {
         return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
     }
@@ -398,6 +406,7 @@ public class Game implements ControllerObservable {
         board = new Board();
         listOfHaunts.add(new InsanityHauntState());
     }
+    
 
 
     public void resetGame() { //TODO: discuss if this is the way we want to do it. If it is implement a method in controller which resets view.

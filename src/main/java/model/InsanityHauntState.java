@@ -76,6 +76,7 @@ public class InsanityHauntState implements GameState {
                 int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
                 int damage = Math.max(0,insanePlayerStrenght - playerInRoomStrenght);
                 p.getCharacter().updateStatFromCombat(Stat.STAMINA, damage);
+
             }
         }
     }
@@ -88,6 +89,7 @@ public class InsanityHauntState implements GameState {
     public boolean winConditionChecker() {
         if(game.getPlayerList().isEmpty() || (game.getPlayerList().size() == 1 && game.getPlayerList().get(0).isHaunted())){
             System.out.println("Monster Won");
+            game.notifyGameOver();
             return true;
         }
         return false;

@@ -10,6 +10,7 @@ public interface GameObserver {
     void updateTurn();
     void initHauntView();
     void initCombatScreen();
+    void initGameOverView();
 
 
 }

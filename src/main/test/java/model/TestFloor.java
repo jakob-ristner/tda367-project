@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testFloor {
+public class TestFloor {
 
     /**
      * Created a 6*6 matrix, while loop in order to fill an eventlist with 36 events.

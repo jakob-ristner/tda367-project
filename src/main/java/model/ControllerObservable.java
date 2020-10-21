@@ -15,4 +15,5 @@ public interface ControllerObservable {
      void notifyGameStart();
      void notifyHaunt();
      void notifyCombat();
+     void notifyGameOver();
 }
