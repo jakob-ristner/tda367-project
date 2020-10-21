@@ -15,11 +15,10 @@ public class GameWonEventView extends EventView {
         gameWonButton.setLayoutX(eventText.getLayoutX());
         gameWonButton.setLayoutY(eventPane.getLayoutY() + 220);
         gameWonButton.setFont(Font.font("Ink Free",20));
-        gameWonButton.setText("Congratz you've won the game!");
         addNode(gameWonButton);
 
 
-        header.setText("Badabing badabom du har nu haunt");
+        header.setText("Congratulations adventurers!");
         header.setFont(Font.font("Ink Free",20));
         header.setFill(Color.WHITE);
 

@@ -24,8 +24,8 @@ public class GameOverView implements ViewInterface{
         root.getChildren().add(rootPane);
 
         Text winText = new Text();
-        winText.setText("Haunted players have won");
-        winText.setWrappingWidth(400);
+        winText.setText("The horrors of the house have bested you. Haunted players have won.");
+        winText.setWrappingWidth(600);
         winText.setLayoutX(width/2 - winText.getWrappingWidth()/2);
 
         winText.setLayoutY(200);
@@ -37,8 +37,9 @@ public class GameOverView implements ViewInterface{
         closeGameButton = new Button();
         closeGameButton.setPrefSize(width/8, height/8);
         closeGameButton.setLayoutX(width/2 - closeGameButton.getPrefWidth() + 80);
-        closeGameButton.setLayoutY(400);
+        closeGameButton.setLayoutY(520);
         closeGameButton.setText("Exit Game");
+        closeGameButton.setFont(Font.font("Ink Free",25));
         addNode(closeGameButton);
 
     }
