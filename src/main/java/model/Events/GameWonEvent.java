@@ -5,6 +5,7 @@ import model.Player;
 public class GameWonEvent extends GameEvent {
 
     int eventType = -4;
+
     String eventText = "You bested the horrors of the house and escaped. Adventurer side wins!";
 
     public GameWonEvent() {

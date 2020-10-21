@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 /**
  * Observer pattern between Game and Controller
