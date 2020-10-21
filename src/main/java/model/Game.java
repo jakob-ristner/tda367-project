@@ -181,7 +181,7 @@ public class Game implements ControllerObservable {
     List<Player> createListOfPlayersInSameRoom() {
         List <Player> listOfPlayersInTheSameRoom = new ArrayList<>();
         for (Player p : getPlayerList()) {
-            if (getCurrentPlayer().getX() == p.getX() && getCurrentPlayer().getY() == p.getY()) {
+            if (getCurrentPlayer().getX() == p.getX() && getCurrentPlayer().getY() == p.getY() && getCurrentPlayer().getFloor() == p.getFloor()) {
                 listOfPlayersInTheSameRoom.add(p);
             }
         }
@@ -385,7 +385,7 @@ public class Game implements ControllerObservable {
     }
 
     private void checkForHauntInit(){
-        if(eventCounter == 8 && gameState == null){
+        if(eventCounter == 10217239 && gameState == null){
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();
