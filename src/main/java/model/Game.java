@@ -328,6 +328,7 @@ public class Game implements ControllerObservable {
         for (int i = 0; i < deadPlayers.size(); i++) {
             playerList.remove(deadPlayers.get(i));
             playerAmount--;
+            if (currentPlayerIndex >= playerAmount)currentPlayerIndex--;
             /*
             if (playerAmount == 0) {
                 playerAmount = 1;
@@ -336,6 +337,8 @@ public class Game implements ControllerObservable {
              */
         }
     }
+
+
 
     public Tile getPlayerTile(Player player) {
         return board.getFloor(player.getFloor()).getTile(player.getX(), player.getY());
@@ -358,7 +361,7 @@ public class Game implements ControllerObservable {
     }
 
     private void checkForHauntInit(){
-        if(eventCounter == 10000 && gameState == null){
+        if(eventCounter == 1 && gameState == null){
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();
