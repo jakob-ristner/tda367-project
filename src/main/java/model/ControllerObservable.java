@@ -1,10 +1,5 @@
 package model;
 
-import controller.GameObserver;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * ObserverPattern between Controller and Game
  */

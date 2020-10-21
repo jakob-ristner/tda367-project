@@ -1,7 +1,5 @@
 package model;
 
-import controller.EventObserver;
-
 /**
  * All events implements this interface
  * activate() Tells the eventView to activate

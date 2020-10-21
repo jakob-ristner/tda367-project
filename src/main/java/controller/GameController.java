@@ -1,12 +1,13 @@
 package controller;
 
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import model.EventObserver;
 import model.Game;
+import model.GameObserver;
 import view.GameView;
 import view.ViewInterface;
 
-public class GameController implements GameObserver,EventObserver{
+public class GameController implements GameObserver, EventObserver {
     private Game game;
     private GameView view;
     private ViewInterface gameOverView;

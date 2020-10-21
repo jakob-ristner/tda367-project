@@ -1,7 +1,5 @@
 package model;
 
-import controller.EventObserver;
-import controller.GameObserver;
 import utilities.Coord;
 
 import java.util.ArrayList;
