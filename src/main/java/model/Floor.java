@@ -91,14 +91,14 @@ public class Floor {
     void addEventsRandom(List<Event> eventList) {
         int col;
         int row;
-        for (int i = 0; i < eventList.size(); i++) {
+        for (Event event : eventList) {
             row = rand.nextInt(tiles.length);
             col = rand.nextInt(tiles[0].length);
             while (tiles[row][col].hasEvent() || tiles[row][col].hasStair()) {
                 row = rand.nextInt(tiles.length);
                 col = rand.nextInt(tiles[0].length);
             }
-            tiles[row][col].setEvent(eventList.get(i));
+            tiles[row][col].setEvent(event);
         }
     }
 
