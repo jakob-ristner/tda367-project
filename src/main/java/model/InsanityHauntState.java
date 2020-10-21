@@ -88,7 +88,6 @@ public class InsanityHauntState implements GameState {
     @Override
     public boolean winConditionChecker() {
         if(game.getPlayerList().isEmpty() || (game.getPlayerList().size() == 1 && game.getPlayerList().get(0).isHaunted())){
-            System.out.println("Monster Won");
             game.notifyGameOver();
             return true;
         }

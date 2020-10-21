@@ -91,7 +91,6 @@ public class CombatScreenView implements ViewInterface{
             toRemove.add(staminaText);
 
             if(!damageMap.isEmpty() && damageMap.get(s) != 0){
-                System.out.println("DAMaGEOOOOOOOOOOO");
                 damageText = new Text();
                 damageText.setLayoutX(playerCircles.get(s).getCenterX() + 20);
 
@@ -101,10 +100,7 @@ public class CombatScreenView implements ViewInterface{
                 damageText.setFill(Color.RED);
                 addNode(damageText);
                 toRemove.add(damageText);
-
-                System.out.println(playerCircles.get(s).getCenterX() + 20);
-                System.out.println(playerCircles.get(s).getCenterY()-10);
-            }else System.out.println("Damage is zero");
+            }
 
         }
     }

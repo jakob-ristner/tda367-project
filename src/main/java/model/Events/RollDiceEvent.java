@@ -38,7 +38,6 @@ public class RollDiceEvent extends GameEvent {
     public void activate() {
         eventButtonText = "Roll " + statToRollOn.toString().toLowerCase() + " higher than " + numberToRollVersus + " to succeed!";
         observer.updateEventView(eventType, eventText);
-        System.out.println("rollDiceEvent");
     }
 
     /**
@@ -67,7 +66,6 @@ public class RollDiceEvent extends GameEvent {
             effectText = "You succeeded in the roll by rolling" + " " + diceRoll;
         }
         observer.updateEventEffect();
-        System.out.println("rolldice event triggered");
     }
 
 

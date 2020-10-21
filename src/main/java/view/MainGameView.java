@@ -163,7 +163,6 @@ public class MainGameView implements ViewInterface{
         playerSprites = new ArrayList<>();
         playersSpritesCurrentFloor = new ArrayList<>();
         playerCoords = game.getPlayerPositions();
-        System.out.println(game.getPlayerAmount());
         for (int i = 0; i < game.getPlayerAmount(); i++) {
             currCircle = new Circle();
             currCircle.setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
@@ -408,6 +407,11 @@ public class MainGameView implements ViewInterface{
     }
 
     private void updatePlayersPaneData() {
+        for (Integer i: game.getDeadPlayerIndices()) {
+            System.out.println("removing player");
+            playersPane.getChildren().remove(allPlayersList.get(i));
+            allPlayersList.remove(allPlayersList.get(i));
+        }
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
     }
 

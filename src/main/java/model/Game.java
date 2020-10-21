@@ -15,6 +15,7 @@ public class Game implements ControllerObservable {
     private static final boolean isInstanciated = false;
     private GameObserver observer;
     private List<Player> playerList;
+    private List<Integer> deadPlayerIndices;
 
     private List<Kharacter> characterList = KharacterFactory.getCharacters();
     private List<GameState> listOfHaunts = new ArrayList<>();
@@ -326,10 +327,12 @@ public class Game implements ControllerObservable {
     }
 
     public void removeDeadPlayersFromGame() {
+        deadPlayerIndices = new ArrayList<>(); //used for view;
         List<Player> deadPlayers = new ArrayList<>();
         for (int i = 0; i < playerList.size(); i ++) {
             if (playerList.get(i).isPlayerDead()) {
                 deadPlayers.add(playerList.get(i));
+                deadPlayerIndices.add(i);
             }
         }
         for (int i = 0; i < deadPlayers.size(); i++) {
@@ -343,6 +346,7 @@ public class Game implements ControllerObservable {
 
              */
         }
+        //observer.updateMapData();
     }
 
 
@@ -368,7 +372,7 @@ public class Game implements ControllerObservable {
     }
 
     private void checkForHauntInit(){
-        if(eventCounter == 10217239 && gameState == null){
+        if(eventCounter == 1 && gameState == null){
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();
@@ -412,6 +416,7 @@ public class Game implements ControllerObservable {
     private Game() {
         board = new Board();
         listOfHaunts.add(new InsanityHauntState());
+        deadPlayerIndices = new ArrayList<>();
     }
     
 
@@ -433,5 +438,11 @@ public class Game implements ControllerObservable {
 
     public List<Coord> getStairsUpOnCurrentFloor() {
         return board.getStairsUpOnCurrentFloor(getCurrentFloorNumber());
+    }
+
+    public List<Integer> getDeadPlayerIndices() {
+        List<Integer> copy = new ArrayList<>(deadPlayerIndices);
+        deadPlayerIndices.clear();
+        return copy;
     }
 }

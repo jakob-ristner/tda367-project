@@ -40,6 +40,8 @@ public class CombatController extends AbstractController{
                 showNextView();
                 combatButton.setDisable(false);
                 exitButton.setDisable(true);
+                game.removeDeadPlayersFromGame();
+                game.notifyGameData();
             }
         });
     }
