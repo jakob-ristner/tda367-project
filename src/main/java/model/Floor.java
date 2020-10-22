@@ -136,7 +136,7 @@ public class Floor {
     private void generateTileMap() {
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
-                tiles[i][j] = new Tile(i, j, tiles);
+                tiles[i][j] = new Tile(i, j, tiles.length,tiles[i].length);
             }
         }
     }

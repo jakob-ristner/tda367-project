@@ -17,9 +17,10 @@ public class Tile {
     private boolean hasStair;
 
 
-    public Tile(int i, int j, Tile[][] tiles) {
+
+    public Tile(int i, int j, int rowLength, int colLength) {
         hasEvent = false;
-        setDoors(i, j, tiles);
+        setDoors(i, j, rowLength,colLength);
     }
 
     void setStairUp(boolean stairUp){
@@ -44,11 +45,11 @@ public class Tile {
         return hasStair;
     }
 
-    private void setDoors(int col, int row, Tile[][] tiles) {
+    private void setDoors(int col, int row, int rowLength,int colLength) {
         if (row == 0) doorUp = false;
         if (col == 0) doorLeft = false;
-        if (row == tiles.length - 1) doorDown = false;
-        if (col == tiles[0].length - 1) doorRight = false;
+        if (row == rowLength - 1) doorDown = false;
+        if (col == colLength - 1) doorRight = false;
 
     }
 

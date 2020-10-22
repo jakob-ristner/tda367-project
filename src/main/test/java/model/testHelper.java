@@ -40,5 +40,23 @@ public class testHelper {
         Assert.assertEquals(currX,testPlayer.getX());
 
     }
+    @Test
+
+    public void testRollDiceEvent(){
+        Player testPlayer = new Player();
+        testPlayer.setCharacter(KharacterFactory.createRufus());
+        int statChange1 = -5;
+        int startStamina = testPlayer.getCharacter().getStat(Stat.from(3));
+
+        testEvent.testRollDiceEventNegative(testPlayer,statChange1,3);
+        Assert.assertEquals(startStamina+statChange1,testPlayer.getCharacter().getStat(Stat.STAMINA));
+
+        int statChange2 = 2;
+        testEvent.testRollDiceEventPositive(testPlayer,statChange2,3);
+        Assert.assertEquals(startStamina+statChange1,testPlayer.getCharacter().getStat(Stat.STAMINA));
+
+
+
+    }
 
 }

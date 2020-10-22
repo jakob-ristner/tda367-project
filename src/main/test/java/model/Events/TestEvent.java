@@ -53,11 +53,9 @@ public class TestEvent {
 
 
     public void testItemEvent(Player player,Item item){
-
         gameEvent.setObserver(dummyObserver);
         ItemEvent itemEvent = new ItemEvent(item,"Testin123",3);
         itemEvent.handleEvent(player);
-
     }
     public void testMoveEventNegative(Player player){
         gameEvent.setObserver(dummyObserver);
@@ -71,5 +69,16 @@ public class TestEvent {
                 1,0,1,-2,true,true);
         moveEvent.handleEvent(player);
     }
-
+    public void testRollDiceEventNegative(Player player, int statChange,int statToRollOn){
+        gameEvent.setObserver(dummyObserver);
+        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn,500,statChange,
+                "Testing123",-1,true);
+        rollDiceEvent.handleEvent(player);
+    }
+    public void testRollDiceEventPositive(Player player, int statChange,int statToRollOn){
+        gameEvent.setObserver(dummyObserver);
+        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn,500,statChange,
+                "Testing123",-1,true);
+        rollDiceEvent.handleEvent(player);
+    }
 }
