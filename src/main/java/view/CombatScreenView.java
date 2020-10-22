@@ -15,6 +15,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * CombatScreenView prompts the players to combat and
+ * displays the stats of the players currently involved in combat.
+ */
+
 public class CombatScreenView implements ViewInterface {
     private Pane rootPane;
     private int width;

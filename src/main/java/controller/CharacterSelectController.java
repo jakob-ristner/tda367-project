@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Controller for the characterSelectView
+ * sets all the buttons and handlers
  */
 
 public class CharacterSelectController extends AbstractController {

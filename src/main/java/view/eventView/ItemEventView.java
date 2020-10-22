@@ -5,6 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * ItemEventView shows a view when a player picks up an item
+ * It displays the items attributes etc.
+ */
+
 public class ItemEventView extends EventView {
     Button eventButton;
 

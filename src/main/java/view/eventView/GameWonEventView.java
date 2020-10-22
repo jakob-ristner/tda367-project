@@ -5,6 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * GameWonEventView shows a end screen a players wins.
+ */
+
 public class GameWonEventView extends EventView {
     Button gameWonButton;
 

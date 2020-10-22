@@ -4,6 +4,11 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 
+/**
+ * HauntEventView shows a screen explaining one player has been
+ * haunted and explains the new rules of the game
+ */
+
 public class HauntEventView extends EventView {
     Button hauntButton;
 

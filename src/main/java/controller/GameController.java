@@ -7,6 +7,12 @@ import model.GameObserver;
 import view.GameView;
 import view.ViewInterface;
 
+/**
+ * Controller for GameView and holder for all other controllers
+ * Inits all controllers and their views
+ * Also sets and handles buttons for GameView
+ */
+
 public class GameController implements GameObserver, EventObserver {
     private Game game;
     private GameView view;

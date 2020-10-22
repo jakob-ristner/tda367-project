@@ -5,6 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * RollDiceEventView shows a view prompting the player that they
+ * have entered an Rolldice event, It prompts them to roll the dice
+ * and depending on the dice roll they might lose or gains stats
+ */
+
 public class RollDiceEventView extends EventView {
     Button rollDiceButton;
 

@@ -11,6 +11,10 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import view.ViewInterface;
 
+/**
+ * Abstract class that defines all common elements for the eventViews
+ * Defines windows size etc.
+ */
 
 public abstract class EventView implements ViewInterface {
     Pane rootPane;

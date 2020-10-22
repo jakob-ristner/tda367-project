@@ -10,6 +10,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * StartScreenView displays the startScreen prompting players to
+ * set amount of players
+ */
 
 public class StartScreenView implements ViewInterface {
     private Pane pane;

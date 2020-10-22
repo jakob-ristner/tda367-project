@@ -11,6 +11,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * GameOverView shows a screen when the game is over and
+ * prompts the player to exit the game
+ */
 
 public class GameOverView implements ViewInterface {
     private Pane rootPane;

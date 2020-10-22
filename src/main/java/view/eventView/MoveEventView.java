@@ -5,6 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * MoveEventView shows a view prompting the player that they
+ * have entered an move event, It prompts them to roll the dice
+ * and depending on the dice roll the event will have different outcomes
+ */
+
 public class MoveEventView extends EventView {
     Button moveButton;
 

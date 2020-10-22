@@ -12,6 +12,11 @@ import view.eventView.*;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * GameView sets all the elements for the other view and
+ * also inits them. It doesn't itself display anything
+ */
+
 public class GameView {
     public static final int WINDOW_H = 800;
     public static final int WINDOW_W = 1300;

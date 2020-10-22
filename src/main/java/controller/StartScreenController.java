@@ -7,6 +7,11 @@ import javafx.scene.control.Spinner;
 
 import model.Game;
 
+/**
+ * Controller for the StartScreen
+ * sets all the buttons/spinners and handlers
+ * also sets player amount through spinner
+ */
 
 public class StartScreenController extends AbstractController {
     private Button confirmButton;

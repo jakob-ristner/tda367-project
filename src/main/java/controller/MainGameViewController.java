@@ -7,6 +7,11 @@ import model.Game;
 
 import java.util.HashMap;
 
+/**
+ * Controller for MainGameView
+ * sets all buttons and handlers and sends updates to Game
+ */
+
 public class MainGameViewController extends AbstractController {
     private HashMap<Integer, Button> buttonMap;
     private Button endTurnButton;

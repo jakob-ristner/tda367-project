@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * CharacterSelectView prompt the player to pick a character
+ * and displays the stats of the characters
+ */
+
 public class CharacterSelectView implements ViewInterface {
     private Pane pane;
 

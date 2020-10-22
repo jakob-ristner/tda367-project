@@ -5,6 +5,10 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import model.Game;
 
+/**
+ * Controller for GameOverView
+ * sets all the buttons and handlers
+ */
 
 public class GameOverController extends AbstractController {
     Button closeGameButton;

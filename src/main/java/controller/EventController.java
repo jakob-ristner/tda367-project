@@ -8,6 +8,10 @@ import view.ViewInterface;
 
 import java.util.HashMap;
 
+/**
+ * Controller for all of the EventViews
+ * sets all buttons and handlers and send updates to game
+ */
 public class EventController extends AbstractController {
     private HashMap<String, Button> eventButtonMap;
     private ViewInterface mainGameView;
