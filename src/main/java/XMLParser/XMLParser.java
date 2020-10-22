@@ -14,7 +14,6 @@ public class XMLParser {
     private ArrayList<MoveEventData> moveEventList = new ArrayList<>();
     private ArrayList<RollEventData> rollEventList = new ArrayList<>();
     private ArrayList<ItemEventData> itemEventList = new ArrayList<>();
-    private ArrayList<EventData> eventDataList = new ArrayList<>();
 
     private Element element;
 
@@ -48,10 +47,7 @@ public class XMLParser {
                     itemEventData.setSanity(parseInt(getElement("sanity")));
                     itemEventData.setItemName(getElement("itemName"));
 
-
-
                     itemEventList.add(itemEventData);
-                    eventDataList.add(itemEventData);
 
                 }else if (parseInt(getElement("eventType")) == -2){
                     RollEventData rollEventData = new RollEventData();
@@ -63,10 +59,7 @@ public class XMLParser {
                     rollEventData.setStat(parseInt((getElement("statToRollOn"))));
                     rollEventData.setStatChange(parseInt(getElement("statChange")));
 
-
-
                     rollEventList.add(rollEventData);
-                    eventDataList.add(rollEventData);
 
                 }else if (parseInt(getElement("eventType")) == -3){
                     MoveEventData moveEventData = new MoveEventData();
@@ -82,13 +75,7 @@ public class XMLParser {
                     moveEventData.setDeltaX(parseInt(getElement("deltaX")));
                     moveEventData.setPositiveEvent(Boolean.parseBoolean(getElement("positiveEvent")));
 
-
-
-
-
-
                     moveEventList.add(moveEventData);
-                    eventDataList.add(moveEventData);
                 }
             }
 
@@ -136,10 +123,6 @@ public class XMLParser {
         return element.getElementsByTagName(str).item(0).getTextContent();
 
 
-    }
-
-    public ArrayList<EventData> getEventDataList() {
-        return eventDataList;
     }
 
     public ArrayList<MoveEventData> getMoveEventList() {
