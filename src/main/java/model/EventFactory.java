@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Factory for creation of events.
+ */
 public abstract class EventFactory {
 
     /**

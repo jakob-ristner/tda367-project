@@ -3,6 +3,10 @@ package model;
 
 import java.util.HashMap;
 
+
+/**
+ * Class representing a room or a Tile on the board. Has doors to other rooms and holds events and holds stairs.
+ */
 public class Tile {
     private Event event;
 
@@ -54,12 +58,12 @@ public class Tile {
     }
 
 
-    public boolean hasEvent() {
+    boolean hasEvent() {
         return hasEvent;
     }
 
 
-    public void setEvent(Event event) {
+    void setEvent(Event event) {
         hasEvent = true;
         this.event = event;
     }
@@ -67,7 +71,7 @@ public class Tile {
     /**
      * HashMap so that doors is easily accessible through an int
      *
-     * @return
+     * @return Hashmap
      */
     HashMap<Integer, Boolean> getDoors() {
         HashMap<Integer, Boolean> doors = new HashMap<>();
@@ -78,6 +82,11 @@ public class Tile {
         return doors;
     }
 
+    /**
+     * If there exists an event on this tile then this method activates the event.
+     *
+     * @return True if it succeds in activating the event and false if it doesn't.
+     */
     boolean tryActivateEvent() {
         if (hasEvent) {
             event.activate();
@@ -92,7 +101,7 @@ public class Tile {
      * @param currentPlayer player that enters the tile
      */
 
-    public void handleEvent(Player currentPlayer) {
+    void handleEvent(Player currentPlayer) {
         event.handleEvent(currentPlayer);
     }
 

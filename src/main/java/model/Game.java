@@ -30,6 +30,18 @@ public class Game implements ControllerObservable {
 
 
     /**
+     * singleton pattern
+     *
+     * @return instance of game
+     */
+    public static Game getInstance() {
+        if (gameInstance == null) {
+            gameInstance = new Game();
+        }
+        return gameInstance;
+    }
+
+    /**
      * Moves currentPlayer and does sanityChecks for the move
      *
      * @param dx delta to move in X
@@ -51,6 +63,61 @@ public class Game implements ControllerObservable {
         notifyGameData();
 
     }
+
+    public void updateCurrentPlayer() {
+        getCurrentPlayer().resetSteps();
+        currentPlayerIndex++;
+        if (currentPlayerIndex == playerAmount + 1) {
+            currentPlayerIndex--;
+        }
+        observer.updateCurrentPlayer();
+        currentPlayerIndex = currentPlayerIndex % playerAmount;
+    }
+
+    public boolean checkAllPlayersHaveChars() {
+        for (Player player : playerList) {
+            if (!player.getHasCharacter())
+                return false;
+        }
+        return true;
+    }
+
+    public void endTurn() {
+        removeDeadPlayersFromGame();
+        checkForHauntInit();
+        updateCurrentPlayer();
+        notifyGameData();
+    }
+
+    /**
+     * Creates the amount of players that the game is supposed to have.
+     * @param amountPlayers The amount of players needed.
+     */
+    void createPlayers(int amountPlayers) {
+        Player currPlayer;
+        playerList = new ArrayList<>();
+        for (int i = 0; i < amountPlayers; i++) {
+            currPlayer = new Player();
+            currPlayer.setPos(new Coord(i, 0, 1));
+            playerList.add(currPlayer);
+        }
+    }
+
+
+    /**
+     * Creates a list of all the players that are currently on the same Tile
+     * @return List of players
+     */
+    List<Player> createListOfPlayersInSameRoom() {
+        List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
+        for (Player p : getPlayerList()) {
+            if (p.getPos().equals(getCurrentPlayer().getPos())) {
+                listOfPlayersInTheSameRoom.add(p);
+            }
+        }
+        return listOfPlayersInTheSameRoom;
+    }
+
 
     /**
      * Checks if haunt is activated
@@ -90,25 +157,13 @@ public class Game implements ControllerObservable {
 
 
     public List<Player> getPlayerList() {
-        return playerList;
+        List<Player> players = new ArrayList<>(playerList);
+        return players;
     }
 
     public Player getCurrentPlayer() {
         return playerList.get(currentPlayerIndex);
     }
-
-    public void updateCurrentPlayer() {
-        getCurrentPlayer().resetSteps();
-        currentPlayerIndex++;
-        if (currentPlayerIndex == playerAmount + 1) {
-            currentPlayerIndex--;
-        }
-        observer.updateCurrentPlayer();
-        currentPlayerIndex = currentPlayerIndex % playerAmount;
-
-
-    }
-
 
     public List<String> getHauntedNamesInSameRoom() {
         List<String> hauntedNameList = new ArrayList<>();
@@ -159,15 +214,6 @@ public class Game implements ControllerObservable {
         staminaNameMap = getStaminaNameMap();
     }
 
-    List<Player> createListOfPlayersInSameRoom() {
-        List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
-        for (Player p : getPlayerList()) {
-            if (p.getPos().equals(getCurrentPlayer().getPos())) {
-                listOfPlayersInTheSameRoom.add(p);
-            }
-        }
-        return listOfPlayersInTheSameRoom;
-    }
 
 
     @Override
@@ -211,14 +257,6 @@ public class Game implements ControllerObservable {
         return currentPlayerIndex;
     }
 
-    public boolean checkAllPlayersHaveChars() {
-        for (Player player : playerList) {
-            if (!player.getHasCharacter())
-                return false;
-        }
-        return true;
-    }
-
     public List<Coord> getPlayerPositions() {
         List<Coord> playerPositions = new ArrayList<>();
         for (Player player : playerList)
@@ -234,7 +272,7 @@ public class Game implements ControllerObservable {
         return getCurrentPlayer().getCharacterStatsAsStrings();
     }
 
-    public Board getBoard() {
+    Board getBoard() {
         return board;
     }
 
@@ -260,13 +298,6 @@ public class Game implements ControllerObservable {
         return getCurrentPlayer().getStepsLeft();
     }
 
-    public void endTurn() {
-        removeDeadPlayersFromGame();
-        checkForHauntInit();
-        updateCurrentPlayer();
-        notifyGameData();
-    }
-
     public List<String> getCurrentPlayerItemsAsText() {
         return getCurrentPlayer().getItemNames();
     }
@@ -276,17 +307,6 @@ public class Game implements ControllerObservable {
         getCurrentPlayer().setCharacter(characterList.get(index));
     }
 
-    /**
-     * singleton pattern
-     *
-     * @return instance of game
-     */
-    public static Game getInstance() {
-        if (gameInstance == null) {
-            gameInstance = new Game();
-        }
-        return gameInstance;
-    }
 
     /**
      * registers event observer
@@ -347,7 +367,7 @@ public class Game implements ControllerObservable {
     /**
      * starts haunt if event counter reaches threshold
      */
-    void eventTriggered() {
+    private void eventTriggered() {
         eventCounter++;
     }
 
@@ -374,15 +394,6 @@ public class Game implements ControllerObservable {
     }
 
 
-    void createPlayers(int amountPlayers) {
-        Player currPlayer;
-        playerList = new ArrayList<>();
-        for (int i = 0; i < amountPlayers; i++) {
-            currPlayer = new Player();
-            currPlayer.setPos(new Coord(i, 0, 1));
-            playerList.add(currPlayer);
-        }
-    }
 
     private Game() {
         board = new Board();

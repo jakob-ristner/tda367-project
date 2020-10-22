@@ -16,11 +16,11 @@ public class Item {
         setPickupText();
     }
 
-    public HashMap<Stat, Integer> getStats() {
+    HashMap<Stat, Integer> getStats() {
         return stats;
     }
 
-    public int getStat(Stat stat) {
+    int getStat(Stat stat) {
         return stats.get(stat);
     }
 

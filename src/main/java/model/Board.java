@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class representing the board on which the game is played on. Holds a number of floors.
+ */
 public class Board {
 
     private final Random rand = new Random();
@@ -20,7 +23,7 @@ public class Board {
      * A board consists of three floors
      * Receives a list of events from EventFactory
      */
-    public Board() {
+    Board() {
         floors = new ArrayList<>();
         events = EventFactory.createEventList();
 
@@ -128,10 +131,10 @@ public class Board {
     }
 
     List<Coord> getStairsUpOnCurrentFloor(int floor) {
-        return floors.get(floor).stairsUp(floor);
+        return floors.get(floor).getStairsUp(floor);
     }
 
     List<Coord> getStairsDownOnCurrentFloor(int floor) {
-        return floors.get(floor).stairsDown(floor);
+        return floors.get(floor).getStairsDown(floor);
     }
 }
