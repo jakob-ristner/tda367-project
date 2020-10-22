@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+
+/**
+ * Class representing a floor in the haunted house. Holds a number of tiles which can be likened to rooms.
+ */
 public class Floor {
     private final int mapSize;
     private Tile[][] tiles;
@@ -141,7 +145,7 @@ public class Floor {
      * @param currentPlayer current Active player
      * @return String of text to be displayed on mainGameView.
      */
-    public String getEventEffectText(Player currentPlayer) {
+    String getEventEffectText(Player currentPlayer) {
         Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
         return tile.getEventEffectText();
     }
@@ -157,7 +161,12 @@ public class Floor {
         return tile.getEventButtonText();
     }
 
-    List<Coord> stairsUp(int floor) {
+    /**
+     * Getter for where the stairs up are located.
+     * @param floor
+     * @return List of coords where the stairs up are.
+     */
+    List<Coord> getStairsUp(int floor) {
         List<Coord> coords = new ArrayList<>();
         for (int x = 0; x < mapSize; x++) {
             for (int y = 0; y < mapSize; y++) {
@@ -169,7 +178,12 @@ public class Floor {
         return coords;
     }
 
-    List<Coord> stairsDown(int floor) {
+    /**
+     * Getter for where the stairs are located.
+     * @param floor
+     * @return List of coords where the stairs are.
+     */
+    List<Coord> getStairsDown(int floor) {
         List<Coord> coords = new ArrayList<>();
         for (int x = 0; x < mapSize; x++) {
             for (int y = 0; y < mapSize; y++) {

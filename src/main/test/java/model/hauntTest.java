@@ -21,7 +21,7 @@ public class hauntTest {
             p.setCharacter(KharacterFactory.createMedera());
         }
 
-        game.eventTriggered();
+
         InsanityHauntState gs = (InsanityHauntState)game.getRandomHaunt();
         //gs.init();
         gs.game = game;
