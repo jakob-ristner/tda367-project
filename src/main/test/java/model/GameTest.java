@@ -2,8 +2,41 @@ package model;
 
 import org.junit.Assert;
 import org.junit.Test;
+import utilities.Coord;
 
 public class GameTest {
+    class DummyObserver implements GameObserver{
+        @Override
+        public void updateCurrentPlayer() {
+
+        }
+
+        @Override
+        public void updateMapData() {
+
+        }
+
+        @Override
+        public void initMapData() {
+
+        }
+
+        @Override
+        public void initHauntView() {
+
+        }
+
+        @Override
+        public void initCombatScreen() {
+
+        }
+
+        @Override
+        public void initGameOverView() {
+
+        }
+    }
+
     /**
      * Testing if game can be initialized
      */
@@ -24,6 +57,21 @@ public class GameTest {
         game.setPlayerAmount(playerAmount);
         Assert.assertEquals(game.getPlayerList().size(), playerAmount);
 
+    }
+    @Test
+    public void testMovePlayer(){
+        DummyObserver dummyObserver = new DummyObserver();
+        Game game = Game.getInstance();
+        game.setObserver(dummyObserver);
+
+        game.createPlayers(1);
+        game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
+        Coord stairCoord = game.getStairsUpOnCurrentFloor().get(0);
+
+
+        game.getCurrentPlayer().setPos(new Coord(stairCoord.getX()+1,stairCoord.getY(),stairCoord.getFloor()));
+        game.moveCurrentPlayer(-1,0);
+        Assert.assertEquals(stairCoord.getFloor()+1,game.getCurrentPlayer().getFloor());
     }
 
     /**
