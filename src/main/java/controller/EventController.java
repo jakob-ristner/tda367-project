@@ -11,21 +11,22 @@ import java.util.HashMap;
 public class EventController extends AbstractController {
     private HashMap<String, Button> eventButtonMap;
     private ViewInterface mainGameView;
+
     protected EventController(Game game) {
         super(game);
 
     }
 
-    void setMainGameView(ViewInterface mainGameView){
+    void setMainGameView(ViewInterface mainGameView) {
         this.mainGameView = mainGameView;
     }
 
-    void setEventButtonMap(HashMap<String, Button> eventButtonMap){
+    void setEventButtonMap(HashMap<String, Button> eventButtonMap) {
         this.eventButtonMap = eventButtonMap;
         initEventButtons();
     }
 
-    private void initEventButtons(){
+    private void initEventButtons() {
         eventButtonMap.get("RollDiceEvent").setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

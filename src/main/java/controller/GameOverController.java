@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import model.Game;
 
 
-
 public class GameOverController extends AbstractController {
     Button closeGameButton;
 
@@ -14,12 +13,13 @@ public class GameOverController extends AbstractController {
     GameOverController(Game game) {
         super(game);
     }
+
     void setCloseGameButton(Button closeGameButton) {
         this.closeGameButton = closeGameButton;
         initButton();
     }
 
-    void initButton(){
+    void initButton() {
         closeGameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

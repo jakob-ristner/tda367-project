@@ -23,7 +23,7 @@ public class GameController implements GameObserver, EventObserver {
     private CombatController combatController;
 
 
-    public GameController(GameView view, Game game){
+    public GameController(GameView view, Game game) {
         this.view = view;
         this.game = game;
         initViews();
@@ -40,7 +40,7 @@ public class GameController implements GameObserver, EventObserver {
         characterSelectView = view.getCharacterSelectView();
         mainGameView = view.getMainGameView();
         combatView = view.getCombatView();
-        gameOverView=view.getGameOverView();
+        gameOverView = view.getGameOverView();
     }
 
     private void initControllers() {
@@ -65,10 +65,8 @@ public class GameController implements GameObserver, EventObserver {
         combatController.setButton(view.getCombatButton());
         combatController.setNextView(mainGameView);
 
-        gameOverController= new GameOverController(game);
+        gameOverController = new GameOverController(game);
         gameOverController.setCloseGameButton(view.getCloseGameButton());
-
-
 
 
     }
@@ -112,6 +110,7 @@ public class GameController implements GameObserver, EventObserver {
     public void updateEventEffect() {
         view.updateEventEffect();
     }
+
     @Override
     public void updateEventView(int eventType, String eventText) {
         view.updateEventView(eventType, eventText);

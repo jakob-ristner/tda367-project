@@ -17,7 +17,7 @@ public class Player {
     private int steps;
     private boolean hasCharacter;
     private boolean isHaunted;
-    private boolean isDead;
+
 
     private final Inventory inventory;
     private Coord pos;
@@ -52,6 +52,7 @@ public class Player {
 
     /**
      * Works like a + operator
+     *
      * @param coord the coord to be added to player cord
      */
     public void addCoord(Coord coord) {
@@ -73,7 +74,7 @@ public class Player {
         resetSteps();
     }
 
-    boolean isPlayerDead() {    //Is it intended that a person should die if any stat is below 0?
+    boolean isPlayerDead() {
         for (int playerStat : character.getStats().values()) {
             if (playerStat <= 0) {
                 return true;

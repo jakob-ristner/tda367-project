@@ -44,10 +44,6 @@ public class MoveEventData extends EventData {
         return stat;
     }
 
-    public int getStatChange() {
-        return statChange;
-    }
-
     public int getEventThreshold() {
         return eventThreshold;
     }

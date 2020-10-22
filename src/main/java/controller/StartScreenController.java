@@ -8,14 +8,13 @@ import javafx.scene.control.Spinner;
 import model.Game;
 
 
-public class StartScreenController extends AbstractController{
+public class StartScreenController extends AbstractController {
     private Button confirmButton;
     private Spinner<Integer> intInput;
 
-    public StartScreenController(Game game){
+    public StartScreenController(Game game) {
         super(game);
     }
-
 
 
     void setConfirmButton(Button confirmButton) {

@@ -7,7 +7,7 @@ import model.Game;
 
 import java.util.HashMap;
 
-public class MainGameViewController extends AbstractController{
+public class MainGameViewController extends AbstractController {
     private HashMap<Integer, Button> buttonMap;
     private Button endTurnButton;
 

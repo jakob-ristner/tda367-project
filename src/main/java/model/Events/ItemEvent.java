@@ -11,8 +11,7 @@ public class ItemEvent extends GameEvent {
     private String eventButtonText;
 
     /**
-     *
-     * @param item the item the character receives
+     * @param item      the item the character receives
      * @param eventText Information for the player
      * @param eventType In order to know which view to use
      */
@@ -38,17 +37,17 @@ public class ItemEvent extends GameEvent {
 
     /**
      * The eventhandler. Adds an item to the players inventory and sets the text for what has happened.
+     *
      * @param currentPlayer
      */
     @Override
-    public void handleEvent(Player currentPlayer){
+    public void handleEvent(Player currentPlayer) {
         currentPlayer.addToInventory(item);
         effectText = "You obtained " + item.getName();
         observer.updateEventEffect();
     }
 
     /**
-     *
      * @return Integer representation of the eventType
      */
     @Override

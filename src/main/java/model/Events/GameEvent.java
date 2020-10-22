@@ -23,7 +23,7 @@ public abstract class GameEvent implements Event {
     }
 
     @Override
-    public void setObserver(EventObserver observer){
+    public void setObserver(EventObserver observer) {
         GameEvent.observer = observer;
     }
 }

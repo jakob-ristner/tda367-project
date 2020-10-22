@@ -13,7 +13,7 @@ public interface Event {
 
     void setObserver(EventObserver observer);
 
-    int getEventType(); //for xml parser
+    int getEventType();
 
     boolean isPermanent();
 

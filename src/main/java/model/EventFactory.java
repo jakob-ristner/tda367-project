@@ -14,6 +14,7 @@ public abstract class EventFactory {
 
     /**
      * generates list of events from xml file
+     *
      * @return event list
      */
     static List<Event> createEventList() {
@@ -38,7 +39,7 @@ public abstract class EventFactory {
     /**
      * @return returns events that triggers the "GameWonEventView"
      */
-    static Event createEscapeEvent(){
+    static Event createEscapeEvent() {
         GameWonEvent event = new GameWonEvent();
         return event;
     }
@@ -71,7 +72,7 @@ public abstract class EventFactory {
 
     private static Event createMoveEvent(XMLParser parser, int index) {
         int stat = parser.getMoveEventList().get(index).getStat();
-        int treshHold = parser.getMoveEventList().get(index).getEventThreshold();
+        int threshold = parser.getMoveEventList().get(index).getEventThreshold();
 
         String eventText = parser.getMoveEventList().get(index).getEventText();
         int eventType = parser.getMoveEventList().get(index).getEventType();
@@ -82,7 +83,7 @@ public abstract class EventFactory {
         boolean positiveEvent = parser.getMoveEventList().get(index).getPositiveEvent();
 
 
-        MoveEvent event = new MoveEvent(stat, treshHold, eventText,
+        MoveEvent event = new MoveEvent(stat, threshold, eventText,
                 deltaX, deltaY, deltaZ, eventType,
                 true, positiveEvent);
         return event;

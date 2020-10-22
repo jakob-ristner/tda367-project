@@ -23,7 +23,6 @@ public enum Stat {
     }
 
     /**
-     *
      * @param value stat identifier
      * @return stat represented by id value
      */

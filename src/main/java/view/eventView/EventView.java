@@ -19,7 +19,6 @@ public abstract class EventView implements ViewInterface {
     Text header;
 
 
-
     int width;
     int height;
 
@@ -30,7 +29,7 @@ public abstract class EventView implements ViewInterface {
 
 
         rootPane = new Pane();
-        rootPane.setPrefSize(width,height);
+        rootPane.setPrefSize(width, height);
         rootPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5)");
         root.getChildren().add(rootPane);
 
@@ -38,19 +37,19 @@ public abstract class EventView implements ViewInterface {
         int dheight = 300;
         eventPane = new AnchorPane();
         eventPane.setPrefSize(width - dwidth, height - dheight);
-        eventPane.setLayoutX(dwidth/2);
-        eventPane.setLayoutY(dheight/2);
+        eventPane.setLayoutX(dwidth / 2);
+        eventPane.setLayoutY(dheight / 2);
         eventPane.setStyle("-fx-background-color: black; -fx-border-size: 2px; -fx-border-color: white;");
         rootPane.getChildren().add(eventPane);
 
         eventText = new TextArea();
 
-        eventText.setPrefSize((width -dwidth)/2, (height -dheight)/2);
-        eventText.setLayoutX(eventPane.getLayoutX() + dwidth/3);
+        eventText.setPrefSize((width - dwidth) / 2, (height - dheight) / 2);
+        eventText.setLayoutX(eventPane.getLayoutX() + dwidth / 3);
         eventText.setLayoutY(eventPane.getLayoutY() - 50);
         //eventText.setText("Lorem Ipsum Dolar Sit Amet...");
         eventText.setStyle("-fx-border-color: white; -fx-control-inner-background: black; -fx-background-color: black; -fx-border-size: 2px; -fx-text-fill: white;");
-        eventText.setFont(Font.font("Ink Free",20));
+        eventText.setFont(Font.font("Ink Free", 20));
         eventText.setWrapText(true);
 
 
@@ -58,18 +57,13 @@ public abstract class EventView implements ViewInterface {
         addNode(eventText);
 
         header = new Text();
-        header.setX(eventPane.getPrefWidth()/3);
+        header.setX(eventPane.getPrefWidth() / 3);
         header.setY(eventPane.getMinHeight() + 50);
         header.setTextAlignment(TextAlignment.CENTER);
         header.setStyle("-fx-font-size: 20;");
         addNode(header);
     }
 
-
-
-    public Pane getRootPane() {
-        return rootPane;
-    }
 
     public abstract Button getEventButton();
 
@@ -79,11 +73,11 @@ public abstract class EventView implements ViewInterface {
     }
 
     @Override
-    public void viewToFront(){
+    public void viewToFront() {
         rootPane.toFront();
     }
 
-    public void setEventButtonText(String s){
+    public void setEventButtonText(String s) {
         getEventButton().setText(s);
     }
 

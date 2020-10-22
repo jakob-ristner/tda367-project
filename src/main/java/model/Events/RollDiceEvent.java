@@ -17,13 +17,12 @@ public class RollDiceEvent extends GameEvent {
     private int statChange;
 
     /**
-     *
-     * @param statToRollOn which stat to roll on, using int as an identifier for stat
+     * @param statToRollOn       which stat to roll on, using int as an identifier for stat
      * @param numberToRollVersus the value you have to roll versus
-     * @param statChange the stat outcome after an event
-     * @param eventText for player interaction, text involving the event
-     * @param eventType In order to know which view to use
-     * @param permanent checks if the event is permanent
+     * @param statChange         the stat outcome after an event
+     * @param eventText          for player interaction, text involving the event
+     * @param eventType          In order to know which view to use
+     * @param permanent          checks if the event is permanent
      */
     public RollDiceEvent(int statToRollOn, int numberToRollVersus, int statChange, String eventText, int eventType, boolean permanent) {
         super(permanent);
@@ -54,29 +53,29 @@ public class RollDiceEvent extends GameEvent {
      * RollDiceEvent can both be positive and negative, hence the if statements.
      * Sets effectText.
      * Asks controller to update view.
+     *
      * @param currentPlayer
      */
     @Override
     public void handleEvent(Player currentPlayer) {
-        HashMap<Stat,Integer> statsToUpdate = new HashMap<>();
+        HashMap<Stat, Integer> statsToUpdate = new HashMap<>();
 
         statsToUpdate.put(statToRollOn, statChange);
         int diceRoll = currentPlayer.rollStat(statToRollOn);
 
-        if(numberToRollVersus > diceRoll){
+        if (numberToRollVersus > diceRoll) {
             effectText = "You rolled " + diceRoll + " which is lower than " + numberToRollVersus;
-            if(!positiveEvent){
+            if (!positiveEvent) {
                 currentPlayer.getCharacter().updateStat(statsToUpdate);
             }
-        }else{
-            if(positiveEvent){
+        } else {
+            if (positiveEvent) {
                 currentPlayer.getCharacter().updateStat(statsToUpdate);
             }
             effectText = "You succeeded in the roll by rolling" + " " + diceRoll;
         }
         observer.updateEventEffect();
     }
-
 
 
     @Override

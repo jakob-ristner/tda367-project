@@ -5,18 +5,19 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class RollDiceEventView extends EventView{
+public class RollDiceEventView extends EventView {
     Button rollDiceButton;
+
     public RollDiceEventView(Group root, int width, int height) {
         super(root, width, height);
         rollDiceButton = new Button();
         rollDiceButton.setPrefSize(eventText.getPrefWidth(), 50);
         rollDiceButton.setLayoutX(eventText.getLayoutX());
         rollDiceButton.setLayoutY(eventPane.getLayoutY() + 220);
-        rollDiceButton.setFont(Font.font("Ink Free",20));
+        rollDiceButton.setFont(Font.font("Ink Free", 20));
         addNode(rollDiceButton);
         header.setText("Watch your back!");
-        header.setFont(Font.font("Ink Free",20));
+        header.setFont(Font.font("Ink Free", 20));
         header.setFill(Color.WHITE);
     }
 
@@ -24,7 +25,6 @@ public class RollDiceEventView extends EventView{
     public Button getEventButton() {
         return rollDiceButton;
     }
-
 
 
 }

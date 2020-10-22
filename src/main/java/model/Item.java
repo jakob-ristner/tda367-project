@@ -39,14 +39,13 @@ public class Item {
      * creates the text for the pick up prompt
      */
     private void setPickupText() {
-       pickupText = "\n";
-       for (Stat stat: stats.keySet()) {
-           if(stats.get(stat) != 0) {
-               pickupText += (stat.toString().toLowerCase() + ": " + stats.get(stat) + "\n");
-           }
-       }
+        pickupText = "\n";
+        for (Stat stat : stats.keySet()) {
+            if (stats.get(stat) != 0) {
+                pickupText += (stat.toString().toLowerCase() + ": " + stats.get(stat) + "\n");
+            }
+        }
     }
-
 
 
 }

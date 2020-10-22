@@ -14,19 +14,21 @@
         <eventThreshold>2</eventThreshold>
         <statToRollOn>1</statToRollOn>
         <statChange>-1</statChange>
-        <eventText>There lands a spider on your shoulder, attempt a strength roll to wipe it off. If you fail the roll, loose 1 strength.</eventText>
+        <eventText>There lands a spider on your shoulder, attempt a strength roll to wipe it off. If you fail the roll, loose 1 strength.
+        </eventText>
     </event>
 
     <event id="2">
-         <eventType>-2</eventType>
-         <eventThreshold>1</eventThreshold>
-         <statToRollOn>2</statToRollOn>
-         <statChange>-1</statChange>
-         <eventText>You heard a screeching noise, how spooked are you? Attempt a sanity roll. If you loose, loose 1 sanity.</eventText>
-     </event>
+        <eventType>-2</eventType>
+        <eventThreshold>1</eventThreshold>
+        <statToRollOn>2</statToRollOn>
+        <statChange>-1</statChange>
+        <eventText>You heard a screeching noise, how spooked are you? Attempt a sanity roll. If you loose, loose 1 sanity.
+        </eventText>
+    </event>
 
 
-    <event id = "3">
+    <event id="3">
         <eventType>-3</eventType>
         <eventThreshold>1</eventThreshold>
         <statToRollOn>0</statToRollOn>
@@ -43,7 +45,8 @@
         <eventThreshold>3</eventThreshold>
         <statToRollOn>2</statToRollOn>
         <statChange>-1</statChange>
-        <eventText>You enter an ominous chapel. A glowing coffin draws your attention. Opening the lid you see a skeleton. You must attempt at sanity roll. To keep your sanity roll higher than 3.</eventText>
+        <eventText>You enter an ominous chapel. A glowing coffin draws your attention. Opening the lid you see a skeleton. You must attempt at sanity roll. To keep your sanity roll higher than 3.
+        </eventText>
     </event>
 
     <event id="5">
@@ -51,7 +54,8 @@
         <eventThreshold>1</eventThreshold>
         <statToRollOn>2</statToRollOn>
         <statChange>1</statChange>
-        <eventText>You find an fountain statue containing holy water. To drink it, attempt a sanity roll. If you roll higher than 1, Gain 1 sanity.</eventText>
+        <eventText>You find an fountain statue containing holy water. To drink it, attempt a sanity roll. If you roll higher than 1, Gain 1 sanity.
+        </eventText>
     </event>
 
     <event id="6">
@@ -61,7 +65,8 @@
         <strength>2</strength>
         <stamina>0</stamina>
         <itemName>Revolver</itemName>
-        <eventText>You see something glimmer in one the rooms bookshelves. You obtained a revolver. It gives you:</eventText>
+        <eventText>You see something glimmer in one the rooms bookshelves. You obtained a revolver. It gives you:
+        </eventText>
     </event>
 
     <event id="7">
@@ -71,7 +76,8 @@
         <strength>2</strength>
         <stamina>0</stamina>
         <itemName>Sword</itemName>
-        <eventText>You enter a room with a statue of a great hero. The statue is holding a shining sword. You take it, quite heavy to the touch but the sword is in pristine condition. It gives you: </eventText>
+        <eventText>You enter a room with a statue of a great hero. The statue is holding a shining sword. You take it, quite heavy to the touch but the sword is in pristine condition. It gives you:
+        </eventText>
     </event>
 
     <event id="8">
@@ -81,7 +87,8 @@
         <strength>0</strength>
         <stamina>0</stamina>
         <itemName>Torch</itemName>
-        <eventText>The room you enter is noticeably brighter than previous rooms. You obtain a torch. It gives you:</eventText>
+        <eventText>The room you enter is noticeably brighter than previous rooms. You obtain a torch. It gives you:
+        </eventText>
     </event>
 
     <event id="9">
@@ -91,7 +98,8 @@
         <strength>0</strength>
         <stamina>0</stamina>
         <itemName>Sneakers</itemName>
-        <eventText>You find a pair of shoes from a previous adventurer. With your new shoes on your feet you feel ready to run. They give you:.</eventText>
+        <eventText>You find a pair of shoes from a previous adventurer. With your new shoes on your feet you feel ready to run. They give you:.
+        </eventText>
     </event>
 
     <event id="10">
@@ -99,10 +107,11 @@
         <eventThreshold>3</eventThreshold>
         <statToRollOn>2</statToRollOn>
         <statChange>2</statChange>
-        <eventText>A dazzling crystal ball is grabbing your attention. Attempt a sanity roll to peek into it. If you pass the roll you obtain 2 sanity. </eventText>
+        <eventText>A dazzling crystal ball is grabbing your attention. Attempt a sanity roll to peek into it. If you pass the roll you obtain 2 sanity.
+        </eventText>
     </event>
 
-    <event id = "11">
+    <event id="11">
         <eventType>-3</eventType>
         <eventThreshold>3</eventThreshold>
         <statToRollOn>0</statToRollOn>
@@ -114,7 +123,7 @@
         <positiveEvent>true</positiveEvent>
     </event>
 
-    <event id = "12">
+    <event id="12">
         <eventType>-3</eventType>
         <eventThreshold>3</eventThreshold>
         <statToRollOn>0</statToRollOn>
@@ -133,7 +142,8 @@
         <strength>2</strength>
         <stamina>0</stamina>
         <itemName>Zombie</itemName>
-        <eventText>You smell something horrendous over your shoulder, you turn around to witness a zombie. Even though you are shaken the zombie seems friendly. You gain: </eventText>
+        <eventText>You smell something horrendous over your shoulder, you turn around to witness a zombie. Even though you are shaken the zombie seems friendly. You gain:
+        </eventText>
     </event>
 
     <event id="14">
@@ -143,7 +153,8 @@
         <strength>2</strength>
         <stamina>0</stamina>
         <itemName>Pocket Flask</itemName>
-        <eventText>You see a bible lying on the floor. You open it at find a small pocket flask. You open it and take a sip. The booze inside calm you down. You gain:  </eventText>
+        <eventText>You see a bible lying on the floor. You open it at find a small pocket flask. You open it and take a sip. The booze inside calm you down. You gain:
+        </eventText>
     </event>
 
     <event id="15">
@@ -153,7 +164,8 @@
         <strength>0</strength>
         <stamina>2</stamina>
         <itemName>Dried meat</itemName>
-        <eventText>You find a room resembling a kitchen, you find a small bit of dried meat. After eating it you gain: </eventText>
+        <eventText>You find a room resembling a kitchen, you find a small bit of dried meat. After eating it you gain:
+        </eventText>
     </event>
 
     <event id="16">
@@ -161,7 +173,8 @@
         <eventThreshold>3</eventThreshold>
         <statToRollOn>2</statToRollOn>
         <statChange>-1</statChange>
-        <eventText>Entering a laboratory filled with jars full of eyes, you get the feeling that you are being watched. To shake of the feeling, attempt a sanity roll. If you fail, loose 1 sanity. </eventText>
+        <eventText>Entering a laboratory filled with jars full of eyes, you get the feeling that you are being watched. To shake of the feeling, attempt a sanity roll. If you fail, loose 1 sanity.
+        </eventText>
     </event>
 
 </events>

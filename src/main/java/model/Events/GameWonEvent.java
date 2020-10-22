@@ -19,7 +19,7 @@ public class GameWonEvent extends GameEvent {
 
     @Override
     public void handleEvent(Player currentPlayer) {
-        //Dummy method.
+        //Dummy method. Did not know how to fix before deadline.
     }
 
     @Override

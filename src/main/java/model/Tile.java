@@ -5,12 +5,12 @@ import java.util.HashMap;
 
 public class Tile {
     private Event event;
-    private boolean illuminated = false;
+
     private boolean doorUp = true;
     private boolean doorDown = true;
     private boolean doorLeft = true;
     private boolean doorRight = true;
-    private boolean hasPlayer;
+
     private boolean hasEvent;
     private boolean stairUp;
     private boolean stairDown;
@@ -22,25 +22,25 @@ public class Tile {
         setDoors(i, j, tiles);
     }
 
-    void setStairUp(boolean stairUp){
+    void setStairUp(boolean stairUp) {
         this.stairUp = stairUp;
         hasStair = true;
     }
 
-    void setStairDown(boolean stairDown){
+    void setStairDown(boolean stairDown) {
         this.stairDown = stairDown;
         hasStair = true;
     }
 
-    boolean hasStairUp(){
+    boolean hasStairUp() {
         return stairUp;
     }
 
-    boolean hasStairDown(){
+    boolean hasStairDown() {
         return stairDown;
     }
 
-    boolean hasStair(){
+    boolean hasStair() {
         return hasStair;
     }
 
@@ -53,21 +53,10 @@ public class Tile {
     }
 
 
-    boolean hasPlayer() {
-        return hasPlayer;
-    }
-
-    public void setHasPlayer(boolean hasPlayer) {
-        this.hasPlayer = hasPlayer;
-    }
-
     public boolean hasEvent() {
         return hasEvent;
     }
 
-    public void toggleIllumination() {
-        illuminated = !illuminated;
-    }
 
     public void setEvent(Event event) {
         hasEvent = true;
@@ -76,6 +65,7 @@ public class Tile {
 
     /**
      * HashMap so that doors is easily accessible through an int
+     *
      * @return
      */
     HashMap<Integer, Boolean> getDoors() {
@@ -97,6 +87,7 @@ public class Tile {
 
     /**
      * Handles an event with the player as a parameter, if it is not a permanent event it  will disappear
+     *
      * @param currentPlayer player that enters the tile
      */
 
@@ -106,19 +97,21 @@ public class Tile {
 
     /**
      * Getter for the event's buttonText.
+     *
      * @return String to be displayed on eventView.
      */
-    String getEventButtonText(){
+    String getEventButtonText() {
         return event.getEventButtonText();
     }
 
     /**
      * Getter for the event's outcome text
+     *
      * @return String to be displayed on mainGameView.
      */
-    String getEventEffectText(){
+    String getEventEffectText() {
         String effectText = event.getEventEffectText();
-        if (!event.isPermanent()){
+        if (!event.isPermanent()) {
             event = null;
             hasEvent = false;
         }

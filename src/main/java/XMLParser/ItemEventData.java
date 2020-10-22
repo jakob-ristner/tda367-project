@@ -1,6 +1,6 @@
 package XMLParser;
 
-public class ItemEventData extends EventData{
+public class ItemEventData extends EventData {
     private int stamina;
     private int strength;
     private int speed;
@@ -43,7 +43,7 @@ public class ItemEventData extends EventData{
         return sanity;
     }
 
-    public String getItemName(){
+    public String getItemName() {
         return itemName;
     }
 

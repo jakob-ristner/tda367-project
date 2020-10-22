@@ -21,7 +21,7 @@ public class XMLParser {
      * This is a DOM-pparser and gets all the nodes for the XML at once
      * It creates 3 lists of different data types that is later used in EventFactory
      */
-    public XMLParser()  {
+    public XMLParser() {
 
         try {
             File xmlFile = new File("src/main/java/XMLParser/eventIds");
@@ -33,9 +33,9 @@ public class XMLParser {
 
             for (int i = 0; i < nodeList.getLength(); i++) {
 
-               element = (Element) nodeList.item(i);
+                element = (Element) nodeList.item(i);
 
-                if ( parseInt(getElement("eventType")) == -1){
+                if (parseInt(getElement("eventType")) == -1) {
                     ItemEventData itemEventData = new ItemEventData();
 
                     itemEventData.setId(parseInt(element.getAttribute("id")));
@@ -49,7 +49,7 @@ public class XMLParser {
 
                     itemEventList.add(itemEventData);
 
-                }else if (parseInt(getElement("eventType")) == -2){
+                } else if (parseInt(getElement("eventType")) == -2) {
                     RollEventData rollEventData = new RollEventData();
 
                     rollEventData.setId(parseInt(element.getAttribute("id")));
@@ -61,7 +61,7 @@ public class XMLParser {
 
                     rollEventList.add(rollEventData);
 
-                }else if (parseInt(getElement("eventType")) == -3){
+                } else if (parseInt(getElement("eventType")) == -3) {
                     MoveEventData moveEventData = new MoveEventData();
 
                     moveEventData.setId(parseInt(element.getAttribute("id")));
@@ -79,47 +79,16 @@ public class XMLParser {
                 }
             }
 
-            //printList();
+
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
 
 
     }
-/*
-    private void printList(){
-        System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-        System.out.println(itemEventList.get(0).getEventType());
-        System.out.println(itemEventList.get(0).getEventText());
-        System.out.println(itemEventList.get(0).getId());
-        System.out.println(itemEventList.get(0).getSanity());
-        System.out.println(itemEventList.get(0).getSpeed());
-        System.out.println(itemEventList.get(0).getStamina());
-        System.out.println(itemEventList.get(0).getStrength());
-        System.out.println("--------------------------------------------------------");
-        System.out.println(rollEventList.get(0).getEventType());
-        System.out.println(rollEventList.get(0).getEventText());
-        System.out.println(rollEventList.get(0).getId());
-        System.out.println(rollEventList.get(0).getEventThreshold());
-        System.out.println(rollEventList.get(0).getStat());
-        System.out.println(rollEventList.get(0).getStatChange());
-        System.out.println("--------------------------------------------------------");
-        System.out.println(moveEventList.get(0).getEventType());
-        System.out.println(moveEventList.get(0).getEventText());
-        System.out.println(moveEventList.get(0).getId());
-        System.out.println(moveEventList.get(0).getEventThreshold());
-        System.out.println(moveEventList.get(0).getDeltaFloor());
-        System.out.println(moveEventList.get(0).getDeltaX());
-        System.out.println(moveEventList.get(0).getDeltaY());
-        System.out.println(moveEventList.get(0).getStat());
-        System.out.println(moveEventList.get(0).getStatChange());
 
-        ItemEventData itemEventData = (ItemEventData) eventDataList.get(0);
-    }
 
- */
-
-    private String getElement(String str){
+    private String getElement(String str) {
         return element.getElementsByTagName(str).item(0).getTextContent();
 
 

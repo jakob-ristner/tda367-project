@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainGameView implements ViewInterface{
+public class MainGameView implements ViewInterface {
     private int width;
     private int height;
     private Pane rootPane;
@@ -39,7 +39,7 @@ public class MainGameView implements ViewInterface{
     private int doorButtonOffset;
     private HashMap<Integer, int[]> doorOffsetMap;
 
-    //model representations
+
     private List<Circle> playerSprites;
     private List<Circle> playersSpritesCurrentFloor;
     private List<Text> allPlayersList;
@@ -60,8 +60,6 @@ public class MainGameView implements ViewInterface{
 
     private Game game;
     private List<List<Rectangle>> tileViews;
-
-
 
 
     public MainGameView(Group root, int width, int height, Game game) {
@@ -85,25 +83,25 @@ public class MainGameView implements ViewInterface{
         statsPane = new AnchorPane();
         statsPane.setPrefSize((width - (height - 150)) / 2, height - 150);
         statsPane.setLayoutY(0);
-        statsPane.setLayoutX(width - (width - (height - 150))/2);
+        statsPane.setLayoutX(width - (width - (height - 150)) / 2);
         statsPane.setStyle("-fx-background-color: black; -fx-border-color: white; -fx-border-width: 5;");
 
         playersPane = new AnchorPane();
-        playersPane.setPrefSize((width - (height - 150)) / 2, (height - 150)/ 2);
+        playersPane.setPrefSize((width - (height - 150)) / 2, (height - 150) / 2);
         playersPane.setLayoutY(0);
         playersPane.setLayoutX(0);
         playersPane.setStyle("-fx-background-color: black; -fx-border-color: white; -fx-border-width: 5;");
 
 
         inventoryPane = new AnchorPane();
-        inventoryPane.setPrefSize((width - (height - 150)) / 2, height - (height - 150)/2);
+        inventoryPane.setPrefSize((width - (height - 150)) / 2, height - (height - 150) / 2);
         inventoryPane.setLayoutY((height - 150) / 2);
         inventoryPane.setLayoutX(0);
         inventoryPane.setStyle("-fx-background-color: black; -fx-border-color: white; -fx-border-width: 5;");
 
         floorPane = new AnchorPane();
         floorPane.setPrefSize(width - (height - 150) / 2, 150);
-        floorPane.setLayoutX((height - 150)/2);
+        floorPane.setLayoutX((height - 150) / 2);
         floorPane.setLayoutY(height - 150);
         floorPane.setStyle("-fx-background-color: black; -fx-border-color: white; -fx-border-width: 5;");
 
@@ -113,13 +111,13 @@ public class MainGameView implements ViewInterface{
         addNode(mapPane);
         addNode(floorPane);
     }
-    
+
 
     private void initTileViews() {
         tileViews = new ArrayList<>();
         Rectangle currentRect;
         rectSize = (height - 150) / 6;
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             tileViews.add(new ArrayList<Rectangle>());
             for (int k = 0; k < 6; k++) {
                 currentRect = new Rectangle(rectSize, rectSize);
@@ -151,12 +149,12 @@ public class MainGameView implements ViewInterface{
         titleText.setTextAlignment(TextAlignment.CENTER);
         titleText.setLayoutX(0);
         titleText.setLayoutY(40);
-        titleText.setFont(Font.font("Ink Free",30));
+        titleText.setFont(Font.font("Ink Free", 30));
         titleText.setFill(Color.WHITE);
         inventoryPane.getChildren().add(titleText);
         updateInventoryPane();
     }
-    
+
     private void initPlayerSprites() {
         Circle currCircle;
         playerSprites = new ArrayList<>();
@@ -170,7 +168,7 @@ public class MainGameView implements ViewInterface{
             currCircle.setFill(Color.WHITE);
             playerSprites.add(currCircle);
         }
-        for (Integer index: game.getPlayerIndicesOnCurrentFloor()) {
+        for (Integer index : game.getPlayerIndicesOnCurrentFloor()) {
             playersSpritesCurrentFloor.add(playerSprites.get(index));
             mapPane.getChildren().add(playerSprites.get(index));
         }
@@ -180,20 +178,20 @@ public class MainGameView implements ViewInterface{
     private void initPlayersPaneData() {
         allPlayersList = new ArrayList<>();
         currentPlayerIindicator = new Text("->");
-        currentPlayerIindicator.setFont(Font.font("Ink Free",30));
+        currentPlayerIindicator.setFont(Font.font("Ink Free", 30));
         currentPlayerIindicator.setFill(Color.WHITE);
         playersPane.getChildren().add(currentPlayerIindicator);
         Text currText;
         for (int i = 0; i < game.getPlayerAmount(); i++) {
-           currText = new Text("Player " + (i + 1));
-           currText.setWrappingWidth((width - (height - 150)) / 2);
-           currText.setTextAlignment(TextAlignment.CENTER);
-           currText.setLayoutX(0);
-           currText.setLayoutY(50 + i * ((height - 150) / 2)/ game.getPlayerAmount());
-           currText.setFont(Font.font("Ink Free",30));
-           currText.setFill(Color.WHITE);
-           playersPane.getChildren().add(currText);
-           allPlayersList.add(currText);
+            currText = new Text("Player " + (i + 1));
+            currText.setWrappingWidth((width - (height - 150)) / 2);
+            currText.setTextAlignment(TextAlignment.CENTER);
+            currText.setLayoutX(0);
+            currText.setLayoutY(50 + i * ((height - 150) / 2) / game.getPlayerAmount());
+            currText.setFont(Font.font("Ink Free", 30));
+            currText.setFill(Color.WHITE);
+            playersPane.getChildren().add(currText);
+            allPlayersList.add(currText);
         }
         currentPlayerIindicator.setLayoutX(50);
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
@@ -205,8 +203,7 @@ public class MainGameView implements ViewInterface{
         currentplayer.setTextAlignment(TextAlignment.CENTER);
         currentplayer.setLayoutX(0);
         currentplayer.setLayoutY(50);
-        //currentplayer.setStyle("-fx-font-size: 30");
-        currentplayer.setFont(Font.font("Ink Free",30));
+        currentplayer.setFont(Font.font("Ink Free", 30));
         currentplayer.setFill(Color.WHITE);
 
         currentPlayerStats = new ArrayList<>();
@@ -218,8 +215,7 @@ public class MainGameView implements ViewInterface{
             currStatText.setTextAlignment(TextAlignment.CENTER);
             currStatText.setLayoutX(0);
             currStatText.setLayoutY(100 + i * 50);
-            //currStatText.setStyle("-fx-font-size: 20");
-            currStatText.setFont(Font.font("Ink Free",20));
+            currStatText.setFont(Font.font("Ink Free", 20));
             currStatText.setFill(Color.WHITE);
             currentPlayerStats.add(currStatText);
             statsPane.getChildren().add(currStatText);
@@ -231,8 +227,7 @@ public class MainGameView implements ViewInterface{
         stepsLeft.setTextAlignment(TextAlignment.CENTER);
         stepsLeft.setLayoutX(0);
         stepsLeft.setLayoutY(120 + playerStatStrings.size() * 50);
-        //stepsLeft.setStyle("-fx-font-size: 15");
-        stepsLeft.setFont(Font.font("Ink Free",30));
+        stepsLeft.setFont(Font.font("Ink Free", 30));
         stepsLeft.setFill(Color.WHITE);
         statsPane.getChildren().add(stepsLeft);
     }
@@ -243,25 +238,23 @@ public class MainGameView implements ViewInterface{
         currentFloor.setTextAlignment(TextAlignment.CENTER);
         currentFloor.setLayoutX(0);
         currentFloor.setLayoutY(50);
-        //currentFloor.setStyle("-fx-font-size: 20");
-        currentFloor.setFont(Font.font("Ink Free",30));
+        currentFloor.setFont(Font.font("Ink Free", 30));
         currentFloor.setFill(Color.WHITE);
         floorPane.getChildren().add(currentFloor);
 
         eventEffectText = new Text();
-        eventEffectText.setWrappingWidth(height-150);
+        eventEffectText.setWrappingWidth(height - 150);
         eventEffectText.setTextAlignment(TextAlignment.CENTER);
         eventEffectText.setLayoutX(0);
         eventEffectText.setLayoutY(100);
-        eventEffectText.setFont(Font.font("Ink Free",20));
-        //eventEffectText.setStyle("-fx-font-size: 18");
+        eventEffectText.setFont(Font.font("Ink Free", 20));
         eventEffectText.setFill(Color.RED);
         floorPane.getChildren().add(eventEffectText);
 
         endTurnButton = new Button();
         endTurnButton.setText("End Turn");
-        endTurnButton.setPrefSize((width - (height - 150))/2 -10,150 - 5);
-        endTurnButton.setFont(Font.font("Ink Free",30));
+        endTurnButton.setPrefSize((width - (height - 150)) / 2 - 10, 150 - 5);
+        endTurnButton.setFont(Font.font("Ink Free", 30));
         endTurnButton.setLayoutX(height - 150 + 10);
         endTurnButton.setLayoutY(5);
         floorPane.getChildren().add(endTurnButton);
@@ -306,7 +299,7 @@ public class MainGameView implements ViewInterface{
         }
     }
 
-    void setEventEffectText(){
+    void setEventEffectText() {
         eventEffectText.setText(game.getEventEffectText());
     }
 
@@ -355,9 +348,9 @@ public class MainGameView implements ViewInterface{
         updateInventoryPane();
         updateStairs();
     }
-    
+
     private void updateInventoryPane() {
-        for (Text itemText: itemsInInventory) {
+        for (Text itemText : itemsInInventory) {
             inventoryPane.getChildren().remove(itemText);
         }
         itemsInInventory = new ArrayList<>();
@@ -369,7 +362,7 @@ public class MainGameView implements ViewInterface{
             currText.setTextAlignment(TextAlignment.CENTER);
             currText.setLayoutX(0);
             currText.setLayoutY(80 + i * 30);
-            currText.setFont(Font.font("Ink Free",20));
+            currText.setFont(Font.font("Ink Free", 20));
             currText.setFill(Color.WHITE);
 
             itemsInInventory.add(currText);
@@ -392,7 +385,7 @@ public class MainGameView implements ViewInterface{
 
     private void updateStatsPane() {
 
-        //updates the big character name in teh statspane
+        //updates the big character name in the statspane
         currentplayer.setText(game.getCurrentPlayersCharacterName());
 
         //updates stepcounter
@@ -407,11 +400,11 @@ public class MainGameView implements ViewInterface{
 
     private void updatePlayersPaneData() {
         List<Text> deadPlayerTexts = new ArrayList<>();
-        for (Integer i: game.getDeadPlayerIndices()) {
+        for (Integer i : game.getDeadPlayerIndices()) {
             deadPlayerTexts.add(allPlayersList.get(i));
             playersPane.getChildren().remove(allPlayersList.get(i));
         }
-        for (Text deadPlayer: deadPlayerTexts) {
+        for (Text deadPlayer : deadPlayerTexts) {
             allPlayersList.remove(deadPlayer);
         }
         currentPlayerIindicator.setLayoutY(allPlayersList.get(currentPlayerIndex).getLayoutY());
@@ -424,7 +417,7 @@ public class MainGameView implements ViewInterface{
         }
         initPlayerSprites();
 
-        for (Circle playerSprite: playersSpritesCurrentFloor) {
+        for (Circle playerSprite : playersSpritesCurrentFloor) {
             playerSprite.setStyle("-fx-stroke-width: none; -fx-stroke: none"); // one of these will be the last currentplayer
             mapPane.getChildren().remove(playerSprite);
         }
@@ -433,20 +426,20 @@ public class MainGameView implements ViewInterface{
         //update position of all players
         playerCoords = game.getPlayerPositions();
         for (int i = 0; i < playerSprites.size(); i++) {
-           playerSprites.get(i).setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
-           playerSprites.get(i).setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
+            playerSprites.get(i).setCenterX(playerCoords.get(i).getX() * rectSize + rectSize / 2);
+            playerSprites.get(i).setCenterY(playerCoords.get(i).getY() * rectSize + rectSize / 2);
         }
 
         //update currentplayer indicator
         playerSprites.get(currentPlayerIndex).setStyle("-fx-stroke: red; -fx-stroke-width: 2");
 
         //show players on current floor
-        for (Integer index: game.getPlayerIndicesOnCurrentFloor()) {
+        for (Integer index : game.getPlayerIndicesOnCurrentFloor()) {
             playersSpritesCurrentFloor.add(playerSprites.get(index));
             mapPane.getChildren().add(playerSprites.get(index));
         }
     }
-    
+
     private int getCurrentPlayerCenterX() {
         return (int) playerSprites.get(currentPlayerIndex).getCenterX();
     }

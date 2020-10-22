@@ -16,14 +16,14 @@ public class Floor {
 
     /**
      * mapSize is the amount of tiles squared.
-     * @param eventList List of events from Board
-     * @param floor which floor it is
      *
+     * @param eventList List of events from Board
+     * @param floor     which floor it is
      */
 
     Floor(List<Event> eventList, int floor) {
         mapSize = 6;
-        stairSpacing  = mapSize/3;
+        stairSpacing = mapSize / 3;
         tiles = new Tile[mapSize][mapSize];
         generateTileMap();
         generateStairs(floor);
@@ -31,52 +31,44 @@ public class Floor {
     }
 
     /**
-     *
      * @param floor amount of floors
-     * Method generates stairs, if floor 0 stair up, floor1 stair upDown, floor2 stair down
+     *              Method generates stairs, if floor 0 stair up, floor1 stair upDown, floor2 stair down
      */
     private void generateStairs(int floor) {
-        if(floor == 0){
+        if (floor == 0) {
             setStairUp(0);
-        }else if(floor == 1){
+        } else if (floor == 1) {
             setStairDown(0);
-            setStairUp(mapSize-1);
-        }else{
-            setStairDown(mapSize-1);
+            setStairUp(mapSize - 1);
+        } else {
+            setStairDown(mapSize - 1);
         }
     }
 
     /**
-     *
-     * @param row
-     * Set stair down, int is row, i+1 is Col
+     * @param row Set stair down, int is row, i+1 is Col
      */
-    private void setStairUp(int row){
+    private void setStairUp(int row) {
         Tile tile;
-        for(int i = 0; i < amountOfStairs/2; i++){
-            //tile = tiles[row][stairSpacing * (i+1)];
-            tile = tiles[stairSpacing * (i+1)][row];
+        for (int i = 0; i < amountOfStairs / 2; i++) {
+            tile = tiles[stairSpacing * (i + 1)][row];
             tile.setStairUp(true);
         }
 
     }
 
     /**
-     *
-     * @param row
-     * Set stair down, int is row, i+1 is Col
+     * @param row Set stair down, int is row, i+1 is Col
      */
-    private void setStairDown(int row){
+    private void setStairDown(int row) {
         Tile tile;
-        for(int i = 0; i < amountOfStairs/2; i++){
-            //tile = tiles[row][stairSpacing * (i+1)];
-            tile = tiles[stairSpacing * (i+1)][row];
+        for (int i = 0; i < amountOfStairs / 2; i++) {
+            tile = tiles[stairSpacing * (i + 1)][row];
             tile.setStairDown(true);
         }
     }
 
     /**
-     *
      * @param x
      * @param y
      * @return tile on position x,y
@@ -87,6 +79,7 @@ public class Floor {
 
     /**
      * adds event randomly and checks so that an event can only be places on empty tile
+     *
      * @param eventList
      */
     void addEventsRandom(List<Event> eventList) {
@@ -104,7 +97,6 @@ public class Floor {
     }
 
     /**
-     *
      * @param x
      * @param y
      * @return returns hasmap of doors on tile on position x,y
@@ -115,6 +107,7 @@ public class Floor {
 
     /**
      * tries to activate event on tile on current player position
+     *
      * @param player current active player
      * @return true if an event was activated, false if not
      */
@@ -125,6 +118,7 @@ public class Floor {
 
     /**
      * chains handleEvent method to tile
+     *
      * @param currentPlayer
      */
     void handleEvent(Player currentPlayer) {
@@ -143,20 +137,22 @@ public class Floor {
 
     /**
      * Chaining of a getter down to Event
+     *
      * @param currentPlayer current Active player
      * @return String of text to be displayed on mainGameView.
      */
-    public String getEventEffectText(Player currentPlayer){
+    public String getEventEffectText(Player currentPlayer) {
         Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
         return tile.getEventEffectText();
     }
 
     /**
      * Chaining of a getter down to Event
+     *
      * @param currentPlayer current Active player
      * @return String of text to be displayed on eventButton.
      */
-    String getEventButtonText(Player currentPlayer){
+    String getEventButtonText(Player currentPlayer) {
         Tile tile = tiles[currentPlayer.getX()][currentPlayer.getY()];
         return tile.getEventButtonText();
     }

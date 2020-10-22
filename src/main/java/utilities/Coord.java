@@ -46,7 +46,9 @@ public class Coord {
         y += dy;
     }
 
-    private void moveFloor(int dFloor){floor += dFloor;}
+    private void moveFloor(int dFloor) {
+        floor += dFloor;
+    }
 
     public void move(int dx, int dy, int dFloor) {
         moveX(dx);

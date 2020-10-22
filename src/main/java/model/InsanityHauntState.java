@@ -23,18 +23,17 @@ public class InsanityHauntState implements GameState {
             "\n The haunted players objective is to kill all the other players\n" +
             "\n The adventurers objective is to find a hidden escape hatch to escape the horrors of the house";
 
-    //private final String buttonText = "Continue game";
 
-    public InsanityHauntState(){
+    public InsanityHauntState() {
         statBoost = new HashMap<>();
         statBoost.put(Stat.STRENGTH, 10);
         statBoost.put(Stat.SPEED, 5);
     }
 
 
-    @Override //Method for initing haunt, in this case, spawning the escape hatches
+    @Override
     public void init() {
-        game = Game.getInstance(); //Not sure if this will work.
+        game = Game.getInstance();
         createEscapeHatches();
         setHauntedPlayer();
 
@@ -47,6 +46,7 @@ public class InsanityHauntState implements GameState {
 
     /**
      * The new turn when the state is activated
+     *
      * @param activePlayer the current player.
      */
     @Override
@@ -58,10 +58,10 @@ public class InsanityHauntState implements GameState {
     /**
      * Creates escapeHatches for the players that are not hunted.
      */
-    private void createEscapeHatches(){
+    private void createEscapeHatches() {
         Tile tile;
         int i = 0;
-        while(i < numEscapeHatch) {
+        while (i < numEscapeHatch) {
             tile = game.getBoard().getFloor(1).getTile(rand.nextInt(6), rand.nextInt(6));
             if (!tile.hasEvent()) {
                 tile.setEvent(EventFactory.createEscapeEvent());
@@ -73,10 +73,10 @@ public class InsanityHauntState implements GameState {
     /**
      * Logic for the combat between players during haunt
      */
-    private void combat(){
+    private void combat() {
         Player hauntedPlayer = null;
         List<Player> playersInRoom = game.createListOfPlayersInSameRoom();
-        for (Player p: playersInRoom){
+        for (Player p : playersInRoom) {
             if (p.isHaunted()) {
                 hauntedPlayer = p;
             }
@@ -89,7 +89,7 @@ public class InsanityHauntState implements GameState {
             for (Player p : playersInRoom) {
                 int insanePlayerStrenght = hauntedPlayer.rollStat(Stat.STRENGTH);
                 int playerInRoomStrenght = p.rollStat(Stat.STRENGTH);
-                int damage = Math.max(0,insanePlayerStrenght - playerInRoomStrenght);
+                int damage = Math.max(0, insanePlayerStrenght - playerInRoomStrenght);
                 p.getCharacter().updateStatFromCombat(Stat.STAMINA, damage);
 
             }
@@ -97,12 +97,11 @@ public class InsanityHauntState implements GameState {
     }
 
     /**
-     *
      * @return if the monster kills all players the game is won, return true.
      */
     @Override
     public boolean winConditionChecker() {
-        if(game.getPlayerList().isEmpty() || (game.getPlayerList().size() == 1 && game.getPlayerList().get(0).isHaunted())){
+        if (game.getPlayerList().isEmpty() || (game.getPlayerList().size() == 1 && game.getPlayerList().get(0).isHaunted())) {
             game.notifyGameOver();
             return true;
         }

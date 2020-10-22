@@ -10,7 +10,6 @@ import java.util.Random;
 public class Game implements ControllerObservable {
 
     private static Game gameInstance;
-    private static final boolean isInstanciated = false;
     private GameObserver observer;
     private List<Player> playerList;
     private List<Integer> deadPlayerIndices;
@@ -29,10 +28,10 @@ public class Game implements ControllerObservable {
     private int eventCounter;
     private Random random = new Random();
 
-    //SingeltonPattern
 
     /**
      * Moves currentPlayer and does sanityChecks for the move
+     *
      * @param dx delta to move in X
      * @param dy delta to move in Y
      */
@@ -40,12 +39,12 @@ public class Game implements ControllerObservable {
         Player currentPlayer = getCurrentPlayer();
         if (currentPlayer.getStepsLeft() > 0) {
             currentPlayer.playerMove(dx, dy, 0);
-            if(getPlayerTile(currentPlayer).hasStairDown()){
-                currentPlayer.addCoord(new Coord(0,0,-1));
-            }else if(getPlayerTile(currentPlayer).hasStairUp()) {
-                currentPlayer.addCoord(new Coord(0,0,1));
+            if (getPlayerTile(currentPlayer).hasStairDown()) {
+                currentPlayer.addCoord(new Coord(0, 0, -1));
+            } else if (getPlayerTile(currentPlayer).hasStairUp()) {
+                currentPlayer.addCoord(new Coord(0, 0, 1));
             }
-            board.tryActivateEventOnPlayerPos(currentPlayer); //As of now haunted players can not activate events.
+            board.tryActivateEventOnPlayerPos(currentPlayer);
         }
         removeDeadPlayersFromGame();
         hauntCheck();
@@ -56,28 +55,13 @@ public class Game implements ControllerObservable {
     /**
      * Checks if haunt is activated
      */
-    private void hauntCheck(){
+    private void hauntCheck() {
         checkForHauntInit();
-        if (gameState != null){
+        if (gameState != null) {
             gameState.turn(getCurrentPlayer());
         }
 
     }
-
-
-
-
-   /*
-    public boolean roomContainsInsanePlayer(){
-        return roomContainsInsanePlayer();  //Why does it return itself??
-    }
-
-    */
-
-    private void runGameOverScreen() {
-
-    }
-    //Must it be private?
 
 
     public List<String> getCharacterNames() {
@@ -89,7 +73,7 @@ public class Game implements ControllerObservable {
     }
 
 
-    public String getHauntText(){
+    public String getHauntText() {
         return gameState.getHauntText();
     }
 
@@ -105,10 +89,6 @@ public class Game implements ControllerObservable {
     }
 
 
-    public List<Kharacter> getCharacterList() {
-        return characterList;
-    }
-
     public List<Player> getPlayerList() {
         return playerList;
     }
@@ -120,30 +100,30 @@ public class Game implements ControllerObservable {
     public void updateCurrentPlayer() {
         getCurrentPlayer().resetSteps();
         currentPlayerIndex++;
-        if (currentPlayerIndex == playerAmount + 1) { //TODO se om vi kan göra detta lite vackrare xD
+        if (currentPlayerIndex == playerAmount + 1) {
             currentPlayerIndex--;
         }
         observer.updateCurrentPlayer();
         currentPlayerIndex = currentPlayerIndex % playerAmount;
 
-        //if (currentPlayerIndex == 0)
+
     }
 
 
-    public List<String> getHauntedNamesInSameRoom(){
+    public List<String> getHauntedNamesInSameRoom() {
         List<String> hauntedNameList = new ArrayList<>();
-        for(Player p: createListOfPlayersInSameRoom()){ //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
-            if(p.isHaunted()){
+        for (Player p : createListOfPlayersInSameRoom()) {
+            if (p.isHaunted()) {
                 hauntedNameList.add(p.getCharacterName());
             }
         }
         return hauntedNameList;
     }
 
-    public List<String> getNonHauntedNamesList(){
+    public List<String> getNonHauntedNamesList() {
         List<String> nonHauntedNames = new ArrayList<>();
-        for(Player p: createListOfPlayersInSameRoom()){  //Om du nånsin debuggar och hamnar här. Kontrollera så inte listan är tom
-            if(!p.isHaunted()){
+        for (Player p : createListOfPlayersInSameRoom()) {
+            if (!p.isHaunted()) {
                 nonHauntedNames.add(p.getCharacterName());
             }
         }
@@ -152,9 +132,10 @@ public class Game implements ControllerObservable {
 
     /**
      * get a hashmap of damage taken after battle
+     *
      * @return hashmap with name and stat change after battle
      */
-    public HashMap<String, Integer> getDamageMap(){
+    public HashMap<String, Integer> getDamageMap() {
         HashMap<String, Integer> damageMap = new HashMap<>();
         int damage;
         if (!staminaNameMap.isEmpty()) {
@@ -166,20 +147,20 @@ public class Game implements ControllerObservable {
         return damageMap;
     }
 
-    public HashMap<String, Integer> getStaminaNameMap(){
+    public HashMap<String, Integer> getStaminaNameMap() {
         HashMap<String, Integer> staminaNameMap = new HashMap<>();
-        for(Player p: createListOfPlayersInSameRoom()){
+        for (Player p : createListOfPlayersInSameRoom()) {
             staminaNameMap.put(p.getCharacterName(), p.getCharacter().getStat(Stat.STAMINA));
         }
         return staminaNameMap;
     }
 
-   void saveOldStaminaMap(){
+    void saveOldStaminaMap() {
         staminaNameMap = getStaminaNameMap();
     }
 
     List<Player> createListOfPlayersInSameRoom() {
-        List <Player> listOfPlayersInTheSameRoom = new ArrayList<>();
+        List<Player> listOfPlayersInTheSameRoom = new ArrayList<>();
         for (Player p : getPlayerList()) {
             if (p.getPos().equals(getCurrentPlayer().getPos())) {
                 listOfPlayersInTheSameRoom.add(p);
@@ -222,7 +203,7 @@ public class Game implements ControllerObservable {
 
     }
 
-    public String getEventEffectText(){
+    public String getEventEffectText() {
         return board.getEventEffectText(getCurrentPlayer());
     }
 
@@ -290,9 +271,6 @@ public class Game implements ControllerObservable {
         return getCurrentPlayer().getItemNames();
     }
 
-    public boolean currentPlayerHasCharacter() {
-        return getCurrentPlayer().getHasCharacter();
-    }
 
     public void setCurrentPlayersCharacter(int index) {
         getCurrentPlayer().setCharacter(characterList.get(index));
@@ -300,6 +278,7 @@ public class Game implements ControllerObservable {
 
     /**
      * singleton pattern
+     *
      * @return instance of game
      */
     public static Game getInstance() {
@@ -311,6 +290,7 @@ public class Game implements ControllerObservable {
 
     /**
      * registers event observer
+     *
      * @param eventObserver
      */
     public void registerEventObserver(EventObserver eventObserver) {
@@ -318,9 +298,6 @@ public class Game implements ControllerObservable {
             e.setObserver(eventObserver);
         }
     }
-
-
-
 
 
     public void handleEvent() {
@@ -332,16 +309,17 @@ public class Game implements ControllerObservable {
 
     /**
      * Getter for the buttonText on the eventButton
+     *
      * @return String
      */
-    public String getEventButtonText(){
+    public String getEventButtonText() {
         return board.getEventButtonText(getCurrentPlayer());
     }
 
     public void removeDeadPlayersFromGame() {
-        deadPlayerIndices = new ArrayList<>(); //used for view;
+        deadPlayerIndices = new ArrayList<>();
         List<Player> deadPlayers = new ArrayList<>();
-        for (int i = 0; i < playerList.size(); i ++) {
+        for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).isPlayerDead()) {
                 deadPlayers.add(playerList.get(i));
                 deadPlayerIndices.add(i);
@@ -350,25 +328,15 @@ public class Game implements ControllerObservable {
         for (int i = 0; i < deadPlayers.size(); i++) {
             playerList.remove(deadPlayers.get(i));
             playerAmount--;
-            if (currentPlayerIndex >= playerAmount)currentPlayerIndex--;
-            /*
-            if (playerAmount == 0) {
-                playerAmount = 1;
-            }
+            if (currentPlayerIndex >= playerAmount) currentPlayerIndex--;
 
-             */
         }
-        //observer.updateMapData();
-    }
 
+    }
 
 
     public Tile getPlayerTile(Player player) {
         return board.getFloor(player.getFloor()).getTile(player.getX(), player.getY());
-    }
-
-    public boolean roomContainsInsanePlayer() {
-        return false;
     }
 
 
@@ -383,8 +351,8 @@ public class Game implements ControllerObservable {
         eventCounter++;
     }
 
-    private void checkForHauntInit(){
-        if(eventCounter == 1 && gameState == null){
+    private void checkForHauntInit() {
+        if (eventCounter == 1 && gameState == null) {
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();
@@ -392,7 +360,7 @@ public class Game implements ControllerObservable {
     }
 
 
-     GameState getRandomHaunt() {
+    GameState getRandomHaunt() {
         return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
     }
 
@@ -405,16 +373,7 @@ public class Game implements ControllerObservable {
         createPlayers(playerAmount);
     }
 
-    int nonHauntedPlayersLeft(){
-        int count = 0;
-        for (Player player: playerList){
-            if (!player.isHaunted())
-                count++;
-        }
-        return count;
-    }
 
-    //Must it be private?
     void createPlayers(int amountPlayers) {
         Player currPlayer;
         playerList = new ArrayList<>();
@@ -430,19 +389,7 @@ public class Game implements ControllerObservable {
         listOfHaunts.add(new InsanityHauntState());
         deadPlayerIndices = new ArrayList<>();
     }
-    
 
-
-    public void resetGame() { //TODO: discuss if this is the way we want to do it. If it is implement a method in controller which resets view.
-        board = new Board();
-        listOfHaunts.clear();
-        listOfHaunts.add(new InsanityHauntState());
-
-        playerList.clear();
-        characterList.clear();
-        characterList = KharacterFactory.getCharacters();
-        eventCounter = 0;
-    }
 
     public List<Coord> getStairsDownOnCurrentFloor() {
         return board.getStairsDownOnCurrentFloor(getCurrentFloorNumber());

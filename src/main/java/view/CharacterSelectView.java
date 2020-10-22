@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CharacterSelectView implements ViewInterface{
+public class CharacterSelectView implements ViewInterface {
     private Pane pane;
 
     private int width;
@@ -28,27 +28,27 @@ public class CharacterSelectView implements ViewInterface{
     private HashMap<Integer, Button> buttonMap;
     private Button startButton;
 
-    public CharacterSelectView(Group root, int width, int height){
+    public CharacterSelectView(Group root, int width, int height) {
         this.width = width;
         this.height = height;
         buttonSpacing = 70;
 
         pane = new Pane();
         pane.setPrefSize(width, height);
-        pane.setStyle("-fx-background-color: Black"); // temporary
+        pane.setStyle("-fx-background-color: Black");
         root.getChildren().add(pane);
     }
 
 
-    public void initButton(List<String> characterNames){
-        buttonMap = new HashMap<>();        //HashMap for access to buttons in Controller
+    public void initButton(List<String> characterNames) {
+        buttonMap = new HashMap<>();
 
         startButton = new Button();
-        startButton.setLayoutX(width / 2 -180);
+        startButton.setLayoutX(width / 2 - 180);
         startButton.setLayoutY(height / 2 + characterNames.size() * buttonSpacing);
         startButton.setPrefSize(400, 50);
         startButton.setText("Start Game");
-        startButton.setFont(Font.font("Ink Free",20));
+        startButton.setFont(Font.font("Ink Free", 20));
         addNode(startButton);
 
         Button currButton;
@@ -58,19 +58,19 @@ public class CharacterSelectView implements ViewInterface{
             currButton.setLayoutY(height / 2 + i * buttonSpacing);
             currButton.setPrefSize(200, 30);
             currButton.setText(characterNames.get(i));
-            currButton.setFont(Font.font("Ink Free",20));
+            currButton.setFont(Font.font("Ink Free", 20));
             addNode(currButton);
-            buttonMap.put(i, currButton);//One button for each char
+            buttonMap.put(i, currButton);
         }
 
     }
 
-    public void initText(List< List<String>> statList){
+    public void initText(List<List<String>> statList) {
         this.statList = statList;
 
         playerText = new Text();
         playerText.setText("It's Player 1:s turn!");
-        playerText.setFont(Font.font("Ink Free",25));
+        playerText.setFont(Font.font("Ink Free", 25));
         playerText.setFill(Color.WHITE);
         playerText.setWrappingWidth(300);
         playerText.setTextAlignment(TextAlignment.CENTER);
@@ -79,8 +79,7 @@ public class CharacterSelectView implements ViewInterface{
         addNode(playerText);
 
         text = new Text("Choose your character");
-        //text.setStyle("-fx-font-size: 40px;");
-        text.setFont(Font.font("Ink Free",50));
+        text.setFont(Font.font("Ink Free", 50));
         text.setFill(Color.WHITE);
         text.setWrappingWidth(300);
         text.setTextAlignment(TextAlignment.CENTER);
@@ -105,7 +104,7 @@ public class CharacterSelectView implements ViewInterface{
             currPlayerText.setTextAlignment(TextAlignment.CENTER);
             currPlayerText.setLayoutX(refButtonX + 200);
             currPlayerText.setLayoutY(refButtonY + 20);
-            currPlayerText.setFont(Font.font("Ink Free",20));
+            currPlayerText.setFont(Font.font("Ink Free", 20));
             currPlayerText.setFill(Color.WHITE);
             addNode(currPlayerText);
             textsPlayer.add(currPlayerText);
@@ -116,7 +115,7 @@ public class CharacterSelectView implements ViewInterface{
             currStatText.setLayoutX(refButtonX - 180);
             currStatText.setLayoutY(refButtonY + 20);
             currStatText.setText(getAllStatsAsString(i));
-            currStatText.setFont(Font.font("Ink Free",15));
+            currStatText.setFont(Font.font("Ink Free", 15));
             currStatText.setFill(Color.WHITE);
             addNode(currStatText);
             textsStats.add(currStatText);
@@ -125,8 +124,8 @@ public class CharacterSelectView implements ViewInterface{
 
 
     private String getAllStatsAsString(int statListIndex) {
-        String allStats= "";
-        for (String stat: statList.get(statListIndex)) {
+        String allStats = "";
+        for (String stat : statList.get(statListIndex)) {
             allStats += stat;
             allStats += " ";
         }
@@ -140,8 +139,8 @@ public class CharacterSelectView implements ViewInterface{
     }
 
     public void setPlayerTexts(int index, int amountPlayers) {
-        playerText.setText("It's Player " + (index+1) + ":s turn!");
-        if(index == amountPlayers){
+        playerText.setText("It's Player " + (index + 1) + ":s turn!");
+        if (index == amountPlayers) {
             playerText.setText("All players have chosen a character");
         }
     }
@@ -151,7 +150,7 @@ public class CharacterSelectView implements ViewInterface{
         pane.getChildren().add(node);
     }
 
-    public HashMap<Integer, Button> getButtonMap(){
+    public HashMap<Integer, Button> getButtonMap() {
         return buttonMap;
     }
 
@@ -159,11 +158,11 @@ public class CharacterSelectView implements ViewInterface{
         return startButton;
     }
 
-    public List<Text> getTexts(){
+    public List<Text> getTexts() {
         return textsPlayer;
     }
-    // Choose your character->All players have chosen a character
-    public void setText(){
+
+    public void setText() {
         text.setText("All players have chosen a character");
     }
 

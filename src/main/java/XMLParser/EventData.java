@@ -29,7 +29,5 @@ public abstract class EventData {
         return eventType;
     }
 
-    public int getId() {
-        return id;
-    }
+
 }

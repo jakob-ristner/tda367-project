@@ -15,15 +15,14 @@ public class Kharacter {
 
 
     /**
-     *
-     * @param name Name of character
+     * @param name      Name of character
      * @param statValue The arraylist is used for refactoring our hashmap. Using the index 'i' in order to get
-     * the key(stat) and statValue[i] to get the Integer.
+     *                  the key(stat) and statValue[i] to get the Integer.
      */
 
     Kharacter(String name, int[] statValue) {
-        stats=new HashMap<>();
-        for(int i = 0; i<statValue.length;i++) {
+        stats = new HashMap<>();
+        for (int i = 0; i < statValue.length; i++) {
             stats.put(Stat.from(i), statValue[i]);
         }
         this.name = name;
@@ -51,9 +50,10 @@ public class Kharacter {
 
     /**
      * adds to Stat hashmaps together
+     *
      * @param statsToAdd can be stats of an item etc
      */
-    public void updateStat(HashMap<Stat, Integer> statsToAdd) { //Jätteful metod i know
+    public void updateStat(HashMap<Stat, Integer> statsToAdd) {
         for (Stat playerStat : stats.keySet()) {
             for (Stat statToAdd : statsToAdd.keySet()) {
                 if (playerStat == statToAdd)
@@ -64,12 +64,13 @@ public class Kharacter {
 
     /**
      * used to parse combat damage to statChange
+     *
      * @param stat
      * @param damage
      */
     void updateStatFromCombat(Stat stat, int damage) {
         int oldv = stats.get(stat);
-        stats.put(stat, oldv-damage);
+        stats.put(stat, oldv - damage);
     }
 
 

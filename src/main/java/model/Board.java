@@ -30,7 +30,8 @@ public class Board {
     }
 
     /**
-     *  Gets events
+     * Gets events
+     *
      * @return list of events
      */
     List<Event> getEvents() {
@@ -38,7 +39,6 @@ public class Board {
     }
 
     /**
-     *
      * @param i index in list of floors
      * @return floor number i
      */
@@ -84,11 +84,11 @@ public class Board {
 
     /**
      * @param player current active player
-     * Activates event on current active player if there is an event on their position
+     *               Activates event on current active player if there is an event on their position
      * @return boolean, true if there was an event was activated, flase if not
      */
     boolean tryActivateEventOnPlayerPos(Player player) {
-        if(player.isHaunted()){
+        if (player.isHaunted()) {
             return false;
         }
         Floor floor = floors.get(player.getFloor());
@@ -97,6 +97,7 @@ public class Board {
 
     /**
      * chains handleEvent method down to event
+     *
      * @param currentPlayer current active player
      */
     public void handleEvent(Player currentPlayer) {
@@ -106,20 +107,22 @@ public class Board {
 
     /**
      * Chaining of a getter down to Event
+     *
      * @param currentPlayer current active player
      * @return String effectText
      */
-    public String getEventEffectText(Player currentPlayer){
+    public String getEventEffectText(Player currentPlayer) {
         Floor floor = floors.get(currentPlayer.getFloor());
         return floor.getEventEffectText(currentPlayer);
     }
 
     /**
      * Chaining of a getter down to Event
+     *
      * @param currentPlayer current Active player
      * @return String of text to be displayed on Button.
      */
-    String getEventButtonText(Player currentPlayer){
+    String getEventButtonText(Player currentPlayer) {
         Floor floor = floors.get(currentPlayer.getFloor());
         return floor.getEventButtonText(currentPlayer);
     }
