@@ -123,7 +123,7 @@ public class GameplayView implements ViewInterface {
         Rectangle currentRect;
         rectSize = (height - 150) / 6;
         for (int i = 0; i < 6; i++) {
-            tileViews.add(new ArrayList<>());
+            tileViews.add(new ArrayList<Rectangle>());
             for (int k = 0; k < 6; k++) {
                 currentRect = new Rectangle(rectSize, rectSize);
                 currentRect.setX(i * rectSize);

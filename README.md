@@ -1,3 +1,7 @@
+# Running the game
+Clone the reposirory and run mvn compile, then mvn deploy using maven. To run the generated jar file run
+java -jar ./target/gastuen-0.1-SNAPSHOT.jar whilst inside the repository directory
+
 # Game Description
 
 ## Basic Premise

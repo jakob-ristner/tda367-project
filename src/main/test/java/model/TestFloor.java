@@ -1,4 +1,5 @@
 package model;
+
 import model.Events.MoveEvent;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,25 +17,25 @@ public class TestFloor {
      */
 
     @Test
-    public void testAddTile(){
+    public void testAddTile() {
         int numberOfEvents = 15;
         List<Event> events = new ArrayList<>();
 
-        for(int i = 0; i < numberOfEvents; i++){
-            Event event = new MoveEvent(1,1,"h",1,2,3,1,true,true);
+        for (int i = 0; i < numberOfEvents; i++) {
+            Event event = new MoveEvent(1, 1, "h", 1, 2, 3, 1, true, true);
             events.add(event);
         }
 
         Floor floor = new Floor(events, 1);
         int count = 0;
-        for(int x = 0; x<6; x++){
-            for (int y = 0; y<6; y++){
-                if(floor.getTile(x,y).hasEvent()){
+        for (int x = 0; x < 6; x++) {
+            for (int y = 0; y < 6; y++) {
+                if (floor.getTile(x, y).hasEvent()) {
                     count++;
                 }
             }
         }
-        Assert.assertEquals(count,numberOfEvents);
+        Assert.assertEquals(count, numberOfEvents);
 
     }
 

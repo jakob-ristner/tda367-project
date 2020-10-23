@@ -16,7 +16,6 @@ public class Player {
     private final Inventory inventory;
     private final Random dice;
     private int stepsLeft;
-    private int steps;
     private boolean hasCharacter;
     private boolean isHaunted;
     private Coord pos;
@@ -64,7 +63,6 @@ public class Player {
     void setCharacter(Kharacter character) {
         this.character = character;
         hasCharacter = true;
-        steps = character.getStat(Stat.SPEED);
         resetSteps();
     }
 

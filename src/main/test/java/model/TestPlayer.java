@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.control.Spinner;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.Coord;
@@ -13,11 +12,10 @@ import java.util.HashMap;
 public class TestPlayer {
 
     /**
-     *Testing equipping an item.
-     * Check
+     * Testing equipping an item.
      */
     @Test
-    public void testEquippingItem(){
+    public void testEquippingItem() {
         Player player = new Player();
 
         Kharacter medera = KharacterFactory.createMedera();
@@ -25,11 +23,11 @@ public class TestPlayer {
         int characterStat = player.getCharacter().getStat(Stat.STRENGTH);
 
         HashMap<Stat, Integer> swordStats = new HashMap<>();
-        swordStats.put(Stat.STRENGTH,2);
+        swordStats.put(Stat.STRENGTH, 2);
         Item sword = new Item("Sword", swordStats);
 
         player.addToInventory(sword);
-        Assert.assertEquals(characterStat+sword.getStat(Stat.STRENGTH),player.getCharacter().getStat(Stat.STRENGTH));
+        Assert.assertEquals(characterStat + sword.getStat(Stat.STRENGTH), player.getCharacter().getStat(Stat.STRENGTH));
 
 
     }
@@ -39,13 +37,13 @@ public class TestPlayer {
      */
 
     @Test
-    public void testRollDice(){
+    public void testRollDice() {
 
         Player player = new Player();
         Kharacter medera = KharacterFactory.createMedera();
         player.setCharacter(medera);
-        int maxRoll =  player.getCharacter().getStat(Stat.SPEED);
-        int minRoll = 0;
+        int maxRoll = player.getCharacter().getStat(Stat.SPEED);
+        int minRoll = 1;
         int rollValue = player.rollStat(Stat.SPEED);
 
         Assert.assertTrue(minRoll <= rollValue && rollValue <= maxRoll);
@@ -57,18 +55,18 @@ public class TestPlayer {
      */
 
     @Test
-    public void testMovePlayer(){
+    public void testMovePlayer() {
         Player player = new Player();
-        player.setPos(new Coord(1,2,2));
-        player.addCoord(new Coord(-1,-2,-1));
-        Assert.assertEquals(player.getFloor(),1);
+        player.setPos(new Coord(1, 2, 2));
+        player.addCoord(new Coord(-1, -2, -1));
+        Assert.assertEquals(player.getFloor(), 1);
 
         int x = 1;
         int y = 2;
 
-        player.playerMove(x,y, player.getFloor());
-        Assert.assertEquals(x,player.getX());
-        Assert.assertEquals(y,player.getY());
+        player.playerMove(x, y, player.getFloor());
+        Assert.assertEquals(x, player.getX());
+        Assert.assertEquals(y, player.getY());
     }
 
     /**
@@ -77,13 +75,13 @@ public class TestPlayer {
      * Check if the strength stat becomes 0, afterwards checks if the player is dead.a
      */
     @Test
-    public void testCombat(){
+    public void testCombat() {
         Player player = new Player();
         player.setCharacter(KharacterFactory.createRufus());
         int startStrength = player.getCharacter().getStat(Stat.STRENGTH); //Rufus has 2 strength
-        player.getCharacter().updateStatFromCombat(Stat.STRENGTH,2);
-        Assert.assertEquals(startStrength-2,player.getCharacter().getStat(Stat.STRENGTH));
-        Assert.assertEquals(0,player.getCharacter().getStat(Stat.STRENGTH));
+        player.getCharacter().updateStatFromCombat(Stat.STRENGTH, 2);
+        Assert.assertEquals(startStrength - 2, player.getCharacter().getStat(Stat.STRENGTH));
+        Assert.assertEquals(0, player.getCharacter().getStat(Stat.STRENGTH));
         Assert.assertTrue(player.isPlayerDead());
 
     }
