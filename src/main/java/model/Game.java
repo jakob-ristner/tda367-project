@@ -368,7 +368,7 @@ public class Game implements ControllerObservable {
     }
 
     private void checkForHauntInit() {
-        if (eventCounter == 1 && gameState == null) {
+        if (eventCounter == 8 && gameState == null) {
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();

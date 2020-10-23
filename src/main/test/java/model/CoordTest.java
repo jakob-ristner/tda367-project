@@ -5,7 +5,6 @@ import org.junit.Test;
 import utilities.Coord;
 
 
-
 public class CoordTest {
     /**
      * Testing if getters works

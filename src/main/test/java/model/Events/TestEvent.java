@@ -1,37 +1,19 @@
 package model.Events;
 
 
-import model.*;
-import model.Events.GameEvent;
-import model.Events.ItemEvent;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.HashMap;
+import model.EventObserver;
+import model.Item;
+import model.Player;
 
 /**
  * In order to mimic the model structure this package was created. Otherwise we can't create or handle events
  * Need a dummyObserver or else nullPointer
  * In this class events are created and handled, called on from TestEventHelper.
- * Set threshHold to 500 so that all rolls are under.
+ * Set threshHold to 500 so that all rolls fail.
  */
 
 public class TestEvent {
-    final int threshHold= 500;
-    class DummyObserver implements EventObserver {
-
-        @Override
-        public void updateEventView(int eventType, String eventText) {
-
-        }
-
-        @Override
-        public void updateEventEffect() {
-
-        }
-
-    }
-
+    final int threshHold = 500;
     GameEvent gameEvent = new GameEvent(true) {
         @Override
         public void activate() {
@@ -59,7 +41,6 @@ public class TestEvent {
         }
     };
     DummyObserver dummyObserver = new DummyObserver();
-
 
     public void testItemEvent(Player player, Item item) {
         gameEvent.setObserver(dummyObserver);
@@ -93,6 +74,20 @@ public class TestEvent {
         RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, threshHold, statChange,
                 "Testing123", -1, true);
         rollDiceEvent.handleEvent(player);
+    }
+
+    class DummyObserver implements EventObserver {
+
+        @Override
+        public void updateEventView(int eventType, String eventText) {
+
+        }
+
+        @Override
+        public void updateEventEffect() {
+
+        }
+
     }
 
 }
