@@ -1,0 +1,48 @@
+##### Meeting Agenda
+
+Group: Gastuen
+Date: 2020-10-22
+Chair: Erik
+Participants: Karl Gunnarsson, David Andreasson, Jakob Ristner, Jakob Henriksson, Erik Berg
+
+
+#####Objectives(5 min)
+- Finish up RAD
+- Finish up SDD
+- Finish up UML
+- Make sure that the maven jar is executable from the console. 
+- make sure the application has full coverage in the model.
+
+######### Reports(15 min)
+The UML is almost complete only minor things still left there. Same goes for RAD, but the SDD still needs some work
+to be able to hand it in. 
+
+####### Discussion Items(35 min)
+Discussion about maven. It works if the jar file is executed from the correct path so it is close to working. 
+Maven is now supposed to work on all windows machines at least. 
+
+Discussion about tests. How are we supposed to run tests on a method which makes a call to an observer? After a bit 
+of discussion we ended up making the decision to create a dummy class inside the test method that can act as an observer
+but the dummy class doesn't actually do anything. 
+
+Discussion about tests. How do we test something that depends on probabilities? It is hard to test something random. 
+Should we write a junit test anyways and just make sure that the probability that the test fails is miniscule or should
+we just not write the test?. We can test the things that we actually can test such as edge cases where e.g the combat
+shouldn't give the players stats. 
+
+Discussion about refactoring the code so that the name RollDiceEvent better reflects what the code actually does. 
+RollDiceEvent currently rolls a stat to make a statChange and it would probably be a better name to name it StatChangeEvent.
+However due to time constraints we have decided not to refactor the entire code because of a not so stellar name choice.
+Instead we'll just keep the name. 
+
+
+## Outcomes and assignments (5 min)
+RAD is almost finished, only need a read-through.
+
+SDD needs few more hours work.
+
+The application is finished. Maybe a few more tests could be written. 
+
+
+## Wrap up
+Next meeting at 10 tomorrow.
