@@ -101,7 +101,7 @@ public class Player {
     }
 
     void resetSteps() {
-        stepsLeft = dice.nextInt(steps + 1);
+        stepsLeft = dice.nextInt(steps)+1;
     }
 
     void step() {
