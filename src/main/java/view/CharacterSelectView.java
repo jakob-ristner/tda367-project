@@ -19,11 +19,11 @@ import java.util.List;
  */
 
 public class CharacterSelectView implements ViewInterface {
-    private Pane pane;
+    private final Pane pane;
 
-    private int width;
-    private int height;
-    private int buttonSpacing;
+    private final int width;
+    private final int height;
+    private final int buttonSpacing;
 
     private Text text;
     private Text playerText;

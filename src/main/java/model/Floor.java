@@ -13,10 +13,10 @@ import java.util.Random;
  */
 public class Floor {
     private final int mapSize;
-    private Tile[][] tiles;
     private final int amountOfStairs = 4;
     private final int stairSpacing;
-    private Random rand = new Random();
+    private final Tile[][] tiles;
+    private final Random rand = new Random();
 
     /**
      * mapSize is the amount of tiles squared.
@@ -134,7 +134,7 @@ public class Floor {
     private void generateTileMap() {
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
-                tiles[i][j] = new Tile(i, j, tiles.length,tiles[i].length);
+                tiles[i][j] = new Tile(i, j, tiles.length, tiles[i].length);
             }
         }
     }
@@ -163,6 +163,7 @@ public class Floor {
 
     /**
      * Getter for where the stairs up are located.
+     *
      * @param floor
      * @return List of coords where the stairs up are.
      */
@@ -180,6 +181,7 @@ public class Floor {
 
     /**
      * Getter for where the stairs are located.
+     *
      * @param floor
      * @return List of coords where the stairs are.
      */

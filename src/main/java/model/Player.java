@@ -13,16 +13,14 @@ import java.util.Random;
  */
 
 public class Player {
+    private final Inventory inventory;
+    private final Random dice;
     private int stepsLeft;
     private int steps;
     private boolean hasCharacter;
     private boolean isHaunted;
-
-
-    private final Inventory inventory;
     private Coord pos;
     private Kharacter character;
-    private final Random dice;
 
     Player() {
         inventory = new Inventory();
@@ -63,15 +61,15 @@ public class Player {
         return character;
     }
 
-    boolean getHasCharacter() {
-        return hasCharacter;
-    }
-
     void setCharacter(Kharacter character) {
         this.character = character;
         hasCharacter = true;
         steps = character.getStat(Stat.SPEED);
         resetSteps();
+    }
+
+    boolean getHasCharacter() {
+        return hasCharacter;
     }
 
     boolean isPlayerDead() {

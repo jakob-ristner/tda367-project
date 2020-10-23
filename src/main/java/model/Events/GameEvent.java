@@ -1,7 +1,7 @@
 package model.Events;
 
-import model.EventObserver;
 import model.Event;
+import model.EventObserver;
 
 /**
  * Abstraction of all events.

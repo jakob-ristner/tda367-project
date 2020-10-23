@@ -7,13 +7,14 @@ import model.Game;
 import view.ViewInterface;
 
 import java.util.List;
+
 /**
  * Controller for the combatScreenView
  * Is used for the combat in InsanityHauntState
  * sets all the buttons and handlers and tells game to update
  */
 
-public class CombatController extends AbstractController{
+public class CombatController extends AbstractController {
     Button combatButton;
     Button exitButton;
     ViewInterface combatView;
@@ -29,7 +30,7 @@ public class CombatController extends AbstractController{
         initButton();
     }
 
-    private void initButton(){
+    private void initButton() {
         combatButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

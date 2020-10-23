@@ -9,14 +9,6 @@ public abstract class EventData {
 
     }
 
-    void setEventText(String eventText) {
-        this.eventText = eventText;
-    }
-
-    void setEventType(int eventType) {
-        this.eventType = eventType;
-    }
-
     void setId(int id) {
         this.id = id;
     }
@@ -25,8 +17,16 @@ public abstract class EventData {
         return eventText;
     }
 
+    void setEventText(String eventText) {
+        this.eventText = eventText;
+    }
+
     public int getEventType() {
         return eventType;
+    }
+
+    void setEventType(int eventType) {
+        this.eventType = eventType;
     }
 
 

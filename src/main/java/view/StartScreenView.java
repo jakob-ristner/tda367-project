@@ -16,9 +16,9 @@ import javafx.scene.text.TextAlignment;
  */
 
 public class StartScreenView implements ViewInterface {
-    private Pane pane;
-    private Button confirmButton;
-    private Spinner<Integer> intInput;
+    private final Pane pane;
+    private final Button confirmButton;
+    private final Spinner<Integer> intInput;
 
     public StartScreenView(Group root, int width, int height) {
         pane = new Pane();

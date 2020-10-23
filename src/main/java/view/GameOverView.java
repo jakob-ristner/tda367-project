@@ -5,7 +5,6 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -17,8 +16,8 @@ import javafx.scene.text.TextAlignment;
  */
 
 public class GameOverView implements ViewInterface {
-    private Pane rootPane;
-    private Button closeGameButton;
+    private final Pane rootPane;
+    private final Button closeGameButton;
 
 
     public GameOverView(Group root, int width, int height) {

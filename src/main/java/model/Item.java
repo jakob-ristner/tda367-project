@@ -6,9 +6,9 @@ import java.util.HashMap;
  * Items can be equipped by a player and has stats as an attribute.
  */
 public class Item {
-    private String name;
+    private final String name;
     private String pickupText;
-    private HashMap<Stat, Integer> stats;
+    private final HashMap<Stat, Integer> stats;
 
     public Item(String name, HashMap<Stat, Integer> stats) {
         this.name = name;

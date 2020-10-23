@@ -1,19 +1,24 @@
 package XMLParser;
 
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.*;
-import java.io.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
 public class XMLParser {
-    private ArrayList<MoveEventData> moveEventList = new ArrayList<>();
-    private ArrayList<RollEventData> rollEventList = new ArrayList<>();
-    private ArrayList<ItemEventData> itemEventList = new ArrayList<>();
+    private final ArrayList<MoveEventData> moveEventList = new ArrayList<>();
+    private final ArrayList<RollEventData> rollEventList = new ArrayList<>();
+    private final ArrayList<ItemEventData> itemEventList = new ArrayList<>();
 
     private Element element;
 

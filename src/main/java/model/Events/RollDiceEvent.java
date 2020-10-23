@@ -9,12 +9,12 @@ import java.util.HashMap;
 public class RollDiceEvent extends GameEvent {
     Stat statToRollOn;
     int numberToRollVersus;
-    private String eventText;
-    private int eventType;
+    private final String eventText;
+    private final int eventType;
     private String effectText;
     private String eventButtonText;
-    private boolean positiveEvent;
-    private int statChange;
+    private final boolean positiveEvent;
+    private final int statChange;
 
     /**
      * @param statToRollOn       which stat to roll on, using int as an identifier for stat

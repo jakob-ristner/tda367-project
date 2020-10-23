@@ -8,27 +8,27 @@ public class RollEventData extends EventData {
     RollEventData() {
     }
 
-    void setStat(int stat) {
-        this.stat = stat;
-    }
-
-    void setStatChange(int statChange) {
-        this.statChange = statChange;
-    }
-
-    void setEventThreshold(int eventThreshold) {
-        this.eventThreshold = eventThreshold;
-    }
-
     public int getStat() {
         return stat;
+    }
+
+    void setStat(int stat) {
+        this.stat = stat;
     }
 
     public int getStatChange() {
         return statChange;
     }
 
+    void setStatChange(int statChange) {
+        this.statChange = statChange;
+    }
+
     public int getEventThreshold() {
         return eventThreshold;
+    }
+
+    void setEventThreshold(int eventThreshold) {
+        this.eventThreshold = eventThreshold;
     }
 }

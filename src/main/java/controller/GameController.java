@@ -14,8 +14,8 @@ import view.ViewInterface;
  */
 
 public class GameController implements GameObserver, EventObserver {
-    private Game game;
-    private GameView view;
+    private final Game game;
+    private final GameView view;
     private ViewInterface gameOverView;
     private ViewInterface characterSelectView;
     private ViewInterface startScreenView;

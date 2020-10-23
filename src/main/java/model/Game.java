@@ -14,11 +14,11 @@ public class Game implements ControllerObservable {
     private List<Player> playerList;
     private List<Integer> deadPlayerIndices;
 
-    private List<Kharacter> characterList = KharacterFactory.getCharacters();
-    private List<GameState> listOfHaunts = new ArrayList<>();
+    private final List<Kharacter> characterList = KharacterFactory.getCharacters();
+    private final List<GameState> listOfHaunts = new ArrayList<>();
     private HashMap<String, Integer> staminaNameMap = new HashMap<>();
 
-    private Board board;
+    private final Board board;
 
 
     private int playerAmount;
@@ -26,8 +26,14 @@ public class Game implements ControllerObservable {
 
     private int currentPlayerIndex;
     private int eventCounter;
-    private Random random = new Random();
+    private final Random random = new Random();
 
+
+    private Game() {
+        board = new Board();
+        listOfHaunts.add(new InsanityHauntState());
+        deadPlayerIndices = new ArrayList<>();
+    }
 
     /**
      * singleton pattern
@@ -91,6 +97,7 @@ public class Game implements ControllerObservable {
 
     /**
      * Creates the amount of players that the game is supposed to have.
+     *
      * @param amountPlayers The amount of players needed.
      */
     void createPlayers(int amountPlayers) {
@@ -103,9 +110,9 @@ public class Game implements ControllerObservable {
         }
     }
 
-
     /**
      * Creates a list of all the players that are currently on the same Tile
+     *
      * @return List of players
      */
     List<Player> createListOfPlayersInSameRoom() {
@@ -118,7 +125,6 @@ public class Game implements ControllerObservable {
         return listOfPlayersInTheSameRoom;
     }
 
-
     /**
      * Checks if haunt is activated
      */
@@ -130,7 +136,6 @@ public class Game implements ControllerObservable {
 
     }
 
-
     public List<String> getCharacterNames() {
         List<String> characterNames = new ArrayList<>();
         for (Kharacter a : characterList) {
@@ -139,11 +144,9 @@ public class Game implements ControllerObservable {
         return characterNames;
     }
 
-
     public String getHauntText() {
         return gameState.getHauntText();
     }
-
 
     public List<List<String>> getCharacterStats() {
         List<List<String>> characterStats = new ArrayList<>();
@@ -154,7 +157,6 @@ public class Game implements ControllerObservable {
 
         return characterStats;
     }
-
 
     public List<Player> getPlayerList() {
         List<Player> players = new ArrayList<>(playerList);
@@ -214,13 +216,10 @@ public class Game implements ControllerObservable {
         staminaNameMap = getStaminaNameMap();
     }
 
-
-
     @Override
     public void setObserver(GameObserver observer) {
         this.observer = observer;
     }
-
 
     @Override
     public void notifyGameData() {
@@ -302,11 +301,9 @@ public class Game implements ControllerObservable {
         return getCurrentPlayer().getItemNames();
     }
 
-
     public void setCurrentPlayersCharacter(int index) {
         getCurrentPlayer().setCharacter(characterList.get(index));
     }
-
 
     /**
      * registers event observer
@@ -318,7 +315,6 @@ public class Game implements ControllerObservable {
             e.setObserver(eventObserver);
         }
     }
-
 
     public void handleEvent() {
         Player currentPlayer = getCurrentPlayer();
@@ -354,11 +350,9 @@ public class Game implements ControllerObservable {
 
     }
 
-
     public Tile getPlayerTile(Player player) {
         return board.getFloor(player.getFloor()).getTile(player.getX(), player.getY());
     }
-
 
     private void initHaunt() {
         gameState.init();
@@ -379,7 +373,6 @@ public class Game implements ControllerObservable {
         }
     }
 
-
     GameState getRandomHaunt() {
         return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
     }
@@ -392,15 +385,6 @@ public class Game implements ControllerObservable {
         this.playerAmount = playerAmount;
         createPlayers(playerAmount);
     }
-
-
-
-    private Game() {
-        board = new Board();
-        listOfHaunts.add(new InsanityHauntState());
-        deadPlayerIndices = new ArrayList<>();
-    }
-
 
     public List<Coord> getStairsDownOnCurrentFloor() {
         return board.getStairsDownOnCurrentFloor(getCurrentFloorNumber());

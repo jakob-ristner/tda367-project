@@ -1,12 +1,12 @@
 package model.Events;
 
-import model.Player;
 import model.Item;
+import model.Player;
 
 public class ItemEvent extends GameEvent {
-    private Item item;
+    private final Item item;
     private String eventText;
-    private int eventType;
+    private final int eventType;
     private String effectText;
     private String eventButtonText;
 

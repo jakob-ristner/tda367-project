@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class Kharacter {
 
-    private String name;
-    private HashMap<Stat, Integer> stats;
+    private final String name;
+    private final HashMap<Stat, Integer> stats;
 
 
     /**
