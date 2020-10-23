@@ -44,7 +44,10 @@ public class CharacterSelectView implements ViewInterface {
         root.getChildren().add(pane);
     }
 
-
+    /**
+     * creates buttons and everything about them except the action event
+     * @param characterNames
+     */
     public void initButton(List<String> characterNames) {
         buttonMap = new HashMap<>();
 
@@ -70,6 +73,10 @@ public class CharacterSelectView implements ViewInterface {
 
     }
 
+    /**
+     *  creatied text elements
+     * @param statList List of String list, one string list for every character, representing their stats as text
+     */
     public void initText(List<List<String>> statList) {
         this.statList = statList;
 
@@ -128,6 +135,11 @@ public class CharacterSelectView implements ViewInterface {
     }
 
 
+    /**
+     * converst a list of strings to a string (stats)
+     * @param statListIndex index of the statList in question
+     * @return a string that can be directly displayed as character stats
+     */
     private String getAllStatsAsString(int statListIndex) {
         String allStats = "";
         for (String stat : statList.get(statListIndex)) {
@@ -143,6 +155,11 @@ public class CharacterSelectView implements ViewInterface {
         pane.toFront();
     }
 
+    /**
+     * changes the top text in the character select screen
+     * @param index current player index
+     * @param amountPlayers
+     */
     public void setPlayerTexts(int index, int amountPlayers) {
         playerText.setText("It's Player " + (index + 1) + ":s turn!");
         if (index == amountPlayers) {

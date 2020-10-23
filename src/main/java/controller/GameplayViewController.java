@@ -12,12 +12,12 @@ import java.util.HashMap;
  * sets all buttons and handlers and sends updates to Game
  */
 
-public class MainGameViewController extends AbstractController {
+public class GameplayViewController extends AbstractController {
     private HashMap<Integer, Button> buttonMap;
     private Button endTurnButton;
 
 
-    protected MainGameViewController(Game game) {
+    protected GameplayViewController(Game game) {
         super(game);
 
     }

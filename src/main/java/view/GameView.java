@@ -22,7 +22,7 @@ public class GameView {
     private final Group root;
     private final CharacterSelectView characterSelectView;
     private final StartScreenView startScreenView;
-    private final MainGameView mainGameView;
+    private final GameplayView gameplayView;
     private final CombatScreenView combatScreenView;
 
 
@@ -38,6 +38,10 @@ public class GameView {
     private HashMap<Integer, EventView> eventViewMap;
     private final Game game;
 
+    /**
+     * inits all views and craetied the7 root to which all other views display on
+     * @param game Game object
+     */
     public GameView(Game game) {
         root = new Group();
         this.game = game;
@@ -45,7 +49,7 @@ public class GameView {
         characterSelectView = new CharacterSelectView(root, WINDOW_W, WINDOW_H);
         characterSelectView.initButton(game.getCharacterNames());
         characterSelectView.initText(game.getCharacterStats());
-        mainGameView = new MainGameView(root, WINDOW_W, WINDOW_H, game);
+        gameplayView = new GameplayView(root, WINDOW_W, WINDOW_H, game);
         combatScreenView = new CombatScreenView(root, WINDOW_W, WINDOW_H);
         gameOverView = new GameOverView(root, WINDOW_W, WINDOW_H);
 
@@ -57,6 +61,9 @@ public class GameView {
     }
 
 
+    /**
+     * links a strings to eventbuttons
+     */
     private void initButtonEventMap() {
         buttonEventMap.put("GameWonEvent", gameWonEventView.getEventButton());
         buttonEventMap.put("ItemEvent", itemEventView.getEventButton());
@@ -65,6 +72,9 @@ public class GameView {
         buttonEventMap.put("HauntEvent", hauntEventView.getEventButton());
     }
 
+    /**
+     * created event views and puts them in hashmap with corresponding ids
+     */
     private void initEventView() {
         eventViewMap = new HashMap<>();
 
@@ -85,8 +95,11 @@ public class GameView {
         hauntEventView.getEventButton().setText("Accept the role as the haunted one," + " " + game.getCurrentPlayersCharacterName());
     }
 
+    /**
+     * tells the gameplayview to init all of its data and get it from the model
+     */
     public void initMapData() {
-        mainGameView.initMapData();
+        gameplayView.initMapData();
     }
 
 
@@ -113,8 +126,8 @@ public class GameView {
         return startScreenView;
     }
 
-    public ViewInterface getMainGameView() {
-        return mainGameView;
+    public ViewInterface getGamePlayView() {
+        return gameplayView;
     }
 
 
@@ -122,13 +135,17 @@ public class GameView {
         characterSelectView.setPlayerTexts(index, game.getPlayerAmount());
     }
 
-    public void updateMainGameViewMapData() {
-        mainGameView.updateMapData();
+
+    /**
+     * tells the gameplay view to update its data from the model
+     */
+    public void updateGameplayViewMapData() {
+        gameplayView.updateMapData();
     }
 
     public void updateEventEffect() {
-        mainGameView.setEventEffectText();
-        mainGameView.fadeEventText();
+        gameplayView.setEventEffectText();
+        gameplayView.fadeEventText();
     }
 
     public void updateEventView(int eventType, String eventText) {
@@ -164,11 +181,11 @@ public class GameView {
     }
 
     public HashMap<Integer, Button> getMainGameViewDoorButtons() {
-        return mainGameView.getDoorButtons();
+        return gameplayView.getDoorButtons();
     }
 
     public Button getMainGameViewEndTurnButton() {
-        return mainGameView.getEndTurnButton();
+        return gameplayView.getEndTurnButton();
     }
 
     public List<Button> getCombatButton() {
