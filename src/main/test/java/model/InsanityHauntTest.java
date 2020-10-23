@@ -65,14 +65,14 @@ public class InsanityHauntTest {
 
         insanityHauntState.init();
 
-        int damageToKharacter0 = game.getPlayerList().get(0).getCharacter().getStat(Stat.STRENGTH);
-        int damageToKharacter1 = game.getPlayerList().get(1).getCharacter().getStat(Stat.STRENGTH);
+        int damageToKharacter0 = game.getPlayerList().get(0).getCharacter().getStat(Stat.STAMINA);
+        int damageToKharacter1 = game.getPlayerList().get(1).getCharacter().getStat(Stat.STAMINA);
 
         for (int i = 0; i < game.getPlayerList().size(); i++) {
             Assert.assertFalse(game.getPlayerList().get(i).isPlayerDead());
         }
-        game.getPlayerList().get(0).getCharacter().updateStatFromCombat(Stat.STRENGTH, damageToKharacter0);
-        game.getPlayerList().get(1).getCharacter().updateStatFromCombat(Stat.STRENGTH, damageToKharacter1);
+        game.getPlayerList().get(0).getCharacter().updateStatFromCombat(Stat.STAMINA, damageToKharacter0);
+        game.getPlayerList().get(1).getCharacter().updateStatFromCombat(Stat.STAMINA, damageToKharacter1);
         game.removeDeadPlayersFromGame();
         Assert.assertTrue(game.getPlayerList().isEmpty());
         Assert.assertTrue(insanityHauntState.winConditionChecker());
