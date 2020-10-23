@@ -1,7 +1,6 @@
 package model;
 
 
-import model.Events.ItemEvent;
 import model.Events.TestEvent;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,10 +8,19 @@ import utilities.Coord;
 
 import java.util.HashMap;
 
-public class testHelper {
+/**
+ * Testing events on a player.
+ * Need to use TestEvent in Events in order to create events and handle them.
+ */
+
+public class TestEventHelper {
     TestEvent testEvent = new TestEvent();
 
 
+    /**
+     * Testing itemEvent
+     * Similar to testEquippingPlayer in TestPlayer
+     */
     @Test
     public void testItemEvent(){
         Player testPlayer = new Player();
@@ -25,6 +33,13 @@ public class testHelper {
         Assert.assertEquals(statStart+item.getStat(Stat.STRENGTH),testPlayer.getCharacter().getStat(Stat.STRENGTH));
 
     }
+
+    /**
+     * Testing moveEvent
+     * 2 outcomes, negative and positive
+     * Can only roll under since roll is randomized(set the threshHold to 500 so that we always roll under)
+     *
+     */
     @Test
     public void testMoveEvent(){
         Player testPlayer = new Player();
@@ -41,7 +56,11 @@ public class testHelper {
 
     }
     @Test
-
+    /**
+     * Testing rollDiceEvent
+     * Both negative statChange and positive statChange is tested
+     * Can only roll under in test unless risking a failed test (random dice roll)
+     */
     public void testRollDiceEvent(){
         Player testPlayer = new Player();
         testPlayer.setCharacter(KharacterFactory.createRufus());
@@ -54,9 +73,6 @@ public class testHelper {
         int statChange2 = 2;
         testEvent.testRollDiceEventPositive(testPlayer,statChange2,3);
         Assert.assertEquals(startStamina+statChange1,testPlayer.getCharacter().getStat(Stat.STAMINA));
-
-
-
     }
 
 }

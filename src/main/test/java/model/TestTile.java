@@ -3,8 +3,13 @@ package model;
 
 import org.junit.Assert;
 import org.junit.Test;
-public class TestTile {
 
+/**
+ * True means that there is a door
+ * False means that there is no door
+ * When placed at (0,0) there is no door up or left which is tested.
+ */
+public class TestTile {
     @Test
     public void testAddTile(){
         int size = 6;

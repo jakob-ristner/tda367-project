@@ -8,6 +8,10 @@ import utilities.Coord;
 
 import java.util.List;
 
+/**
+ * GameTest is focused on Game methods, require a dummyObserver for some methods.
+ */
+
 public class GameTest {
     class DummyObserver implements GameObserver{
         @Override
@@ -69,7 +73,7 @@ public class GameTest {
         Game game = Game.getInstance();
         game.setObserver(dummyObserver);
 
-        game.createPlayers(1);
+        game.setPlayerAmount(1);
         game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
         Coord stairCoord = game.getStairsUpOnCurrentFloor().get(0);
 
@@ -88,7 +92,7 @@ public class GameTest {
     @Test
     public void testAllPlayersHasCharacter(){
         Game game = Game.getInstance();
-        game.createPlayers(2);
+        game.setPlayerAmount(2);
         game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
         Assert.assertFalse(game.checkAllPlayersHaveChars());
         game.getPlayerList().get(1).setCharacter(KharacterFactory.createMedera());
@@ -99,7 +103,7 @@ public class GameTest {
     @Test
     public void testCreateListOfAllPlayersSameCoord(){
         Game game = Game.getInstance();
-        game.createPlayers(4);
+        game.setPlayerAmount(4);
 
         for(int i =0; i<game.getPlayerList().size();i++){
             Coord coord =  new Coord(1,2,1);
