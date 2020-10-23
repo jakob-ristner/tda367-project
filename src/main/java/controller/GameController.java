@@ -24,7 +24,7 @@ public class GameController implements GameObserver, EventObserver {
     private CharacterSelectController characterSelectController;
     private StartScreenController startScreenController;
     private GameOverController gameOverController;
-    private MainGameViewController mainGameViewController;
+    private GameplayViewController gameplayViewController;
     private EventController eventController;
     private CombatController combatController;
 
@@ -44,7 +44,7 @@ public class GameController implements GameObserver, EventObserver {
     private void initViews() {
         startScreenView = view.getStartScreenView();
         characterSelectView = view.getCharacterSelectView();
-        mainGameView = view.getMainGameView();
+        mainGameView = view.getGamePlayView();
         combatView = view.getCombatView();
         gameOverView = view.getGameOverView();
     }
@@ -61,7 +61,7 @@ public class GameController implements GameObserver, EventObserver {
         characterSelectController.setTextList(view.getCharSelectTexts());
         characterSelectController.setNextView(mainGameView);
 
-        mainGameViewController = new MainGameViewController(game);
+        gameplayViewController = new GameplayViewController(game);
 
         eventController = new EventController(game);
         eventController.setEventButtonMap(view.getEventButtons());
@@ -84,14 +84,14 @@ public class GameController implements GameObserver, EventObserver {
 
     @Override
     public void updateMapData() {
-        view.updateMainGameViewMapData();
+        view.updateGameplayViewMapData();
     }
 
     @Override
     public void initMapData() {
         view.initMapData();
-        mainGameViewController.setDoorButtons(view.getMainGameViewDoorButtons());
-        mainGameViewController.setEndTurnButton(view.getMainGameViewEndTurnButton());
+        gameplayViewController.setDoorButtons(view.getMainGameViewDoorButtons());
+        gameplayViewController.setEndTurnButton(view.getMainGameViewEndTurnButton());
     }
 
     @Override
@@ -120,7 +120,7 @@ public class GameController implements GameObserver, EventObserver {
     @Override
     public void updateEventView(int eventType, String eventText) {
         view.updateEventView(eventType, eventText);
-        view.updateMainGameViewMapData();
+        view.updateGameplayViewMapData();
 
     }
 }
