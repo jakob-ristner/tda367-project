@@ -30,7 +30,7 @@ public class Gastuen extends Application
 	public void viewInit(Stage stage) {
 		setView();
 		stage.setTitle("Gastuen: Spooky House");
-		stage.setResizable(false);
+		stage.setResizable(true);
 		stage.setScene(new Scene(view.getRoot(), GameView.WINDOW_W, GameView.WINDOW_H));
 	}
 
