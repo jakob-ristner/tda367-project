@@ -62,6 +62,7 @@ public class Game implements ControllerObservable {
             } else if (getPlayerTile(currentPlayer).hasStairUp()) {
                 currentPlayer.addCoord(new Coord(0, 0, 1));
             }
+
             board.tryActivateEventOnPlayerPos(currentPlayer);
         }
         removeDeadPlayersFromGame();

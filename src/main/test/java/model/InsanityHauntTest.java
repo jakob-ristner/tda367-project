@@ -37,32 +37,9 @@ public class InsanityHauntTest {
 
         }
     }
-    Game game;
-/*
-    @Test
-    public void testCombat(){
-        Game game = Game.getInstance();
-        game.createPlayers(3);
 
-        InsanityHauntState insanityHauntState = new InsanityHauntState();
-        System.out.println(game.getCurrentPlayer());
-        game.getPlayerList().get(0).setCharacter(KharacterFactory.createRufus());
-        game.getPlayerList().get(1).setCharacter(KharacterFactory.createRufus());
-        game.getPlayerList().get(2).setCharacter(KharacterFactory.createRufus());
-        //insanityHauntState.init();
 
-        game.getPlayerList().get(0).setPos(new Coord(1,2,2));
-        game.getPlayerList().get(1).setPos(new Coord(1,2,2));
-        game.getPlayerList().get(2).setPos(new Coord(1,2,2));
-       //insanityHauntState.turn(game.getPlayerList().get(3));
 
-    }
-
- */
-@Before
-public void createGame(){
-    Game game = Game.getInstance();
-}
 
     /**
      * Checking so that coverage is made when all players and a haunter player enters the same room

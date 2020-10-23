@@ -80,7 +80,7 @@ public class GameTest {
 
         game.getCurrentPlayer().setPos(new Coord(stairCoord.getX()+1,stairCoord.getY(),stairCoord.getFloor()));
         game.moveCurrentPlayer(-1,0);
-        game.moveCurrentPlayer(0,1);
+        game.moveCurrentPlayer(0,-1);
         Assert.assertEquals(stairCoord.getFloor()+1,game.getCurrentPlayer().getFloor());
     }
 
