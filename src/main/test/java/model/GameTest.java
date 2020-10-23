@@ -112,7 +112,50 @@ public class GameTest {
         game.getPlayerList().get(3).playerMove(1,1,1);
         List<Player> playersInSameRoom = game.createListOfPlayersInSameRoom();
         Assert.assertEquals(game.getPlayerList().size()-1,playersInSameRoom.size());
+    }
 
+    @Test
+    public void testHandleEvent(){
+        Game game = Game.getInstance();
+        game.registerEventObserver(new EventObserver() {
+            @Override
+            public void updateEventView(int eventType, String eventText) {
+
+            }
+
+            @Override
+            public void updateEventEffect() {
+
+            }
+        });
+        game.setPlayerAmount(1);
+        game.getPlayerList().get(0).setCharacter(KharacterFactory.createDebugKhar());
+        game.setObserver(new DummyObserver());
+        int eventcounter = 0;
+        for(int floor = 0; floor < 2; floor++) {
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    //game.updateCurrentPlayer();
+                    if (!game.getBoard().tryActivateEventOnPlayerPos(game.getCurrentPlayer())) {
+                        game.getCurrentPlayer().setPos(new Coord(i, j, floor));
+                        game.updateCurrentPlayer();
+                    } else {
+                        if(eventcounter == game.getHauntTrigger()){
+                            break;
+                        }
+                        game.updateCurrentPlayer();
+                        game.moveCurrentPlayer(0, 0);
+                        game.handleEvent();
+
+
+                    }
+                }
+            }
+        }
+
+        game.endTurn();
+        game.moveCurrentPlayer(0,0);
+        Assert.assertTrue(game.getCurrentPlayer().isHaunted());
     }
 
 }

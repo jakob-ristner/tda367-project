@@ -26,6 +26,7 @@ public class Game implements ControllerObservable {
 
     private int currentPlayerIndex;
     private int eventCounter;
+    private final int hauntTrigger = 8;
     private final Random random = new Random();
 
 
@@ -368,14 +369,14 @@ public class Game implements ControllerObservable {
     }
 
     private void checkForHauntInit() {
-        if (eventCounter == 1 && gameState == null) {
+        if (eventCounter == hauntTrigger && gameState == null) {
             gameState = getRandomHaunt();
             initHaunt();
             notifyHaunt();
         }
     }
 
-    GameState getRandomHaunt() {
+    private GameState getRandomHaunt() {
         return listOfHaunts.get(random.nextInt(listOfHaunts.size()));
     }
 
@@ -400,5 +401,9 @@ public class Game implements ControllerObservable {
         List<Integer> copy = new ArrayList<>(deadPlayerIndices);
         deadPlayerIndices.clear();
         return copy;
+    }
+
+    int getHauntTrigger(){
+        return hauntTrigger;
     }
 }

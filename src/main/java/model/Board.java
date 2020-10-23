@@ -15,7 +15,7 @@ public class Board {
     private final Random rand = new Random();
     private final List<Floor> floors;
     private final int numberOfFloors = 3;
-    private final int eventPerFloor = 10;
+    private final int eventPerFloor = 5;
     private final List<Event> events;
     private List<Integer> indexList;
 
