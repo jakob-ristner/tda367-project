@@ -71,17 +71,17 @@ public class TestPlayer {
 
     /**
      * Testing the player combat
-     * Rufus has 2 strength
-     * Check if the strength stat becomes 0, afterwards checks if the player is dead.a
+     * Rufus has 6 stamina
+     * Check if the stamina stat becomes 0, afterwards checks if the player is dead.a
      */
     @Test
     public void testCombat() {
         Player player = new Player();
         player.setCharacter(KharacterFactory.createRufus());
-        int startStrength = player.getCharacter().getStat(Stat.STRENGTH); //Rufus has 2 strength
-        player.getCharacter().updateStatFromCombat(Stat.STRENGTH, 2);
-        Assert.assertEquals(startStrength - 2, player.getCharacter().getStat(Stat.STRENGTH));
-        Assert.assertEquals(0, player.getCharacter().getStat(Stat.STRENGTH));
+        int startStamina = player.getCharacter().getStat(Stat.STAMINA); //Rufus has 2 strength
+        player.getCharacter().updateStatFromCombat(Stat.STAMINA, 6);
+        Assert.assertEquals(startStamina - 6, player.getCharacter().getStat(Stat.STAMINA));
+        Assert.assertEquals(0, player.getCharacter().getStat(Stat.STAMINA));
         Assert.assertTrue(player.isPlayerDead());
 
     }

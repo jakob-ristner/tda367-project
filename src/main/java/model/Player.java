@@ -95,7 +95,7 @@ public class Player {
      * @return random number from 0 to stat value
      */
     public int rollStat(Stat stat) {
-        return dice.nextInt(character.getStat(stat) + 1);
+        return dice.nextInt(character.getStat(stat)) + 1;
     }
 
     void resetSteps() {
