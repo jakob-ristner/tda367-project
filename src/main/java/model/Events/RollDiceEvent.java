@@ -31,8 +31,6 @@ public class RollDiceEvent extends GameEvent {
         this.statChange = statChange;
         this.eventText = eventText;
         this.eventType = eventType;
-        System.out.println(this.statToRollOn);
-        System.out.println(eventText);
         this.positiveEvent = Math.signum(statChange) == 1;
     }
 
