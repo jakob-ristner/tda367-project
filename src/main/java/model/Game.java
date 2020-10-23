@@ -282,6 +282,10 @@ public class Game implements ControllerObservable {
         return getCurrentPlayer().getFloor();
     }
 
+    /**
+     *
+     * @return returns which floor (index) each player is on, information for the view so it knows which floor to show.
+     */
     public List<Integer> getPlayerIndicesOnCurrentFloor() {
         List<Integer> playerIndicesOnCurrentFloor = new ArrayList<>();
         for (int i = 0; i < playerAmount; i++) {
@@ -319,6 +323,9 @@ public class Game implements ControllerObservable {
         }
     }
 
+    /**
+     * method chaining->asks board to handle event. Notifies observer to update afterwards.
+     */
     public void handleEvent() {
         Player currentPlayer = getCurrentPlayer();
         board.handleEvent(currentPlayer);
@@ -368,6 +375,9 @@ public class Game implements ControllerObservable {
         eventCounter++;
     }
 
+    /**
+     * Checks if haunt should be triggered. Will be random when more haunts is added.
+     */
     private void checkForHauntInit() {
         if (eventCounter == hauntTrigger && gameState == null) {
             gameState = getRandomHaunt();
