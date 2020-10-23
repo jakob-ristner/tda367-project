@@ -93,8 +93,9 @@ public class Game implements ControllerObservable {
      * Creates the amount of players that the game is supposed to have.
      * @param amountPlayers The amount of players needed.
      */
-    void createPlayers(int amountPlayers) {
+    private void createPlayers(int amountPlayers) {
         Player currPlayer;
+        currentPlayerIndex=0;
         playerList = new ArrayList<>();
         for (int i = 0; i < amountPlayers; i++) {
             currPlayer = new Player();

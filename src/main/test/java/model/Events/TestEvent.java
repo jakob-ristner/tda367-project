@@ -9,7 +9,15 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
+/**
+ * In order to mimic the model structure this package was created. Otherwise we can't create or handle events
+ * Need a dummyObserver or else nullPointer
+ * In this class events are created and handled, called on from TestEventHelper.
+ * Set threshHold to 500 so that all rolls are under.
+ */
+
 public class TestEvent {
+    final int threshHold= 500;
     class DummyObserver implements EventObserver {
 
         @Override
@@ -61,36 +69,30 @@ public class TestEvent {
 
     public void testMoveEventNegative(Player player) {
         gameEvent.setObserver(dummyObserver);
-        MoveEvent moveEvent = new MoveEvent(0, 500, "Test123",
+        MoveEvent moveEvent = new MoveEvent(0, threshHold, "Test123",
                 -1, 0, 1, -2, true, false);
         moveEvent.handleEvent(player);
     }
 
     public void testMoveEventPositive(Player player) {
         gameEvent.setObserver(dummyObserver);
-        MoveEvent moveEvent = new MoveEvent(0, 500, "Test123",
+        MoveEvent moveEvent = new MoveEvent(0, threshHold, "Test123",
                 1, 0, 1, -2, true, true);
         moveEvent.handleEvent(player);
     }
 
     public void testRollDiceEventNegative(Player player, int statChange, int statToRollOn) {
         gameEvent.setObserver(dummyObserver);
-        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, 500, statChange,
+        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, threshHold, statChange,
                 "Testing123", -1, true);
         rollDiceEvent.handleEvent(player);
     }
 
     public void testRollDiceEventPositive(Player player, int statChange, int statToRollOn) {
         gameEvent.setObserver(dummyObserver);
-        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, 500, statChange,
+        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, threshHold, statChange,
                 "Testing123", -1, true);
         rollDiceEvent.handleEvent(player);
-    }
-    public Event createEventForGameTest(){
-        gameEvent.setObserver(dummyObserver);
-        MoveEvent moveEvent = new MoveEvent(0, 500, "Test123",
-                -1, 0, 1, -2, false, false);
-        return moveEvent;
     }
 
 }

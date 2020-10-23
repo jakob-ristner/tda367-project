@@ -7,11 +7,14 @@ import utilities.Coord;
 
 import java.util.HashMap;
 
+/**
+ * Testing Player methods.
+ */
 public class TestPlayer {
 
     /**
-     * Testing equipping item. Creating a new player->setCharacter and save the stat of the character.
-     * Then createItem->equip it-> compare characterStat+Swordstat with a character equipped with a sword.
+     *Testing equipping an item.
+     * Check
      */
     @Test
     public void testEquippingItem(){
@@ -26,13 +29,13 @@ public class TestPlayer {
         Item sword = new Item("Sword", swordStats);
 
         player.addToInventory(sword);
-        Assert.assertTrue(player.getCharacter().getStat(Stat.STRENGTH)== characterStat+sword.getStat(Stat.STRENGTH));
+        Assert.assertEquals(characterStat+sword.getStat(Stat.STRENGTH),player.getCharacter().getStat(Stat.STRENGTH));
 
 
     }
 
     /**
-     * Create new player-> Set a kharacter-> test if a roll between 0<=maxstat(
+     * Test rolling a dice between the minRoll=0 and maxRoll = statValue
      */
 
     @Test
@@ -59,23 +62,28 @@ public class TestPlayer {
         player.setPos(new Coord(1,2,2));
         player.addCoord(new Coord(-1,-2,-1));
         Assert.assertEquals(player.getFloor(),1);
-        player.playerMove(1,2, player.getFloor());
-        Assert.assertEquals(player.getX(),1);
-        Assert.assertEquals(player.getY(),2);
+
+        int x = 1;
+        int y = 2;
+
+        player.playerMove(x,y, player.getFloor());
+        Assert.assertEquals(x,player.getX());
+        Assert.assertEquals(y,player.getY());
     }
 
     /**
      * Testing the player combat
-     * Check if the strength stat becomes 0, afterwards checks if the player is dead.
+     * Rufus has 2 strength
+     * Check if the strength stat becomes 0, afterwards checks if the player is dead.a
      */
     @Test
     public void testCombat(){
         Player player = new Player();
         player.setCharacter(KharacterFactory.createRufus());
-        int startStrength = player.getCharacter().getStat(Stat.STRENGTH);
+        int startStrength = player.getCharacter().getStat(Stat.STRENGTH); //Rufus has 2 strength
         player.getCharacter().updateStatFromCombat(Stat.STRENGTH,2);
         Assert.assertEquals(startStrength-2,player.getCharacter().getStat(Stat.STRENGTH));
-        Assert.assertEquals(player.getCharacter().getStat(Stat.STRENGTH),0);
+        Assert.assertEquals(0,player.getCharacter().getStat(Stat.STRENGTH));
         Assert.assertTrue(player.isPlayerDead());
 
     }
