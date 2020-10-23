@@ -32,7 +32,6 @@ public class ItemEvent extends GameEvent {
     public void activate() {
         eventButtonText = "Bring " + item.getName() + "!";
         observer.updateEventView(eventType, eventText);
-        System.out.print("ItemEvent");
     }
 
     /**
