@@ -1,11 +1,10 @@
 package view;
 
 
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.text.Text;
-import javafx.scene.*;
-
 import model.Game;
 import view.eventView.*;
 
@@ -20,14 +19,14 @@ import java.util.List;
 public class GameView {
     public static final int WINDOW_H = 800;
     public static final int WINDOW_W = 1300;
-    private Group root;
-    private CharacterSelectView characterSelectView;
-    private StartScreenView startScreenView;
-    private MainGameView mainGameView;
-    private CombatScreenView combatScreenView;
+    private final Group root;
+    private final CharacterSelectView characterSelectView;
+    private final StartScreenView startScreenView;
+    private final MainGameView mainGameView;
+    private final CombatScreenView combatScreenView;
 
 
-    private GameOverView gameOverView;
+    private final GameOverView gameOverView;
 
     private EventView gameWonEventView;
     private EventView itemEventView;
@@ -35,9 +34,9 @@ public class GameView {
     private EventView rollDiceView;
     private EventView hauntEventView;
 
-    private HashMap<String, Button> buttonEventMap;
+    private final HashMap<String, Button> buttonEventMap;
     private HashMap<Integer, EventView> eventViewMap;
-    private Game game;
+    private final Game game;
 
     public GameView(Game game) {
         root = new Group();

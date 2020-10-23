@@ -21,10 +21,9 @@ public class Tile {
     private boolean hasStair;
 
 
-
     public Tile(int i, int j, int rowLength, int colLength) {
         hasEvent = false;
-        setDoors(i, j, rowLength,colLength);
+        setDoors(i, j, rowLength, colLength);
     }
 
     void setStairUp(boolean stairUp) {
@@ -49,7 +48,7 @@ public class Tile {
         return hasStair;
     }
 
-    private void setDoors(int col, int row, int rowLength,int colLength) {
+    private void setDoors(int col, int row, int rowLength, int colLength) {
         if (row == 0) doorUp = false;
         if (col == 0) doorLeft = false;
         if (row == rowLength - 1) doorDown = false;

@@ -9,10 +9,10 @@ public class MoveEvent extends GameEvent {
     int threshHold;
     String eventText;
     int eventType;
+    Coord coord;
     private String effectText;
     private String eventButtonText;
-    private boolean positiveEvent;
-    Coord coord;
+    private final boolean positiveEvent;
 
     /**
      * @param statToRollOn  which stat to roll on, using int as an identifier for stat

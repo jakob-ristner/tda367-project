@@ -7,7 +7,7 @@ import java.util.List;
  * Inventory is a space for items that is carried by the player.
  */
 public class Inventory {
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     public Inventory() {
         itemList = new ArrayList<>();

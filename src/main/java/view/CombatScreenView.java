@@ -21,17 +21,17 @@ import java.util.List;
  */
 
 public class CombatScreenView implements ViewInterface {
-    private Pane rootPane;
-    private int width;
-    private int height;
-    private Text header;
-    private List<Text> toRemove = new ArrayList<>();
+    private final Pane rootPane;
+    private final int width;
+    private final int height;
+    private final Text header;
+    private final List<Text> toRemove = new ArrayList<>();
 
-    private Button combatButton;
-    private Button exitButton;
+    private final Button combatButton;
+    private final Button exitButton;
 
-    private List<Button> combatButtonList;
-    private HashMap<String, Circle> playerCircles;
+    private final List<Button> combatButtonList;
+    private final HashMap<String, Circle> playerCircles;
 
 
     public CombatScreenView(Group root, int width, int height) {

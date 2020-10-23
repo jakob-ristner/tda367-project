@@ -4,14 +4,14 @@ import javafx.animation.FadeTransition;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-
 import javafx.util.Duration;
 import model.Game;
 import utilities.Coord;
@@ -21,19 +21,16 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainGameView implements ViewInterface {
-    private int width;
-    private int height;
-    private Pane rootPane;
+    private static final int X = 0;
+    private static final int Y = 1;
+    private final int width;
+    private final int height;
+    private final Pane rootPane;
     private AnchorPane mapPane;
     private AnchorPane statsPane;
     private AnchorPane playersPane;
     private AnchorPane inventoryPane;
     private AnchorPane floorPane;
-
-    private static final int X = 0;
-    private static final int Y = 1;
-
-
     private int rectSize;
     private int doorButtonSize;
     private int doorButtonOffset;
@@ -58,7 +55,7 @@ public class MainGameView implements ViewInterface {
     private List<Text> itemsInInventory;
     private List<Text> stairs;
 
-    private Game game;
+    private final Game game;
     private List<List<Rectangle>> tileViews;
 
 

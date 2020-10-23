@@ -16,8 +16,8 @@ public class Board {
     private final List<Floor> floors;
     private final int numberOfFloors = 3;
     private final int eventPerFloor = 10;
-    private List<Integer> indexList;
     private final List<Event> events;
+    private List<Integer> indexList;
 
     /**
      * A board consists of three floors
