@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainGameView implements ViewInterface {
+/**
+ * View taht displays everything in the main gameplay screen, floors, players, stats and such
+ */
+public class GameplayView implements ViewInterface {
     private static final int X = 0;
     private static final int Y = 1;
     private final int width;
@@ -59,7 +62,7 @@ public class MainGameView implements ViewInterface {
     private List<List<Rectangle>> tileViews;
 
 
-    public MainGameView(Group root, int width, int height, Game game) {
+    public GameplayView(Group root, int width, int height, Game game) {
         rootPane = new Pane();
         rootPane.setPrefSize(width, height);
         root.getChildren().add(rootPane);
@@ -70,6 +73,9 @@ public class MainGameView implements ViewInterface {
         initTileViews();
     }
 
+    /**
+     * created all its different panes to display data on
+     */
     private void initPanes() {
 
         mapPane = new AnchorPane();
@@ -109,13 +115,15 @@ public class MainGameView implements ViewInterface {
         addNode(floorPane);
     }
 
-
+    /**
+     * creates the tiles in the tilemap
+     */
     private void initTileViews() {
         tileViews = new ArrayList<>();
         Rectangle currentRect;
         rectSize = (height - 150) / 6;
         for (int i = 0; i < 6; i++) {
-            tileViews.add(new ArrayList<Rectangle>());
+            tileViews.add(new ArrayList<>());
             for (int k = 0; k < 6; k++) {
                 currentRect = new Rectangle(rectSize, rectSize);
                 currentRect.setX(i * rectSize);
@@ -128,6 +136,9 @@ public class MainGameView implements ViewInterface {
 
     }
 
+    /**
+     * gets data from model and inits everything
+     */
     public void initMapData() {
         currentPlayerIndex = game.getCurrentPlayerIndex();
         initPlayerSprites();
@@ -334,7 +345,9 @@ public class MainGameView implements ViewInterface {
         }
     }
 
-
+    /**
+     * gets data from model and updates view
+     */
     public void updateMapData() {
         currentPlayerIndex = game.getCurrentPlayerIndex();
         updatePlayerSprites();
