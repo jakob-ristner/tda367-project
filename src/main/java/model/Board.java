@@ -26,9 +26,8 @@ public class Board {
     Board() {
         floors = new ArrayList<>();
         events = EventFactory.createEventList();
-
         for (int i = 0; i < numberOfFloors; i++) {
-            floors.add(new Floor(generateEventList(), i));
+            floors.add(new Floor(generateEventList(i), i));
         }
     }
 
@@ -64,12 +63,16 @@ public class Board {
     /**
      * @return shuffled list of events for a single floor
      */
-    private List<Event> generateEventList() {
+    private List<Event> generateEventList(int floorIndex) {
         int index;
         indexList = randomIndexList();
         List<Event> floorEventList = new ArrayList<>();
         for (int i = 0; i < eventPerFloor; i++) {
             index = rand.nextInt(indexList.size());
+            while (!checkEligibleForFloor(events.get(indexList.get(index)), floorIndex)) {
+                index ++;
+                index %= indexList.size();
+            }
             floorEventList.add(events.get(indexList.get(index)));
             indexList.remove(index);
         }
@@ -136,5 +139,17 @@ public class Board {
 
     List<Coord> getStairsDownOnCurrentFloor(int floor) {
         return floors.get(floor).getStairsDown(floor);
+    }
+
+    /**
+     * checks so that no move events, elevators and such, can be added to top or bottom floor
+     * @param event event to be added
+     * @param floor floor index
+     * @return
+     */
+    private boolean checkEligibleForFloor(Event event, int floor) {
+        boolean moveEvent = event.getEventType() == -3;
+        boolean eligible = !(moveEvent && floor != 1);
+        return eligible;
     }
 }
