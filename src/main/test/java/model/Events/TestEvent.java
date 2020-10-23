@@ -23,6 +23,7 @@ public class TestEvent {
         }
 
     }
+
     GameEvent gameEvent = new GameEvent(true) {
         @Override
         public void activate() {
@@ -52,33 +53,44 @@ public class TestEvent {
     DummyObserver dummyObserver = new DummyObserver();
 
 
-    public void testItemEvent(Player player,Item item){
+    public void testItemEvent(Player player, Item item) {
         gameEvent.setObserver(dummyObserver);
-        ItemEvent itemEvent = new ItemEvent(item,"Testin123",3);
+        ItemEvent itemEvent = new ItemEvent(item, "Testin123", 3);
         itemEvent.handleEvent(player);
     }
-    public void testMoveEventNegative(Player player){
+
+    public void testMoveEventNegative(Player player) {
         gameEvent.setObserver(dummyObserver);
-        MoveEvent moveEvent = new MoveEvent(0,500,"Test123",
-                -1,0,1,-2,true,false);
+        MoveEvent moveEvent = new MoveEvent(0, 500, "Test123",
+                -1, 0, 1, -2, true, false);
         moveEvent.handleEvent(player);
     }
-    public void testMoveEventPositive(Player player){
+
+    public void testMoveEventPositive(Player player) {
         gameEvent.setObserver(dummyObserver);
-        MoveEvent moveEvent = new MoveEvent(0,500,"Test123",
-                1,0,1,-2,true,true);
+        MoveEvent moveEvent = new MoveEvent(0, 500, "Test123",
+                1, 0, 1, -2, true, true);
         moveEvent.handleEvent(player);
     }
-    public void testRollDiceEventNegative(Player player, int statChange,int statToRollOn){
+
+    public void testRollDiceEventNegative(Player player, int statChange, int statToRollOn) {
         gameEvent.setObserver(dummyObserver);
-        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn,500,statChange,
-                "Testing123",-1,true);
+        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, 500, statChange,
+                "Testing123", -1, true);
         rollDiceEvent.handleEvent(player);
     }
-    public void testRollDiceEventPositive(Player player, int statChange,int statToRollOn){
+
+    public void testRollDiceEventPositive(Player player, int statChange, int statToRollOn) {
         gameEvent.setObserver(dummyObserver);
-        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn,500,statChange,
-                "Testing123",-1,true);
+        RollDiceEvent rollDiceEvent = new RollDiceEvent(statToRollOn, 500, statChange,
+                "Testing123", -1, true);
         rollDiceEvent.handleEvent(player);
     }
+    public Event createEventForGameTest(){
+        gameEvent.setObserver(dummyObserver);
+        MoveEvent moveEvent = new MoveEvent(0, 500, "Test123",
+                -1, 0, 1, -2, false, false);
+        return moveEvent;
+    }
+
 }

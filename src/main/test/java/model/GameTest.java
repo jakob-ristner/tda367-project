@@ -1,8 +1,12 @@
 package model;
 
+import model.Events.ItemEvent;
+import model.Events.TestEvent;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.Coord;
+
+import java.util.List;
 
 public class GameTest {
     class DummyObserver implements GameObserver{
@@ -88,4 +92,21 @@ public class GameTest {
         game.getPlayerList().get(1).setCharacter(KharacterFactory.createMedera());
         Assert.assertTrue(game.checkAllPlayersHaveChars());
     }
+
+
+    @Test
+    public void testCreateListOfAllPlayersSameCoord(){
+        Game game = Game.getInstance();
+        game.createPlayers(4);
+
+        for(int i =0; i<game.getPlayerList().size();i++){
+            Coord coord =  new Coord(1,2,1);
+            game.getPlayerList().get(i).setPos(coord);
+        }
+        game.getPlayerList().get(3).playerMove(1,1,1);
+        List<Player> playersInSameRoom = game.createListOfPlayersInSameRoom();
+        Assert.assertEquals(game.getPlayerList().size()-1,playersInSameRoom.size());
+
+    }
+
 }
